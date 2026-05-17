@@ -5,49 +5,151 @@ type Props = {
   locale: string;
 };
 
-const TOOLS = [
-  { href: '/calculator/mortgage', labelEn: 'Mortgage Calculator' },
-  { href: '/calculator/loan', labelEn: 'Loan Calculator' },
-  { href: '/calculator/bmi', labelEn: 'BMI Calculator' },
-  { href: '/calculator/calories', labelEn: 'Calorie Calculator' },
-  { href: '/currency', labelEn: 'Currency Converter' },
-];
+type LocaleKey = 'en' | 'ru' | 'uk' | 'fr' | 'lt';
+
+const T: Record<LocaleKey, {
+  home: string;
+  toolsTitle: string;
+  pagesTitle: string;
+  about: string;
+  contact: string;
+  privacy: string;
+  copyright: string;
+}> = {
+  en: {
+    home: 'Home',
+    toolsTitle: 'Tools',
+    pagesTitle: 'Pages',
+    about: 'About',
+    contact: 'Contact',
+    privacy: 'Privacy Policy',
+    copyright: 'Free online tools.',
+  },
+  ru: {
+    home: 'Главная',
+    toolsTitle: 'Инструменты',
+    pagesTitle: 'Страницы',
+    about: 'О проекте',
+    contact: 'Контакты',
+    privacy: 'Политика конфиденциальности',
+    copyright: 'Бесплатные онлайн-инструменты.',
+  },
+  uk: {
+    home: 'Головна',
+    toolsTitle: 'Інструменти',
+    pagesTitle: 'Сторінки',
+    about: 'Про проект',
+    contact: 'Контакти',
+    privacy: 'Політика конфіденційності',
+    copyright: 'Безкоштовні онлайн-інструменти.',
+  },
+  fr: {
+    home: 'Accueil',
+    toolsTitle: 'Outils',
+    pagesTitle: 'Pages',
+    about: 'À propos',
+    contact: 'Contact',
+    privacy: 'Politique de confidentialité',
+    copyright: 'Outils en ligne gratuits.',
+  },
+  lt: {
+    home: 'Pradžia',
+    toolsTitle: 'Įrankiai',
+    pagesTitle: 'Puslapiai',
+    about: 'Apie mus',
+    contact: 'Kontaktai',
+    privacy: 'Privatumo politika',
+    copyright: 'Nemokami internetiniai įrankiai.',
+  },
+};
+
+const TOOLS: Record<string, Record<LocaleKey, string>> = {
+  '/calculator/mortgage': {
+    en: 'Mortgage Calculator',
+    ru: 'Ипотечный калькулятор',
+    uk: 'Іпотечний калькулятор',
+    fr: 'Calculatrice immobilière',
+    lt: 'Hipotekos skaičiuotuvas',
+  },
+  '/calculator/loan': {
+    en: 'Loan Calculator',
+    ru: 'Калькулятор кредита',
+    uk: 'Калькулятор кредиту',
+    fr: 'Calculatrice de prêt',
+    lt: 'Paskolos skaičiuotuvas',
+  },
+  '/calculator/bmi': {
+    en: 'BMI Calculator',
+    ru: 'Калькулятор ИМТ',
+    uk: 'Калькулятор ІМТ',
+    fr: 'Calculatrice IMC',
+    lt: 'KMI skaičiuotuvas',
+  },
+  '/calculator/calories': {
+    en: 'Calorie Calculator',
+    ru: 'Калькулятор калорий',
+    uk: 'Калькулятор калорій',
+    fr: 'Calculatrice de calories',
+    lt: 'Kalorijų skaičiuotuvas',
+  },
+  '/currency': {
+    en: 'Currency Converter',
+    ru: 'Конвертер валют',
+    uk: 'Конвертер валют',
+    fr: 'Convertisseur de devises',
+    lt: 'Valiutų keitiklis',
+  },
+};
 
 export default function Footer({ locale }: Props) {
+  const l = (locale as LocaleKey) in T ? (locale as LocaleKey) : 'en';
+  const t = T[l];
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.footer__inner}`}>
-        <div className={styles.footer__tools}>
-          <p className={styles.footer__tools_title}>Tools</p>
-          <ul className={styles.footer__tools_list}>
-            {TOOLS.map((tool) => (
-              <li key={tool.href}>
-                <Link href={`/${locale}${tool.href}`} className={styles.footer__link}>
-                  {tool.labelEn}
-                </Link>
+
+        <div className={styles.footer__columns}>
+          {/* Tools column */}
+          <div className={styles.footer__col}>
+            <p className={styles['footer__col-title']}>{t.toolsTitle}</p>
+            <ul className={styles['footer__col-list']}>
+              {Object.entries(TOOLS).map(([href, labels]) => (
+                <li key={href}>
+                  <Link href={`/${locale}${href}`} className={styles.footer__link}>
+                    {labels[l]}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Pages column */}
+          <div className={styles.footer__col}>
+            <p className={styles['footer__col-title']}>{t.pagesTitle}</p>
+            <ul className={styles['footer__col-list']}>
+              <li>
+                <Link href={`/${locale}`} className={styles.footer__link}>{t.home}</Link>
               </li>
-            ))}
-          </ul>
+              <li>
+                <Link href={`/${locale}/about`} className={styles.footer__link}>{t.about}</Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/contact`} className={styles.footer__link}>{t.contact}</Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/privacy-policy`} className={styles.footer__link}>{t.privacy}</Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div className={styles.footer__legal}>
-          <ul className={styles.footer__legal_list}>
-            <li>
-              <Link href={`/${locale}/about`} className={styles.footer__link}>About</Link>
-            </li>
-            <li>
-              <Link href={`/${locale}/contact`} className={styles.footer__link}>Contact</Link>
-            </li>
-            <li>
-              <Link href={`/${locale}/privacy-policy`} className={styles.footer__link}>Privacy Policy</Link>
-            </li>
-          </ul>
-          <p className={styles.footer__copyright}>
-            © {currentYear} Utilixi. Free online tools.
-          </p>
-        </div>
+        <div className={styles.footer__divider} />
+
+        <p className={styles.footer__copyright}>
+          © {currentYear} Utilixi. {t.copyright}
+        </p>
       </div>
     </footer>
   );

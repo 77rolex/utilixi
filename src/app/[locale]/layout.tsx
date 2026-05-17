@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import CookieBanner from '@/components/ui/CookieBanner';
 import '@/styles/globals.scss';
 
 type Props = {
@@ -42,6 +43,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             {children}
           </main>
           <Footer locale={locale} />
+          <CookieBanner locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>

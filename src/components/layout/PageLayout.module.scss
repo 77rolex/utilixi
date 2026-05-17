@@ -1,0 +1,44 @@
+.page-layout {
+  padding: var(--spacing-xl) 0 var(--spacing-2xl);
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+
+    @media (min-width: 1024px) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    // Centered mode: no sidebar, content centered with max-width
+    &--centered {
+      display: block;
+
+      .page-layout__content {
+        max-width: 780px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &__content {
+    width: 100%;
+    min-width: 0;
+
+    @media (min-width: 1024px) {
+      flex: 1;
+    }
+  }
+
+  &__sidebar {
+    width: 100%;
+    flex-shrink: 0;
+
+    @media (min-width: 1024px) {
+      width: 300px;
+      position: sticky;
+      top: calc(60px + var(--spacing-lg));
+    }
+  }
+}

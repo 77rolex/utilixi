@@ -3,7 +3,10 @@
     "allow": [
       "Bash(rm -f src/app/page.module.css src/app/globals.css)",
       "Bash(rm -f public/*.svg)",
-      "Bash(mkdir -p src/styles src/components/layout src/i18n messages)"
+      "Bash(mkdir -p src/styles src/components/layout src/i18n messages)",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(npm audit:*)"
     ]
   }
 }

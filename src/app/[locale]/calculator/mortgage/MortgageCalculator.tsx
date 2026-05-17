@@ -21,6 +21,9 @@ const T: Record<string, Record<string, string>> = {
     amountPlaceholder: '200000',
     ratePlaceholder: '6.5',
     termPlaceholder: '20',
+    errorInvalid: 'Please fill all fields with valid positive numbers.',
+    errorRate: 'Interest rate must be less than 100%.',
+    errorTerm: 'Loan term must be 50 years or less.',
   },
   ru: {
     title: 'Ипотечный калькулятор',
@@ -35,6 +38,9 @@ const T: Record<string, Record<string, string>> = {
     amountPlaceholder: '3000000',
     ratePlaceholder: '12',
     termPlaceholder: '20',
+    errorInvalid: 'Заполните все поля корректными положительными числами.',
+    errorRate: 'Процентная ставка должна быть менее 100%.',
+    errorTerm: 'Срок кредита не может превышать 50 лет.',
   },
   uk: {
     title: 'Іпотечний калькулятор',
@@ -49,6 +55,9 @@ const T: Record<string, Record<string, string>> = {
     amountPlaceholder: '2000000',
     ratePlaceholder: '15',
     termPlaceholder: '20',
+    errorInvalid: 'Заповніть усі поля коректними додатними числами.',
+    errorRate: 'Відсоткова ставка має бути менше 100%.',
+    errorTerm: 'Термін кредиту не може перевищувати 50 років.',
   },
   fr: {
     title: 'Calculatrice de Prêt Immobilier',
@@ -63,6 +72,9 @@ const T: Record<string, Record<string, string>> = {
     amountPlaceholder: '200000',
     ratePlaceholder: '3.5',
     termPlaceholder: '20',
+    errorInvalid: 'Veuillez remplir tous les champs avec des nombres positifs valides.',
+    errorRate: 'Le taux d\'intérêt doit être inférieur à 100%.',
+    errorTerm: 'La durée du prêt ne peut pas dépasser 50 ans.',
   },
   lt: {
     title: 'Hipotekos Skaičiuotuvas',
@@ -77,6 +89,9 @@ const T: Record<string, Record<string, string>> = {
     amountPlaceholder: '100000',
     ratePlaceholder: '4.5',
     termPlaceholder: '20',
+    errorInvalid: 'Užpildykite visus laukus teigiamais skaičiais.',
+    errorRate: 'Palūkanų norma turi būti mažesnė nei 100%.',
+    errorTerm: 'Paskolos terminas negali viršyti 50 metų.',
   },
 };
 
@@ -116,17 +131,17 @@ export default function MortgageCalculator({ locale }: Props) {
     const y = parseFloat(term);
 
     if (isNaN(a) || a <= 0 || isNaN(r) || r <= 0 || isNaN(y) || y <= 0) {
-      setError('Please fill all fields with valid positive numbers.');
+      setError(t.errorInvalid);
       setResult(null);
       return;
     }
     if (r > 100) {
-      setError('Interest rate must be less than 100%.');
+      setError(t.errorRate);
       setResult(null);
       return;
     }
     if (y > 50) {
-      setError('Loan term must be 50 years or less.');
+      setError(t.errorTerm);
       setResult(null);
       return;
     }

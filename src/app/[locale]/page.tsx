@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import AdPlaceholder from '@/components/ui/AdPlaceholder';
 import styles from './page.module.scss';
 
 type Props = {
@@ -79,7 +80,7 @@ export default async function HomePage({ params }: Props) {
     <div className={styles.home}>
       <div className="container">
         <h1 className={styles.home__title}>{pageTitle[locale] || pageTitle.en}</h1>
-        <div className={styles.home__grid}>
+        <div className={styles.home__grid} role="list">
           {TOOLS.map((tool) => (
             <Link
               key={tool.href}
@@ -95,6 +96,9 @@ export default async function HomePage({ params }: Props) {
               </p>
             </Link>
           ))}
+        </div>
+        <div className={styles.home__ad}>
+          <AdPlaceholder locale={locale} size="banner" />
         </div>
       </div>
     </div>

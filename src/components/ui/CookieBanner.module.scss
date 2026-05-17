@@ -1,0 +1,117 @@
+.cookie-banner {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: calc(100% - var(--spacing-xl));
+  max-width: 760px;
+  background-color: var(--color-bg-widget);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  animation: slide-up 0.3s ease;
+
+  @media (min-width: 640px) {
+    width: calc(100% - var(--spacing-2xl) * 2);
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+
+    @media (min-width: 640px) {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--spacing-lg);
+    }
+  }
+
+  &__icon {
+    font-size: 28px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  &__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  &__title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  &__text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  &__link {
+    color: var(--color-primary);
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+    flex-wrap: wrap;
+
+    @media (min-width: 640px) {
+      flex-direction: column;
+    }
+  }
+
+  &__btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    transition: background-color var(--transition-base), color var(--transition-base);
+    white-space: nowrap;
+
+    &--accept {
+      background-color: var(--color-primary);
+      color: #ffffff;
+
+      &:hover {
+        background-color: var(--color-primary-hover);
+      }
+    }
+
+    &--decline {
+      background-color: transparent;
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+
+      &:hover {
+        color: var(--color-text-primary);
+        border-color: var(--color-text-secondary);
+      }
+    }
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

@@ -13,6 +13,10 @@
     }
   }
 
+  &__ad {
+    margin-top: var(--spacing-xl);
+  }
+
   &__grid {
     display: grid;
     grid-template-columns: 1fr;

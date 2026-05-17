@@ -1,0 +1,134 @@
+// Animated gradient border via pseudo-element trick
+@keyframes border-glow {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+@keyframes bar-grow {
+  0%   { transform: scaleY(0.4); }
+  50%  { transform: scaleY(1); }
+  100% { transform: scaleY(0.4); }
+}
+
+.ad-placeholder {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+
+  // Animated border via box-shadow pulse
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid var(--color-primary-light);
+    animation: border-glow 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &--sidebar {
+    min-height: 280px;
+
+    @media (min-width: 1024px) {
+      min-height: 580px;
+    }
+  }
+
+  &--banner {
+    min-height: 100px;
+    width: 100%;
+
+    @media (min-width: 640px) {
+      min-height: 120px;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    min-height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background-color: var(--color-bg);
+    background-image: radial-gradient(
+      ellipse at 50% 0%,
+      rgba(21, 101, 192, 0.04) 0%,
+      transparent 70%
+    );
+  }
+
+  &__label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  // Mini bar-chart icon — minimal, recognizable as "ad"
+  &__icon {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 24px;
+  }
+
+  &__icon-bar {
+    display: block;
+    width: 5px;
+    background-color: var(--color-primary-light);
+    border-radius: 2px 2px 0 0;
+    transform-origin: bottom;
+
+    &:nth-child(1) {
+      height: 12px;
+      animation: bar-grow 2.4s ease-in-out infinite;
+      animation-delay: 0s;
+    }
+
+    &:nth-child(2) {
+      height: 22px;
+      animation: bar-grow 2.4s ease-in-out infinite;
+      animation-delay: 0.4s;
+    }
+
+    &:nth-child(3) {
+      height: 16px;
+      animation: bar-grow 2.4s ease-in-out infinite;
+      animation-delay: 0.8s;
+    }
+  }
+
+  &__title {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px var(--spacing-md);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: background-color var(--transition-base), color var(--transition-base);
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

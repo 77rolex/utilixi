@@ -1,0 +1,9 @@
+.ad-inline {
+  display: block;
+  margin-bottom: var(--spacing-xl);
+
+  // Hide when the sidebar is visible (desktop)
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}

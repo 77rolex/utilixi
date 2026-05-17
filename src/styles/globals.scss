@@ -46,8 +46,13 @@
   --transition-base: 0.2s ease;
 
   // Контейнер
+  // 1100px = content (760px) + gap (32px) + sidebar (300px) + padding
   --container-max: 1100px;
   --container-padding: var(--spacing-md);
+
+  @media (min-width: 640px) {
+    --container-padding: var(--spacing-lg);
+  }
 }
 
 // Тёмная тема — заготовка на будущее

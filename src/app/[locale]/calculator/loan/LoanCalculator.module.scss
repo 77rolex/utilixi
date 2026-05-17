@@ -1,0 +1,179 @@
+.loan-widget {
+  background-color: var(--color-bg-widget);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-widget);
+  overflow: hidden;
+
+  &__form {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+
+    @media (min-width: 640px) {
+      padding: var(--spacing-xl);
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  &__label {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  &__input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__prefix {
+    position: absolute;
+    left: var(--spacing-sm);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-base);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &__suffix {
+    position: absolute;
+    right: var(--spacing-sm);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-base);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &__input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    appearance: none;
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-light);
+    }
+
+    .loan-widget__input-wrap & {
+      padding-left: calc(var(--spacing-md) + 16px);
+    }
+  }
+
+  &__select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
+    cursor: pointer;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239CA3AF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--spacing-md) center;
+    padding-right: calc(var(--spacing-md) + 20px);
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-light);
+    }
+  }
+
+  &__term-row {
+    display: flex;
+    gap: var(--spacing-sm);
+  }
+
+  &__error {
+    font-size: var(--font-size-sm);
+    color: #DC2626;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: #FEF2F2;
+    border-radius: var(--radius-sm);
+    border: 1px solid #FCA5A5;
+  }
+
+  &__btn {
+    padding: var(--spacing-sm) var(--spacing-xl);
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-base), transform var(--transition-base);
+    align-self: flex-start;
+    min-width: 160px;
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &__results {
+    border-top: 1px solid var(--color-border);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    background-color: var(--color-bg-secondary);
+
+    @media (min-width: 640px) {
+      padding: var(--spacing-xl);
+      flex-direction: row;
+      gap: var(--spacing-lg);
+    }
+  }
+
+  &__result-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    flex: 1;
+
+    &--accent .loan-widget__result-value {
+      color: #DC2626;
+    }
+  }
+
+  &__result-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  &__result-value {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+
+    @media (min-width: 640px) {
+      font-size: var(--font-size-2xl);
+    }
+  }
+}

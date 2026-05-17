@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { routing } from '@/i18n/routing';
 import MortgageCalculator from './MortgageCalculator';
+import PageLayout from '@/components/layout/PageLayout';
+import AdSidebar from '@/components/ui/AdSidebar';
+import AdInline from '@/components/ui/AdInline';
 import styles from './page.module.scss';
 
 type Props = {
@@ -140,28 +143,28 @@ export default async function MortgagePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className={styles.page}>
-        <div className="container">
-          <h1 className={styles.page__title}>{meta.h1}</h1>
-          <MortgageCalculator locale={locale} />
+      <PageLayout sidebar={<AdSidebar locale={locale} />}>
+        <h1 className={styles.page__title}>{meta.h1}</h1>
+        <MortgageCalculator locale={locale} />
 
-          <div className={styles.page__content}>
-            <p className={styles.page__description}>{content.description}</p>
+        <div className={styles.page__content}>
+          <p className={styles.page__description}>{content.description}</p>
 
-            <section className={styles.faq}>
-              <h2 className={styles.faq__title}>{content.faqTitle}</h2>
-              <div className={styles.faq__list}>
-                {content.faqs.map((item, i) => (
-                  <div key={i} className={styles.faq__item}>
-                    <h3 className={styles.faq__question}>{item.q}</h3>
-                    <p className={styles.faq__answer}>{item.a}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          </div>
+          <AdInline locale={locale} />
+
+          <section className={styles.faq}>
+            <h2 className={styles.faq__title}>{content.faqTitle}</h2>
+            <div className={styles.faq__list}>
+              {content.faqs.map((item, i) => (
+                <div key={i} className={styles.faq__item}>
+                  <h3 className={styles.faq__question}>{item.q}</h3>
+                  <p className={styles.faq__answer}>{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
-      </div>
+      </PageLayout>
     </>
   );
 }
