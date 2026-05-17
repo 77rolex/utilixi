@@ -17,6 +17,11 @@ const T: Record<Locale, {
   successTitle: string;
   successText: string;
   errorDefault: string;
+  errorName: string;
+  errorEmail: string;
+  errorEmailInvalid: string;
+  errorMessage: string;
+  errorCaptcha: string;
 }> = {
   en: {
     name: 'Your name',
@@ -30,6 +35,11 @@ const T: Record<Locale, {
     successTitle: 'Message sent!',
     successText: 'Thank you. We will get back to you shortly.',
     errorDefault: 'Something went wrong. Please try again.',
+    errorName: 'Please enter your name.',
+    errorEmail: 'Please enter your email address.',
+    errorEmailInvalid: 'Please enter a valid email address.',
+    errorMessage: 'Please enter your message.',
+    errorCaptcha: 'Please complete the CAPTCHA.',
   },
   ru: {
     name: 'Ваше имя',
@@ -43,6 +53,11 @@ const T: Record<Locale, {
     successTitle: 'Сообщение отправлено!',
     successText: 'Спасибо. Мы ответим вам в ближайшее время.',
     errorDefault: 'Что-то пошло не так. Попробуйте ещё раз.',
+    errorName: 'Пожалуйста, введите ваше имя.',
+    errorEmail: 'Пожалуйста, введите email адрес.',
+    errorEmailInvalid: 'Пожалуйста, введите корректный email адрес.',
+    errorMessage: 'Пожалуйста, введите сообщение.',
+    errorCaptcha: 'Пожалуйста, пройдите проверку CAPTCHA.',
   },
   uk: {
     name: 'Ваше ім\'я',
@@ -56,6 +71,11 @@ const T: Record<Locale, {
     successTitle: 'Повідомлення надіслано!',
     successText: 'Дякуємо. Ми відповімо вам найближчим часом.',
     errorDefault: 'Щось пішло не так. Спробуйте ще раз.',
+    errorName: 'Будь ласка, введіть ваше ім\'я.',
+    errorEmail: 'Будь ласка, введіть email адресу.',
+    errorEmailInvalid: 'Будь ласка, введіть коректну email адресу.',
+    errorMessage: 'Будь ласка, введіть повідомлення.',
+    errorCaptcha: 'Будь ласка, пройдіть перевірку CAPTCHA.',
   },
   fr: {
     name: 'Votre nom',
@@ -69,6 +89,11 @@ const T: Record<Locale, {
     successTitle: 'Message envoyé !',
     successText: 'Merci. Nous vous répondrons dans les plus brefs délais.',
     errorDefault: 'Une erreur est survenue. Veuillez réessayer.',
+    errorName: 'Veuillez entrer votre nom.',
+    errorEmail: 'Veuillez entrer votre adresse e-mail.',
+    errorEmailInvalid: 'Veuillez entrer une adresse e-mail valide.',
+    errorMessage: 'Veuillez entrer votre message.',
+    errorCaptcha: 'Veuillez compléter le CAPTCHA.',
   },
   lt: {
     name: 'Jūsų vardas',
@@ -82,6 +107,11 @@ const T: Record<Locale, {
     successTitle: 'Žinutė išsiųsta!',
     successText: 'Ačiū. Netrukus su jumis susisieksime.',
     errorDefault: 'Kažkas nutiko. Bandykite dar kartą.',
+    errorName: 'Įveskite savo vardą.',
+    errorEmail: 'Įveskite el. pašto adresą.',
+    errorEmailInvalid: 'Įveskite teisingą el. pašto adresą.',
+    errorMessage: 'Įveskite žinutę.',
+    errorCaptcha: 'Prašome užpildyti CAPTCHA.',
   },
 };
 
@@ -144,9 +174,29 @@ export default function ContactForm({ locale }: Props) {
     e.preventDefault();
     if (status === 'submitting') return;
 
+    if (!name.trim()) {
+      setStatus('error');
+      setErrorMsg(t.errorName);
+      return;
+    }
+    if (!email.trim()) {
+      setStatus('error');
+      setErrorMsg(t.errorEmail);
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setStatus('error');
+      setErrorMsg(t.errorEmailInvalid);
+      return;
+    }
+    if (!message.trim()) {
+      setStatus('error');
+      setErrorMsg(t.errorMessage);
+      return;
+    }
     if (!turnstileToken) {
       setStatus('error');
-      setErrorMsg('Please complete the CAPTCHA.');
+      setErrorMsg(t.errorCaptcha);
       return;
     }
 
