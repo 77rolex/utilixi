@@ -80,7 +80,7 @@ export default async function HomePage({ params }: Props) {
     <div className={styles.home}>
       <div className="container">
         <h1 className={styles.home__title}>{pageTitle[locale] || pageTitle.en}</h1>
-        <div className={styles.home__grid} role="list">
+        <div className={styles.home__grid}>
           {TOOLS.map((tool) => (
             <Link
               key={tool.href}

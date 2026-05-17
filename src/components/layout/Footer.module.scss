@@ -57,6 +57,6 @@
 
   &__copyright {
     font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary); // #6B7280 — contrast 4.6:1, passes WCAG AA
   }
 }

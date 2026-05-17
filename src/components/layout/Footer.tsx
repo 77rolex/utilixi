@@ -63,6 +63,8 @@ const T: Record<LocaleKey, {
   },
 };
 
+// Add tools here only when their pages are live — Next.js prefetches footer links
+// and missing pages cause 404 console errors that hurt Lighthouse Best Practices.
 const TOOLS: Record<string, Record<LocaleKey, string>> = {
   '/calculator/mortgage': {
     en: 'Mortgage Calculator',
@@ -77,27 +79,6 @@ const TOOLS: Record<string, Record<LocaleKey, string>> = {
     uk: 'Калькулятор кредиту',
     fr: 'Calculatrice de prêt',
     lt: 'Paskolos skaičiuotuvas',
-  },
-  '/calculator/bmi': {
-    en: 'BMI Calculator',
-    ru: 'Калькулятор ИМТ',
-    uk: 'Калькулятор ІМТ',
-    fr: 'Calculatrice IMC',
-    lt: 'KMI skaičiuotuvas',
-  },
-  '/calculator/calories': {
-    en: 'Calorie Calculator',
-    ru: 'Калькулятор калорий',
-    uk: 'Калькулятор калорій',
-    fr: 'Calculatrice de calories',
-    lt: 'Kalorijų skaičiuotuvas',
-  },
-  '/currency': {
-    en: 'Currency Converter',
-    ru: 'Конвертер валют',
-    uk: 'Конвертер валют',
-    fr: 'Convertisseur de devises',
-    lt: 'Valiutų keitiklis',
   },
 };
 
