@@ -25,6 +25,7 @@ const T: Record<string, {
   catNormal: string;
   catOverweight: string;
   catObese: string;
+  tipTitle: string;
 }> = {
   en: {
     metric: 'Metric',
@@ -45,6 +46,7 @@ const T: Record<string, {
     catNormal: 'Normal weight',
     catOverweight: 'Overweight',
     catObese: 'Obese',
+    tipTitle: 'Recommended weight for normal BMI (18.5–24.9):',
   },
   ru: {
     metric: 'Метрическая',
@@ -65,6 +67,7 @@ const T: Record<string, {
     catNormal: 'Нормальный вес',
     catOverweight: 'Избыточный вес',
     catObese: 'Ожирение',
+    tipTitle: 'Рекомендуемый вес для нормального ИМТ (18.5–24.9):',
   },
   uk: {
     metric: 'Метрична',
@@ -85,6 +88,7 @@ const T: Record<string, {
     catNormal: 'Нормальна вага',
     catOverweight: 'Надмірна вага',
     catObese: 'Ожиріння',
+    tipTitle: 'Рекомендована вага для нормального ІМТ (18.5–24.9):',
   },
   fr: {
     metric: 'Métrique',
@@ -105,6 +109,7 @@ const T: Record<string, {
     catNormal: 'Poids normal',
     catOverweight: 'Surpoids',
     catObese: 'Obésité',
+    tipTitle: 'Poids recommandé pour un IMC normal (18,5–24,9) :',
   },
   lt: {
     metric: 'Metrinė',
@@ -125,6 +130,7 @@ const T: Record<string, {
     catNormal: 'Normalus svoris',
     catOverweight: 'Antsvoris',
     catObese: 'Nutukimas',
+    tipTitle: 'Rekomenduojamas svoris normaliam KMI (18,5–24,9):',
   },
 };
 
@@ -151,11 +157,13 @@ export default function BmiCalculator({ locale }: Props) {
   const [heightIn, setHeightIn] = useState('');
   const [weight, setWeight] = useState('');
   const [bmi, setBmi] = useState<number | null>(null);
+  const [heightM, setHeightM] = useState<number | null>(null);
   const [error, setError] = useState('');
 
   const handleUnit = (u: Unit) => {
     setUnit(u);
     setBmi(null);
+    setHeightM(null);
     setError('');
   };
 
@@ -208,6 +216,7 @@ export default function BmiCalculator({ locale }: Props) {
     }
 
     setError('');
+    setHeightM(heightM);
     setBmi(Math.round((weightKg / (heightM * heightM)) * 10) / 10);
   }, [unit, heightCm, heightFt, heightIn, weight, t]);
 
@@ -359,6 +368,19 @@ export default function BmiCalculator({ locale }: Props) {
               <span className={styles['bmi-widget__scale-label']} style={{ left: '66.67%' }}>30</span>
             </div>
           </div>
+
+          {/* Weight recommendation — shown only when outside normal range */}
+          {category !== 'normal' && heightM !== null && (
+            <div className={styles['bmi-widget__tip']}>
+              <p className={styles['bmi-widget__tip-title']}>{t.tipTitle}</p>
+              <p className={styles['bmi-widget__tip-range']}>
+                {unit === 'metric'
+                  ? `${(18.5 * heightM * heightM).toFixed(1)} – ${(24.9 * heightM * heightM).toFixed(1)} ${t.weightKg}`
+                  : `${(18.5 * heightM * heightM / 0.453592).toFixed(1)} – ${(24.9 * heightM * heightM / 0.453592).toFixed(1)} ${t.weightLbs}`
+                }
+              </p>
+            </div>
+          )}
         </div>
       )}
     </div>
