@@ -16,16 +16,12 @@
     display: flex;
     align-items: center;
     text-decoration: none;
+    opacity: 1;
+    transition: opacity var(--transition-base);
 
     &:hover {
+      opacity: 0.85;
       text-decoration: none;
     }
-  }
-
-  &__logo-text {
-    font-size: var(--font-size-lg);
-    font-weight: 700;
-    color: var(--color-primary);
-    letter-spacing: -0.5px;
   }
 }

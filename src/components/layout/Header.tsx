@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import LanguageSwitcher from './LanguageSwitcher';
 import styles from './Header.module.scss';
 
@@ -11,7 +12,13 @@ export default function Header({ locale }: Props) {
     <header className={styles.header}>
       <div className={`container ${styles.header__inner}`}>
         <Link href={`/${locale}`} className={styles.header__logo}>
-          <span className={styles['header__logo-text']}>Utilixi</span>
+          <Image
+            src="/logo.svg"
+            alt="Utilixi"
+            width={142}
+            height={32}
+            priority
+          />
         </Link>
         <LanguageSwitcher currentLocale={locale} />
       </div>
