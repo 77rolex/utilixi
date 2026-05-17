@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CookieBanner from '@/components/ui/CookieBanner';
+import { Analytics } from '@vercel/analytics/next';
 import '@/styles/globals.scss';
 
 const inter = Inter({
@@ -51,6 +52,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           </main>
           <Footer locale={locale} />
           <CookieBanner locale={locale} />
+          <Analytics />
         </NextIntlClientProvider>
       </body>
     </html>
