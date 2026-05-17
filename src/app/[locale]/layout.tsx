@@ -9,6 +9,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CookieBanner from '@/components/ui/CookieBanner';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/styles/globals.scss';
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -72,6 +73,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <Footer locale={locale} />
           <CookieBanner locale={locale} />
           <Analytics />
+          <SpeedInsights />
         </NextIntlClientProvider>
       </body>
     </html>
