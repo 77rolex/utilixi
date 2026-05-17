@@ -18,6 +18,8 @@ const T: Record<string, {
   amountPlaceholder: string;
   ratePlaceholder: string;
   termPlaceholder: string;
+  errorInvalid: string;
+  errorRate: string;
 }> = {
   en: {
     loanAmount: 'Loan amount',
