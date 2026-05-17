@@ -94,6 +94,13 @@ const TOOLS: Record<string, Record<LocaleKey, string>> = {
     fr: 'Calculatrice de calories',
     lt: 'Kalorijų skaičiuotuvas',
   },
+  '/currency': {
+    en: 'Currency Converter',
+    ru: 'Конвертер валют',
+    uk: 'Конвертер валют',
+    fr: 'Convertisseur de devises',
+    lt: 'Valiutų keitiklis',
+  },
 };
 
 export default function Footer({ locale }: Props) {
