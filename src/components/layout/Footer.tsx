@@ -87,6 +87,13 @@ const TOOLS: Record<string, Record<LocaleKey, string>> = {
     fr: 'Calculatrice IMC',
     lt: 'KMI skaičiuotuvas',
   },
+  '/calculator/calories': {
+    en: 'Calorie Calculator',
+    ru: 'Калькулятор калорий',
+    uk: 'Калькулятор калорій',
+    fr: 'Calculatrice de calories',
+    lt: 'Kalorijų skaičiuotuvas',
+  },
 };
 
 export default function Footer({ locale }: Props) {
