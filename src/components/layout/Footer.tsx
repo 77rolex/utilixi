@@ -80,6 +80,13 @@ const TOOLS: Record<string, Record<LocaleKey, string>> = {
     fr: 'Calculatrice de prêt',
     lt: 'Paskolos skaičiuotuvas',
   },
+  '/calculator/bmi': {
+    en: 'BMI Calculator',
+    ru: 'Калькулятор ИМТ',
+    uk: 'Калькулятор ІМТ',
+    fr: 'Calculatrice IMC',
+    lt: 'KMI skaičiuotuvas',
+  },
 };
 
 export default function Footer({ locale }: Props) {
