@@ -13,7 +13,7 @@ async function getRates(): Promise<{ rates: Record<string, number>; updatedAt: s
   try {
     const res = await fetch(
       `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`,
-      { next: { revalidate: 3600 } },
+      { next: { revalidate: 21600 } },
     );
     if (!res.ok) throw new Error('API error');
     const data = await res.json();
@@ -29,27 +29,27 @@ async function getRates(): Promise<{ rates: Record<string, number>; updatedAt: s
 const META: Record<string, { title: string; description: string; h1: string }> = {
   en: {
     title: 'Currency Converter — Live Exchange Rates',
-    description: 'Free online currency converter with live exchange rates. Convert USD, EUR, GBP, RUB, UAH and 30+ currencies instantly. Rates updated hourly.',
+    description: 'Free online currency converter with live exchange rates. Convert USD, EUR, GBP, RUB, UAH and 30+ currencies instantly. Rates updated every 6 hours.',
     h1: 'Currency Converter',
   },
   ru: {
     title: 'Конвертер валют — Курсы валют онлайн',
-    description: 'Бесплатный конвертер валют онлайн с актуальными курсами. Конвертируйте USD, EUR, RUB, UAH, GBP и более 30 валют. Курсы обновляются ежечасно.',
+    description: 'Бесплатный конвертер валют онлайн с актуальными курсами. Конвертируйте USD, EUR, RUB, UAH, GBP и более 30 валют. Курсы обновляются каждые 6 часов.',
     h1: 'Конвертер валют',
   },
   uk: {
     title: 'Конвертер валют — Курси валют онлайн',
-    description: 'Безкоштовний конвертер валют онлайн з актуальними курсами. Конвертуйте USD, EUR, UAH, RUB, GBP та понад 30 валют. Курси оновлюються щогодини.',
+    description: 'Безкоштовний конвертер валют онлайн з актуальними курсами. Конвертуйте USD, EUR, UAH, RUB, GBP та понад 30 валют. Курси оновлюються кожні 6 годин.',
     h1: 'Конвертер валют',
   },
   fr: {
     title: 'Convertisseur de Devises — Taux de Change en Direct',
-    description: 'Convertisseur de devises gratuit avec taux de change en temps réel. Convertissez USD, EUR, GBP et plus de 30 devises instantanément. Taux mis à jour toutes les heures.',
+    description: 'Convertisseur de devises gratuit avec taux de change en temps réel. Convertissez USD, EUR, GBP et plus de 30 devises instantanément. Taux mis à jour toutes les 6 heures.',
     h1: 'Convertisseur de Devises',
   },
   lt: {
     title: 'Valiutų Keitiklis — Valiutų Kursai Internete',
-    description: 'Nemokamas valiutų keitiklis su naujausiais kursais. Konvertuokite USD, EUR, GBP ir daugiau nei 30 valiutų akimirksniu. Kursai atnaujinami kas valandą.',
+    description: 'Nemokamas valiutų keitiklis su naujausiais kursais. Konvertuokite USD, EUR, GBP ir daugiau nei 30 valiutų akimirksniu. Kursai atnaujinami kas 6 valandas.',
     h1: 'Valiutų Keitiklis',
   },
 };
@@ -60,12 +60,12 @@ const CONTENT: Record<string, {
   faqs: { q: string; a: string }[];
 }> = {
   en: {
-    description: 'Our free currency converter uses live exchange rates updated every hour to give you accurate conversions for over 35 world currencies. Whether you need to convert dollars to euros, rubles to dollars, or any other pair — simply enter the amount, select currencies, and get the result instantly.',
+    description: 'Our free currency converter uses live exchange rates updated every 6 hours to give you accurate conversions for over 35 world currencies. Whether you need to convert dollars to euros, rubles to dollars, or any other pair — simply enter the amount, select currencies, and get the result instantly.',
     faqTitle: 'Frequently Asked Questions',
     faqs: [
       {
         q: 'How often are exchange rates updated?',
-        a: 'Exchange rates are fetched from ExchangeRate-API and cached for one hour. This means the rates you see are updated at most every 60 minutes, reflecting near-real-time market data.',
+        a: 'Exchange rates are fetched from ExchangeRate-API and cached for 6 hours. This means the rates you see are updated every 6 hours, reflecting accurate daily market data.',
       },
       {
         q: 'Which base currency is used for calculations?',
@@ -86,12 +86,12 @@ const CONTENT: Record<string, {
     ],
   },
   ru: {
-    description: 'Наш бесплатный конвертер валют использует актуальные курсы, обновляемые каждый час, для точного пересчёта более 35 мировых валют. Введите сумму, выберите валюты и мгновенно получите результат.',
+    description: 'Наш бесплатный конвертер валют использует актуальные курсы, обновляемые каждые 6 часов, для точного пересчёта более 35 мировых валют. Введите сумму, выберите валюты и мгновенно получите результат.',
     faqTitle: 'Часто задаваемые вопросы',
     faqs: [
       {
         q: 'Как часто обновляются курсы валют?',
-        a: 'Курсы получаются от ExchangeRate-API и кэшируются на один час. Это значит, что данные обновляются не реже одного раза в 60 минут и отражают актуальные рыночные значения.',
+        a: 'Курсы получаются от ExchangeRate-API и кэшируются на 6 часов. Данные обновляются каждые 6 часов и отражают актуальные рыночные значения.',
       },
       {
         q: 'Какая базовая валюта используется для расчётов?',
@@ -112,12 +112,12 @@ const CONTENT: Record<string, {
     ],
   },
   uk: {
-    description: 'Наш безкоштовний конвертер валют використовує актуальні курси, які оновлюються щогодини, для точного перерахунку понад 35 світових валют. Введіть суму, оберіть валюти та миттєво отримайте результат.',
+    description: 'Наш безкоштовний конвертер валют використовує актуальні курси, які оновлюються кожні 6 годин, для точного перерахунку понад 35 світових валют. Введіть суму, оберіть валюти та миттєво отримайте результат.',
     faqTitle: 'Часті запитання',
     faqs: [
       {
         q: 'Як часто оновлюються курси валют?',
-        a: 'Курси отримуються від ExchangeRate-API та кешуються на одну годину. Дані оновлюються не рідше одного разу на 60 хвилин і відображають актуальні ринкові значення.',
+        a: 'Курси отримуються від ExchangeRate-API та кешуються на 6 годин. Дані оновлюються кожні 6 годин і відображають актуальні ринкові значення.',
       },
       {
         q: 'Яка базова валюта використовується для розрахунків?',
@@ -138,12 +138,12 @@ const CONTENT: Record<string, {
     ],
   },
   fr: {
-    description: 'Notre convertisseur de devises gratuit utilise des taux de change mis à jour toutes les heures pour vous fournir des conversions précises pour plus de 35 devises mondiales. Entrez le montant, sélectionnez les devises et obtenez le résultat instantanément.',
+    description: 'Notre convertisseur de devises gratuit utilise des taux de change mis à jour toutes les 6 heures pour vous fournir des conversions précises pour plus de 35 devises mondiales. Entrez le montant, sélectionnez les devises et obtenez le résultat instantanément.',
     faqTitle: 'Questions fréquentes',
     faqs: [
       {
         q: 'À quelle fréquence les taux sont-ils mis à jour ?',
-        a: 'Les taux sont récupérés depuis ExchangeRate-API et mis en cache pendant une heure. Cela signifie que les données sont mises à jour au maximum toutes les 60 minutes, reflétant des données de marché quasi en temps réel.',
+        a: 'Les taux sont récupérés depuis ExchangeRate-API et mis en cache pendant 6 heures. Les données sont mises à jour toutes les 6 heures, reflétant des données de marché précises.',
       },
       {
         q: 'Quelle devise de base est utilisée pour les calculs ?',
@@ -164,12 +164,12 @@ const CONTENT: Record<string, {
     ],
   },
   lt: {
-    description: 'Mūsų nemokamas valiutų keitiklis naudoja aktualius kursus, atnaujinamus kas valandą, tiksliam daugiau nei 35 pasaulio valiutų konvertavimui. Įveskite sumą, pasirinkite valiutas ir gaukite rezultatą akimirksniu.',
+    description: 'Mūsų nemokamas valiutų keitiklis naudoja aktualius kursus, atnaujinamus kas 6 valandas, tiksliam daugiau nei 35 pasaulio valiutų konvertavimui. Įveskite sumą, pasirinkite valiutas ir gaukite rezultatą akimirksniu.',
     faqTitle: 'Dažniausiai užduodami klausimai',
     faqs: [
       {
         q: 'Kaip dažnai atnaujinami valiutų kursai?',
-        a: 'Kursai gaunami iš ExchangeRate-API ir talpinami talpykloje vienai valandai. Tai reiškia, kad duomenys atnaujinami ne rečiau kaip kas 60 minučių, atspindint beveik realaus laiko rinkos duomenis.',
+        a: 'Kursai gaunami iš ExchangeRate-API ir talpinami talpykloje 6 valandoms. Duomenys atnaujinami kas 6 valandas, atspindint tikslią rinkos informaciją.',
       },
       {
         q: 'Kokia bazinė valiuta naudojama skaičiavimams?',

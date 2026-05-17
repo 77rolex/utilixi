@@ -114,8 +114,9 @@
   }
 
   &__btn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: center;
     padding: 6px var(--spacing-md);
     border: 1px solid var(--color-primary);
     border-radius: var(--radius-sm);
@@ -124,6 +125,12 @@
     color: var(--color-primary);
     text-decoration: none;
     transition: background-color var(--transition-base), color var(--transition-base);
+    width: 100%;
+
+    @media (min-width: 640px) {
+      width: auto;
+      display: inline-flex;
+    }
 
     &:hover {
       background-color: var(--color-primary);

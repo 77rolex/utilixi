@@ -101,31 +101,62 @@ const TOOLS: Record<string, Record<LocaleKey, string>> = {
     fr: 'Convertisseur de devises',
     lt: 'Valiutų keitiklis',
   },
+  '/crypto': {
+    en: 'Crypto Rates',
+    ru: 'Курс криптовалют',
+    uk: 'Курс криптовалют',
+    fr: 'Cours des cryptos',
+    lt: 'Kriptovaliutų kursai',
+  },
+  '/crypto/converter': {
+    en: 'Crypto Converter',
+    ru: 'Конвертер криптовалют',
+    uk: 'Конвертер криптовалют',
+    fr: 'Convertisseur crypto',
+    lt: 'Kriptovaliutų keitiklis',
+  },
 };
+
+const CHUNK_SIZE = 4;
+
+function chunkArray<T>(arr: T[], size: number): T[][] {
+  const result: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+}
 
 export default function Footer({ locale }: Props) {
   const l = (locale as LocaleKey) in T ? (locale as LocaleKey) : 'en';
   const t = T[l];
   const currentYear = new Date().getFullYear();
 
+  const toolEntries = Object.entries(TOOLS);
+  const toolChunks = chunkArray(toolEntries, CHUNK_SIZE);
+
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.footer__inner}`}>
 
         <div className={styles.footer__columns}>
-          {/* Tools column */}
-          <div className={styles.footer__col}>
-            <p className={styles['footer__col-title']}>{t.toolsTitle}</p>
-            <ul className={styles['footer__col-list']}>
-              {Object.entries(TOOLS).map(([href, labels]) => (
-                <li key={href}>
-                  <Link href={`/${locale}${href}`} className={styles.footer__link}>
-                    {labels[l]}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Tools columns — split into chunks of max 4 */}
+          {toolChunks.map((chunk, idx) => (
+            <div key={idx} className={styles.footer__col}>
+              <p className={styles['footer__col-title']}>
+                {idx === 0 ? t.toolsTitle : '\u00A0'}
+              </p>
+              <ul className={styles['footer__col-list']}>
+                {chunk.map(([href, labels]) => (
+                  <li key={href}>
+                    <Link href={`/${locale}${href}`} className={styles.footer__link}>
+                      {labels[l]}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           {/* Pages column */}
           <div className={styles.footer__col}>

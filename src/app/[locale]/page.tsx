@@ -63,6 +63,18 @@ const TOOLS = [
     titles: { en: 'Currency Converter', ru: 'Конвертер валют', uk: 'Конвертер валют', fr: 'Convertisseur de devises', lt: 'Valiutų keitiklis' },
     descs: { en: 'Live exchange rates', ru: 'Актуальные курсы валют', uk: 'Актуальні курси валют', fr: 'Taux de change en direct', lt: 'Aktualūs valiutų kursai' },
   },
+  {
+    href: '/crypto',
+    icon: '₿',
+    titles: { en: 'Crypto Rates', ru: 'Курс криптовалют', uk: 'Курс криптовалют', fr: 'Cours des cryptos', lt: 'Kriptovaliutų kursai' },
+    descs: { en: 'Bitcoin, Ethereum & top 20 coins', ru: 'Bitcoin, Ethereum и топ-20 монет', uk: 'Bitcoin, Ethereum та топ-20 монет', fr: 'Bitcoin, Ethereum et top 20', lt: 'Bitcoin, Ethereum ir top 20 monetų' },
+  },
+  {
+    href: '/crypto/converter',
+    icon: '🔄',
+    titles: { en: 'Crypto Converter', ru: 'Конвертер криптовалют', uk: 'Конвертер криптовалют', fr: 'Convertisseur crypto', lt: 'Kriptovaliutų keitiklis' },
+    descs: { en: 'Convert BTC, ETH to any currency', ru: 'Конвертируйте BTC, ETH в любую валюту', uk: 'Конвертуйте BTC, ETH у будь-яку валюту', fr: 'Convertissez BTC, ETH en devises', lt: 'Konvertuokite BTC, ETH į bet kurią valiutą' },
+  },
 ];
 
 export default async function HomePage({ params }: Props) {
