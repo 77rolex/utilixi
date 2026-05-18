@@ -16,12 +16,12 @@ const META: Record<string, { title: string; description: string; h1: string }> =
     h1: 'Cryptocurrency Prices',
   },
   ru: {
-    title: 'Курс криптовалют онлайн — Bitcoin, Ethereum и топ-20 монет',
+    title: 'Курс криптовалют онлайн — Bitcoin, Ethereum и топ-50 монет',
     description: 'Актуальные курсы топ-50 криптовалют: Bitcoin (BTC), Ethereum (ETH), Solana (SOL) и другие. Таблица с сортировкой по цене, изменению и капитализации. Обновляется каждые 5 минут.',
     h1: 'Курс криптовалют',
   },
   uk: {
-    title: 'Курс криптовалют онлайн — Bitcoin, Ethereum та топ-20 монет',
+    title: 'Курс криптовалют онлайн — Bitcoin, Ethereum та топ-50 монет',
     description: 'Актуальні курси топ-50 криптовалют: Bitcoin (BTC), Ethereum (ETH), Solana (SOL) та інші. Таблиця з сортуванням за ціною, зміною та капіталізацією. Оновлюється кожні 5 хвилин.',
     h1: 'Курс криптовалют',
   },
@@ -31,7 +31,7 @@ const META: Record<string, { title: string; description: string; h1: string }> =
     h1: 'Prix des Cryptomonnaies',
   },
   lt: {
-    title: 'Kriptovaliutų Kursai — Bitcoin, Ethereum ir Top 20',
+    title: 'Kriptovaliutų Kursai — Bitcoin, Ethereum ir Top 50',
     description: 'Realaus laiko top 50 kriptovaliutų kainų lentelė: Bitcoin, Ethereum, Solana ir kitos. Rūšiuojama pagal kainą, 24h pokytį ir kapitalizaciją. Atnaujinama kas 5 minutes.',
     h1: 'Kriptovaliutų Kursai',
   },

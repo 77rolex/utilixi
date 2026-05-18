@@ -117,66 +117,45 @@ const TOOLS: Record<string, Record<LocaleKey, string>> = {
   },
 };
 
-const CHUNK_SIZE = 4;
-
-function chunkArray<T>(arr: T[], size: number): T[][] {
-  const result: T[][] = [];
-  for (let i = 0; i < arr.length; i += size) {
-    result.push(arr.slice(i, i + size));
-  }
-  return result;
-}
-
 export default function Footer({ locale }: Props) {
   const l = (locale as LocaleKey) in T ? (locale as LocaleKey) : 'en';
   const t = T[l];
   const currentYear = new Date().getFullYear();
-
   const toolEntries = Object.entries(TOOLS);
-  const toolChunks = chunkArray(toolEntries, CHUNK_SIZE);
 
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.footer__inner}`}>
 
-        <div className={styles.footer__columns}>
-          {/* Tools columns — split into chunks of max 4 */}
-          {toolChunks.map((chunk, idx) => (
-            <div key={idx} className={styles.footer__col}>
-              <p className={styles['footer__col-title']}>
-                {idx === 0 ? t.toolsTitle : '\u00A0'}
-              </p>
-              <ul className={styles['footer__col-list']}>
-                {chunk.map(([href, labels]) => (
-                  <li key={href}>
-                    <Link href={`/${locale}${href}`} className={styles.footer__link}>
-                      {labels[l]}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <nav className={styles.footer__nav}>
 
-          {/* Pages column */}
-          <div className={styles.footer__col}>
-            <p className={styles['footer__col-title']}>{t.pagesTitle}</p>
-            <ul className={styles['footer__col-list']}>
-              <li>
-                <Link href={`/${locale}`} className={styles.footer__link}>{t.home}</Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/about`} className={styles.footer__link}>{t.about}</Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/contact`} className={styles.footer__link}>{t.contact}</Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/privacy-policy`} className={styles.footer__link}>{t.privacy}</Link>
-              </li>
+          {/* Pages — first on mobile (top), last on desktop (right) */}
+          <div className={styles.footer__pages}>
+            <p className={styles['footer__section-title']}>{t.pagesTitle}</p>
+            <ul className={styles['footer__pages-list']}>
+              <li><Link href={`/${locale}`} className={styles.footer__link}>{t.home}</Link></li>
+              <li><Link href={`/${locale}/about`} className={styles.footer__link}>{t.about}</Link></li>
+              <li><Link href={`/${locale}/contact`} className={styles.footer__link}>{t.contact}</Link></li>
+              <li><Link href={`/${locale}/privacy-policy`} className={styles.footer__link}>{t.privacy}</Link></li>
             </ul>
           </div>
-        </div>
+
+          {/* Divider between pages and tools — mobile only */}
+          <div className={styles['footer__pages-divider']} aria-hidden="true" />
+
+          {/* Tools */}
+          <div className={styles.footer__tools}>
+            <p className={styles['footer__section-title']}>{t.toolsTitle}</p>
+            <div className={styles['footer__tools-grid']}>
+              {toolEntries.map(([href, labels]) => (
+                <Link key={href} href={`/${locale}${href}`} className={styles.footer__link}>
+                  {labels[l]}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+        </nav>
 
         <div className={styles.footer__divider} />
 

@@ -4,9 +4,18 @@ import BmiCalculator from './BmiCalculator';
 import PageLayout from '@/components/layout/PageLayout';
 import AdSidebar from '@/components/ui/AdSidebar';
 import AdInline from '@/components/ui/AdInline';
+import RelatedTools from '@/components/ui/RelatedTools';
 import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
+
+const RELATED: Record<string, { href: string; label: string }[]> = {
+  en: [{ href: '/calculator/calories', label: 'Calorie Calculator (TDEE)' }],
+  ru: [{ href: '/calculator/calories', label: 'Калькулятор калорий (TDEE)' }],
+  uk: [{ href: '/calculator/calories', label: 'Калькулятор калорій (TDEE)' }],
+  fr: [{ href: '/calculator/calories', label: 'Calculatrice de calories (TDEE)' }],
+  lt: [{ href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' }],
+};
 
 const META: Record<string, { title: string; description: string; h1: string }> = {
   en: {
@@ -177,6 +186,7 @@ export default async function BmiPage({ params }: Props) {
   const { locale } = await params;
   const meta = META[locale] || META.en;
   const content = CONTENT[locale] || CONTENT.en;
+  const related = RELATED[locale] || RELATED.en;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -203,6 +213,8 @@ export default async function BmiPage({ params }: Props) {
           <p className={styles.page__description}>{content.description}</p>
 
           <AdInline locale={locale} />
+
+          <RelatedTools locale={locale} tools={related} />
 
           <section className={styles.faq}>
             <h2 className={styles.faq__title}>{content.faqTitle}</h2>

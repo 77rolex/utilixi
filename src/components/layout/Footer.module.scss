@@ -10,31 +10,82 @@
     gap: var(--spacing-lg);
   }
 
-  &__columns {
+  // Nav wrapper: stacked on mobile, side-by-side on desktop
+  &__nav {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--spacing-xl) var(--spacing-2xl);
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 0;
+
+    @media (min-width: 768px) {
+      flex-direction: row-reverse; // pages on right, tools fill the left
+      align-items: flex-start;
+      gap: var(--spacing-2xl);
+    }
   }
 
-  &__col {
-    min-width: 140px;
+  // Pages section
+  &__pages {
+    padding-bottom: var(--spacing-lg);
 
-    &-title {
-      font-size: var(--font-size-sm);
-      font-weight: 600;
-      color: var(--color-text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: var(--spacing-sm);
+    @media (min-width: 768px) {
+      padding-bottom: 0;
+      flex-shrink: 0;
+      min-width: 160px;
     }
+  }
 
-    &-list {
-      list-style: none;
-      display: flex;
+  &__section-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  // Pages list: horizontal row on mobile, vertical on desktop
+  &__pages-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs) var(--spacing-lg);
+
+    @media (min-width: 768px) {
       flex-direction: column;
       gap: var(--spacing-xs);
+    }
+  }
+
+  // Divider between pages and tools — mobile/tablet only
+  &__pages-divider {
+    height: 1px;
+    background-color: var(--color-border);
+    margin-bottom: var(--spacing-lg);
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  // Tools section
+  &__tools {
+    flex: 1;
+  }
+
+  // Tools grid:
+  // Mobile  — 2 columns, items fill top-to-bottom (4 per column)
+  // Desktop — auto columns, items fill top-to-bottom (4 per column)
+  &__tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(4, auto);
+    grid-auto-flow: column;
+    gap: var(--spacing-xs) var(--spacing-sm);
+
+    @media (min-width: 768px) {
+      grid-template-columns: unset;
+      grid-auto-columns: minmax(150px, max-content);
+      gap: var(--spacing-xs) var(--spacing-2xl);
     }
   }
 
@@ -43,6 +94,10 @@
     color: var(--color-text-secondary);
     text-decoration: none;
     transition: color var(--transition-base);
+
+    @media (min-width: 768px) {
+      white-space: nowrap;
+    }
 
     &:hover {
       color: var(--color-primary);
@@ -57,6 +112,6 @@
 
   &__copyright {
     font-size: var(--font-size-sm);
-    color: var(--color-text-secondary); // #6B7280 — contrast 4.6:1, passes WCAG AA
+    color: var(--color-text-secondary);
   }
 }

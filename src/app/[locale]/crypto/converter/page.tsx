@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
+import Link from 'next/link';
 import { routing } from '@/i18n/routing';
 import CryptoConverter from './CryptoConverter';
 import PageLayout from '@/components/layout/PageLayout';
 import AdSidebar from '@/components/ui/AdSidebar';
 import AdInline from '@/components/ui/AdInline';
+import RelatedTools from '@/components/ui/RelatedTools';
 import { getCryptoRates, getFiatRates } from '../shared';
 import styles from './page.module.scss';
 
@@ -37,66 +40,85 @@ const META: Record<string, { title: string; description: string; h1: string }> =
   },
 };
 
-const CONTENT: Record<string, {
-  description: string;
-  faqTitle: string;
-  faqs: { q: string; a: string }[];
-}> = {
-  en: {
-    description: 'Convert any amount of Bitcoin, Ethereum, Solana and other top 50 cryptocurrencies into your preferred fiat currency in seconds. Prices are sourced from CoinGecko and updated every 5 minutes. Fiat exchange rates are updated every 6 hours.',
-    faqTitle: 'Frequently Asked Questions',
-    faqs: [
-      { q: 'How accurate is the crypto converter?', a: 'Coin prices are fetched from CoinGecko every 5 minutes. Fiat exchange rates (USD to EUR, RUB, UAH, etc.) are updated every 6 hours via ExchangeRate-API. The result is an indicative value — actual exchange rates on crypto platforms may differ.' },
-      { q: 'Which cryptocurrencies can I convert?', a: 'The converter includes the top 50 cryptocurrencies by market cap. The list is dynamic and always reflects the current top 50 coins ranked by market capitalization.' },
-      { q: 'Which fiat currencies are supported?', a: 'The converter supports 14 fiat currencies: USD, EUR, GBP, RUB, UAH, PLN, CHF, CAD, AUD, JPY, CNY, TRY, BYN, KZT.' },
-      { q: 'Is this suitable for real transactions?', a: 'No. The prices are indicative and may be up to 5 minutes old. For actual crypto purchases or sales, always use the live rates on the exchange you are trading on.' },
-      { q: 'Where can I see the full price table?', a: 'Visit the Cryptocurrency Rates page to see a full sortable table of the top 20 coins with 24h change and market capitalization.' },
-    ],
-  },
-  ru: {
-    description: 'Конвертируйте любую сумму Bitcoin, Ethereum, Solana и других криптовалют в нужную вам фиатную валюту за секунды. Цены монет обновляются каждые 5 минут (CoinGecko), курсы фиата — каждые 6 часов (ExchangeRate-API).',
-    faqTitle: 'Часто задаваемые вопросы',
-    faqs: [
-      { q: 'Насколько точен конвертер?', a: 'Цены монет получаются от CoinGecko каждые 5 минут. Курсы фиата (USD к EUR, RUB, UAH и т.д.) обновляются каждые 6 часов. Результат является ориентировочным — реальные курсы на биржах могут отличаться.' },
-      { q: 'Какие криптовалюты поддерживаются?', a: 'Конвертер включает топ-50 криптовалют по рыночной капитализации. Список динамический и всегда отражает актуальный топ-50.' },
-      { q: 'Какие фиатные валюты поддерживаются?', a: 'Конвертер поддерживает 14 валют: USD, EUR, GBP, RUB, UAH, PLN, CHF, CAD, AUD, JPY, CNY, TRY, BYN, KZT.' },
-      { q: 'Подходит ли конвертер для реальных сделок?', a: 'Нет. Цены являются ориентировочными и могут иметь задержку до 5 минут. Для реальных покупок или продаж всегда используйте актуальные курсы на торговой платформе.' },
-      { q: 'Где посмотреть полную таблицу курсов?', a: 'Перейдите на страницу «Курс криптовалют», чтобы увидеть сортируемую таблицу топ-20 монет с изменением за 24ч и рыночной капитализацией.' },
-    ],
-  },
-  uk: {
-    description: 'Конвертуйте будь-яку суму Bitcoin, Ethereum, Solana та інших криптовалют у потрібну вам фіатну валюту за лічені секунди. Ціни монет оновлюються кожні 5 хвилин (CoinGecko), курси фіату — кожні 6 годин (ExchangeRate-API).',
-    faqTitle: 'Часті запитання',
-    faqs: [
-      { q: 'Наскільки точний конвертер?', a: 'Ціни монет отримуються від CoinGecko кожні 5 хвилин. Курси фіату оновлюються кожні 6 годин. Результат є орієнтовним — реальні курси на біржах можуть відрізнятися.' },
-      { q: 'Які криптовалюти підтримуються?', a: 'Конвертер включає топ-50 криптовалют за ринковою капіталізацією. Список динамічний і завжди відображає актуальний топ-50.' },
-      { q: 'Які фіатні валюти підтримуються?', a: 'Конвертер підтримує 14 валют: USD, EUR, GBP, RUB, UAH, PLN, CHF, CAD, AUD, JPY, CNY, TRY, BYN, KZT.' },
-      { q: 'Чи підходить конвертер для реальних угод?', a: 'Ні. Ціни є орієнтовними з можливою затримкою до 5 хвилин. Для реальних операцій завжди використовуйте актуальні курси на торговій платформі.' },
-      { q: 'Де переглянути повну таблицю курсів?', a: 'Перейдіть на сторінку «Курс криптовалют», щоб побачити сортовану таблицю топ-20 монет зі змінами за 24 год та ринковою капіталізацією.' },
-    ],
-  },
-  fr: {
-    description: 'Convertissez n\'importe quel montant de Bitcoin, Ethereum, Solana et d\'autres cryptomonnaies en votre devise préférée en quelques secondes. Les prix des coins sont mis à jour toutes les 5 minutes (CoinGecko), les taux de change fiat toutes les 6 heures (ExchangeRate-API).',
-    faqTitle: 'Questions fréquentes',
-    faqs: [
-      { q: 'Quelle est la précision du convertisseur ?', a: 'Les prix des coins sont récupérés de CoinGecko toutes les 5 minutes. Les taux de change fiat sont mis à jour toutes les 6 heures. Le résultat est indicatif — les taux réels sur les plateformes d\'échange peuvent différer.' },
-      { q: 'Quelles cryptomonnaies sont prises en charge ?', a: 'Le convertisseur inclut le top 50 des cryptomonnaies par capitalisation boursière. La liste est dynamique et reflète toujours le top 50 actuel.' },
-      { q: 'Quelles devises fiat sont prises en charge ?', a: 'Le convertisseur prend en charge 14 devises : USD, EUR, GBP, RUB, UAH, PLN, CHF, CAD, AUD, JPY, CNY, TRY, BYN, KZT.' },
-      { q: 'Est-ce adapté aux transactions réelles ?', a: 'Non. Les prix sont indicatifs et peuvent avoir un délai pouvant aller jusqu\'à 5 minutes. Pour des achats ou ventes réels, utilisez toujours les taux en direct sur votre plateforme d\'échange.' },
-      { q: 'Où voir le tableau complet des cours ?', a: 'Visitez la page Cours des Cryptomonnaies pour voir un tableau trié du top 20 avec la variation 24h et la capitalisation boursière.' },
-    ],
-  },
-  lt: {
-    description: 'Konvertuokite bet kokią Bitcoin, Ethereum, Solana ir kitų kriptovaliutų sumą į norimą fiat valiutą per kelias sekundes. Monetų kainos atnaujinamos kas 5 minutes (CoinGecko), fiat valiutų kursai – kas 6 valandas (ExchangeRate-API).',
-    faqTitle: 'Dažniausiai užduodami klausimai',
-    faqs: [
-      { q: 'Koks keitiklio tikslumas?', a: 'Monetų kainos gaunamos iš CoinGecko kas 5 minutes. Fiat valiutų kursai atnaujinami kas 6 valandas. Rezultatas yra orientacinis — faktiniai kursai kriptovaliutų biržose gali skirtis.' },
-      { q: 'Kokios kriptovaliutos palaikomos?', a: 'Keitiklyje yra 50 populiariausių kriptovaliutų pagal rinkos kapitalizaciją. Sąrašas dinamiškas ir visada atspindi dabartinį top 50.' },
-      { q: 'Kokios fiat valiutos palaikomos?', a: 'Keitiklis palaiko 14 valiutų: USD, EUR, GBP, RUB, UAH, PLN, CHF, CAD, AUD, JPY, CNY, TRY, BYN, KZT.' },
-      { q: 'Ar tinka realiems sandoriams?', a: 'Ne. Kainos yra orientacinės ir gali turėti iki 5 minučių vėlavimą. Faktinėms operacijoms visada naudokite savo prekybos platformos realaus laiko kursus.' },
-      { q: 'Kur matyti pilną kursų lentelę?', a: 'Apsilankykite Kriptovaliutų Kursų puslapyje, kad pamatytumėte rūšiuojamą top 20 lentelę su 24h pokyčiais ir rinkos kapitalizacija.' },
-    ],
-  },
+type FaqItem = { q: string; a: ReactNode };
+type ContentBlock = { description: string; faqTitle: string; faqs: FaqItem[] };
+
+function buildContent(locale: string): Record<string, ContentBlock> {
+  const ratesHref = `/${locale}/crypto`;
+  const ratesLabels: Record<string, string> = {
+    en: 'Cryptocurrency Rates',
+    ru: '«Курс криптовалют»',
+    uk: '«Курс криптовалют»',
+    fr: 'Cours des Cryptomonnaies',
+    lt: 'Kriptovaliutų Kursų',
+  };
+  const ratesLabel = ratesLabels[locale] || ratesLabels.en;
+
+  return {
+    en: {
+      description: 'Convert any amount of Bitcoin, Ethereum, Solana and other top 50 cryptocurrencies into your preferred fiat currency in seconds. Prices are sourced from CoinGecko and updated every 5 minutes. Fiat exchange rates are updated every 6 hours.',
+      faqTitle: 'Frequently Asked Questions',
+      faqs: [
+        { q: 'How accurate is the crypto converter?', a: 'Coin prices are fetched from CoinGecko every 5 minutes. Fiat exchange rates (USD to EUR, RUB, UAH, etc.) are updated every 6 hours via ExchangeRate-API. The result is an indicative value — actual exchange rates on crypto platforms may differ.' },
+        { q: 'Which cryptocurrencies can I convert?', a: 'The converter includes the top 50 cryptocurrencies by market cap. The list is dynamic and always reflects the current top 50 coins ranked by market capitalization.' },
+        { q: 'Which fiat currencies are supported?', a: 'The converter supports 14 fiat currencies: USD, EUR, GBP, RUB, UAH, PLN, CHF, CAD, AUD, JPY, CNY, TRY, BYN, KZT.' },
+        { q: 'Is this suitable for real transactions?', a: 'No. The prices are indicative and may be up to 5 minutes old. For actual crypto purchases or sales, always use the live rates on the exchange you are trading on.' },
+        { q: 'Where can I see the full price table?', a: <>Visit the <Link href={ratesHref}>{ratesLabel}</Link> page to see a full sortable table of the top 50 coins with 24h change and market capitalization.</> },
+      ],
+    },
+    ru: {
+      description: 'Конвертируйте любую сумму Bitcoin, Ethereum, Solana и других криптовалют в нужную вам фиатную валюту за секунды. Цены монет обновляются каждые 5 минут (CoinGecko), курсы фиата — каждые 6 часов (ExchangeRate-API).',
+      faqTitle: 'Часто задаваемые вопросы',
+      faqs: [
+        { q: 'Насколько точен конвертер?', a: 'Цены монет получаются от CoinGecko каждые 5 минут. Курсы фиата (USD к EUR, RUB, UAH и т.д.) обновляются каждые 6 часов. Результат является ориентировочным — реальные курсы на биржах могут отличаться.' },
+        { q: 'Какие криптовалюты поддерживаются?', a: 'Конвертер включает топ-50 криптовалют по рыночной капитализации. Список динамический и всегда отражает актуальный топ-50.' },
+        { q: 'Какие фиатные валюты поддерживаются?', a: 'Конвертер поддерживает 14 валют: USD, EUR, GBP, RUB, UAH, PLN, CHF, CAD, AUD, JPY, CNY, TRY, BYN, KZT.' },
+        { q: 'Подходит ли конвертер для реальных сделок?', a: 'Нет. Цены являются ориентировочными и могут иметь задержку до 5 минут. Для реальных покупок или продаж всегда используйте актуальные курсы на торговой платформе.' },
+        { q: 'Где посмотреть полную таблицу курсов?', a: <>Перейдите на страницу <Link href={ratesHref}>{ratesLabel}</Link>, чтобы увидеть сортируемую таблицу топ-50 монет с изменением за 24ч и рыночной капитализацией.</> },
+      ],
+    },
+    uk: {
+      description: 'Конвертуйте будь-яку суму Bitcoin, Ethereum, Solana та інших криптовалют у потрібну вам фіатну валюту за лічені секунди. Ціни монет оновлюються кожні 5 хвилин (CoinGecko), курси фіату — кожні 6 годин (ExchangeRate-API).',
+      faqTitle: 'Часті запитання',
+      faqs: [
+        { q: 'Наскільки точний конвертер?', a: 'Ціни монет отримуються від CoinGecko кожні 5 хвилин. Курси фіату оновлюються кожні 6 годин. Результат є орієнтовним — реальні курси на біржах можуть відрізнятися.' },
+        { q: 'Які криптовалюти підтримуються?', a: 'Конвертер включає топ-50 криптовалют за ринковою капіталізацією. Список динамічний і завжди відображає актуальний топ-50.' },
+        { q: 'Які фіатні валюти підтримуються?', a: 'Конвертер підтримує 14 валют: USD, EUR, GBP, RUB, UAH, PLN, CHF, CAD, AUD, JPY, CNY, TRY, BYN, KZT.' },
+        { q: 'Чи підходить конвертер для реальних угод?', a: 'Ні. Ціни є орієнтовними з можливою затримкою до 5 хвилин. Для реальних операцій завжди використовуйте актуальні курси на торговій платформі.' },
+        { q: 'Де переглянути повну таблицю курсів?', a: <>Перейдіть на сторінку <Link href={ratesHref}>{ratesLabel}</Link>, щоб побачити сортовану таблицю топ-50 монет зі змінами за 24 год та ринковою капіталізацією.</> },
+      ],
+    },
+    fr: {
+      description: 'Convertissez n\'importe quel montant de Bitcoin, Ethereum, Solana et d\'autres cryptomonnaies en votre devise préférée en quelques secondes. Les prix des coins sont mis à jour toutes les 5 minutes (CoinGecko), les taux de change fiat toutes les 6 heures (ExchangeRate-API).',
+      faqTitle: 'Questions fréquentes',
+      faqs: [
+        { q: 'Quelle est la précision du convertisseur ?', a: 'Les prix des coins sont récupérés de CoinGecko toutes les 5 minutes. Les taux de change fiat sont mis à jour toutes les 6 heures. Le résultat est indicatif — les taux réels sur les plateformes d\'échange peuvent différer.' },
+        { q: 'Quelles cryptomonnaies sont prises en charge ?', a: 'Le convertisseur inclut le top 50 des cryptomonnaies par capitalisation boursière. La liste est dynamique et reflète toujours le top 50 actuel.' },
+        { q: 'Quelles devises fiat sont prises en charge ?', a: 'Le convertisseur prend en charge 14 devises : USD, EUR, GBP, RUB, UAH, PLN, CHF, CAD, AUD, JPY, CNY, TRY, BYN, KZT.' },
+        { q: 'Est-ce adapté aux transactions réelles ?', a: 'Non. Les prix sont indicatifs et peuvent avoir un délai pouvant aller jusqu\'à 5 minutes. Pour des achats ou ventes réels, utilisez toujours les taux en direct sur votre plateforme d\'échange.' },
+        { q: 'Où voir le tableau complet des cours ?', a: <>Visitez la page <Link href={ratesHref}>{ratesLabel}</Link> pour voir un tableau trié du top 50 avec la variation 24h et la capitalisation boursière.</> },
+      ],
+    },
+    lt: {
+      description: 'Konvertuokite bet kokią Bitcoin, Ethereum, Solana ir kitų kriptovaliutų sumą į norimą fiat valiutą per kelias sekundes. Monetų kainos atnaujinamos kas 5 minutes (CoinGecko), fiat valiutų kursai – kas 6 valandas (ExchangeRate-API).',
+      faqTitle: 'Dažniausiai užduodami klausimai',
+      faqs: [
+        { q: 'Koks keitiklio tikslumas?', a: 'Monetų kainos gaunamos iš CoinGecko kas 5 minutes. Fiat valiutų kursai atnaujinami kas 6 valandas. Rezultatas yra orientacinis — faktiniai kursai kriptovaliutų biržose gali skirtis.' },
+        { q: 'Kokios kriptovaliutos palaikomos?', a: 'Keitiklyje yra 50 populiariausių kriptovaliutų pagal rinkos kapitalizaciją. Sąrašas dinamiškas ir visada atspindi dabartinį top 50.' },
+        { q: 'Kokios fiat valiutos palaikomos?', a: 'Keitiklis palaiko 14 valiutų: USD, EUR, GBP, RUB, UAH, PLN, CHF, CAD, AUD, JPY, CNY, TRY, BYN, KZT.' },
+        { q: 'Ar tinka realiems sandoriams?', a: 'Ne. Kainos yra orientacinės ir gali turėti iki 5 minučių vėlavimą. Faktinėms operacijoms visada naudokite savo prekybos platformos realaus laiko kursus.' },
+        { q: 'Kur matyti pilną kursų lentelę?', a: <>Apsilankykite <Link href={ratesHref}>{ratesLabel}</Link> puslapyje, kad pamatytumėte rūšiuojamą top 50 lentelę su 24h pokyčiais ir rinkos kapitalizacija.</> },
+      ],
+    },
+  };
+}
+
+const RELATED: Record<string, { href: string; label: string }[]> = {
+  en: [{ href: '/crypto', label: 'Crypto Rates (Top 50)' }],
+  ru: [{ href: '/crypto', label: 'Курс криптовалют (топ-50)' }],
+  uk: [{ href: '/crypto', label: 'Курс криптовалют (топ-50)' }],
+  fr: [{ href: '/crypto', label: 'Cours des Cryptos (top 50)' }],
+  lt: [{ href: '/crypto', label: 'Kriptovaliutų Kursai (top 50)' }],
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -122,7 +144,8 @@ export function generateStaticParams() {
 export default async function CryptoConverterPage({ params }: Props) {
   const { locale } = await params;
   const meta    = META[locale] || META.en;
-  const content = CONTENT[locale] || CONTENT.en;
+  const content = (buildContent(locale)[locale] || buildContent(locale).en) as ContentBlock;
+  const related = RELATED[locale] || RELATED.en;
 
   const [coins, fiatRates] = await Promise.all([getCryptoRates(), getFiatRates()]);
 
@@ -150,6 +173,9 @@ export default async function CryptoConverterPage({ params }: Props) {
         <div className={styles.page__content}>
           <p className={styles.page__description}>{content.description}</p>
           <AdInline locale={locale} />
+
+          <RelatedTools locale={locale} tools={related} />
+
           <section className={styles.faq}>
             <h2 className={styles.faq__title}>{content.faqTitle}</h2>
             <div className={styles.faq__list}>

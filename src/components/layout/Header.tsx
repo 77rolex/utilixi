@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import LanguageSwitcher from './LanguageSwitcher';
+import NavMenu from './NavMenu';
 import styles from './Header.module.scss';
 
 type Props = {
@@ -20,7 +21,10 @@ export default function Header({ locale }: Props) {
             priority
           />
         </Link>
-        <LanguageSwitcher currentLocale={locale} />
+        <div className={styles.header__right}>
+          <NavMenu locale={locale} />
+          <LanguageSwitcher currentLocale={locale} />
+        </div>
       </div>
     </header>
   );

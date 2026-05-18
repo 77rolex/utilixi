@@ -4,10 +4,19 @@ import MortgageCalculator from './MortgageCalculator';
 import PageLayout from '@/components/layout/PageLayout';
 import AdSidebar from '@/components/ui/AdSidebar';
 import AdInline from '@/components/ui/AdInline';
+import RelatedTools from '@/components/ui/RelatedTools';
 import styles from './page.module.scss';
 
 type Props = {
   params: Promise<{ locale: string }>;
+};
+
+const RELATED: Record<string, { href: string; label: string }[]> = {
+  en: [{ href: '/calculator/loan', label: 'Loan Calculator' }],
+  ru: [{ href: '/calculator/loan', label: 'Калькулятор кредита' }],
+  uk: [{ href: '/calculator/loan', label: 'Калькулятор кредиту' }],
+  fr: [{ href: '/calculator/loan', label: 'Calculatrice de prêt' }],
+  lt: [{ href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {
@@ -121,6 +130,7 @@ export default async function MortgagePage({ params }: Props) {
   const { locale } = await params;
   const meta = META[locale] || META.en;
   const content = CONTENT[locale] || CONTENT.en;
+  const related = RELATED[locale] || RELATED.en;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -151,6 +161,8 @@ export default async function MortgagePage({ params }: Props) {
           <p className={styles.page__description}>{content.description}</p>
 
           <AdInline locale={locale} />
+
+          <RelatedTools locale={locale} tools={related} />
 
           <section className={styles.faq}>
             <h2 className={styles.faq__title}>{content.faqTitle}</h2>

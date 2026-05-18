@@ -12,6 +12,12 @@
     height: 60px;
   }
 
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
   &__logo {
     display: flex;
     align-items: center;
