@@ -29,27 +29,27 @@ async function getRates(): Promise<{ rates: Record<string, number>; updatedAt: s
 const META: Record<string, { title: string; description: string; h1: string }> = {
   en: {
     title: 'Currency Converter — Live Exchange Rates',
-    description: 'Free online currency converter with live exchange rates. Convert USD, EUR, GBP, RUB, UAH and 30+ currencies instantly. Rates updated every 6 hours.',
+    description: 'Free online currency converter with live exchange rates. Convert USD, EUR, GBP, RUB, UAH and 150+ currencies instantly. Rates updated every 6 hours.',
     h1: 'Currency Converter',
   },
   ru: {
     title: 'Конвертер валют — Курсы валют онлайн',
-    description: 'Бесплатный конвертер валют онлайн с актуальными курсами. Конвертируйте USD, EUR, RUB, UAH, GBP и более 30 валют. Курсы обновляются каждые 6 часов.',
+    description: 'Бесплатный конвертер валют онлайн с актуальными курсами. Конвертируйте USD, EUR, RUB, UAH, GBP и более 150 валют. Курсы обновляются каждые 6 часов.',
     h1: 'Конвертер валют',
   },
   uk: {
     title: 'Конвертер валют — Курси валют онлайн',
-    description: 'Безкоштовний конвертер валют онлайн з актуальними курсами. Конвертуйте USD, EUR, UAH, RUB, GBP та понад 30 валют. Курси оновлюються кожні 6 годин.',
+    description: 'Безкоштовний конвертер валют онлайн з актуальними курсами. Конвертуйте USD, EUR, UAH, RUB, GBP та понад 150 валют. Курси оновлюються кожні 6 годин.',
     h1: 'Конвертер валют',
   },
   fr: {
     title: 'Convertisseur de Devises — Taux de Change en Direct',
-    description: 'Convertisseur de devises gratuit avec taux de change en temps réel. Convertissez USD, EUR, GBP et plus de 30 devises instantanément. Taux mis à jour toutes les 6 heures.',
+    description: 'Convertisseur de devises gratuit avec taux de change en temps réel. Convertissez USD, EUR, GBP et plus de 150 devises instantanément. Taux mis à jour toutes les 6 heures.',
     h1: 'Convertisseur de Devises',
   },
   lt: {
     title: 'Valiutų Keitiklis — Valiutų Kursai Internete',
-    description: 'Nemokamas valiutų keitiklis su naujausiais kursais. Konvertuokite USD, EUR, GBP ir daugiau nei 30 valiutų akimirksniu. Kursai atnaujinami kas 6 valandas.',
+    description: 'Nemokamas valiutų keitiklis su naujausiais kursais. Konvertuokite USD, EUR, GBP ir daugiau nei 150 valiutų akimirksniu. Kursai atnaujinami kas 6 valandas.',
     h1: 'Valiutų Keitiklis',
   },
 };
@@ -60,7 +60,7 @@ const CONTENT: Record<string, {
   faqs: { q: string; a: string }[];
 }> = {
   en: {
-    description: 'Our free currency converter uses live exchange rates updated every 6 hours to give you accurate conversions for over 35 world currencies. Whether you need to convert dollars to euros, rubles to dollars, or any other pair — simply enter the amount, select currencies, and get the result instantly.',
+    description: 'Our free currency converter uses live exchange rates updated every 6 hours to give you accurate conversions for over 150 world currencies. Whether you need to convert dollars to euros, rubles to dollars, or any other pair — simply enter the amount, select currencies, and get the result instantly.',
     faqTitle: 'Frequently Asked Questions',
     faqs: [
       {
@@ -73,7 +73,7 @@ const CONTENT: Record<string, {
       },
       {
         q: 'Which currencies are supported?',
-        a: 'The converter supports 35 major world currencies including USD, EUR, GBP, JPY, CHF, CAD, AUD, CNY, RUB, UAH, PLN, TRY, INR, and more.',
+        a: 'The converter supports over 150 world currencies including USD, EUR, GBP, JPY, CHF, CAD, AUD, CNY, RUB, UAH, PLN, TRY, INR, and many more.',
       },
       {
         q: 'Are these rates suitable for financial transactions?',
@@ -86,7 +86,7 @@ const CONTENT: Record<string, {
     ],
   },
   ru: {
-    description: 'Наш бесплатный конвертер валют использует актуальные курсы, обновляемые каждые 6 часов, для точного пересчёта более 35 мировых валют. Введите сумму, выберите валюты и мгновенно получите результат.',
+    description: 'Наш бесплатный конвертер валют использует актуальные курсы, обновляемые каждые 6 часов, для точного пересчёта более 150 мировых валют. Введите сумму, выберите валюты и мгновенно получите результат.',
     faqTitle: 'Часто задаваемые вопросы',
     faqs: [
       {
@@ -99,7 +99,7 @@ const CONTENT: Record<string, {
       },
       {
         q: 'Какие валюты поддерживаются?',
-        a: 'Конвертер поддерживает 35 основных мировых валют: USD, EUR, GBP, JPY, CHF, CAD, AUD, CNY, RUB, UAH, PLN, TRY, INR и другие.',
+        a: 'Конвертер поддерживает более 150 мировых валют: USD, EUR, GBP, JPY, CHF, CAD, AUD, CNY, RUB, UAH, PLN, TRY, INR и многие другие.',
       },
       {
         q: 'Подходят ли эти курсы для финансовых операций?',
@@ -112,7 +112,7 @@ const CONTENT: Record<string, {
     ],
   },
   uk: {
-    description: 'Наш безкоштовний конвертер валют використовує актуальні курси, які оновлюються кожні 6 годин, для точного перерахунку понад 35 світових валют. Введіть суму, оберіть валюти та миттєво отримайте результат.',
+    description: 'Наш безкоштовний конвертер валют використовує актуальні курси, які оновлюються кожні 6 годин, для точного перерахунку понад 150 світових валют. Введіть суму, оберіть валюти та миттєво отримайте результат.',
     faqTitle: 'Часті запитання',
     faqs: [
       {
@@ -125,7 +125,7 @@ const CONTENT: Record<string, {
       },
       {
         q: 'Які валюти підтримуються?',
-        a: 'Конвертер підтримує 35 основних світових валют: USD, EUR, GBP, JPY, CHF, CAD, AUD, CNY, RUB, UAH, PLN, TRY, INR та інші.',
+        a: 'Конвертер підтримує понад 150 світових валют: USD, EUR, GBP, JPY, CHF, CAD, AUD, CNY, RUB, UAH, PLN, TRY, INR та багато інших.',
       },
       {
         q: 'Чи підходять ці курси для фінансових операцій?',
@@ -138,7 +138,7 @@ const CONTENT: Record<string, {
     ],
   },
   fr: {
-    description: 'Notre convertisseur de devises gratuit utilise des taux de change mis à jour toutes les 6 heures pour vous fournir des conversions précises pour plus de 35 devises mondiales. Entrez le montant, sélectionnez les devises et obtenez le résultat instantanément.',
+    description: 'Notre convertisseur de devises gratuit utilise des taux de change mis à jour toutes les 6 heures pour vous fournir des conversions précises pour plus de 150 devises mondiales. Entrez le montant, sélectionnez les devises et obtenez le résultat instantanément.',
     faqTitle: 'Questions fréquentes',
     faqs: [
       {
@@ -151,7 +151,7 @@ const CONTENT: Record<string, {
       },
       {
         q: 'Quelles devises sont prises en charge ?',
-        a: 'Le convertisseur prend en charge 35 devises mondiales majeures, dont USD, EUR, GBP, JPY, CHF, CAD, AUD, CNY, RUB, UAH, PLN, TRY, INR et d\'autres.',
+        a: 'Le convertisseur prend en charge plus de 150 devises mondiales, dont USD, EUR, GBP, JPY, CHF, CAD, AUD, CNY, RUB, UAH, PLN, TRY, INR et bien d\'autres.',
       },
       {
         q: 'Ces taux sont-ils adaptés aux transactions financières ?',
@@ -164,7 +164,7 @@ const CONTENT: Record<string, {
     ],
   },
   lt: {
-    description: 'Mūsų nemokamas valiutų keitiklis naudoja aktualius kursus, atnaujinamus kas 6 valandas, tiksliam daugiau nei 35 pasaulio valiutų konvertavimui. Įveskite sumą, pasirinkite valiutas ir gaukite rezultatą akimirksniu.',
+    description: 'Mūsų nemokamas valiutų keitiklis naudoja aktualius kursus, atnaujinamus kas 6 valandas, tiksliam daugiau nei 150 pasaulio valiutų konvertavimui. Įveskite sumą, pasirinkite valiutas ir gaukite rezultatą akimirksniu.',
     faqTitle: 'Dažniausiai užduodami klausimai',
     faqs: [
       {
@@ -177,7 +177,7 @@ const CONTENT: Record<string, {
       },
       {
         q: 'Kokios valiutos palaikomos?',
-        a: 'Keitiklis palaiko 35 pagrindines pasaulio valiutas, įskaitant USD, EUR, GBP, JPY, CHF, CAD, AUD, CNY, RUB, UAH, PLN, TRY, INR ir kitas.',
+        a: 'Keitiklis palaiko daugiau nei 150 pasaulio valiutų, įskaitant USD, EUR, GBP, JPY, CHF, CAD, AUD, CNY, RUB, UAH, PLN, TRY, INR ir daugelį kitų.',
       },
       {
         q: 'Ar šie kursai tinka finansinėms operacijoms?',
