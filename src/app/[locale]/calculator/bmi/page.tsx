@@ -10,11 +10,26 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/calories', label: 'Calorie Calculator (TDEE)' }],
-  ru: [{ href: '/calculator/calories', label: 'Калькулятор калорий (TDEE)' }],
-  uk: [{ href: '/calculator/calories', label: 'Калькулятор калорій (TDEE)' }],
-  fr: [{ href: '/calculator/calories', label: 'Calculatrice de calories (TDEE)' }],
-  lt: [{ href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' }],
+  en: [
+    { href: '/calculator/ideal-weight', label: 'Ideal Weight Calculator' },
+    { href: '/calculator/calories', label: 'Calorie Calculator (TDEE)' },
+  ],
+  ru: [
+    { href: '/calculator/ideal-weight', label: 'Калькулятор идеального веса' },
+    { href: '/calculator/calories', label: 'Калькулятор калорий (TDEE)' },
+  ],
+  uk: [
+    { href: '/calculator/ideal-weight', label: 'Калькулятор ідеальної ваги' },
+    { href: '/calculator/calories', label: 'Калькулятор калорій (TDEE)' },
+  ],
+  fr: [
+    { href: '/calculator/ideal-weight', label: 'Poids Idéal' },
+    { href: '/calculator/calories', label: 'Calculatrice de calories (TDEE)' },
+  ],
+  lt: [
+    { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' },
+    { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' },
+  ],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

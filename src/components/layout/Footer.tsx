@@ -108,6 +108,13 @@ const TOOLS: Record<string, Record<LocaleKey, string>> = {
     fr: 'Calculatrice de grossesse',
     lt: 'Nėštumo skaičiuotuvas',
   },
+  '/calculator/ideal-weight': {
+    en: 'Ideal Weight Calculator',
+    ru: 'Калькулятор идеального веса',
+    uk: 'Калькулятор ідеальної ваги',
+    fr: 'Poids Idéal',
+    lt: 'Idealaus svorio skaičiuotuvas',
+  },
   '/currency': {
     en: 'Currency Converter',
     ru: 'Конвертер валют',
