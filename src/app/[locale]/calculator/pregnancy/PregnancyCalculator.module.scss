@@ -1,0 +1,298 @@
+.pregnancy-widget {
+  background: var(--color-bg-widget);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-widget);
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    max-width: 480px;
+  }
+
+  // ─── Mode toggle ───────────────────────────────────────────
+  &__toggle {
+    display: flex;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  &__toggle-btn {
+    flex: 1;
+    padding: 10px var(--spacing-md);
+    border: none;
+    background: none;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: background-color var(--transition-base), color var(--transition-base);
+    min-height: 44px;
+
+    & + & {
+      border-left: 1px solid var(--color-border);
+    }
+
+    &--active {
+      background-color: var(--color-primary);
+      color: #fff;
+    }
+
+    &:not(&--active):hover {
+      background-color: var(--color-bg-secondary);
+    }
+  }
+
+  // ─── Field ────────────────────────────────────────────────
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  &__label {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  &__input {
+    width: 100%;
+    padding: 10px var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background: var(--color-bg);
+    transition: border-color var(--transition-base);
+    min-height: 44px;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+  }
+
+  &__error {
+    font-size: var(--font-size-sm);
+    color: #dc2626;
+  }
+
+  &__btn {
+    padding: 12px var(--spacing-xl);
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-base);
+    min-height: 44px;
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+    }
+  }
+
+  // ─── Results ──────────────────────────────────────────────
+  &__results {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  &__due {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__due-label {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__due-value {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+
+    @media (min-width: 640px) {
+      font-size: var(--font-size-2xl);
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  &__age {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__age-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  &__age-value {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  &__trimester-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+
+    &--1 {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    &--2 {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    &--3 {
+      background: #fef3c7;
+      color: #b45309;
+    }
+  }
+
+  &__due-passed {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  // ─── Timeline ─────────────────────────────────────────────
+  &__timeline {
+    padding-bottom: var(--spacing-lg);
+  }
+
+  &__timeline-track {
+    position: relative;
+    height: 10px;
+    background: var(--color-bg-secondary);
+    border-radius: 5px;
+    overflow: visible;
+  }
+
+  &__timeline-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 5px;
+    transition: width 0.5s ease;
+    min-width: 4px;
+  }
+
+  &__timeline-tick {
+    position: absolute;
+    top: -3px;
+    width: 2px;
+    height: 16px;
+    background: var(--color-border);
+    transform: translateX(-50%);
+  }
+
+  &__timeline-labels {
+    position: relative;
+    height: 20px;
+    margin-top: 6px;
+  }
+
+  &__timeline-label {
+    position: absolute;
+    font-size: 11px;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+
+  // ─── Milestones ───────────────────────────────────────────
+  &__milestones {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  &__milestones-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  &__milestone {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  &__milestone-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--done {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+
+      &::after {
+        content: '✓';
+        color: #fff;
+        font-size: 10px;
+        line-height: 1;
+      }
+    }
+  }
+
+  &__milestone-label {
+    flex: 1;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  &__milestone-date {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+  }
+
+  // ─── Disclaimer ───────────────────────────────────────────
+  &__disclaimer {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    font-style: italic;
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-md);
+  }
+}
