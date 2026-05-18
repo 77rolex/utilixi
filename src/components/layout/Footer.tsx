@@ -94,6 +94,13 @@ const TOOLS: Record<string, Record<LocaleKey, string>> = {
     fr: 'Calculatrice de calories',
     lt: 'Kalorijų skaičiuotuvas',
   },
+  '/calculator/deposit': {
+    en: 'Deposit Calculator',
+    ru: 'Калькулятор депозита',
+    uk: 'Калькулятор депозиту',
+    fr: 'Calculatrice de dépôt',
+    lt: 'Indėlio skaičiuotuvas',
+  },
   '/calculator/pregnancy': {
     en: 'Pregnancy Calculator',
     ru: 'Калькулятор беременности',
