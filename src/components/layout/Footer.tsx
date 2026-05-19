@@ -143,6 +143,41 @@ const TOOLS: Record<string, Record<LocaleKey, string>> = {
     fr: 'Météo',
     lt: 'Oro prognozė',
   },
+  '/calculator/alimony': {
+    en: 'Alimony Calculator',
+    ru: 'Калькулятор алиментов',
+    uk: 'Калькулятор аліментів',
+    fr: 'Calculatrice de pension alimentaire',
+    lt: 'Alimentų skaičiuotuvas',
+  },
+  '/calculator/rent-vs-buy': {
+    en: 'Rent vs Buy',
+    ru: 'Аренда vs Покупка',
+    uk: 'Оренда vs Купівля',
+    fr: 'Louer vs Acheter',
+    lt: 'Nuoma vs Pirkimas',
+  },
+  '/calculator/roi': {
+    en: 'ROI Calculator',
+    ru: 'Калькулятор ROI',
+    uk: 'Калькулятор ROI',
+    fr: 'Calculatrice ROI',
+    lt: 'RI skaičiuotuvas',
+  },
+  '/calculator/pension': {
+    en: 'Pension Calculator',
+    ru: 'Пенсионный калькулятор',
+    uk: 'Пенсійний калькулятор',
+    fr: 'Calculatrice Retraite',
+    lt: 'Pensijų skaičiuotuvas',
+  },
+  '/tools/password-generator': {
+    en: 'Password Generator',
+    ru: 'Генератор паролей',
+    uk: 'Генератор паролів',
+    fr: 'Générateur de mot de passe',
+    lt: 'Slaptažodžių generatorius',
+  },
 };
 
 export default function Footer({ locale }: Props) {

@@ -118,6 +118,41 @@ const RAW_TOOLS: RawTool[] = [
     titles: { en: 'Weather Forecast', ru: 'Прогноз погоды', uk: 'Прогноз погоди', fr: 'Météo', lt: 'Oro prognozė' },
     descs: { en: 'Current weather & 7-day forecast', ru: 'Текущая погода и прогноз на 7 дней', uk: 'Поточна погода та прогноз на 7 днів', fr: 'Météo actuelle et prévisions 7 jours', lt: 'Dabartiniai orai ir 7 dienų prognozė' },
   },
+  {
+    href: '/calculator/alimony',
+    icon: '⚖️',
+    category: 'utility',
+    titles: { en: 'Alimony Calculator', ru: 'Калькулятор алиментов', uk: 'Калькулятор аліментів', fr: 'Calculatrice de pension alimentaire', lt: 'Alimentų skaičiuotuvas' },
+    descs: { en: 'Estimate child support by country & income', ru: 'Расчёт алиментов по стране и доходу', uk: 'Розрахунок аліментів за країною та доходом', fr: 'Estimez la pension par pays et revenus', lt: 'Apskaičiuokite alimentus pagal šalį ir pajamas' },
+  },
+  {
+    href: '/calculator/rent-vs-buy',
+    icon: '🏡',
+    category: 'finance',
+    titles: { en: 'Rent vs Buy', ru: 'Аренда vs Покупка', uk: 'Оренда vs Купівля', fr: 'Louer vs Acheter', lt: 'Nuoma vs Pirkimas' },
+    descs: { en: 'Compare renting vs buying a home', ru: 'Сравните аренду и покупку жилья', uk: 'Порівняйте оренду та купівлю житла', fr: 'Comparez louer et acheter un logement', lt: 'Palyginkite nuomą ir pirkimą' },
+  },
+  {
+    href: '/calculator/roi',
+    icon: '📈',
+    category: 'finance',
+    titles: { en: 'ROI Calculator', ru: 'Калькулятор ROI', uk: 'Калькулятор ROI', fr: 'Calculatrice ROI', lt: 'RI skaičiuotuvas' },
+    descs: { en: 'Calculate return on investment & CAGR', ru: 'Рассчитайте доходность инвестиций и CAGR', uk: 'Розрахуйте дохідність інвестицій і CAGR', fr: 'Calculez le ROI et le TCAM', lt: 'Apskaičiuokite investicijų grąžą ir CAGR' },
+  },
+  {
+    href: '/calculator/pension',
+    icon: '🏖️',
+    category: 'finance',
+    titles: { en: 'Pension Calculator', ru: 'Пенсионный калькулятор', uk: 'Пенсійний калькулятор', fr: 'Calculatrice Retraite', lt: 'Pensijų skaičiuotuvas' },
+    descs: { en: 'Plan retirement savings & monthly payout', ru: 'Планируйте накопления и ежемесячную выплату', uk: 'Плануйте накопичення та щомісячну виплату', fr: 'Planifiez votre épargne retraite', lt: 'Planuokite pensijų santaupas ir išmokas' },
+  },
+  {
+    href: '/tools/password-generator',
+    icon: '🔐',
+    category: 'utility',
+    titles: { en: 'Password Generator', ru: 'Генератор паролей', uk: 'Генератор паролів', fr: 'Générateur de mot de passe', lt: 'Slaptažodžių generatorius' },
+    descs: { en: 'Generate strong random or keyword-based passwords', ru: 'Создайте случайный или ключевой пароль', uk: 'Створіть випадковий або ключовий пароль', fr: 'Générez un mot de passe fort ou mémorisable', lt: 'Generuokite stiprų atsitiktinį arba rakto žodžio slaptažodį' },
+  },
 ];
 
 const PAGE_TITLE: Record<string, string> = {
