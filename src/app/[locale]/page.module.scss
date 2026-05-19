@@ -5,7 +5,8 @@
     font-size: var(--font-size-2xl);
     font-weight: 700;
     color: var(--color-text-primary);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: 20px;
+    line-height: 1.1;
     text-align: center;
 
     @media (min-width: 640px) {
