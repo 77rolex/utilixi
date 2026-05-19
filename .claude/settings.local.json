@@ -11,7 +11,12 @@
       "Bash(grep -n \"currency\\\\|₽\\\\|€\\\\|\\\\$\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/loan/LoanCalculator.tsx\")",
       "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/roi\")",
       "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/pension\")",
-      "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/tools/password-generator\")"
+      "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/tools/password-generator\")",
+      "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/vat\")",
+      "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/compound-interest\")",
+      "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/heart-rate\")",
+      "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/tip\")",
+      "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/converter/units\")"
     ]
   }
 }

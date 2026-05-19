@@ -178,6 +178,41 @@ const TOOLS: Record<string, Record<LocaleKey, string>> = {
     fr: 'Générateur de mot de passe',
     lt: 'Slaptažodžių generatorius',
   },
+  '/calculator/vat': {
+    en: 'VAT Calculator',
+    ru: 'Калькулятор НДС',
+    uk: 'Калькулятор ПДВ',
+    fr: 'Calculatrice TVA',
+    lt: 'PVM skaičiuotuvas',
+  },
+  '/calculator/compound-interest': {
+    en: 'Compound Interest',
+    ru: 'Сложные проценты',
+    uk: 'Складні відсотки',
+    fr: 'Intérêts composés',
+    lt: 'Sudėtinės palūkanos',
+  },
+  '/converter/units': {
+    en: 'Unit Converter',
+    ru: 'Конвертер единиц',
+    uk: 'Конвертер одиниць',
+    fr: 'Convertisseur d\'unités',
+    lt: 'Vienetų keitiklis',
+  },
+  '/calculator/heart-rate': {
+    en: 'Heart Rate Zones',
+    ru: 'Пульсовые зоны',
+    uk: 'Пульсові зони',
+    fr: 'Zones de FC',
+    lt: 'Pulso zonos',
+  },
+  '/calculator/tip': {
+    en: 'Tip Calculator',
+    ru: 'Калькулятор чаевых',
+    uk: 'Калькулятор чайових',
+    fr: 'Calculatrice de pourboire',
+    lt: 'Arbatpinigių skaičiuotuvas',
+  },
 };
 
 export default function Footer({ locale }: Props) {

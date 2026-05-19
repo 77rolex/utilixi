@@ -121,7 +121,7 @@ const RAW_TOOLS: RawTool[] = [
   {
     href: '/calculator/alimony',
     icon: '⚖️',
-    category: 'utility',
+    category: 'legal',
     titles: { en: 'Alimony Calculator', ru: 'Калькулятор алиментов', uk: 'Калькулятор аліментів', fr: 'Calculatrice de pension alimentaire', lt: 'Alimentų skaičiuotuvas' },
     descs: { en: 'Estimate child support by country & income', ru: 'Расчёт алиментов по стране и доходу', uk: 'Розрахунок аліментів за країною та доходом', fr: 'Estimez la pension par pays et revenus', lt: 'Apskaičiuokite alimentus pagal šalį ir pajamas' },
   },
@@ -152,6 +152,41 @@ const RAW_TOOLS: RawTool[] = [
     category: 'utility',
     titles: { en: 'Password Generator', ru: 'Генератор паролей', uk: 'Генератор паролів', fr: 'Générateur de mot de passe', lt: 'Slaptažodžių generatorius' },
     descs: { en: 'Generate strong random or keyword-based passwords', ru: 'Создайте случайный или ключевой пароль', uk: 'Створіть випадковий або ключовий пароль', fr: 'Générez un mot de passe fort ou mémorisable', lt: 'Generuokite stiprų atsitiktinį arba rakto žodžio slaptažodį' },
+  },
+  {
+    href: '/calculator/vat',
+    icon: '🧾',
+    category: 'finance',
+    titles: { en: 'VAT Calculator', ru: 'Калькулятор НДС', uk: 'Калькулятор ПДВ', fr: 'Calculatrice TVA', lt: 'PVM skaičiuotuvas' },
+    descs: { en: 'Add or extract VAT for 20+ countries', ru: 'Начислить или выделить НДС для 20+ стран', uk: 'Нарахувати або виділити ПДВ для 20+ країн', fr: 'Ajouter ou extraire la TVA pour 20+ pays', lt: 'Pridėti arba išskirti PVM 20+ šalių' },
+  },
+  {
+    href: '/calculator/compound-interest',
+    icon: '📊',
+    category: 'finance',
+    titles: { en: 'Compound Interest', ru: 'Сложные проценты', uk: 'Складні відсотки', fr: 'Intérêts composés', lt: 'Sudėtinės palūkanos' },
+    descs: { en: 'See how your money grows over time', ru: 'Рассчитайте рост инвестиций с реинвестированием', uk: 'Розрахуйте зростання інвестицій з реінвестуванням', fr: 'Visualisez la croissance de votre capital', lt: 'Žiūrėkite, kaip auga jūsų pinigai laikui bėgant' },
+  },
+  {
+    href: '/converter/units',
+    icon: '📐',
+    category: 'measure',
+    titles: { en: 'Unit Converter', ru: 'Конвертер единиц', uk: 'Конвертер одиниць', fr: 'Convertisseur d\'unités', lt: 'Vienetų keitiklis' },
+    descs: { en: 'Length, weight, temperature, volume & more', ru: 'Длина, масса, температура, объём и другое', uk: 'Довжина, маса, температура, об\'єм та інше', fr: 'Longueur, masse, température, volume et plus', lt: 'Ilgis, masė, temperatūra, tūris ir daugiau' },
+  },
+  {
+    href: '/calculator/heart-rate',
+    icon: '❤️',
+    category: 'health',
+    titles: { en: 'Heart Rate Zones', ru: 'Пульсовые зоны', uk: 'Пульсові зони', fr: 'Zones de FC', lt: 'Pulso zonos' },
+    descs: { en: 'Calculate your 5 training zones by age', ru: 'Рассчитайте 5 тренировочных зон по возрасту', uk: 'Розрахуйте 5 тренувальних зон за віком', fr: 'Calculez vos 5 zones d\'entraînement', lt: 'Apskaičiuokite 5 treniruočių zonas pagal amžių' },
+  },
+  {
+    href: '/calculator/tip',
+    icon: '🍽️',
+    category: 'utility',
+    titles: { en: 'Tip Calculator', ru: 'Калькулятор чаевых', uk: 'Калькулятор чайових', fr: 'Calculatrice de pourboire', lt: 'Arbatpinigių skaičiuotuvas' },
+    descs: { en: 'Calculate tip and split the bill', ru: 'Рассчитайте чаевые и разделите счёт', uk: 'Розрахуйте чайові та розділіть рахунок', fr: 'Calculez le pourboire et partagez l\'addition', lt: 'Apskaičiuokite arbatpinigius ir padalinkite sąskaitą' },
   },
 ];
 
