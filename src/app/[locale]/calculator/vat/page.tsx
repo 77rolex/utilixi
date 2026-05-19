@@ -10,11 +10,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/roi', label: 'ROI Calculator' }, { href: '/calculator/mortgage', label: 'Mortgage Calculator' }],
-  ru: [{ href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }],
-  uk: [{ href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }],
-  fr: [{ href: '/calculator/roi', label: 'Calculatrice ROI' }, { href: '/calculator/mortgage', label: 'Calculatrice de prêt immobilier' }],
-  lt: [{ href: '/calculator/roi', label: 'RI skaičiuotuvas' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }],
+  en: [{ href: '/calculator/roi', label: 'ROI Calculator' }, { href: '/calculator/compound-interest', label: 'Compound Interest' }],
+  ru: [{ href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/compound-interest', label: 'Сложные проценты' }],
+  uk: [{ href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/compound-interest', label: 'Складні відсотки' }],
+  fr: [{ href: '/calculator/roi', label: 'Calculatrice ROI' }, { href: '/calculator/compound-interest', label: 'Intérêts composés' }],
+  lt: [{ href: '/calculator/roi', label: 'RI skaičiuotuvas' }, { href: '/calculator/compound-interest', label: 'Sudėtinės palūkanos' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

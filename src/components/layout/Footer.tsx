@@ -213,6 +213,41 @@ const TOOLS: Record<string, Record<LocaleKey, string>> = {
     fr: 'Calculatrice de pourboire',
     lt: 'Arbatpinigių skaičiuotuvas',
   },
+  '/calculator/age': {
+    en: 'Age Calculator',
+    ru: 'Калькулятор возраста',
+    uk: 'Калькулятор віку',
+    fr: 'Calculatrice d\'âge',
+    lt: 'Amžiaus skaičiuotuvas',
+  },
+  '/calculator/date-diff': {
+    en: 'Date Difference',
+    ru: 'Разница дат',
+    uk: 'Різниця дат',
+    fr: 'Différence de dates',
+    lt: 'Datų skirtumas',
+  },
+  '/converter/color': {
+    en: 'Color Converter',
+    ru: 'Конвертер цветов',
+    uk: 'Конвертер кольорів',
+    fr: 'Convertisseur de couleurs',
+    lt: 'Spalvų keitiklis',
+  },
+  '/converter/clothing-size': {
+    en: 'Clothing Size Converter',
+    ru: 'Конвертер размеров одежды',
+    uk: 'Конвертер розмірів одягу',
+    fr: 'Convertisseur de tailles',
+    lt: 'Drabužių dydžių keitiklis',
+  },
+  '/tools/countdown': {
+    en: 'Countdown Timer',
+    ru: 'Таймер обратного отсчёта',
+    uk: 'Таймер зворотного відліку',
+    fr: 'Compte à rebours',
+    lt: 'Atgalinio skaičiavimo laikmatis',
+  },
 };
 
 export default function Footer({ locale }: Props) {

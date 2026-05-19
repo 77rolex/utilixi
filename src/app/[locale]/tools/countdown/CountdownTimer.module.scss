@@ -1,0 +1,164 @@
+.cd-timer {
+  background: var(--color-bg-widget);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-widget);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+
+  &__presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  &__preset {
+    padding: 7px var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    min-height: 40px;
+    transition: border-color var(--transition-base), color var(--transition-base);
+
+    &:hover { border-color: var(--color-primary); color: var(--color-primary); }
+  }
+
+  &__form {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    max-width: 540px;
+  }
+
+  &__field {
+    flex: 1;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  &__label {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  &__input {
+    width: 100%;
+    padding: 10px var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background: var(--color-bg);
+    min-height: 44px;
+    transition: border-color var(--transition-base);
+
+    &:focus { outline: none; border-color: var(--color-primary); }
+  }
+
+  &__error { font-size: var(--font-size-sm); color: #dc2626; }
+
+  &__controls {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+  }
+
+  &__btn {
+    padding: 12px var(--spacing-xl);
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 44px;
+    transition: background-color var(--transition-base);
+
+    &:hover { background-color: var(--color-primary-hover); }
+
+    &--stop {
+      background-color: #dc2626;
+      &:hover { background-color: #b91c1c; }
+    }
+  }
+
+  &__btn--reset {
+    padding: 12px var(--spacing-md);
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    min-height: 44px;
+    transition: border-color var(--transition-base), color var(--transition-base);
+
+    &:hover { border-color: var(--color-primary); color: var(--color-primary); }
+  }
+
+  // ── Countdown display ─────────────────────────────────────────────────
+
+  &__display {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-sm);
+
+    @media (max-width: 400px) { gap: var(--spacing-xs); }
+  }
+
+  &__unit {
+    flex: 1;
+    min-width: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: var(--spacing-lg) var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    @media (max-width: 400px) { min-width: 60px; padding: var(--spacing-md) var(--spacing-sm); }
+  }
+
+  &__number {
+    font-size: 52px;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+
+    @media (max-width: 540px) { font-size: 36px; }
+    @media (max-width: 400px) { font-size: 28px; }
+  }
+
+  &__unit-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  &__expired {
+    padding: var(--spacing-xl);
+    background: var(--color-primary-light);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: var(--spacing-sm);
+  }
+}

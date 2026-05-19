@@ -114,11 +114,11 @@ function buildContent(locale: string): Record<string, ContentBlock> {
 }
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/crypto', label: 'Crypto Rates (Top 50)' }],
-  ru: [{ href: '/crypto', label: 'Курс криптовалют (топ-50)' }],
-  uk: [{ href: '/crypto', label: 'Курс криптовалют (топ-50)' }],
-  fr: [{ href: '/crypto', label: 'Cours des Cryptos (top 50)' }],
-  lt: [{ href: '/crypto', label: 'Kriptovaliutų Kursai (top 50)' }],
+  en: [{ href: '/crypto', label: 'Crypto Rates (Top 50)' }, { href: '/currency', label: 'Currency Converter' }],
+  ru: [{ href: '/crypto', label: 'Курс криптовалют (топ-50)' }, { href: '/currency', label: 'Конвертер валют' }],
+  uk: [{ href: '/crypto', label: 'Курс криптовалют (топ-50)' }, { href: '/currency', label: 'Конвертер валют' }],
+  fr: [{ href: '/crypto', label: 'Cours des Cryptos (top 50)' }, { href: '/currency', label: 'Convertisseur de devises' }],
+  lt: [{ href: '/crypto', label: 'Kriptovaliutų Kursai (top 50)' }, { href: '/currency', label: 'Valiutų keitiklis' }],
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

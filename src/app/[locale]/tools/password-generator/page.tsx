@@ -10,11 +10,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/age', label: 'Age Calculator' }, { href: '/calculator/date-diff', label: 'Date Calculator' }],
-  ru: [{ href: '/calculator/age', label: 'Калькулятор возраста' }, { href: '/calculator/date-diff', label: 'Калькулятор дат' }],
-  uk: [{ href: '/calculator/age', label: 'Калькулятор віку' }, { href: '/calculator/date-diff', label: 'Калькулятор дат' }],
-  fr: [{ href: '/calculator/age', label: 'Calculatrice d\'âge' }, { href: '/calculator/date-diff', label: 'Calculatrice de dates' }],
-  lt: [{ href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/calculator/date-diff', label: 'Datų skaičiuotuvas' }],
+  en: [{ href: '/tools/countdown', label: 'Countdown Timer' }, { href: '/converter/color', label: 'Color Converter' }],
+  ru: [{ href: '/tools/countdown', label: 'Таймер обратного отсчёта' }, { href: '/converter/color', label: 'Конвертер цветов' }],
+  uk: [{ href: '/tools/countdown', label: 'Таймер зворотного відліку' }, { href: '/converter/color', label: 'Конвертер кольорів' }],
+  fr: [{ href: '/tools/countdown', label: 'Compte à rebours' }, { href: '/converter/color', label: 'Convertisseur de couleurs' }],
+  lt: [{ href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }, { href: '/converter/color', label: 'Spalvų keitiklis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

@@ -10,11 +10,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/converter/color', label: 'Color Converter' }, { href: '/calculator/tip', label: 'Tip Calculator' }],
-  ru: [{ href: '/converter/color', label: 'Конвертер цветов' }, { href: '/calculator/tip', label: 'Калькулятор чаевых' }],
-  uk: [{ href: '/converter/color', label: 'Конвертер кольорів' }, { href: '/calculator/tip', label: 'Калькулятор чайових' }],
-  fr: [{ href: '/converter/color', label: 'Convertisseur de couleurs' }, { href: '/calculator/tip', label: 'Calculatrice de pourboire' }],
-  lt: [{ href: '/converter/color', label: 'Spalvų keitiklis' }, { href: '/calculator/tip', label: 'Arbatpinigių skaičiuotuvas' }],
+  en: [{ href: '/converter/color', label: 'Color Converter' }, { href: '/converter/clothing-size', label: 'Clothing Size Converter' }],
+  ru: [{ href: '/converter/color', label: 'Конвертер цветов' }, { href: '/converter/clothing-size', label: 'Конвертер размеров одежды' }],
+  uk: [{ href: '/converter/color', label: 'Конвертер кольорів' }, { href: '/converter/clothing-size', label: 'Конвертер розмірів одягу' }],
+  fr: [{ href: '/converter/color', label: 'Convertisseur de couleurs' }, { href: '/converter/clothing-size', label: 'Convertisseur de tailles' }],
+  lt: [{ href: '/converter/color', label: 'Spalvų keitiklis' }, { href: '/converter/clothing-size', label: 'Drabužių dydžių keitiklis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

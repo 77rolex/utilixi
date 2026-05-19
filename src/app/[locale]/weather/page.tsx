@@ -11,24 +11,24 @@ type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
   en: [
-    { href: '/currency', label: 'Currency Converter' },
-    { href: '/calculator/bmi', label: 'BMI Calculator' },
+    { href: '/tools/countdown', label: 'Countdown Timer' },
+    { href: '/calculator/date-diff', label: 'Date Difference Calculator' },
   ],
   ru: [
-    { href: '/currency', label: 'Конвертер валют' },
-    { href: '/calculator/bmi', label: 'Калькулятор ИМТ' },
+    { href: '/tools/countdown', label: 'Таймер обратного отсчёта' },
+    { href: '/calculator/date-diff', label: 'Калькулятор разницы дат' },
   ],
   uk: [
-    { href: '/currency', label: 'Конвертер валют' },
-    { href: '/calculator/bmi', label: 'Калькулятор ІМТ' },
+    { href: '/tools/countdown', label: 'Таймер зворотного відліку' },
+    { href: '/calculator/date-diff', label: 'Калькулятор різниці дат' },
   ],
   fr: [
-    { href: '/currency', label: 'Convertisseur de devises' },
-    { href: '/calculator/bmi', label: 'Calculatrice IMC' },
+    { href: '/tools/countdown', label: 'Compte à rebours' },
+    { href: '/calculator/date-diff', label: 'Calculatrice de différence de dates' },
   ],
   lt: [
-    { href: '/currency', label: 'Valiutų keitiklis' },
-    { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' },
+    { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' },
+    { href: '/calculator/date-diff', label: 'Datų skirtumo skaičiuotuvas' },
   ],
 };
 

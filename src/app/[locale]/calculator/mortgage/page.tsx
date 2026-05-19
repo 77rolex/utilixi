@@ -12,11 +12,11 @@ type Props = {
 };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/loan', label: 'Loan Calculator' }],
-  ru: [{ href: '/calculator/loan', label: 'Калькулятор кредита' }],
-  uk: [{ href: '/calculator/loan', label: 'Калькулятор кредиту' }],
-  fr: [{ href: '/calculator/loan', label: 'Calculatrice de prêt' }],
-  lt: [{ href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }],
+  en: [{ href: '/calculator/loan', label: 'Loan Calculator' }, { href: '/calculator/rent-vs-buy', label: 'Rent vs Buy' }],
+  ru: [{ href: '/calculator/loan', label: 'Калькулятор кредита' }, { href: '/calculator/rent-vs-buy', label: 'Аренда vs Покупка' }],
+  uk: [{ href: '/calculator/loan', label: 'Калькулятор кредиту' }, { href: '/calculator/rent-vs-buy', label: 'Оренда vs Купівля' }],
+  fr: [{ href: '/calculator/loan', label: 'Calculatrice de prêt' }, { href: '/calculator/rent-vs-buy', label: 'Louer vs Acheter' }],
+  lt: [{ href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }, { href: '/calculator/rent-vs-buy', label: 'Nuoma vs Pirkimas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

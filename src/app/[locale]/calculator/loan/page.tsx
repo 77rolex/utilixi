@@ -10,11 +10,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/mortgage', label: 'Mortgage Calculator' }],
-  ru: [{ href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }],
-  uk: [{ href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }],
-  fr: [{ href: '/calculator/mortgage', label: 'Calculatrice de prêt immobilier' }],
-  lt: [{ href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }],
+  en: [{ href: '/calculator/mortgage', label: 'Mortgage Calculator' }, { href: '/calculator/deposit', label: 'Deposit Calculator' }],
+  ru: [{ href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }, { href: '/calculator/deposit', label: 'Калькулятор депозита' }],
+  uk: [{ href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }, { href: '/calculator/deposit', label: 'Калькулятор депозиту' }],
+  fr: [{ href: '/calculator/mortgage', label: 'Calculatrice de prêt immobilier' }, { href: '/calculator/deposit', label: 'Calculatrice de dépôt' }],
+  lt: [{ href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

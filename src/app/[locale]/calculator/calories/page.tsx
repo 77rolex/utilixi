@@ -10,11 +10,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/bmi', label: 'BMI Calculator' }],
-  ru: [{ href: '/calculator/bmi', label: 'Калькулятор ИМТ' }],
-  uk: [{ href: '/calculator/bmi', label: 'Калькулятор ІМТ' }],
-  fr: [{ href: '/calculator/bmi', label: 'Calculatrice IMC' }],
-  lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }],
+  en: [{ href: '/calculator/bmi', label: 'BMI Calculator' }, { href: '/calculator/heart-rate', label: 'Heart Rate Zones' }],
+  ru: [{ href: '/calculator/bmi', label: 'Калькулятор ИМТ' }, { href: '/calculator/heart-rate', label: 'Пульсовые зоны' }],
+  uk: [{ href: '/calculator/bmi', label: 'Калькулятор ІМТ' }, { href: '/calculator/heart-rate', label: 'Пульсові зони' }],
+  fr: [{ href: '/calculator/bmi', label: 'Calculatrice IMC' }, { href: '/calculator/heart-rate', label: 'Zones de FC' }],
+  lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

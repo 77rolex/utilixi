@@ -188,6 +188,41 @@ const RAW_TOOLS: RawTool[] = [
     titles: { en: 'Tip Calculator', ru: 'Калькулятор чаевых', uk: 'Калькулятор чайових', fr: 'Calculatrice de pourboire', lt: 'Arbatpinigių skaičiuotuvas' },
     descs: { en: 'Calculate tip and split the bill', ru: 'Рассчитайте чаевые и разделите счёт', uk: 'Розрахуйте чайові та розділіть рахунок', fr: 'Calculez le pourboire et partagez l\'addition', lt: 'Apskaičiuokite arbatpinigius ir padalinkite sąskaitą' },
   },
+  {
+    href: '/calculator/age',
+    icon: '🎂',
+    category: 'utility',
+    titles: { en: 'Age Calculator', ru: 'Калькулятор возраста', uk: 'Калькулятор віку', fr: 'Calculatrice d\'âge', lt: 'Amžiaus skaičiuotuvas' },
+    descs: { en: 'Calculate your exact age and next birthday', ru: 'Точный возраст и обратный отсчёт до дня рождения', uk: 'Точний вік і відлік до дня народження', fr: 'Calculez votre âge exact et le prochain anniversaire', lt: 'Apskaičiuokite tikslų amžių ir artimiausią gimtadienį' },
+  },
+  {
+    href: '/calculator/date-diff',
+    icon: '📅',
+    category: 'utility',
+    titles: { en: 'Date Difference', ru: 'Разница дат', uk: 'Різниця дат', fr: 'Différence de dates', lt: 'Datų skirtumas' },
+    descs: { en: 'Days, weeks & months between two dates', ru: 'Дни, недели и месяцы между двумя датами', uk: 'Дні, тижні та місяці між двома датами', fr: 'Jours, semaines et mois entre deux dates', lt: 'Dienos, savaitės ir mėnesiai tarp dviejų datų' },
+  },
+  {
+    href: '/converter/color',
+    icon: '🎨',
+    category: 'measure',
+    titles: { en: 'Color Converter', ru: 'Конвертер цветов', uk: 'Конвертер кольорів', fr: 'Convertisseur de couleurs', lt: 'Spalvų keitiklis' },
+    descs: { en: 'Convert HEX, RGB and HSL colors instantly', ru: 'Конвертируйте HEX, RGB и HSL мгновенно', uk: 'Конвертуйте HEX, RGB та HSL миттєво', fr: 'Convertissez HEX, RVB et TSL instantanément', lt: 'Akimirksniu konvertuokite HEX, RGB ir HSL spalvas' },
+  },
+  {
+    href: '/converter/clothing-size',
+    icon: '👕',
+    category: 'measure',
+    titles: { en: 'Clothing Size Converter', ru: 'Конвертер размеров одежды', uk: 'Конвертер розмірів одягу', fr: 'Convertisseur de tailles', lt: 'Drabužių dydžių keitiklis' },
+    descs: { en: 'EU, US, UK, IT sizes for men & women', ru: 'EU, US, UK, IT размеры для мужчин и женщин', uk: 'EU, US, UK, IT розміри для чоловіків і жінок', fr: 'Tailles EU, US, UK, IT hommes et femmes', lt: 'EU, US, UK, IT dydžiai vyrams ir moterims' },
+  },
+  {
+    href: '/tools/countdown',
+    icon: '⏳',
+    category: 'utility',
+    titles: { en: 'Countdown Timer', ru: 'Таймер обратного отсчёта', uk: 'Таймер зворотного відліку', fr: 'Compte à rebours', lt: 'Atgalinio skaičiavimo laikmatis' },
+    descs: { en: 'Count down to any date or event', ru: 'Обратный отсчёт до любой даты или события', uk: 'Зворотний відлік до будь-якої дати або події', fr: 'Décomptez jusqu\'à n\'importe quelle date', lt: 'Skaičiuokite atgal iki bet kokios datos ar renginio' },
+  },
 ];
 
 const PAGE_TITLE: Record<string, string> = {

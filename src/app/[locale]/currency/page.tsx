@@ -4,7 +4,16 @@ import CurrencyConverter from './CurrencyConverter';
 import PageLayout from '@/components/layout/PageLayout';
 import AdSidebar from '@/components/ui/AdSidebar';
 import AdInline from '@/components/ui/AdInline';
+import RelatedTools from '@/components/ui/RelatedTools';
 import styles from './page.module.scss';
+
+const RELATED: Record<string, { href: string; label: string }[]> = {
+  en: [{ href: '/crypto', label: 'Crypto Rates' }, { href: '/crypto/converter', label: 'Crypto Converter' }],
+  ru: [{ href: '/crypto', label: 'Курс криптовалют' }, { href: '/crypto/converter', label: 'Конвертер криптовалют' }],
+  uk: [{ href: '/crypto', label: 'Курс криптовалют' }, { href: '/crypto/converter', label: 'Конвертер криптовалют' }],
+  fr: [{ href: '/crypto', label: 'Cours des cryptos' }, { href: '/crypto/converter', label: 'Convertisseur crypto' }],
+  lt: [{ href: '/crypto', label: 'Kriptovaliutų kursai' }, { href: '/crypto/converter', label: 'Kriptovaliutų keitiklis' }],
+};
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -215,6 +224,7 @@ export default async function CurrencyPage({ params }: Props) {
   const { locale } = await params;
   const meta = META[locale] || META.en;
   const content = CONTENT[locale] || CONTENT.en;
+  const related = RELATED[locale] || RELATED.en;
   const { rates, updatedAt } = await getRates();
 
   const jsonLd = {
@@ -242,6 +252,7 @@ export default async function CurrencyPage({ params }: Props) {
           <p className={styles.page__description}>{content.description}</p>
 
           <AdInline locale={locale} />
+          <RelatedTools locale={locale} tools={related} />
 
           <section className={styles.faq}>
             <h2 className={styles.faq__title}>{content.faqTitle}</h2>

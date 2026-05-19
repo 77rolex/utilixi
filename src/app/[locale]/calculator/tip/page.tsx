@@ -10,11 +10,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/vat', label: 'VAT Calculator' }, { href: '/calculator/roi', label: 'ROI Calculator' }],
-  ru: [{ href: '/calculator/vat', label: 'Калькулятор НДС' }, { href: '/calculator/roi', label: 'Калькулятор ROI' }],
-  uk: [{ href: '/calculator/vat', label: 'Калькулятор ПДВ' }, { href: '/calculator/roi', label: 'Калькулятор ROI' }],
-  fr: [{ href: '/calculator/vat', label: 'Calculatrice TVA' }, { href: '/calculator/roi', label: 'Calculatrice ROI' }],
-  lt: [{ href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/roi', label: 'RI skaičiuotuvas' }],
+  en: [{ href: '/calculator/vat', label: 'VAT Calculator' }, { href: '/currency', label: 'Currency Converter' }],
+  ru: [{ href: '/calculator/vat', label: 'Калькулятор НДС' }, { href: '/currency', label: 'Конвертер валют' }],
+  uk: [{ href: '/calculator/vat', label: 'Калькулятор ПДВ' }, { href: '/currency', label: 'Конвертер валют' }],
+  fr: [{ href: '/calculator/vat', label: 'Calculatrice TVA' }, { href: '/currency', label: 'Convertisseur de devises' }],
+  lt: [{ href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/currency', label: 'Valiutų keitiklis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {
