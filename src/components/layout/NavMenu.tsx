@@ -27,6 +27,13 @@ const NAV_CATEGORIES: NavCategory[] = [
     ],
   },
   {
+    key: 'utilities',
+    labelsByLocale: { en: 'Utilities', ru: 'Утилиты', uk: 'Утиліти', fr: 'Utilitaires', lt: 'Priemonės' },
+    tools: [
+      { href: '/weather', labels: { en: 'Weather Forecast', ru: 'Прогноз погоды', uk: 'Прогноз погоди', fr: 'Météo', lt: 'Oro prognozė' } },
+    ],
+  },
+  {
     key: 'health',
     labelsByLocale: { en: 'Health', ru: 'Здоровье', uk: 'Здоров\'я', fr: 'Santé', lt: 'Sveikata' },
     tools: [

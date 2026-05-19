@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import styles from './ToolGrid.module.scss';
 
-export type ToolCategory = 'finance' | 'crypto' | 'health';
+export type ToolCategory = 'finance' | 'crypto' | 'health' | 'utility';
 
 export type ToolItem = {
   href: string;
@@ -17,14 +17,14 @@ export type ToolItem = {
 type FilterCategory = 'all' | ToolCategory;
 
 const CATEGORY_LABELS: Record<string, Record<FilterCategory, string>> = {
-  en: { all: 'All', finance: 'Finance', crypto: 'Crypto', health: 'Health' },
-  ru: { all: 'Все', finance: 'Финансы', crypto: 'Криптовалюта', health: 'Здоровье' },
-  uk: { all: 'Усі', finance: 'Фінанси', crypto: 'Криптовалюта', health: 'Здоров\'я' },
-  fr: { all: 'Tout', finance: 'Finance', crypto: 'Crypto', health: 'Santé' },
-  lt: { all: 'Visi', finance: 'Finansai', crypto: 'Kripto', health: 'Sveikata' },
+  en: { all: 'All', finance: 'Finance', crypto: 'Crypto', health: 'Health', utility: 'Utilities' },
+  ru: { all: 'Все', finance: 'Финансы', crypto: 'Криптовалюта', health: 'Здоровье', utility: 'Утилиты' },
+  uk: { all: 'Усі', finance: 'Фінанси', crypto: 'Криптовалюта', health: 'Здоров\'я', utility: 'Утиліти' },
+  fr: { all: 'Tout', finance: 'Finance', crypto: 'Crypto', health: 'Santé', utility: 'Utilitaires' },
+  lt: { all: 'Visi', finance: 'Finansai', crypto: 'Kripto', health: 'Sveikata', utility: 'Priemonės' },
 };
 
-const FILTER_ORDER: FilterCategory[] = ['all', 'finance', 'crypto', 'health'];
+const FILTER_ORDER: FilterCategory[] = ['all', 'finance', 'crypto', 'health', 'utility'];
 
 export default function ToolGrid({ locale, tools }: { locale: string; tools: ToolItem[] }) {
   const [active, setActive] = useState<FilterCategory>('all');

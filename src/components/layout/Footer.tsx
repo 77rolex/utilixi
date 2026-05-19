@@ -136,6 +136,13 @@ const TOOLS: Record<string, Record<LocaleKey, string>> = {
     fr: 'Convertisseur crypto',
     lt: 'Kriptovaliutų keitiklis',
   },
+  '/weather': {
+    en: 'Weather Forecast',
+    ru: 'Прогноз погоды',
+    uk: 'Прогноз погоди',
+    fr: 'Météo',
+    lt: 'Oro prognozė',
+  },
 };
 
 export default function Footer({ locale }: Props) {
