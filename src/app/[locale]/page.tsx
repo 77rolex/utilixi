@@ -223,6 +223,41 @@ const RAW_TOOLS: RawTool[] = [
     titles: { en: 'Countdown Timer', ru: 'Таймер обратного отсчёта', uk: 'Таймер зворотного відліку', fr: 'Compte à rebours', lt: 'Atgalinio skaičiavimo laikmatis' },
     descs: { en: 'Count down to any date or event', ru: 'Обратный отсчёт до любой даты или события', uk: 'Зворотний відлік до будь-якої дати або події', fr: 'Décomptez jusqu\'à n\'importe quelle date', lt: 'Skaičiuokite atgal iki bet kokios datos ar renginio' },
   },
+  {
+    href: '/calculator/traffic-fine',
+    icon: '🚗',
+    category: 'legal',
+    titles: { en: 'Traffic Fine Calculator', ru: 'Штрафы ПДД', uk: 'Штрафи ПДР', fr: 'Amendes routières', lt: 'Eismo baudos' },
+    descs: { en: 'Traffic fines by country & violation type', ru: 'Штрафы ПДД по стране и виду нарушения', uk: 'Штрафи ПДР за країною та видом порушення', fr: 'Amendes par pays et type d\'infraction', lt: 'Baudos pagal šalį ir pažeidimo tipą' },
+  },
+  {
+    href: '/calculator/flight-delay',
+    icon: '✈️',
+    category: 'legal',
+    titles: { en: 'Flight Delay Compensation', ru: 'Компенсация за задержку рейса', uk: 'Компенсація за затримку рейсу', fr: 'Indemnisation retard de vol', lt: 'Kompensacija už skrydžio vėlavimą' },
+    descs: { en: 'Check EU261 compensation amount', ru: 'Проверьте компенсацию по EU261', uk: 'Перевірте компенсацію за EU261', fr: 'Vérifiez l\'indemnisation EU261', lt: 'Patikrinkite EU261 kompensaciją' },
+  },
+  {
+    href: '/calculator/limitation',
+    icon: '⏱️',
+    category: 'legal',
+    titles: { en: 'Statute of Limitations', ru: 'Срок исковой давности', uk: 'Строк позовної давності', fr: 'Délai de prescription', lt: 'Ieškinio senaties terminas' },
+    descs: { en: 'Limitation periods by country & claim type', ru: 'Сроки исковой давности по стране и типу иска', uk: 'Строки позовної давності за країною та типом', fr: 'Délais de prescription par pays et type', lt: 'Senaties terminai pagal šalį ir ieškinio tipą' },
+  },
+  {
+    href: '/calculator/renovation',
+    icon: '🔨',
+    category: 'realestate',
+    titles: { en: 'Renovation Cost Calculator', ru: 'Калькулятор ремонта', uk: 'Калькулятор ремонту', fr: 'Coût de rénovation', lt: 'Remonto kainos skaičiuotuvas' },
+    descs: { en: 'Estimate renovation costs per m² by country', ru: 'Стоимость ремонта за м² по стране', uk: 'Вартість ремонту за м² за країною', fr: 'Estimez le coût de rénovation au m²', lt: 'Įvertinkite remonto kainą m² pagal šalį' },
+  },
+  {
+    href: '/calculator/property-tax',
+    icon: '🏛️',
+    category: 'realestate',
+    titles: { en: 'Property Tax Calculator', ru: 'Налог на недвижимость', uk: 'Податок на нерухомість', fr: 'Taxe foncière', lt: 'Nekilnojamojo turto mokestis' },
+    descs: { en: 'Annual property tax by country & type', ru: 'Годовой налог на недвижимость по стране', uk: 'Річний податок на нерухомість за країною', fr: 'Taxe foncière annuelle par pays et type', lt: 'Metinis turto mokestis pagal šalį ir tipą' },
+  },
 ];
 
 const PAGE_TITLE: Record<string, string> = {

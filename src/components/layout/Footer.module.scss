@@ -17,7 +17,7 @@
     gap: 0;
 
     @media (min-width: 768px) {
-      flex-direction: row-reverse; // pages on right, tools fill the left
+      flex-direction: row-reverse;
       align-items: flex-start;
       gap: var(--spacing-2xl);
     }
@@ -43,7 +43,6 @@
     margin-bottom: var(--spacing-sm);
   }
 
-  // Pages list: horizontal row on mobile, vertical on desktop
   &__pages-list {
     list-style: none;
     display: flex;
@@ -56,7 +55,7 @@
     }
   }
 
-  // Divider between pages and tools — mobile/tablet only
+  // Divider between pages and tools — mobile only
   &__pages-divider {
     height: 1px;
     background-color: var(--color-border);
@@ -72,31 +71,74 @@
     flex: 1;
   }
 
-  &__tools-grid {
-    column-count: 2;
-    column-gap: var(--spacing-xl);
+  // Categories grid
+  &__categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 var(--spacing-lg);
 
-    @media (min-width: 768px) {
-      column-gap: var(--spacing-2xl);
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    a {
-      display: block;
-      break-inside: avoid;
-      line-height: 1.3;
-      margin-bottom: 10px;
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(4, 1fr);
     }
+  }
+
+  // Each category as a <details> element
+  &__cat {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &__cat-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    padding: var(--spacing-sm) 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    user-select: none;
+    min-height: 40px;
+    transition: color var(--transition-base);
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  &__cat-arrow {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+    transition: transform var(--transition-base);
+
+    details[open] & {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__cat-list {
+    list-style: none;
+    padding: 0 0 var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
   }
 
   &__link {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     text-decoration: none;
+    line-height: 1.4;
     transition: color var(--transition-base);
-
-    @media (min-width: 768px) {
-      white-space: nowrap;
-    }
 
     &:hover {
       color: var(--color-primary);

@@ -1,0 +1,148 @@
+.lim-calc {
+  background: var(--color-bg-widget);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-widget);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+
+  &__form {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    max-width: 640px;
+  }
+
+  &__field {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  &__label {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  &__select {
+    width: 100%;
+    padding: 10px var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background: var(--color-bg);
+    min-height: 44px;
+    cursor: pointer;
+    transition: border-color var(--transition-base);
+
+    &:focus { outline: none; border-color: var(--color-primary); }
+    &:disabled { opacity: 0.5; cursor: not-allowed; }
+  }
+
+  &__error {
+    font-size: var(--font-size-sm);
+    color: #dc2626;
+    margin: 0;
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  &__btn {
+    padding: 10px var(--spacing-xl);
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    cursor: pointer;
+    min-height: 44px;
+    transition: background var(--transition-base);
+
+    &:hover { background: var(--color-primary-hover); }
+
+    &--reset {
+      padding: 10px var(--spacing-xl);
+      background: transparent;
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-base);
+      cursor: pointer;
+      min-height: 44px;
+      transition: border-color var(--transition-base), color var(--transition-base);
+
+      &:hover { border-color: var(--color-primary); color: var(--color-primary); }
+    }
+  }
+
+  &__result {
+    max-width: 640px;
+    background: var(--color-primary-light);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  &__period {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  &__period-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+  }
+
+  &__period-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  &__basis {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  &__basis-label {
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  &__notes {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__notes-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  &__notes-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+}

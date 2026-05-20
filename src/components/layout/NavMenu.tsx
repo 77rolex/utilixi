@@ -36,6 +36,17 @@ const NAV_CATEGORIES: NavCategory[] = [
     labelsByLocale: { en: 'Legal', ru: 'Юридические', uk: 'Юридичні', fr: 'Juridique', lt: 'Teisiniai' },
     tools: [
       { href: '/calculator/alimony', labels: { en: 'Alimony Calculator', ru: 'Калькулятор алиментов', uk: 'Калькулятор аліментів', fr: 'Calculatrice de pension alimentaire', lt: 'Alimentų skaičiuotuvas' } },
+      { href: '/calculator/traffic-fine', labels: { en: 'Traffic Fine Calculator', ru: 'Штрафы ПДД', uk: 'Штрафи ПДР', fr: 'Amendes routières', lt: 'Eismo baudos' } },
+      { href: '/calculator/flight-delay', labels: { en: 'Flight Delay Compensation', ru: 'Компенсация за задержку рейса', uk: 'Компенсація за затримку рейсу', fr: 'Indemnisation retard de vol', lt: 'Kompensacija už skrydžio vėlavimą' } },
+      { href: '/calculator/limitation', labels: { en: 'Statute of Limitations', ru: 'Срок исковой давности', uk: 'Строк позовної давності', fr: 'Délai de prescription', lt: 'Ieškinio senaties terminas' } },
+    ],
+  },
+  {
+    key: 'realestate',
+    labelsByLocale: { en: 'Real Estate', ru: 'Недвижимость', uk: 'Нерухомість', fr: 'Immobilier', lt: 'Nekilnojamasis turtas' },
+    tools: [
+      { href: '/calculator/renovation', labels: { en: 'Renovation Cost Calculator', ru: 'Калькулятор ремонта', uk: 'Калькулятор ремонту', fr: 'Coût de rénovation', lt: 'Remonto kainos skaičiuotuvas' } },
+      { href: '/calculator/property-tax', labels: { en: 'Property Tax Calculator', ru: 'Налог на недвижимость', uk: 'Податок на нерухомість', fr: 'Taxe foncière', lt: 'Nekilnojamojo turto mokestis' } },
     ],
   },
   {
@@ -84,22 +95,25 @@ export default function NavMenu({ locale }: { locale: string }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [desktopOpen, setDesktopOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>(null);
+  const [activeCat, setActiveCat] = useState<string | null>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Desktop: keep open while hovering trigger OR dropdown
   const openDesktop = () => {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
     setDesktopOpen(true);
   };
   const scheduleClose = () => {
-    closeTimerRef.current = setTimeout(() => setDesktopOpen(false), 150);
+    closeTimerRef.current = setTimeout(() => {
+      setDesktopOpen(false);
+      setActiveCat(null);
+    }, 150);
   };
   const closeDesktop = () => {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
     setDesktopOpen(false);
+    setActiveCat(null);
   };
 
-  // Prevent body scroll when sidebar is open
   useEffect(() => {
     document.body.style.overflow = sidebarOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -116,10 +130,12 @@ export default function NavMenu({ locale }: { locale: string }) {
 
   const triggerLabel = TRIGGER_LABEL[locale] || TRIGGER_LABEL.en;
   const sidebarHomeLabel = SIDEBAR_HOME_LABEL[locale] || SIDEBAR_HOME_LABEL.en;
+  const effectiveCat = activeCat ?? NAV_CATEGORIES[0].key;
+  const activeCatData = NAV_CATEGORIES.find(c => c.key === effectiveCat) ?? NAV_CATEGORIES[0];
 
   return (
     <>
-      {/* Desktop mega menu — hidden on mobile */}
+      {/* Desktop two-panel menu — hidden on mobile */}
       <nav
         className={styles.nav}
         onMouseEnter={openDesktop}
@@ -145,27 +161,34 @@ export default function NavMenu({ locale }: { locale: string }) {
           onMouseLeave={scheduleClose}
         >
           <div className={styles['nav__dropdown-inner']}>
-            {NAV_CATEGORIES.map((cat) => (
-              <div key={cat.key} className={styles.nav__category}>
-                <p className={styles['nav__category-title']}>
+            {/* Top row: category tabs */}
+            <ul className={styles['nav__cat-list']}>
+              {NAV_CATEGORIES.map((cat) => (
+                <li
+                  key={cat.key}
+                  className={`${styles['nav__cat-item']}${effectiveCat === cat.key ? ` ${styles['nav__cat-item--active']}` : ''}`}
+                  onMouseEnter={() => setActiveCat(cat.key)}
+                  role="none"
+                >
                   {cat.labelsByLocale[locale] || cat.labelsByLocale.en}
-                </p>
-                <ul className={styles['nav__tool-list']}>
-                  {cat.tools.map((tool) => (
-                    <li key={tool.href}>
-                      <Link
-                        href={`/${locale}${tool.href}`}
-                        className={styles['nav__tool-link']}
-                        role="menuitem"
-                        onClick={closeDesktop}
-                      >
-                        {tool.labels[locale] || tool.labels.en}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+                </li>
+              ))}
+            </ul>
+
+            {/* Bottom panel: tools for active/default category */}
+            <div className={styles['nav__tools-panel']}>
+              {activeCatData.tools.map((tool) => (
+                <Link
+                  key={tool.href}
+                  href={`/${locale}${tool.href}`}
+                  className={styles['nav__tool-link']}
+                  role="menuitem"
+                  onClick={closeDesktop}
+                >
+                  {tool.labels[locale] || tool.labels.en}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </nav>
