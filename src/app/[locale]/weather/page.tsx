@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildAlternates } from '@/lib/seo';
 import { routing } from '@/i18n/routing';
 import WeatherWidget from './WeatherWidget';
 import PageLayout from '@/components/layout/PageLayout';
@@ -201,15 +202,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const meta = META[locale] || META.en;
 
-  const alternates: Record<string, string> = {};
-  routing.locales.forEach((l) => {
-    alternates[l] = `https://utilixi.com/${l}/weather`;
-  });
-
   return {
     title: meta.title,
     description: meta.description,
-    alternates: { languages: alternates },
+    alternates: buildAlternates(locale, '/weather'),
   };
 }
 
@@ -228,7 +224,7 @@ export default async function WeatherPage({ params }: Props) {
     '@type': 'WebApplication',
     name: meta.title,
     description: meta.description,
-    url: `https://utilixi.com/${locale}/weather`,
+    url: `https://www.utilixi.com/${locale}/weather`,
     applicationCategory: 'WeatherApplication',
     operatingSystem: 'Any',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

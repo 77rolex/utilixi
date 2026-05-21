@@ -30,6 +30,7 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.utilixi.com'),
   title: {
     default: 'Utilixi — Free Online Tools',
     template: '%s | Utilixi',

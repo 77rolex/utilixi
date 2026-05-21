@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildAlternates } from '@/lib/seo';
 import { routing } from '@/i18n/routing';
 import AlimonyCalculator from './AlimonyCalculator';
 import PageLayout from '@/components/layout/PageLayout';
@@ -86,9 +87,7 @@ const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const meta = META[locale] || META.en;
-  const alternates: Record<string, string> = {};
-  routing.locales.forEach((l) => { alternates[l] = `https://utilixi.com/${l}/calculator/alimony`; });
-  return { title: meta.title, description: meta.description, alternates: { languages: alternates } };
+  return { title: meta.title, description: meta.description, alternates: buildAlternates(locale, '/calculator/alimony') };
 }
 
 export function generateStaticParams() {
@@ -106,7 +105,7 @@ export default async function AlimonyPage({ params }: Props) {
     '@type': 'WebApplication',
     name: meta.title,
     description: meta.description,
-    url: `https://utilixi.com/${locale}/calculator/alimony`,
+    url: `https://www.utilixi.com/${locale}/calculator/alimony`,
     applicationCategory: 'FinanceApplication',
     operatingSystem: 'Any',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

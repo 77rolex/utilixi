@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildAlternates } from '@/lib/seo';
 import Link from 'next/link';
 import { routing } from '@/i18n/routing';
 import PageLayout from '@/components/layout/PageLayout';
@@ -140,7 +141,7 @@ const CONTENT: Record<string, LocaleContent> = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const c = CONTENT[locale] || CONTENT.en;
-  return { title: c.title, description: c.description };
+  return { title: c.title, description: c.description, alternates: buildAlternates(locale, '/about') };
 }
 
 export function generateStaticParams() {

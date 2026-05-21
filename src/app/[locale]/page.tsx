@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildAlternates } from '@/lib/seo';
 import AdPlaceholder from '@/components/ui/AdPlaceholder';
 import ToolGrid, { type ToolItem } from '@/components/home/ToolGrid';
 import styles from './page.module.scss';
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
+    alternates: buildAlternates(locale, ''),
   };
 }
 

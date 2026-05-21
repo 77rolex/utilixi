@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildAlternates } from '@/lib/seo';
 import { routing } from '@/i18n/routing';
 import RoiCalculator from './RoiCalculator';
 import PageLayout from '@/components/layout/PageLayout';
@@ -86,9 +87,7 @@ const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const meta = META[locale] || META.en;
-  const alternates: Record<string, string> = {};
-  routing.locales.forEach((l) => { alternates[l] = `https://utilixi.com/${l}/calculator/roi`; });
-  return { title: meta.title, description: meta.description, alternates: { languages: alternates } };
+  return { title: meta.title, description: meta.description, alternates: buildAlternates(locale, '/calculator/roi') };
 }
 
 export function generateStaticParams() {
@@ -104,7 +103,7 @@ export default async function RoiPage({ params }: Props) {
   const jsonLd = {
     '@context': 'https://schema.org', '@type': 'WebApplication',
     name: meta.title, description: meta.description,
-    url: `https://utilixi.com/${locale}/calculator/roi`,
+    url: `https://www.utilixi.com/${locale}/calculator/roi`,
     applicationCategory: 'FinanceApplication', operatingSystem: 'Any',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };

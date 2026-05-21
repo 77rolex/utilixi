@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildAlternates } from '@/lib/seo';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { routing } from '@/i18n/routing';
@@ -125,15 +126,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const meta = META[locale] || META.en;
 
-  const alternates: Record<string, string> = {};
-  routing.locales.forEach(l => {
-    alternates[l] = `https://utilixi.com/${l}/crypto/converter`;
-  });
-
   return {
     title: meta.title,
     description: meta.description,
-    alternates: { languages: alternates },
+    alternates: buildAlternates(locale, '/crypto/converter'),
   };
 }
 
@@ -154,7 +150,7 @@ export default async function CryptoConverterPage({ params }: Props) {
     '@type': 'WebApplication',
     name: meta.title,
     description: meta.description,
-    url: `https://utilixi.com/${locale}/crypto/converter`,
+    url: `https://www.utilixi.com/${locale}/crypto/converter`,
     applicationCategory: 'FinanceApplication',
     operatingSystem: 'Any',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
