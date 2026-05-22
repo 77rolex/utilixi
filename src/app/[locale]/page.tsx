@@ -260,6 +260,41 @@ const RAW_TOOLS: RawTool[] = [
     titles: { en: 'Property Tax Calculator', ru: 'Налог на недвижимость', uk: 'Податок на нерухомість', fr: 'Taxe foncière', lt: 'Nekilnojamojo turto mokestis' },
     descs: { en: 'Annual property tax by country & type', ru: 'Годовой налог на недвижимость по стране', uk: 'Річний податок на нерухомість за країною', fr: 'Taxe foncière annuelle par pays et type', lt: 'Metinis turto mokestis pagal šalį ir tipą' },
   },
+  {
+    href: '/calculator/car-insurance',
+    icon: '🚘',
+    category: 'finance',
+    titles: { en: 'Car Insurance Calculator', ru: 'Калькулятор страховки авто', uk: 'Калькулятор страховки авто', fr: 'Calculatrice assurance auto', lt: 'Automobilio draudimo skaičiuotuvas' },
+    descs: { en: 'Estimate annual car insurance premium by country', ru: 'Оцените годовую страховку авто по стране', uk: 'Оцініть річну страховку авто за країною', fr: 'Estimez la prime d\'assurance auto par pays', lt: 'Įvertinkite metinę automobilio draudimo įmoką pagal šalį' },
+  },
+  {
+    href: '/calculator/life-insurance',
+    icon: '🛡️',
+    category: 'finance',
+    titles: { en: 'Life Insurance Calculator', ru: 'Калькулятор страховки жизни', uk: 'Калькулятор страховки життя', fr: 'Calculatrice assurance vie', lt: 'Gyvybės draudimo skaičiuotuvas' },
+    descs: { en: 'Estimate monthly life insurance premium', ru: 'Оцените ежемесячный взнос по страховке жизни', uk: 'Оцініть щомісячний внесок по страховці життя', fr: 'Estimez la prime mensuelle d\'assurance vie', lt: 'Įvertinkite mėnesio gyvybės draudimo įmoką' },
+  },
+  {
+    href: '/calculator/income-tax',
+    icon: '💼',
+    category: 'finance',
+    titles: { en: 'Income Tax Calculator', ru: 'Калькулятор подоходного налога', uk: 'Калькулятор прибуткового податку', fr: 'Calculatrice impôt sur le revenu', lt: 'Pajamų mokesčio skaičiuotuvas' },
+    descs: { en: 'Calculate income tax by country & tax brackets', ru: 'Рассчитайте подоходный налог по стране и ставкам', uk: 'Розрахуйте прибутковий податок за країною та ставками', fr: 'Calculez l\'impôt par pays et tranche', lt: 'Apskaičiuokite pajamų mokestį pagal šalį ir mokesčių grupes' },
+  },
+  {
+    href: '/calculator/crypto-tax',
+    icon: '🪙',
+    category: 'crypto',
+    titles: { en: 'Crypto Tax Calculator', ru: 'Налог на доход от крипты', uk: 'Податок на дохід від крипти', fr: 'Impôt sur les cryptos', lt: 'Kriptovaliutų mokesčių skaičiuotuvas' },
+    descs: { en: 'Capital gains tax on crypto for 8 countries', ru: 'Налог на прирост капитала от крипты для 8 стран', uk: 'Податок на приріст капіталу від крипти для 8 країн', fr: 'Impôt sur les plus-values crypto pour 8 pays', lt: 'Kapitalo prieaugio mokestis kriptovaliutoms 8 šalims' },
+  },
+  {
+    href: '/calculator/freelance-rate',
+    icon: '💻',
+    category: 'finance',
+    titles: { en: 'Freelance Rate Calculator', ru: 'Калькулятор ставки фрилансера', uk: 'Калькулятор ставки фрилансера', fr: 'Calculatrice de taux freelance', lt: 'Laisvai samdomų tarifų skaičiuotuvas' },
+    descs: { en: 'Find your minimum hourly freelance rate', ru: 'Найдите минимальную почасовую ставку фрилансера', uk: 'Знайдіть мінімальну погодинну ставку фрилансера', fr: 'Trouvez votre tarif horaire minimum freelance', lt: 'Raskite minimalų valandinį laisvai samdomų tarifą' },
+  },
 ];
 
 const PAGE_TITLE: Record<string, string> = {

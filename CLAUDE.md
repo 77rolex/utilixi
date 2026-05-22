@@ -517,11 +517,11 @@ GMAIL_APP_PASSWORD=
 
 | # | Инструмент | URL | Категория | CPC |
 |---|-----------|-----|-----------|-----|
-| 1 | Калькулятор страховки автомобиля | /calculator/car-insurance | finance | $1–4 |
-| 2 | Калькулятор страховки жизни | /calculator/life-insurance | finance | $2–5 |
-| 3 | Калькулятор подоходного налога | /calculator/income-tax | finance | $1–3 |
-| 4 | Калькулятор налога на доход от крипты | /calculator/crypto-tax | finance | $1–3 |
-| 5 | Калькулятор ставки фрилансера | /calculator/freelance-rate | finance | $0.5–2 |
+| 1 | Калькулятор страховки автомобиля | /calculator/car-insurance | finance | $1–4 | ✓ ГОТОВО |
+| 2 | Калькулятор страховки жизни | /calculator/life-insurance | finance | $2–5 | ✓ ГОТОВО |
+| 3 | Калькулятор подоходного налога | /calculator/income-tax | finance | $1–3 | ✓ ГОТОВО |
+| 4 | Калькулятор налога на доход от крипты | /calculator/crypto-tax | finance | $1–3 | ✓ ГОТОВО |
+| 5 | Калькулятор ставки фрилансера | /calculator/freelance-rate | finance | $0.5–2 | ✓ ГОТОВО |
 | 6 | Калькулятор маржи/наценки | /calculator/margin | finance | $0.5–2 |
 | 7 | Калькулятор GPA | /calculator/gpa | utility | $0.3–1 |
 | 8 | Конвертер систем оценок | /converter/grade-system | utility | $0.2–0.5 |
