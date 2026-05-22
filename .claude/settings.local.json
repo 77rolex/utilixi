@@ -17,7 +17,8 @@
       "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/heart-rate\")",
       "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/tip\")",
       "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/converter/units\")",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "Bash(echo ' *)"
     ]
   }
 }

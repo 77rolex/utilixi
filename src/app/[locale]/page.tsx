@@ -295,6 +295,41 @@ const RAW_TOOLS: RawTool[] = [
     titles: { en: 'Freelance Rate Calculator', ru: 'Калькулятор ставки фрилансера', uk: 'Калькулятор ставки фрилансера', fr: 'Calculatrice de taux freelance', lt: 'Laisvai samdomų tarifų skaičiuotuvas' },
     descs: { en: 'Find your minimum hourly freelance rate', ru: 'Найдите минимальную почасовую ставку фрилансера', uk: 'Знайдіть мінімальну погодинну ставку фрилансера', fr: 'Trouvez votre tarif horaire minimum freelance', lt: 'Raskite minimalų valandinį laisvai samdomų tarifą' },
   },
+  {
+    href: '/calculator/margin',
+    icon: '📊',
+    category: 'finance',
+    titles: { en: 'Margin & Markup Calculator', ru: 'Калькулятор маржи и наценки', uk: 'Калькулятор маржі і націнки', fr: 'Calculatrice marge et majoration', lt: 'Maržos ir antkainių skaičiuotuvas' },
+    descs: { en: 'Calculate profit margin and markup from cost', ru: 'Рассчитайте маржу и наценку по себестоимости', uk: 'Розрахуйте маржу і націнку за собівартістю', fr: 'Calculez marge et majoration depuis le coût', lt: 'Apskaičiuokite maržą ir antkainį iš savikainos' },
+  },
+  {
+    href: '/calculator/gpa',
+    icon: '🎓',
+    category: 'utility',
+    titles: { en: 'GPA Calculator', ru: 'Калькулятор GPA', uk: 'Калькулятор GPA', fr: 'Calculatrice GPA', lt: 'GPA skaičiuotuvas' },
+    descs: { en: 'Calculate your Grade Point Average on the 4.0 scale', ru: 'Рассчитайте средний балл по шкале 4.0', uk: 'Розрахуйте середній бал за шкалою 4.0', fr: 'Calculez votre GPA sur l\'échelle 4,0', lt: 'Apskaičiuokite GPA pagal 4.0 skalę' },
+  },
+  {
+    href: '/converter/grade-system',
+    icon: '📝',
+    category: 'utility',
+    titles: { en: 'Grade System Converter', ru: 'Конвертер систем оценок', uk: 'Конвертер систем оцінок', fr: 'Convertisseur de notes', lt: 'Pažymių sistemų konverteris' },
+    descs: { en: 'Convert grades between US GPA, UK, ECTS, Russian and German systems', ru: 'Переводите оценки между GPA, ECTS, российской и немецкой системами', uk: 'Переводьте оцінки між GPA, ECTS, українською та німецькою системами', fr: 'Convertissez entre GPA, ECTS, système russe et allemand', lt: 'Konvertuokite pažymius tarp GPA, ECTS, rusiškos ir vokiškos sistemų' },
+  },
+  {
+    href: '/calculator/biological-age',
+    icon: '🧬',
+    category: 'health',
+    titles: { en: 'Biological Age Calculator', ru: 'Калькулятор биологического возраста', uk: 'Калькулятор біологічного віку', fr: 'Calculatrice d\'âge biologique', lt: 'Biologinio amžiaus skaičiuotuvas' },
+    descs: { en: 'Find out how old your body really is based on lifestyle', ru: 'Узнайте реальный возраст вашего тела по образу жизни', uk: 'Дізнайтесь реальний вік тіла за способом життя', fr: 'Découvrez l\'âge réel de votre corps selon votre mode de vie', lt: 'Sužinokite tikrąjį kūno amžių pagal gyvenimo būdą' },
+  },
+  {
+    href: '/calculator/diabetes-risk',
+    icon: '🩺',
+    category: 'health',
+    titles: { en: 'Diabetes Risk Calculator', ru: 'Калькулятор риска диабета', uk: 'Калькулятор ризику діабету', fr: 'Risque de diabète', lt: 'Diabeto rizikos skaičiuotuvas' },
+    descs: { en: 'FINDRISC-based diabetes risk assessment in 2 minutes', ru: 'Оценка риска диабета по опроснику FINDRISC за 2 минуты', uk: 'Оцінка ризику діабету за опитувальником FINDRISC за 2 хвилини', fr: 'Évaluation du risque de diabète FINDRISC en 2 minutes', lt: 'FINDRISC diabeto rizikos įvertinimas per 2 minutes' },
+  },
 ];
 
 const PAGE_TITLE: Record<string, string> = {

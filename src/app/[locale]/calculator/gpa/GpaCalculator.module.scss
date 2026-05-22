@@ -1,0 +1,171 @@
+.gpa-widget {
+  background-color: var(--color-bg-widget);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-widget);
+  overflow: hidden;
+
+  &__form {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    @media (min-width: 640px) { padding: var(--spacing-xl); }
+  }
+
+  &__courses {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  &__course-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: var(--spacing-sm);
+    align-items: center;
+
+    @media (min-width: 640px) {
+      grid-template-columns: 2fr 1fr 1fr auto;
+    }
+  }
+
+  &__course-header {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: var(--spacing-sm);
+    @media (min-width: 640px) { grid-template-columns: 2fr 1fr 1fr auto; }
+  }
+
+  &__col-label {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  &__input,
+  &__select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
+    font-family: var(--font-family);
+    appearance: none;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-light);
+    }
+  }
+
+  &__input {
+    -moz-appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button { appearance: none; }
+  }
+
+  &__remove-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    font-size: 18px;
+    line-height: 1;
+    transition: color var(--transition-base), background-color var(--transition-base);
+    flex-shrink: 0;
+
+    &:hover { color: #e53e3e; background-color: #fff5f5; }
+  }
+
+  &__add-btn {
+    align-self: flex-start;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-primary);
+    background-color: transparent;
+    transition: all var(--transition-base);
+
+    &:hover { border-color: var(--color-primary); background-color: var(--color-primary-light); }
+  }
+
+  &__btn {
+    padding: var(--spacing-sm) var(--spacing-xl);
+    background-color: var(--color-primary);
+    color: #fff;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-base), transform var(--transition-base);
+    width: 100%;
+    @media (min-width: 640px) { width: auto; align-self: flex-start; min-width: 160px; }
+    &:hover { background-color: var(--color-primary-hover); }
+    &:active { transform: scale(0.98); }
+  }
+
+  &__results {
+    border-top: 1px solid var(--color-border);
+    padding: var(--spacing-lg);
+    background-color: var(--color-bg-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    @media (min-width: 640px) { padding: var(--spacing-xl); }
+  }
+
+  &__gpa-display {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+  }
+
+  &__gpa-value {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+
+  &__gpa-max {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-muted);
+  }
+
+  &__gpa-letter {
+    margin-left: auto;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  &__result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+  }
+
+  &__result-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  &__result-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  &__result-value {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+}
