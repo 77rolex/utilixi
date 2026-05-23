@@ -331,6 +331,41 @@ const RAW_TOOLS: RawTool[] = [
     titles: { en: 'Diabetes Risk Calculator', ru: 'Калькулятор риска диабета', uk: 'Калькулятор ризику діабету', fr: 'Risque de diabète', lt: 'Diabeto rizikos skaičiuotuvas' },
     descs: { en: 'FINDRISC-based diabetes risk assessment in 2 minutes', ru: 'Оценка риска диабета по опроснику FINDRISC за 2 минуты', uk: 'Оцінка ризику діабету за опитувальником FINDRISC за 2 хвилини', fr: 'Évaluation du risque de diabète FINDRISC en 2 minutes', lt: 'FINDRISC diabeto rizikos įvertinimas per 2 minutes' },
   },
+  {
+    href: '/calculator/stress-level',
+    icon: '🧘',
+    category: 'health',
+    titles: { en: 'Stress Level Calculator', ru: 'Калькулятор уровня стресса', uk: 'Калькулятор рівня стресу', fr: 'Calculatrice du niveau de stress', lt: 'Streso lygio skaičiuotuvas' },
+    descs: { en: 'PSS-10 perceived stress test — 10 questions', ru: 'Тест PSS-10 на воспринимаемый стресс — 10 вопросов', uk: 'Тест PSS-10 на сприйнятий стрес — 10 питань', fr: 'Test PSS-10 du stress perçu — 10 questions', lt: 'PSS-10 suvokiamo streso testas — 10 klausimų' },
+  },
+  {
+    href: '/tools/word-counter',
+    icon: '📝',
+    category: 'utility',
+    titles: { en: 'Word Counter', ru: 'Счётчик слов', uk: 'Лічильник слів', fr: 'Compteur de mots', lt: 'Žodžių skaičiuotuvas' },
+    descs: { en: 'Count words, characters, sentences & reading time', ru: 'Считайте слова, символы, предложения и время чтения', uk: 'Рахуйте слова, символи, речення та час читання', fr: 'Comptez mots, caractères, phrases et temps de lecture', lt: 'Skaičiuokite žodžius, simbolius, sakinius ir skaitymo laiką' },
+  },
+  {
+    href: '/calculator/discount',
+    icon: '🏷️',
+    category: 'finance',
+    titles: { en: 'Discount Calculator', ru: 'Калькулятор скидки', uk: 'Калькулятор знижки', fr: 'Calculatrice de remise', lt: 'Nuolaidos skaičiuotuvas' },
+    descs: { en: 'Calculate final price, savings, and discount %', ru: 'Рассчитайте финальную цену, экономию и % скидки', uk: 'Розрахуйте фінальну ціну, економію та % знижки', fr: 'Calculez le prix final, les économies et le % de remise', lt: 'Apskaičiuokite galutinę kainą, santaupas ir nuolaidos %' },
+  },
+  {
+    href: '/calculator/sleep',
+    icon: '😴',
+    category: 'health',
+    titles: { en: 'Sleep Calculator', ru: 'Калькулятор сна', uk: 'Калькулятор сну', fr: 'Calculatrice du sommeil', lt: 'Miego skaičiuotuvas' },
+    descs: { en: 'Best bedtimes & wake-up times based on 90-min sleep cycles', ru: 'Лучшее время сна по 90-минутным циклам сна', uk: 'Найкращий час сну за 90-хвилинними циклами', fr: 'Meilleurs horaires selon les cycles de 90 minutes', lt: 'Geriausias miego laikas pagal 90 min. ciklus' },
+  },
+  {
+    href: '/calculator/percentage',
+    icon: '%',
+    category: 'utility',
+    titles: { en: 'Percentage Calculator', ru: 'Калькулятор процентов', uk: 'Калькулятор відсотків', fr: 'Calculatrice de pourcentage', lt: 'Procentų skaičiuotuvas' },
+    descs: { en: 'X% of Y, percent change, add/subtract percentages', ru: 'X% от Y, изменение в %, прибавить/вычесть проценты', uk: 'X% від Y, зміна у %, додати/відняти відсотки', fr: 'X% de Y, variation en %, ajouter/soustraire des %', lt: 'X% iš Y, procentinis pokytis, pridėti/atimti procentus' },
+  },
 ];
 
 const PAGE_TITLE: Record<string, string> = {

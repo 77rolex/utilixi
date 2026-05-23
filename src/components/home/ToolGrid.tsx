@@ -52,7 +52,7 @@ export default function ToolGrid({ locale, tools }: { locale: string; tools: Too
 
   const q = search.trim().toLowerCase();
   const filtered = tools.filter((t) => {
-    const matchesCategory = active === 'all' || t.category === active;
+    const matchesCategory = q !== '' || active === 'all' || t.category === active;
     const matchesSearch = q === '' || t.title.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q);
     return matchesCategory && matchesSearch;
   });

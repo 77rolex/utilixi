@@ -85,6 +85,8 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
       { href: '/calculator/income-tax', labels: { en: 'Income Tax Calculator', ru: 'Калькулятор подоходного налога', uk: 'Калькулятор прибуткового податку', fr: 'Impôt sur le revenu', lt: 'Pajamų mokestis' } },
       { href: '/calculator/freelance-rate', labels: { en: 'Freelance Rate Calculator', ru: 'Калькулятор ставки фрилансера', uk: 'Калькулятор ставки фрилансера', fr: 'Taux freelance', lt: 'Laisvai samdomų tarifas' } },
       { href: '/calculator/margin', labels: { en: 'Margin & Markup Calculator', ru: 'Калькулятор маржи и наценки', uk: 'Калькулятор маржі і націнки', fr: 'Marge et majoration', lt: 'Maržos skaičiuotuvas' } },
+      { href: '/calculator/discount', labels: { en: 'Discount Calculator', ru: 'Калькулятор скидки', uk: 'Калькулятор знижки', fr: 'Calculatrice de remise', lt: 'Nuolaidos skaičiuotuvas' } },
+      { href: '/calculator/percentage', labels: { en: 'Percentage Calculator', ru: 'Калькулятор процентов', uk: 'Калькулятор відсотків', fr: 'Calculatrice de pourcentage', lt: 'Procentų skaičiuotuvas' } },
     ],
   },
   {
@@ -107,6 +109,8 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
       { href: '/calculator/heart-rate', labels: { en: 'Heart Rate Zones', ru: 'Пульсовые зоны', uk: 'Пульсові зони', fr: 'Zones de FC', lt: 'Pulso zonos' } },
       { href: '/calculator/biological-age', labels: { en: 'Biological Age Calculator', ru: 'Калькулятор биологического возраста', uk: 'Калькулятор біологічного віку', fr: 'Âge biologique', lt: 'Biologinio amžiaus skaičiuotuvas' } },
       { href: '/calculator/diabetes-risk', labels: { en: 'Diabetes Risk Calculator', ru: 'Калькулятор риска диабета', uk: 'Калькулятор ризику діабету', fr: 'Risque de diabète', lt: 'Diabeto rizikos skaičiuotuvas' } },
+      { href: '/calculator/stress-level', labels: { en: 'Stress Level Calculator', ru: 'Калькулятор уровня стресса', uk: 'Калькулятор рівня стресу', fr: 'Calculatrice du stress', lt: 'Streso lygio skaičiuotuvas' } },
+      { href: '/calculator/sleep', labels: { en: 'Sleep Calculator', ru: 'Калькулятор сна', uk: 'Калькулятор сну', fr: 'Calculatrice du sommeil', lt: 'Miego skaičiuotuvas' } },
     ],
   },
   {
@@ -140,6 +144,7 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
       { href: '/tools/countdown', labels: { en: 'Countdown Timer', ru: 'Таймер обратного отсчёта', uk: 'Таймер зворотного відліку', fr: 'Compte à rebours', lt: 'Atgalinio skaičiavimo laikmatis' } },
       { href: '/calculator/gpa', labels: { en: 'GPA Calculator', ru: 'Калькулятор GPA', uk: 'Калькулятор GPA', fr: 'Calculatrice GPA', lt: 'GPA skaičiuotuvas' } },
       { href: '/converter/grade-system', labels: { en: 'Grade System Converter', ru: 'Конвертер систем оценок', uk: 'Конвертер систем оцінок', fr: 'Convertisseur de notes', lt: 'Pažymių konverteris' } },
+      { href: '/tools/word-counter', labels: { en: 'Word Counter', ru: 'Счётчик слов', uk: 'Лічильник слів', fr: 'Compteur de mots', lt: 'Žodžių skaičiuotuvas' } },
     ],
   },
   {
