@@ -21,7 +21,9 @@ export default function PageLayout({ children, sidebar, centered }: Props) {
         </main>
         {sidebar && (
           <aside className={styles['page-layout__sidebar']}>
-            {sidebar}
+            <div className={styles['page-layout__sidebar-sticky']}>
+              {sidebar}
+            </div>
           </aside>
         )}
       </div>

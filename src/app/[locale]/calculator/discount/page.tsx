@@ -118,6 +118,7 @@ export default async function DiscountPage({ params }: Props) {
       <AdInline locale={locale} />
       <div className={styles.page__content}>
         <p className={styles.page__description}>{c.description}</p>
+        <RelatedTools locale={locale} tools={related} />
         <div className={styles.faq}>
           <h2 className={styles.faq__title}>{c.faqTitle}</h2>
           <div className={styles.faq__list}>
@@ -130,7 +131,6 @@ export default async function DiscountPage({ params }: Props) {
           </div>
         </div>
       </div>
-      <RelatedTools locale={locale} tools={related} />
     </PageLayout>
   );
 }

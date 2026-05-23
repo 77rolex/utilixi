@@ -240,13 +240,11 @@ export default async function PregnancyPage({ params }: Props) {
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <PregnancyCalculator locale={locale} />
 
+        <AdInline locale={locale} />
         <div className={styles.page__content}>
           <p className={styles.page__description}>{content.description}</p>
 
-          <AdInline locale={locale} />
-
           <RelatedTools locale={locale} tools={related} />
-
           <section className={styles.faq}>
             <h2 className={styles.faq__title}>{content.faqTitle}</h2>
             <div className={styles.faq__list}>

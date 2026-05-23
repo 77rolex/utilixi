@@ -8,9 +8,8 @@
 
     @media (min-width: 1024px) {
       flex-direction: row;
-      align-items: flex-start;
+      align-items: stretch;
     }
-
   }
 
   &__content {
@@ -34,8 +33,14 @@
 
     @media (min-width: 1024px) {
       width: 300px;
+    }
+  }
+
+  &__sidebar-sticky {
+    @media (min-width: 1024px) {
       position: sticky;
       top: calc(60px + var(--spacing-lg));
+      padding-top: 82px;
     }
   }
 }

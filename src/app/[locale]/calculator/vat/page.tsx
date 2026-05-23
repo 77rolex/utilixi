@@ -114,9 +114,9 @@ export default async function VatPage({ params }: Props) {
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <VatCalculator locale={locale} />
+        <AdInline locale={locale} />
         <div className={styles.page__content}>
           <p className={styles.page__description}>{content.description}</p>
-          <AdInline locale={locale} />
           <RelatedTools locale={locale} tools={related} />
           <section className={styles.faq}>
             <h2 className={styles.faq__title}>{content.faqTitle}</h2>

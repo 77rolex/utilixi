@@ -49,6 +49,8 @@ const PAGES = [
   { path: '/calculator/discount', priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/calculator/sleep', priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/calculator/percentage', priority: 0.7, changeFrequency: 'monthly' as const },
+  { path: '/calculator/basic', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/calculator/engineering', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/about', priority: 0.4, changeFrequency: 'yearly' as const },
   { path: '/contact', priority: 0.4, changeFrequency: 'yearly' as const },
   { path: '/privacy-policy', priority: 0.3, changeFrequency: 'yearly' as const },

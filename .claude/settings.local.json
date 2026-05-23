@@ -18,7 +18,15 @@
       "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/tip\")",
       "Bash(mkdir -p \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/converter/units\")",
       "Bash(python3 *)",
-      "Bash(echo ' *)"
+      "Bash(echo ' *)",
+      "Bash(cat src/proxy.ts)",
+      "Bash(cat src/middleware.ts)",
+      "Bash(npx next *)",
+      "Bash(npm run *)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(curl -s http://localhost:3456/ru/calculator/discount)",
+      "Bash(node *)",
+      "Bash(curl -s http://localhost:3000/ru/calculator/discount)"
     ]
   }
 }

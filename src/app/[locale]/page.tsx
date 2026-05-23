@@ -366,6 +366,20 @@ const RAW_TOOLS: RawTool[] = [
     titles: { en: 'Percentage Calculator', ru: 'Калькулятор процентов', uk: 'Калькулятор відсотків', fr: 'Calculatrice de pourcentage', lt: 'Procentų skaičiuotuvas' },
     descs: { en: 'X% of Y, percent change, add/subtract percentages', ru: 'X% от Y, изменение в %, прибавить/вычесть проценты', uk: 'X% від Y, зміна у %, додати/відняти відсотки', fr: 'X% de Y, variation en %, ajouter/soustraire des %', lt: 'X% iš Y, procentinis pokytis, pridėti/atimti procentus' },
   },
+  {
+    href: '/calculator/basic',
+    icon: '🔢',
+    category: 'utility',
+    titles: { en: 'Basic Calculator', ru: 'Простой калькулятор', uk: 'Простий калькулятор', fr: 'Calculatrice basique', lt: 'Paprastas skaičiuotuvas' },
+    descs: { en: 'Simple online calculator — add, subtract, multiply, divide', ru: 'Простой онлайн-калькулятор — сложение, вычитание, умножение, деление', uk: 'Простий онлайн-калькулятор — додавання, віднімання, множення, ділення', fr: 'Calculatrice simple — addition, soustraction, multiplication, division', lt: 'Paprastas internetinis skaičiuotuvas — sudėtis, atimtis, dauginimas, dalinimas' },
+  },
+  {
+    href: '/calculator/engineering',
+    icon: '🔬',
+    category: 'utility',
+    titles: { en: 'Scientific Calculator', ru: 'Инженерный калькулятор', uk: 'Інженерний калькулятор', fr: 'Calculatrice scientifique', lt: 'Inžinerinis skaičiuotuvas' },
+    descs: { en: 'Scientific calculator with sin, cos, tan, log, powers and more', ru: 'Инженерный калькулятор с sin, cos, tan, log, степенями и другими функциями', uk: 'Інженерний калькулятор з sin, cos, tan, log, степенями та іншими функціями', fr: 'Calculatrice scientifique avec sin, cos, tan, log, puissances et plus', lt: 'Mokslinis skaičiuotuvas su sin, cos, tan, log, laipsniais ir daugiau' },
+  },
 ];
 
 const PAGE_TITLE: Record<string, string> = {
