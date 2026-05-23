@@ -43,7 +43,7 @@ const NO_RESULTS: Record<string, string> = {
 const FILTER_ORDER: FilterCategory[] = ['all', 'finance', 'crypto', 'health', 'utility', 'legal', 'measure', 'realestate'];
 
 export default function ToolGrid({ locale, tools }: { locale: string; tools: ToolItem[] }) {
-  const [active, setActive] = useState<FilterCategory>('all');
+  const [active, setActive] = useState<FilterCategory>('finance');
   const [search, setSearch] = useState('');
 
   const labels = CATEGORY_LABELS[locale] || CATEGORY_LABELS.en;
