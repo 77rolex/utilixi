@@ -29,10 +29,6 @@
 
   &--sidebar {
     min-height: 280px;
-
-    @media (min-width: 1024px) {
-      min-height: 580px;
-    }
   }
 
   &--banner {

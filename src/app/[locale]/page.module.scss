@@ -1,5 +1,4 @@
 .home {
-  position: relative;
   padding: var(--spacing-xl) 0 var(--spacing-2xl);
 
   &__title {
@@ -28,10 +27,11 @@
     @media (min-width: 1532px) {
       display: block;
       position: fixed;
-      top: calc(60px + var(--spacing-lg));
-      margin-top: 72px;
+      top: calc(60px + var(--spacing-lg) + 72px);
       left: calc(50vw + var(--container-max) / 2);
       width: clamp(200px, calc((100vw - var(--container-max)) / 2 - 16px), 300px);
+      border-radius: var(--radius-md);
+      overflow: hidden;
     }
   }
 }

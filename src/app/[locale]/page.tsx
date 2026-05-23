@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { buildAlternates } from '@/lib/seo';
 import AdPlaceholder from '@/components/ui/AdPlaceholder';
-import HomeAdSidebar from './HomeAdSidebar';
+import AdSidebar from '@/components/ui/AdSidebar';
 import ToolGrid, { type ToolItem } from '@/components/home/ToolGrid';
 import styles from './page.module.scss';
 
@@ -357,11 +357,13 @@ export default async function HomePage({ params }: Props) {
       <div className="container">
         <h1 className={styles.home__title}>{PAGE_TITLE[locale] || PAGE_TITLE.en}</h1>
         <ToolGrid locale={locale} tools={tools} />
-        <div id="home-banner-ad" className={styles.home__ad}>
+        <div className={styles.home__ad}>
           <AdPlaceholder locale={locale} size="banner" />
         </div>
       </div>
-      <HomeAdSidebar locale={locale} className={styles['home__side-ad']} />
+      <aside className={styles['home__side-ad']}>
+        <AdSidebar locale={locale} />
+      </aside>
     </div>
   );
 }
