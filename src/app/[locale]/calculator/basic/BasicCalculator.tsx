@@ -5,6 +5,10 @@ import styles from './BasicCalculator.module.scss';
 
 type Op = '+' | '−' | '×' | '÷';
 
+const ERROR_LABELS: Record<string, string> = {
+  en: 'Error', ru: 'Ошибка', uk: 'Помилка', fr: 'Erreur', lt: 'Klaida',
+};
+
 function fmt(n: number): string {
   if (!isFinite(n)) return 'Error';
   if (Number.isInteger(n) && Math.abs(n) < 1e13) return n.toString();
@@ -18,7 +22,8 @@ function compute(a: number, b: number, op: Op): number {
   return b !== 0 ? a / b : NaN;
 }
 
-export default function BasicCalculator({ locale: _locale }: { locale: string }) {
+export default function BasicCalculator({ locale }: { locale: string }) {
+  const errorLabel = ERROR_LABELS[locale] ?? 'Error';
   const [display, setDisplay] = useState('0');
   const [prev, setPrev] = useState<number | null>(null);
   const [op, setOp] = useState<Op | null>(null);
@@ -88,7 +93,7 @@ export default function BasicCalculator({ locale: _locale }: { locale: string })
     <div className={styles['basic-calc']}>
       <div className={styles['basic-calc__display']}>
         <span className={styles['basic-calc__op-line']}>{opLine}</span>
-        <span className={styles['basic-calc__number']}>{display}</span>
+        <span className={styles['basic-calc__number']}>{display === 'Error' ? errorLabel : display}</span>
       </div>
       <div className={styles['basic-calc__grid']}>
         <button type="button" className={`${styles.btn} ${styles['btn--fn']}`} onClick={clear}>C</button>

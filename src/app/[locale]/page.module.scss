@@ -21,15 +21,13 @@
   &__side-ad {
     display: none;
 
-    // Показываем когда в правом поле влезает минимум 200px:
-    // (vw - 1100px) / 2 - 32px >= 200px  →  vw >= 1564px
-    // (vw - 1100px) / 2 - 16px (правый отступ) >= 200px  →  vw >= 1532px
     @media (min-width: 1532px) {
       display: block;
       position: fixed;
       top: calc(60px + var(--spacing-lg) + 72px);
       left: calc(50vw + var(--container-max) / 2);
       width: clamp(200px, calc((100vw - var(--container-max)) / 2 - 16px), 300px);
+      max-height: 450px;
       border-radius: var(--radius-md);
       overflow: hidden;
     }

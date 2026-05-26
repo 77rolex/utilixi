@@ -113,6 +113,7 @@ const T: Record<LangKey, {
   placeholder: string;
   searchBtn: string;
   useLocation: string;
+  myLocation: string;
   today: string;
   feelsLike: string;
   humidity: string;
@@ -129,6 +130,7 @@ const T: Record<LangKey, {
     placeholder: 'City name...',
     searchBtn: 'Search',
     useLocation: 'Use my location',
+    myLocation: 'My Location',
     today: 'Today',
     feelsLike: 'Feels like',
     humidity: 'Humidity',
@@ -145,6 +147,7 @@ const T: Record<LangKey, {
     placeholder: 'Название города...',
     searchBtn: 'Найти',
     useLocation: 'Моё местоположение',
+    myLocation: 'Моё местоположение',
     today: 'Сегодня',
     feelsLike: 'Ощущается',
     humidity: 'Влажность',
@@ -161,6 +164,7 @@ const T: Record<LangKey, {
     placeholder: 'Назва міста...',
     searchBtn: 'Знайти',
     useLocation: 'Моє місцезнаходження',
+    myLocation: 'Моє місцезнаходження',
     today: 'Сьогодні',
     feelsLike: 'Відчувається',
     humidity: 'Вологість',
@@ -177,6 +181,7 @@ const T: Record<LangKey, {
     placeholder: 'Nom de la ville...',
     searchBtn: 'Rechercher',
     useLocation: 'Ma position',
+    myLocation: 'Ma position',
     today: "Aujourd'hui",
     feelsLike: 'Ressenti',
     humidity: 'Humidité',
@@ -193,6 +198,7 @@ const T: Record<LangKey, {
     placeholder: 'Miesto pavadinimas...',
     searchBtn: 'Ieškoti',
     useLocation: 'Mano vieta',
+    myLocation: 'Mano vieta',
     today: 'Šiandien',
     feelsLike: 'Jaučiasi',
     humidity: 'Drėgnumas',
@@ -248,17 +254,17 @@ async function geocode(query: string, lang: string): Promise<GeoResult[]> {
   return results;
 }
 
-async function reverseGeocode(lat: number, lon: number, lang: string): Promise<string> {
+async function reverseGeocode(lat: number, lon: number, lang: string, fallback: string): Promise<string> {
   try {
     const res = await fetch(
       `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&accept-language=${lang}`,
       { headers: { 'User-Agent': 'utilixi.com/weather' } },
     );
-    if (!res.ok) return 'My Location';
+    if (!res.ok) return fallback;
     const d = await res.json();
-    return d.address?.city || d.address?.town || d.address?.village || d.name || 'My Location';
+    return d.address?.city || d.address?.town || d.address?.village || d.name || fallback;
   } catch {
-    return 'My Location';
+    return fallback;
   }
 }
 
@@ -359,7 +365,7 @@ export default function WeatherWidget({ locale }: { locale: string }) {
     setError('');
     navigator.geolocation.getCurrentPosition(
       async ({ coords }) => {
-        const name = await reverseGeocode(coords.latitude, coords.longitude, locale);
+        const name = await reverseGeocode(coords.latitude, coords.longitude, locale, t.myLocation);
         loadWeather(coords.latitude, coords.longitude, name);
       },
       () => { setStatus('error'); setError(t.errLocation); },

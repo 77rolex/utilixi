@@ -6,6 +6,7 @@ import styles from './EngineeringCalculator.module.scss';
 const L: Record<string, Record<string, string>> = {
   deg:   { en: 'DEG', ru: 'ГРД', uk: 'ГРД', fr: 'DEG', lt: 'LAIP' },
   rad:   { en: 'RAD', ru: 'РАД', uk: 'РАД', fr: 'RAD', lt: 'RAD' },
+  error: { en: 'Error', ru: 'Ошибка', uk: 'Помилка', fr: 'Erreur', lt: 'Klaida' },
 };
 
 function t(key: string, locale: string) {
@@ -202,7 +203,7 @@ export default function EngineeringCalculator({ locale }: { locale: string }) {
       <div className={styles['eng-calc__display']}>
         <span className={styles['eng-calc__expr']}>{exprLine || ' '}</span>
         <span className={`${styles['eng-calc__number']} ${isError ? styles['eng-calc__number--error'] : ''}`}>
-          {mainDisplay}
+          {isError ? t('error', locale) : mainDisplay}
         </span>
       </div>
 
