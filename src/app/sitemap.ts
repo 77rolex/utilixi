@@ -58,14 +58,22 @@ const PAGES = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
+  const lastModified = new Date();
 
   for (const page of PAGES) {
+    const languages: Record<string, string> = {};
+    for (const locale of LOCALES) {
+      languages[locale] = `${BASE_URL}/${locale}${page.path}`;
+    }
+    languages['x-default'] = `${BASE_URL}/en${page.path}`;
+
     for (const locale of LOCALES) {
       entries.push({
         url: `${BASE_URL}/${locale}${page.path}`,
-        lastModified: new Date(),
+        lastModified,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
+        alternates: { languages },
       });
     }
   }
