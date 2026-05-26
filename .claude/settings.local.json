@@ -26,7 +26,19 @@
       "Bash(echo \"PID: $!\")",
       "Bash(curl -s http://localhost:3456/ru/calculator/discount)",
       "Bash(node *)",
-      "Bash(curl -s http://localhost:3000/ru/calculator/discount)"
+      "Bash(curl -s http://localhost:3000/ru/calculator/discount)",
+      "Bash(git show *)",
+      "Bash(git diff *)",
+      "Bash(curl -s \"https://api.open-meteo.com/v1/forecast?latitude=51&longitude=0&current=temperature_2m&timezone=auto\")",
+      "Bash(curl -s -H 'User-Agent: utilixi.com/weather' \"https://nominatim.openstreetmap.org/search?q=London&format=json&limit=2&addressdetails=1\")",
+      "Bash(curl -sv \"https://api.open-meteo.com/v1/forecast?latitude=51&longitude=0&current=temperature_2m&timezone=auto\")",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://api.open-meteo.com/v1/forecast?latitude=51.5&longitude=0&current=temperature_2m&timezone=auto\")",
+      "Bash(curl -s \"https://status.open-meteo.com/\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://api.open-meteo.com/\")",
+      "Bash(curl *)",
+      "WebFetch(domain:api.open-meteo.com)",
+      "Bash(git log *)",
+      "Bash(ls -la .env*)"
     ]
   }
 }

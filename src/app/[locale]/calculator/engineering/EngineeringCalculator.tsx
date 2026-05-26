@@ -15,8 +15,11 @@ function t(key: string, locale: string) {
 
 type Token = { dis: string; js: string };
 
+const SAFE_EXPR = /^[0-9a-z.+\-*/()]+$/;
+
 function calcResult(jsExpr: string, isRad: boolean): string {
   if (!jsExpr.trim()) return '';
+  if (!SAFE_EXPR.test(jsExpr.replace(/\s/g, ''))) return 'Error';
   const DEG = Math.PI / 180;
   const sin   = isRad ? Math.sin   : (x: number) => Math.sin(x * DEG);
   const cos   = isRad ? Math.cos   : (x: number) => Math.cos(x * DEG);
