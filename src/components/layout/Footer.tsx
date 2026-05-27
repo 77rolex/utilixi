@@ -87,6 +87,7 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
       { href: '/calculator/margin', labels: { en: 'Margin & Markup Calculator', ru: 'Калькулятор маржи и наценки', uk: 'Калькулятор маржі і націнки', fr: 'Marge et majoration', lt: 'Maržos skaičiuotuvas' } },
       { href: '/calculator/discount', labels: { en: 'Discount Calculator', ru: 'Калькулятор скидки', uk: 'Калькулятор знижки', fr: 'Calculatrice de remise', lt: 'Nuolaidos skaičiuotuvas' } },
       { href: '/calculator/percentage', labels: { en: 'Percentage Calculator', ru: 'Калькулятор процентов', uk: 'Калькулятор відсотків', fr: 'Calculatrice de pourcentage', lt: 'Procentų skaičiuotuvas' } },
+      { href: '/calculator/salary', labels: { en: 'Gross to Net Salary', ru: 'Зарплата брутто-нетто', uk: 'Зарплата брутто-нетто', fr: 'Salaire Brut-Net', lt: 'Bruto-Neto atlyginimas' } },
     ],
   },
   {
@@ -111,6 +112,9 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
       { href: '/calculator/diabetes-risk', labels: { en: 'Diabetes Risk Calculator', ru: 'Калькулятор риска диабета', uk: 'Калькулятор ризику діабету', fr: 'Risque de diabète', lt: 'Diabeto rizikos skaičiuotuvas' } },
       { href: '/calculator/stress-level', labels: { en: 'Stress Level Calculator', ru: 'Калькулятор уровня стресса', uk: 'Калькулятор рівня стресу', fr: 'Calculatrice du stress', lt: 'Streso lygio skaičiuotuvas' } },
       { href: '/calculator/sleep', labels: { en: 'Sleep Calculator', ru: 'Калькулятор сна', uk: 'Калькулятор сну', fr: 'Calculatrice du sommeil', lt: 'Miego skaičiuotuvas' } },
+      { href: '/calculator/body-fat', labels: { en: 'Body Fat Calculator', ru: 'Калькулятор % жира в теле', uk: 'Калькулятор % жиру в тілі', fr: 'Graisse corporelle', lt: 'Kūno riebalų skaičiuotuvas' } },
+      { href: '/calculator/water-intake', labels: { en: 'Water Intake Calculator', ru: 'Норма воды в день', uk: 'Норма води на день', fr: 'Apport en eau quotidien', lt: 'Vandens normos skaičiuotuvas' } },
+      { href: '/calculator/ovulation', labels: { en: 'Ovulation Calculator', ru: 'Калькулятор овуляции', uk: 'Калькулятор овуляції', fr: 'Calculatrice d\'ovulation', lt: 'Ovuliacijos skaičiuotuvas' } },
     ],
   },
   {
@@ -147,6 +151,7 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
       { href: '/tools/word-counter', labels: { en: 'Word Counter', ru: 'Счётчик слов', uk: 'Лічильник слів', fr: 'Compteur de mots', lt: 'Žodžių skaičiuotuvas' } },
       { href: '/calculator/basic', labels: { en: 'Basic Calculator', ru: 'Простой калькулятор', uk: 'Простий калькулятор', fr: 'Calculatrice basique', lt: 'Paprastas skaičiuotuvas' } },
       { href: '/calculator/engineering', labels: { en: 'Scientific Calculator', ru: 'Инженерный калькулятор', uk: 'Інженерний калькулятор', fr: 'Calculatrice scientifique', lt: 'Inžinerinis skaičiuotuvas' } },
+      { href: '/converter/timezone', labels: { en: 'Timezone Converter', ru: 'Конвертер часовых поясов', uk: 'Конвертер часових поясів', fr: 'Fuseaux horaires', lt: 'Laiko juostų keitiklis' } },
     ],
   },
   {

@@ -380,6 +380,41 @@ const RAW_TOOLS: RawTool[] = [
     titles: { en: 'Scientific Calculator', ru: 'Инженерный калькулятор', uk: 'Інженерний калькулятор', fr: 'Calculatrice scientifique', lt: 'Inžinerinis skaičiuotuvas' },
     descs: { en: 'Scientific calculator with sin, cos, tan, log, powers and more', ru: 'Инженерный калькулятор с sin, cos, tan, log, степенями и другими функциями', uk: 'Інженерний калькулятор з sin, cos, tan, log, степенями та іншими функціями', fr: 'Calculatrice scientifique avec sin, cos, tan, log, puissances et plus', lt: 'Mokslinis skaičiuotuvas su sin, cos, tan, log, laipsniais ir daugiau' },
   },
+  {
+    href: '/calculator/body-fat',
+    icon: '📏',
+    category: 'health',
+    titles: { en: 'Body Fat Calculator', ru: 'Калькулятор % жира в теле', uk: 'Калькулятор % жиру в тілі', fr: 'Calculatrice de graisse corporelle', lt: 'Kūno riebalų skaičiuotuvas' },
+    descs: { en: 'Body fat % using the US Navy method', ru: '% жира в теле по методу ВМФ США', uk: '% жиру в тілі за методом ВМС США', fr: '% de graisse corporelle méthode US Navy', lt: 'Kūno riebalų % pagal JAV karinio jūrų laivyno metodą' },
+  },
+  {
+    href: '/calculator/water-intake',
+    icon: '💧',
+    category: 'health',
+    titles: { en: 'Water Intake Calculator', ru: 'Норма воды в день', uk: 'Норма води на день', fr: 'Apport en eau quotidien', lt: 'Vandens normos skaičiuotuvas' },
+    descs: { en: 'Daily water intake by weight & activity', ru: 'Суточная норма воды по весу и активности', uk: 'Добова норма води за вагою та активністю', fr: 'Apport quotidien en eau selon poids et activité', lt: 'Dienos vandens norma pagal svorį ir aktyvumą' },
+  },
+  {
+    href: '/calculator/ovulation',
+    icon: '🌸',
+    category: 'health',
+    titles: { en: 'Ovulation Calculator', ru: 'Калькулятор овуляции', uk: 'Калькулятор овуляції', fr: 'Calculatrice d\'ovulation', lt: 'Ovuliacijos skaičiuotuvas' },
+    descs: { en: 'Fertile window, ovulation date & due date', ru: 'Фертильное окно, дата овуляции и ПДР', uk: 'Фертильне вікно, дата овуляції та ПДП', fr: 'Fenêtre fertile, date d\'ovulation et accouchement', lt: 'Vaisingas langas, ovuliacijos data ir gimdymas' },
+  },
+  {
+    href: '/converter/timezone',
+    icon: '🕐',
+    category: 'utility',
+    titles: { en: 'Timezone Converter', ru: 'Конвертер часовых поясов', uk: 'Конвертер часових поясів', fr: 'Convertisseur de fuseaux horaires', lt: 'Laiko juostų keitiklis' },
+    descs: { en: 'World clock — convert time across 25 cities', ru: 'Мировые часы — время в 25 городах мира', uk: 'Світовий годинник — час у 25 містах світу', fr: 'Horloge mondiale — heure dans 25 villes', lt: 'Pasaulio laikrodis — laikas 25 miestuose' },
+  },
+  {
+    href: '/calculator/salary',
+    icon: '💰',
+    category: 'finance',
+    titles: { en: 'Gross to Net Salary Calculator', ru: 'Калькулятор зарплаты брутто-нетто', uk: 'Калькулятор зарплати брутто-нетто', fr: 'Calculateur Salaire Brut-Net', lt: 'Bruto-Neto Atlyginimo Skaičiuotuvas' },
+    descs: { en: 'Calculate take-home pay after taxes for 24 countries', ru: 'Рассчитайте нетто-зарплату с учётом налогов для 24 стран', uk: 'Розрахуйте нетто-зарплату з урахуванням податків для 24 країн', fr: 'Calculez le salaire net après impôts pour 24 pays', lt: 'Apskaičiuokite neto atlyginimą po mokesčių 24 šalių' },
+  },
 ];
 
 const PAGE_TITLE: Record<string, string> = {
