@@ -1,4 +1,4 @@
-.crypto-table {
+.rates-table {
   background-color: var(--color-bg-widget);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-widget);
@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--spacing-md) var(--spacing-md);
+    padding: var(--spacing-md);
     border-bottom: 1px solid var(--color-border);
     gap: var(--spacing-md);
     flex-wrap: wrap;
@@ -26,16 +26,43 @@
     }
   }
 
-  &__updated {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
+  &__base-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
   }
 
-  &__related-link {
+  &__base-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  &__base-select {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
+    cursor: pointer;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-light);
+    }
+  }
+
+  &__link {
     font-size: var(--font-size-sm);
     font-weight: 600;
     color: var(--color-primary);
     text-decoration: none;
+    white-space: nowrap;
     transition: color var(--transition-base);
 
     &:hover {
@@ -74,12 +101,10 @@
     }
   }
 
-  // Mobile: horizontal scroll allowed
   &__scroll {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 
-    // Tablet and up: no horizontal scroll, table must fit
     @media (min-width: 640px) {
       overflow-x: hidden;
     }
@@ -88,9 +113,7 @@
   &__table {
     width: 100%;
     border-collapse: collapse;
-    // Mobile: enough for sticky # + Name + Price visible at 320px,
-    // remaining columns (Change, MarketCap) scroll horizontally
-    min-width: 360px;
+    min-width: 280px;
 
     @media (min-width: 640px) {
       min-width: 0;
@@ -110,9 +133,7 @@
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     vertical-align: middle;
-    white-space: nowrap;
 
-    // Header row
     thead & {
       font-size: 11px;
       font-weight: 600;
@@ -122,55 +143,14 @@
       border-bottom: 2px solid var(--color-border);
       padding-top: var(--spacing-md);
       padding-bottom: var(--spacing-md);
+      padding-left: var(--spacing-md);
     }
 
-    &--rank {
-      width: 32px;
-      text-align: center;
-      color: var(--color-text-muted);
-      font-size: 12px;
-      padding-left: var(--spacing-sm);
+    &:first-child {
+      padding-left: var(--spacing-md);
 
       @media (min-width: 640px) {
         padding-left: var(--spacing-lg);
-        width: 40px;
-      }
-
-      // Sticky on mobile
-      @media (max-width: 639px) {
-        position: sticky;
-        left: 0;
-        z-index: 1;
-        background-color: var(--color-bg-widget);
-
-        thead & {
-          background-color: var(--color-bg-widget);
-        }
-      }
-    }
-
-    &--name {
-      white-space: normal;
-      max-width: 90px;
-
-      @media (min-width: 400px) {
-        max-width: 110px;
-      }
-
-      @media (min-width: 640px) {
-        max-width: 160px;
-      }
-
-      // Sticky on mobile — sticks right after rank column
-      @media (max-width: 639px) {
-        position: sticky;
-        left: 32px;
-        z-index: 1;
-        background-color: var(--color-bg-widget);
-
-        thead & {
-          background-color: var(--color-bg-widget);
-        }
       }
     }
 
@@ -189,12 +169,6 @@
 
       &:hover {
         color: var(--color-text-primary);
-      }
-    }
-
-    &--hide-mobile {
-      @media (max-width: 480px) {
-        display: none;
       }
     }
   }
@@ -219,53 +193,32 @@
     }
   }
 
-  &__coin {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-  }
-
-  &__coin-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  &__coin-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  &__coin-name {
-    font-size: var(--font-size-sm);
+  &__code {
+    display: block;
     font-weight: 600;
     color: var(--color-text-primary);
-    line-height: 1.3;
-    white-space: normal;
-    word-break: break-word;
   }
 
-  &__coin-symbol {
-    font-size: 11px;
+  &__name {
+    display: block;
+    font-size: 12px;
     color: var(--color-text-muted);
-    line-height: 1.2;
   }
 
-  &__price {
+  &__rate {
     font-weight: 600;
     color: var(--color-text-primary);
   }
 
-  &__change {
-    font-weight: 600;
+  &__updated {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    text-align: right;
+    border-top: 1px solid var(--color-border);
 
-    &--up   { color: #15803D; }
-    &--down { color: #B91C1C; }
-  }
-
-  &__mcap {
-    color: var(--color-text-secondary);
+    @media (min-width: 640px) {
+      padding: var(--spacing-sm) var(--spacing-lg);
+    }
   }
 }

@@ -138,7 +138,7 @@
     text-align: center;
   }
 
-  // Popular rates table
+  // All rates table
   &__table-wrap {
     border-top: 1px solid var(--color-border);
     padding: var(--spacing-lg);
@@ -148,13 +148,48 @@
     }
   }
 
+  &__table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
   &__table-title {
     font-size: var(--font-size-sm);
     font-weight: 600;
     color: var(--color-text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: var(--spacing-md);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  &__table-search {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-secondary);
+    width: 160px;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-light);
+    }
+
+    &::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    @media (min-width: 640px) {
+      width: 200px;
+    }
   }
 
   &__table {

@@ -20,6 +20,7 @@ const T: Record<string, {
   noData: string;
   updatedEvery: string;
   goToConverter: string;
+  search: string;
 }> = {
   en: {
     rank: '#',
@@ -30,6 +31,7 @@ const T: Record<string, {
     noData: 'Cryptocurrency data is temporarily unavailable.',
     updatedEvery: 'Updated every 5 minutes',
     goToConverter: 'Crypto Converter →',
+    search: 'Search coin...',
   },
   ru: {
     rank: '#',
@@ -40,6 +42,7 @@ const T: Record<string, {
     noData: 'Данные о криптовалютах временно недоступны.',
     updatedEvery: 'Обновляется каждые 5 минут',
     goToConverter: 'Конвертер криптовалют →',
+    search: 'Поиск монеты...',
   },
   uk: {
     rank: '#',
@@ -50,6 +53,7 @@ const T: Record<string, {
     noData: 'Дані про криптовалюти тимчасово недоступні.',
     updatedEvery: 'Оновлюється кожні 5 хвилин',
     goToConverter: 'Конвертер криптовалют →',
+    search: 'Пошук монети...',
   },
   fr: {
     rank: '#',
@@ -60,6 +64,7 @@ const T: Record<string, {
     noData: 'Les données sur les cryptomonnaies sont temporairement indisponibles.',
     updatedEvery: 'Mis à jour toutes les 5 minutes',
     goToConverter: 'Convertisseur crypto →',
+    search: 'Rechercher une crypto...',
   },
   lt: {
     rank: '#',
@@ -70,6 +75,7 @@ const T: Record<string, {
     noData: 'Kriptovaliutų duomenys laikinai nepasiekiami.',
     updatedEvery: 'Atnaujinama kas 5 minutes',
     goToConverter: 'Kriptovaliutų keitiklis →',
+    search: 'Ieškoti kriptovaliutos...',
   },
 };
 
@@ -103,6 +109,7 @@ export default function CryptoTable({ locale, coins }: Props) {
 
   const [sortField, setSortField] = useState<SortField>('marketCap');
   const [sortDir, setSortDir]     = useState<SortDir>('desc');
+  const [query, setQuery]         = useState('');
 
   function handleSort(field: SortField) {
     if (sortField === field) {
@@ -124,6 +131,14 @@ export default function CryptoTable({ locale, coins }: Props) {
     });
   }, [coins, sortField, sortDir]);
 
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return sorted;
+    return sorted.filter(c =>
+      c.name.toLowerCase().includes(q) || c.symbol.toLowerCase().includes(q)
+    );
+  }, [sorted, query]);
+
   if (coins.length === 0) {
     return (
       <div className={styles['crypto-table']}>
@@ -139,6 +154,16 @@ export default function CryptoTable({ locale, coins }: Props) {
         <Link href={`/${locale}/crypto/converter`} className={styles['crypto-table__related-link']}>
           {t.goToConverter}
         </Link>
+      </div>
+
+      <div className={styles['crypto-table__search-wrap']}>
+        <input
+          type="text"
+          className={styles['crypto-table__search']}
+          placeholder={t.search}
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+        />
       </div>
 
       <div className={styles['crypto-table__scroll']}>
@@ -179,7 +204,7 @@ export default function CryptoTable({ locale, coins }: Props) {
             </tr>
           </thead>
           <tbody>
-            {sorted.map((coin, idx) => {
+            {filtered.map((coin, idx) => {
               const change = coin.price_change_percentage_24h;
               const isUp = change == null ? true : change >= 0;
               return (

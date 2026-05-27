@@ -80,6 +80,7 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
       { href: '/calculator/vat', labels: { en: 'VAT Calculator', ru: 'Калькулятор НДС', uk: 'Калькулятор ПДВ', fr: 'Calculatrice TVA', lt: 'PVM skaičiuotuvas' } },
       { href: '/calculator/compound-interest', labels: { en: 'Compound Interest', ru: 'Сложные проценты', uk: 'Складні відсотки', fr: 'Intérêts composés', lt: 'Sudėtinės palūkanos' } },
       { href: '/currency', labels: { en: 'Currency Converter', ru: 'Конвертер валют', uk: 'Конвертер валют', fr: 'Convertisseur de devises', lt: 'Valiutų keitiklis' } },
+      { href: '/currency/rates', labels: { en: 'Exchange Rates', ru: 'Курс валют', uk: 'Курс валют', fr: 'Taux de change', lt: 'Valiutų kursai' } },
       { href: '/calculator/car-insurance', labels: { en: 'Car Insurance Calculator', ru: 'Калькулятор страховки авто', uk: 'Калькулятор страховки авто', fr: 'Assurance auto', lt: 'Automobilio draudimas' } },
       { href: '/calculator/life-insurance', labels: { en: 'Life Insurance Calculator', ru: 'Калькулятор страховки жизни', uk: 'Калькулятор страховки життя', fr: 'Assurance vie', lt: 'Gyvybės draudimas' } },
       { href: '/calculator/income-tax', labels: { en: 'Income Tax Calculator', ru: 'Калькулятор подоходного налога', uk: 'Калькулятор прибуткового податку', fr: 'Impôt sur le revenu', lt: 'Pajamų mokestis' } },

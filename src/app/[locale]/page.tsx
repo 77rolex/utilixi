@@ -101,6 +101,13 @@ const RAW_TOOLS: RawTool[] = [
     descs: { en: 'Live exchange rates', ru: 'Актуальные курсы валют', uk: 'Актуальні курси валют', fr: 'Taux de change en direct', lt: 'Aktualūs valiutų kursai' },
   },
   {
+    href: '/currency/rates',
+    icon: '📈',
+    category: 'finance',
+    titles: { en: 'Exchange Rates', ru: 'Курс валют', uk: 'Курс валют', fr: 'Taux de change', lt: 'Valiutų kursai' },
+    descs: { en: 'Live table of 160+ world currencies', ru: 'Таблица курсов 160+ мировых валют', uk: 'Таблиця курсів 160+ світових валют', fr: 'Tableau de 160+ devises mondiales', lt: '160+ pasaulio valiutų kursų lentelė' },
+  },
+  {
     href: '/crypto',
     icon: '₿',
     category: 'crypto',

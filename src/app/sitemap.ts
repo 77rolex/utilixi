@@ -8,6 +8,7 @@ const PAGES = [
   { path: '/calculator/bmi', priority: 0.9, changeFrequency: 'monthly' as const },
   { path: '/calculator/calories', priority: 0.9, changeFrequency: 'monthly' as const },
   { path: '/currency', priority: 0.9, changeFrequency: 'daily' as const },
+  { path: '/currency/rates', priority: 0.9, changeFrequency: 'daily' as const },
   { path: '/crypto', priority: 0.9, changeFrequency: 'daily' as const },
   { path: '/crypto/converter', priority: 0.8, changeFrequency: 'daily' as const },
   { path: '/calculator/pregnancy', priority: 0.8, changeFrequency: 'monthly' as const },
