@@ -128,13 +128,16 @@
   &__suffix {
     display: flex;
     align-items: center;
-    padding: 0 var(--spacing-md);
+    justify-content: center;
+    min-width: 58px;
+    padding: 0 var(--spacing-sm);
     font-size: var(--font-size-sm);
     font-weight: 600;
     color: var(--color-text-secondary);
     background-color: var(--color-bg-secondary);
     border-left: 1px solid var(--color-border);
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   &__error {
