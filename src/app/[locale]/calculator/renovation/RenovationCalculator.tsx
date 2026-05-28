@@ -82,6 +82,36 @@ type CountryRates = {
 
 // Cost per m² by country, quality, room type
 const COUNTRIES: Record<string, CountryRates> = {
+  gb: {
+    currency: 'GBP', symbol: '£',
+    rates: {
+      '1': { apart: 380, bath: 650, kitchen: 500, living: 300, bedroom: 270, house: 330 },
+      '2': { apart: 800, bath: 1400, kitchen: 1100, living: 650, bedroom: 600, house: 700 },
+      '3': { apart: 1700, bath: 2800, kitchen: 2300, living: 1400, bedroom: 1200, house: 1500 },
+    },
+    notes: {
+      en: 'UK renovation costs include labour, materials, and VAT (20%). London and South East are 40–60% above the national average. Prices reflect 2024 market rates and do not include planning permission fees where required.',
+      ru: 'Стоимость ремонта в Великобритании включает работу, материалы и НДС (20%). Лондон и Юго-Восток на 40–60% дороже среднего по стране. Средние цены 2024 года.',
+      uk: 'Вартість ремонту у Великій Британії включає роботу, матеріали та ПДВ (20%). Лондон та Південний Схід на 40–60% дорожчі за середнє по країні. Середні ціни 2024 року.',
+      fr: 'Les coûts de rénovation au Royaume-Uni incluent main-d\'œuvre, matériaux et TVA (20%). Londres et le South East sont 40 à 60% plus chers que la moyenne nationale. Prix 2024.',
+      lt: 'JK remonto išlaidos apima darbą, medžiagas ir PVM (20%). Londonas ir Pietryčiai 40–60% brangesni už vidurkį. 2024 m. vidutinės kainos.',
+    },
+  },
+  be: {
+    currency: 'EUR', symbol: '€',
+    rates: {
+      '1': { apart: 380, bath: 650, kitchen: 480, living: 300, bedroom: 270, house: 330 },
+      '2': { apart: 760, bath: 1300, kitchen: 950, living: 600, bedroom: 550, house: 650 },
+      '3': { apart: 1500, bath: 2400, kitchen: 1900, living: 1200, bedroom: 1100, house: 1350 },
+    },
+    notes: {
+      en: 'Belgian renovation costs include labour, materials, and VAT (21%). Brussels is 20–30% higher than other regions. Prices are averages for 2024. Renovation grants (RENoWALL, RENOLUTION) may offset part of the cost.',
+      ru: 'Стоимость ремонта в Бельгии включает работу, материалы и НДС (21%). Брюссель на 20–30% дороже других регионов. Средние цены 2024 года.',
+      uk: 'Вартість ремонту в Бельгії включає роботу, матеріали та ПДВ (21%). Брюссель на 20–30% дорожчий за інші регіони. Середні ціни 2024 року.',
+      fr: 'Les coûts de rénovation en Belgique incluent main-d\'œuvre, matériaux et TVA (21%). Bruxelles est 20 à 30% plus chère que les autres régions. Les primes RENOLUTION peuvent réduire la facture.',
+      lt: 'Belgijos remonto išlaidos apima darbą, medžiagas ir PVM (21%). Briuselis 20–30% brangesnis. 2024 m. vidutinės kainos.',
+    },
+  },
   de: {
     currency: 'EUR', symbol: '€',
     rates: {
@@ -190,11 +220,11 @@ const COUNTRIES: Record<string, CountryRates> = {
 };
 
 const COUNTRY_LABELS: Record<LangKey, Record<string, string>> = {
-  en: { de: 'Germany', fr: 'France', pl: 'Poland', lt: 'Lithuania', ua: 'Ukraine', us: 'USA', ru: 'Russia' },
-  ru: { de: 'Германия', fr: 'Франция', pl: 'Польша', lt: 'Литва', ua: 'Украина', us: 'США', ru: 'Россия' },
-  uk: { de: 'Німеччина', fr: 'Франція', pl: 'Польща', lt: 'Литва', ua: 'Україна', us: 'США', ru: 'Росія' },
-  fr: { de: 'Allemagne', fr: 'France', pl: 'Pologne', lt: 'Lituanie', ua: 'Ukraine', us: 'États-Unis', ru: 'Russie' },
-  lt: { de: 'Vokietija', fr: 'Prancūzija', pl: 'Lenkija', lt: 'Lietuva', ua: 'Ukraina', us: 'JAV', ru: 'Rusija' },
+  en: { gb: 'United Kingdom', be: 'Belgium', de: 'Germany', fr: 'France', pl: 'Poland', lt: 'Lithuania', ua: 'Ukraine', us: 'USA', ru: 'Russia' },
+  ru: { gb: 'Великобритания', be: 'Бельгия', de: 'Германия', fr: 'Франция', pl: 'Польша', lt: 'Литва', ua: 'Украина', us: 'США', ru: 'Россия' },
+  uk: { gb: 'Велика Британія', be: 'Бельгія', de: 'Німеччина', fr: 'Франція', pl: 'Польща', lt: 'Литва', ua: 'Україна', us: 'США', ru: 'Росія' },
+  fr: { gb: 'Royaume-Uni', be: 'Belgique', de: 'Allemagne', fr: 'France', pl: 'Pologne', lt: 'Lituanie', ua: 'Ukraine', us: 'États-Unis', ru: 'Russie' },
+  lt: { gb: 'Jungtinė Karalystė', be: 'Belgija', de: 'Vokietija', fr: 'Prancūzija', pl: 'Lenkija', lt: 'Lietuva', ua: 'Ukraina', us: 'JAV', ru: 'Rusija' },
 };
 
 const BREAKDOWN_LABELS: Record<LangKey, { labour: string; materials: string; plumbing: string; electrical: string; finishing: string }> = {
