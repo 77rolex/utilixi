@@ -342,7 +342,9 @@ export default async function DepositPage({ params }: Props) {
 
         <AdInline locale={locale} />
         <div className={styles.page__content}>
-          <p className={styles.page__description}>{content.description}</p>
+          {content.description.split('\n\n').map((para, i) => (
+            <p key={i} className={styles.page__description}>{para}</p>
+          ))}
 
           <RelatedTools locale={locale} tools={related} />
           <section className={styles.faq}>
