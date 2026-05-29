@@ -146,16 +146,30 @@ export default async function PasswordGeneratorPage({ params }: Props) {
   const related = RELATED[locale] || RELATED.en;
 
   const jsonLd = {
-    '@context': 'https://schema.org', '@type': 'WebApplication',
-    name: meta.title, description: meta.description,
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: meta.title,
+    description: meta.description,
     url: `https://www.utilixi.com/${locale}/tools/password-generator`,
-    applicationCategory: 'SecurityApplication', operatingSystem: 'Any',
+    applicationCategory: 'SecurityApplication',
+    operatingSystem: 'Any',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  };
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
   };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <PasswordGenerator locale={locale} />
