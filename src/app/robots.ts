@@ -6,6 +6,11 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: [
+        '/_next/static/media/',
+        '/_next/data/',
+        '/api/',
+      ],
     },
     sitemap: `${BASE_URL}/sitemap.xml`,
   };
