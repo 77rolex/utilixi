@@ -38,7 +38,8 @@
       "Bash(curl *)",
       "WebFetch(domain:api.open-meteo.com)",
       "Bash(git log *)",
-      "Bash(ls -la .env*)"
+      "Bash(ls -la .env*)",
+      "Bash(grep -c '{ q:' '/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/__TRACKED_VAR__/page.tsx')"
     ]
   }
 }
