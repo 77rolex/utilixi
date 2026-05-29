@@ -40,8 +40,8 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
 
 const META: Record<string, { title: string; description: string; h1: string }> = {
   en: {
-    title: 'Life Insurance Calculator — Term Life Premium Estimator',
-    description: 'Free life insurance calculator online. Estimate your monthly and annual term life insurance premium by age, gender, coverage amount, policy term, health and smoking status. Covers US, UK and EU markets.',
+    title: 'Term Life Insurance Calculator — Free Estimate for UK & US',
+    description: 'Free term life insurance calculator online. Estimate your monthly and annual premium by age, gender, coverage amount, policy term, health and smoking status. Instant results for UK, US and EU — no registration required.',
     h1: 'Life Insurance Calculator',
   },
   ru: {
@@ -181,9 +181,20 @@ export default async function LifeInsurancePage({ params }: Props) {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <LifeInsuranceCalculator locale={locale} />

@@ -20,8 +20,8 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
 
 const META: Record<string, { title: string; description: string; h1: string }> = {
   en: {
-    title: 'Home Renovation Cost Calculator UK — Estimate by Room & Quality',
-    description: 'Free home renovation cost calculator for the UK, Belgium, Germany, France, Poland, Ukraine and USA. Estimate renovation costs per m² by room type and finish quality. Covers bathroom, kitchen, full apartment and house renovation.',
+    title: 'Home Renovation Cost Calculator UK — Cost per m² by Room & Quality',
+    description: 'Free renovation cost calculator for the UK, Belgium, Germany, France, Poland, Ukraine and USA. Estimate home renovation costs per m² by room type and finish quality. Covers bathroom, kitchen, full apartment and house renovation.',
     h1: 'Renovation Cost Calculator',
   },
   ru: {
@@ -147,16 +147,30 @@ export default async function RenovationPage({ params }: Props) {
   const related = RELATED[locale] || RELATED.en;
 
   const jsonLd = {
-    '@context': 'https://schema.org', '@type': 'WebApplication',
-    name: meta.title, description: meta.description,
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: meta.title,
+    description: meta.description,
     url: `https://www.utilixi.com/${locale}/calculator/renovation`,
-    applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  };
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
   };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <RenovationCalculator locale={locale} />
