@@ -23,6 +23,7 @@
 # misc
 .DS_Store
 *.pem
+image.png
 
 # claude code
 .claude

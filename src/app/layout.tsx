@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     template: '%s | Utilixi',
   },
   description: 'Free online calculators and tools — mortgage, BMI, currency converter and more.',
+  verification: {
+    yandex: 'e68574f6d0468744',
+  },
 };
 
 const LOCALES = ['en', 'ru', 'uk', 'fr', 'lt'];
