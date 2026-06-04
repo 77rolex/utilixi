@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { cookies } from 'next/headers';
+import { YandexMetricaProvider } from 'next-yandex-metrica';
 import '@/styles/globals.scss';
 
 const inter = Inter({
@@ -27,7 +28,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang={locale} className={inter.variable}>
-      <body>{children}</body>
+      <body>
+        <YandexMetricaProvider
+          tagID={Number(process.env.NEXT_PUBLIC_YANDEX_METRICA_ID)}
+          initParameters={{
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true,
+          }}
+          router="app"
+        >
+          {children}
+        </YandexMetricaProvider>
+      </body>
     </html>
   );
 }
