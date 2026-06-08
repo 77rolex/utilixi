@@ -126,31 +126,11 @@ const CONTENT: Record<string, {
 };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/income-tax', label: 'Income Tax Calculator' },
-    { href: '/calculator/freelance-rate', label: 'Freelance Rate Calculator' },
-    { href: '/calculator/percentage', label: 'Percentage Calculator' },
-  ],
-  ru: [
-    { href: '/calculator/income-tax', label: 'Калькулятор подоходного налога' },
-    { href: '/calculator/freelance-rate', label: 'Калькулятор ставки фрилансера' },
-    { href: '/calculator/percentage', label: 'Калькулятор процентов' },
-  ],
-  uk: [
-    { href: '/calculator/income-tax', label: 'Калькулятор прибуткового податку' },
-    { href: '/calculator/freelance-rate', label: 'Калькулятор ставки фрилансера' },
-    { href: '/calculator/percentage', label: 'Калькулятор відсотків' },
-  ],
-  fr: [
-    { href: '/calculator/income-tax', label: 'Calculatrice impôt sur le revenu' },
-    { href: '/calculator/freelance-rate', label: 'Calculatrice taux freelance' },
-    { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' },
-  ],
-  lt: [
-    { href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' },
-    { href: '/calculator/freelance-rate', label: 'Laisvai samdomų tarifų skaičiuotuvas' },
-    { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' },
-  ],
+  en: [{ href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/freelance-rate', label: 'Freelance Rate Calculator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }, { href: '/calculator/vat', label: 'VAT Calculator' }, { href: '/calculator/margin', label: 'Margin Calculator' }],
+  ru: [{ href: '/calculator/income-tax', label: 'Калькулятор подоходного налога' }, { href: '/calculator/freelance-rate', label: 'Калькулятор ставки фрилансера' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }, { href: '/calculator/vat', label: 'Калькулятор НДС' }, { href: '/calculator/margin', label: 'Калькулятор маржи' }],
+  uk: [{ href: '/calculator/income-tax', label: 'Калькулятор прибуткового податку' }, { href: '/calculator/freelance-rate', label: 'Калькулятор ставки фрилансера' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }, { href: '/calculator/vat', label: 'Калькулятор ПДВ' }, { href: '/calculator/margin', label: 'Калькулятор маржі' }],
+  fr: [{ href: '/calculator/income-tax', label: 'Calculatrice impôt sur le revenu' }, { href: '/calculator/freelance-rate', label: 'Calculatrice taux freelance' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }, { href: '/calculator/vat', label: 'Calculatrice TVA' }, { href: '/calculator/margin', label: 'Calculatrice marge' }],
+  lt: [{ href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' }, { href: '/calculator/freelance-rate', label: 'Laisvai samdomų tarifų skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/margin', label: 'Maržos skaičiuotuvas' }],
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -11,26 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/roi', label: 'ROI Calculator' },
-    { href: '/calculator/vat', label: 'VAT Calculator' },
-  ],
-  ru: [
-    { href: '/calculator/roi', label: 'Калькулятор ROI' },
-    { href: '/calculator/vat', label: 'Калькулятор НДС' },
-  ],
-  uk: [
-    { href: '/calculator/roi', label: 'Калькулятор ROI' },
-    { href: '/calculator/vat', label: 'Калькулятор ПДВ' },
-  ],
-  fr: [
-    { href: '/calculator/roi', label: 'Calculatrice ROI' },
-    { href: '/calculator/vat', label: 'Calculatrice TVA' },
-  ],
-  lt: [
-    { href: '/calculator/roi', label: 'RI skaičiuotuvas' },
-    { href: '/calculator/vat', label: 'PVM skaičiuotuvas' },
-  ],
+  en: [{ href: '/calculator/roi', label: 'ROI Calculator' }, { href: '/calculator/vat', label: 'VAT Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }, { href: '/calculator/discount', label: 'Discount Calculator' }],
+  ru: [{ href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/vat', label: 'Калькулятор НДС' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }, { href: '/calculator/discount', label: 'Калькулятор скидки' }],
+  uk: [{ href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/vat', label: 'Калькулятор ПДВ' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }, { href: '/calculator/discount', label: 'Калькулятор знижки' }],
+  fr: [{ href: '/calculator/roi', label: 'Calculatrice ROI' }, { href: '/calculator/vat', label: 'Calculatrice TVA' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }, { href: '/calculator/discount', label: 'Calculatrice de remise' }],
+  lt: [{ href: '/calculator/roi', label: 'RI skaičiuotuvas' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/discount', label: 'Nuolaidos skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

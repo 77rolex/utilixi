@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/biological-age', label: 'Biological Age Calculator' }, { href: '/calculator/heart-rate', label: 'Heart Rate Zones' }, { href: '/calculator/sleep', label: 'Sleep Calculator' }],
-  ru: [{ href: '/calculator/biological-age', label: 'Калькулятор биологического возраста' }, { href: '/calculator/heart-rate', label: 'Пульсовые зоны' }, { href: '/calculator/sleep', label: 'Калькулятор сна' }],
-  uk: [{ href: '/calculator/biological-age', label: 'Калькулятор біологічного віку' }, { href: '/calculator/heart-rate', label: 'Пульсові зони' }, { href: '/calculator/sleep', label: 'Калькулятор сну' }],
-  fr: [{ href: '/calculator/biological-age', label: 'Âge biologique' }, { href: '/calculator/heart-rate', label: 'Zones de FC' }, { href: '/calculator/sleep', label: 'Calculatrice du sommeil' }],
-  lt: [{ href: '/calculator/biological-age', label: 'Biologinio amžiaus skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }, { href: '/calculator/sleep', label: 'Miego skaičiuotuvas' }],
+  en: [{ href: '/calculator/biological-age', label: 'Biological Age Calculator' }, { href: '/calculator/heart-rate', label: 'Heart Rate Zones' }, { href: '/calculator/sleep', label: 'Sleep Calculator' }, { href: '/calculator/bmi', label: 'BMI Calculator' }, { href: '/calculator/calories', label: 'Calorie Calculator' }],
+  ru: [{ href: '/calculator/biological-age', label: 'Калькулятор биологического возраста' }, { href: '/calculator/heart-rate', label: 'Пульсовые зоны' }, { href: '/calculator/sleep', label: 'Калькулятор сна' }, { href: '/calculator/bmi', label: 'Калькулятор ИМТ' }, { href: '/calculator/calories', label: 'Калькулятор калорий' }],
+  uk: [{ href: '/calculator/biological-age', label: 'Калькулятор біологічного віку' }, { href: '/calculator/heart-rate', label: 'Пульсові зони' }, { href: '/calculator/sleep', label: 'Калькулятор сну' }, { href: '/calculator/bmi', label: 'Калькулятор ІМТ' }, { href: '/calculator/calories', label: 'Калькулятор калорій' }],
+  fr: [{ href: '/calculator/biological-age', label: 'Âge biologique' }, { href: '/calculator/heart-rate', label: 'Zones de FC' }, { href: '/calculator/sleep', label: 'Calculatrice du sommeil' }, { href: '/calculator/bmi', label: 'Calculatrice IMC' }, { href: '/calculator/calories', label: 'Calculatrice de calories' }],
+  lt: [{ href: '/calculator/biological-age', label: 'Biologinio amžiaus skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }, { href: '/calculator/sleep', label: 'Miego skaičiuotuvas' }, { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

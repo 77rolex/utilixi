@@ -13,11 +13,11 @@ type Props = {
 };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/loan', label: 'Loan Calculator' }, { href: '/calculator/rent-vs-buy', label: 'Rent vs Buy' }],
-  ru: [{ href: '/calculator/loan', label: 'Калькулятор кредита' }, { href: '/calculator/rent-vs-buy', label: 'Аренда vs Покупка' }],
-  uk: [{ href: '/calculator/loan', label: 'Калькулятор кредиту' }, { href: '/calculator/rent-vs-buy', label: 'Оренда vs Купівля' }],
-  fr: [{ href: '/calculator/loan', label: 'Calculatrice de prêt' }, { href: '/calculator/rent-vs-buy', label: 'Louer vs Acheter' }],
-  lt: [{ href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }, { href: '/calculator/rent-vs-buy', label: 'Nuoma vs Pirkimas' }],
+  en: [{ href: '/calculator/loan', label: 'Loan Calculator' }, { href: '/calculator/deposit', label: 'Deposit Calculator' }, { href: '/calculator/rent-vs-buy', label: 'Rent vs Buy' }, { href: '/calculator/property-tax', label: 'Property Tax Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }],
+  ru: [{ href: '/calculator/loan', label: 'Калькулятор кредита' }, { href: '/calculator/deposit', label: 'Калькулятор депозита' }, { href: '/calculator/rent-vs-buy', label: 'Аренда vs Покупка' }, { href: '/calculator/property-tax', label: 'Налог на недвижимость' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }],
+  uk: [{ href: '/calculator/loan', label: 'Калькулятор кредиту' }, { href: '/calculator/deposit', label: 'Калькулятор депозиту' }, { href: '/calculator/rent-vs-buy', label: 'Оренда vs Купівля' }, { href: '/calculator/property-tax', label: 'Податок на нерухомість' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }],
+  fr: [{ href: '/calculator/loan', label: 'Calculatrice de prêt' }, { href: '/calculator/deposit', label: 'Calculatrice de dépôt' }, { href: '/calculator/rent-vs-buy', label: 'Louer vs Acheter' }, { href: '/calculator/property-tax', label: 'Taxe foncière' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }],
+  lt: [{ href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }, { href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/rent-vs-buy', label: 'Nuoma vs Pirkimas' }, { href: '/calculator/property-tax', label: 'Nekilnojamojo turto mokestis' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

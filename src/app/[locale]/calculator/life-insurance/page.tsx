@@ -11,31 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/pension', label: 'Pension Calculator' },
-    { href: '/calculator/income-tax', label: 'Income Tax Calculator' },
-    { href: '/calculator/car-insurance', label: 'Car Insurance Calculator' },
-  ],
-  ru: [
-    { href: '/calculator/pension', label: 'Пенсионный калькулятор' },
-    { href: '/calculator/income-tax', label: 'Калькулятор подоходного налога' },
-    { href: '/calculator/car-insurance', label: 'Калькулятор страховки авто' },
-  ],
-  uk: [
-    { href: '/calculator/pension', label: 'Пенсійний калькулятор' },
-    { href: '/calculator/income-tax', label: 'Калькулятор прибуткового податку' },
-    { href: '/calculator/car-insurance', label: 'Калькулятор страховки авто' },
-  ],
-  fr: [
-    { href: '/calculator/pension', label: 'Calculatrice Retraite' },
-    { href: '/calculator/income-tax', label: 'Impôt sur le revenu' },
-    { href: '/calculator/car-insurance', label: 'Assurance auto' },
-  ],
-  lt: [
-    { href: '/calculator/pension', label: 'Pensijų skaičiuotuvas' },
-    { href: '/calculator/income-tax', label: 'Pajamų mokestis' },
-    { href: '/calculator/car-insurance', label: 'Automobilio draudimas' },
-  ],
+  en: [{ href: '/calculator/pension', label: 'Pension Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/car-insurance', label: 'Car Insurance Calculator' }, { href: '/calculator/deposit', label: 'Deposit Calculator' }, { href: '/calculator/salary', label: 'Salary Calculator' }],
+  ru: [{ href: '/calculator/pension', label: 'Пенсионный калькулятор' }, { href: '/calculator/income-tax', label: 'Калькулятор подоходного налога' }, { href: '/calculator/car-insurance', label: 'Калькулятор страховки авто' }, { href: '/calculator/deposit', label: 'Калькулятор депозита' }, { href: '/calculator/salary', label: 'Калькулятор зарплаты' }],
+  uk: [{ href: '/calculator/pension', label: 'Пенсійний калькулятор' }, { href: '/calculator/income-tax', label: 'Калькулятор прибуткового податку' }, { href: '/calculator/car-insurance', label: 'Калькулятор страховки авто' }, { href: '/calculator/deposit', label: 'Калькулятор депозиту' }, { href: '/calculator/salary', label: 'Калькулятор зарплати' }],
+  fr: [{ href: '/calculator/pension', label: 'Calculatrice Retraite' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }, { href: '/calculator/car-insurance', label: 'Assurance auto' }, { href: '/calculator/deposit', label: 'Calculatrice de dépôt' }, { href: '/calculator/salary', label: 'Calculatrice de salaire' }],
+  lt: [{ href: '/calculator/pension', label: 'Pensijų skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/car-insurance', label: 'Automobilio draudimas' }, { href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

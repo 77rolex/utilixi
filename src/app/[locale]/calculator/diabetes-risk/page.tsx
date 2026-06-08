@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/biological-age', label: 'Biological Age Calculator' }, { href: '/calculator/bmi', label: 'BMI Calculator' }],
-  ru: [{ href: '/calculator/biological-age', label: 'Калькулятор биологического возраста' }, { href: '/calculator/bmi', label: 'Калькулятор ИМТ' }],
-  uk: [{ href: '/calculator/biological-age', label: 'Калькулятор біологічного віку' }, { href: '/calculator/bmi', label: 'Калькулятор ІМТ' }],
-  fr: [{ href: '/calculator/biological-age', label: 'Âge biologique' }, { href: '/calculator/bmi', label: 'Calculatrice IMC' }],
-  lt: [{ href: '/calculator/biological-age', label: 'Biologinio amžiaus skaičiuotuvas' }, { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }],
+  en: [{ href: '/calculator/bmi', label: 'BMI Calculator' }, { href: '/calculator/biological-age', label: 'Biological Age Calculator' }, { href: '/calculator/ideal-weight', label: 'Ideal Weight Calculator' }, { href: '/calculator/calories', label: 'Calorie Calculator (TDEE)' }, { href: '/calculator/body-fat', label: 'Body Fat Calculator' }],
+  ru: [{ href: '/calculator/bmi', label: 'Калькулятор ИМТ' }, { href: '/calculator/biological-age', label: 'Калькулятор биологического возраста' }, { href: '/calculator/ideal-weight', label: 'Калькулятор идеального веса' }, { href: '/calculator/calories', label: 'Калькулятор калорий (TDEE)' }, { href: '/calculator/body-fat', label: 'Калькулятор жира' }],
+  uk: [{ href: '/calculator/bmi', label: 'Калькулятор ІМТ' }, { href: '/calculator/biological-age', label: 'Калькулятор біологічного віку' }, { href: '/calculator/ideal-weight', label: 'Калькулятор ідеальної ваги' }, { href: '/calculator/calories', label: 'Калькулятор калорій (TDEE)' }, { href: '/calculator/body-fat', label: 'Калькулятор жиру' }],
+  fr: [{ href: '/calculator/bmi', label: 'Calculatrice IMC' }, { href: '/calculator/biological-age', label: 'Âge biologique' }, { href: '/calculator/ideal-weight', label: 'Poids Idéal' }, { href: '/calculator/calories', label: 'Calculatrice de calories (TDEE)' }, { href: '/calculator/body-fat', label: 'Calculatrice de graisse corporelle' }],
+  lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/biological-age', label: 'Biologinio amžiaus skaičiuotuvas' }, { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' }, { href: '/calculator/body-fat', label: 'Kūno riebalų skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

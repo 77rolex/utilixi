@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/alimony', label: 'Alimony Calculator' }, { href: '/calculator/flight-delay', label: 'Flight Delay Compensation' }],
-  ru: [{ href: '/calculator/alimony', label: 'Калькулятор алиментов' }, { href: '/calculator/flight-delay', label: 'Компенсация за задержку рейса' }],
-  uk: [{ href: '/calculator/alimony', label: 'Калькулятор аліментів' }, { href: '/calculator/flight-delay', label: 'Компенсація за затримку рейсу' }],
-  fr: [{ href: '/calculator/alimony', label: 'Calculatrice de pension alimentaire' }, { href: '/calculator/flight-delay', label: 'Indemnisation retard de vol' }],
-  lt: [{ href: '/calculator/alimony', label: 'Alimentų skaičiuotuvas' }, { href: '/calculator/flight-delay', label: 'Kompensacija už skrydžio vėlavimą' }],
+  en: [{ href: '/calculator/alimony', label: 'Alimony Calculator' }, { href: '/calculator/traffic-fine', label: 'Traffic Fine Calculator' }, { href: '/calculator/flight-delay', label: 'Flight Delay Compensation' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/date-diff', label: 'Date Difference Calculator' }],
+  ru: [{ href: '/calculator/alimony', label: 'Калькулятор алиментов' }, { href: '/calculator/traffic-fine', label: 'Штрафы ПДД' }, { href: '/calculator/flight-delay', label: 'Компенсация за задержку рейса' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }, { href: '/calculator/date-diff', label: 'Разница дат' }],
+  uk: [{ href: '/calculator/alimony', label: 'Калькулятор аліментів' }, { href: '/calculator/traffic-fine', label: 'Штрафи ПДР' }, { href: '/calculator/flight-delay', label: 'Компенсація за затримку рейсу' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }, { href: '/calculator/date-diff', label: 'Різниця дат' }],
+  fr: [{ href: '/calculator/alimony', label: 'Calculatrice de pension alimentaire' }, { href: '/calculator/traffic-fine', label: 'Calculateur d\'amendes routières' }, { href: '/calculator/flight-delay', label: 'Indemnisation retard de vol' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }, { href: '/calculator/date-diff', label: 'Différence de dates' }],
+  lt: [{ href: '/calculator/alimony', label: 'Alimentų skaičiuotuvas' }, { href: '/calculator/traffic-fine', label: 'Eismo baudų skaičiuotuvas' }, { href: '/calculator/flight-delay', label: 'Kompensacija už skrydžio vėlavimą' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/date-diff', label: 'Datų skirtumas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

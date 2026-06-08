@@ -11,31 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/ovulation', label: 'Ovulation Calculator' },
-    { href: '/calculator/bmi', label: 'BMI Calculator' },
-    { href: '/calculator/ideal-weight', label: 'Ideal Weight Calculator' },
-  ],
-  ru: [
-    { href: '/calculator/ovulation', label: 'Калькулятор овуляции' },
-    { href: '/calculator/bmi', label: 'Калькулятор ИМТ' },
-    { href: '/calculator/ideal-weight', label: 'Калькулятор идеального веса' },
-  ],
-  uk: [
-    { href: '/calculator/ovulation', label: 'Калькулятор овуляції' },
-    { href: '/calculator/bmi', label: 'Калькулятор ІМТ' },
-    { href: '/calculator/ideal-weight', label: 'Калькулятор ідеальної ваги' },
-  ],
-  fr: [
-    { href: '/calculator/ovulation', label: "Calculatrice d'Ovulation" },
-    { href: '/calculator/bmi', label: 'Calculatrice IMC' },
-    { href: '/calculator/ideal-weight', label: 'Poids Idéal' },
-  ],
-  lt: [
-    { href: '/calculator/ovulation', label: 'Ovuliacijos skaičiuotuvas' },
-    { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' },
-    { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' },
-  ],
+  en: [{ href: '/calculator/ovulation', label: 'Ovulation Calculator' }, { href: '/calculator/bmi', label: 'BMI Calculator' }, { href: '/calculator/ideal-weight', label: 'Ideal Weight Calculator' }, { href: '/calculator/age', label: 'Age Calculator' }, { href: '/calculator/calories', label: 'Calorie Calculator' }],
+  ru: [{ href: '/calculator/ovulation', label: 'Калькулятор овуляции' }, { href: '/calculator/bmi', label: 'Калькулятор ИМТ' }, { href: '/calculator/ideal-weight', label: 'Калькулятор идеального веса' }, { href: '/calculator/age', label: 'Калькулятор возраста' }, { href: '/calculator/calories', label: 'Калькулятор калорий' }],
+  uk: [{ href: '/calculator/ovulation', label: 'Калькулятор овуляції' }, { href: '/calculator/bmi', label: 'Калькулятор ІМТ' }, { href: '/calculator/ideal-weight', label: 'Калькулятор ідеальної ваги' }, { href: '/calculator/age', label: 'Калькулятор віку' }, { href: '/calculator/calories', label: 'Калькулятор калорій' }],
+  fr: [{ href: '/calculator/ovulation', label: "Calculatrice d'Ovulation" }, { href: '/calculator/bmi', label: 'Calculatrice IMC' }, { href: '/calculator/ideal-weight', label: 'Poids Idéal' }, { href: '/calculator/age', label: 'Calculatrice d\'âge' }, { href: '/calculator/calories', label: 'Calculatrice de calories' }],
+  lt: [{ href: '/calculator/ovulation', label: 'Ovuliacijos skaičiuotuvas' }, { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {
@@ -377,12 +357,23 @@ export default async function PregnancyPage({ params }: Props) {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <PregnancyCalculator locale={locale} />

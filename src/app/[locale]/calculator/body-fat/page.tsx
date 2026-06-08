@@ -11,36 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/bmi', label: 'BMI Calculator' },
-    { href: '/calculator/ideal-weight', label: 'Ideal Weight Calculator' },
-    { href: '/calculator/calories', label: 'Calorie Calculator (TDEE)' },
-    { href: '/calculator/water-intake', label: 'Water Intake Calculator' },
-  ],
-  ru: [
-    { href: '/calculator/bmi', label: 'Калькулятор ИМТ' },
-    { href: '/calculator/ideal-weight', label: 'Калькулятор идеального веса' },
-    { href: '/calculator/calories', label: 'Калькулятор калорий (TDEE)' },
-    { href: '/calculator/water-intake', label: 'Норма воды в день' },
-  ],
-  uk: [
-    { href: '/calculator/bmi', label: 'Калькулятор ІМТ' },
-    { href: '/calculator/ideal-weight', label: 'Калькулятор ідеальної ваги' },
-    { href: '/calculator/calories', label: 'Калькулятор калорій (TDEE)' },
-    { href: '/calculator/water-intake', label: 'Норма води на день' },
-  ],
-  fr: [
-    { href: '/calculator/bmi', label: 'Calculatrice IMC' },
-    { href: '/calculator/ideal-weight', label: 'Poids Idéal' },
-    { href: '/calculator/calories', label: 'Calculatrice de calories (TDEE)' },
-    { href: '/calculator/water-intake', label: 'Apport en eau quotidien' },
-  ],
-  lt: [
-    { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' },
-    { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' },
-    { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' },
-    { href: '/calculator/water-intake', label: 'Vandens normos skaičiuotuvas' },
-  ],
+  en: [{ href: '/calculator/bmi', label: 'BMI Calculator' }, { href: '/calculator/ideal-weight', label: 'Ideal Weight Calculator' }, { href: '/calculator/calories', label: 'Calorie Calculator (TDEE)' }, { href: '/calculator/water-intake', label: 'Water Intake Calculator' }, { href: '/calculator/heart-rate', label: 'Heart Rate Zones' }],
+  ru: [{ href: '/calculator/bmi', label: 'Калькулятор ИМТ' }, { href: '/calculator/ideal-weight', label: 'Калькулятор идеального веса' }, { href: '/calculator/calories', label: 'Калькулятор калорий (TDEE)' }, { href: '/calculator/water-intake', label: 'Норма воды в день' }, { href: '/calculator/heart-rate', label: 'Пульсовые зоны' }],
+  uk: [{ href: '/calculator/bmi', label: 'Калькулятор ІМТ' }, { href: '/calculator/ideal-weight', label: 'Калькулятор ідеальної ваги' }, { href: '/calculator/calories', label: 'Калькулятор калорій (TDEE)' }, { href: '/calculator/water-intake', label: 'Норма води на день' }, { href: '/calculator/heart-rate', label: 'Пульсові зони' }],
+  fr: [{ href: '/calculator/bmi', label: 'Calculatrice IMC' }, { href: '/calculator/ideal-weight', label: 'Poids Idéal' }, { href: '/calculator/calories', label: 'Calculatrice de calories (TDEE)' }, { href: '/calculator/water-intake', label: 'Apport en eau quotidien' }, { href: '/calculator/heart-rate', label: 'Zones de FC' }],
+  lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' }, { href: '/calculator/water-intake', label: 'Vandens normos skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

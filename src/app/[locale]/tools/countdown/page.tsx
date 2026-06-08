@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/date-diff', label: 'Date Difference Calculator' }, { href: '/calculator/age', label: 'Age Calculator' }],
-  ru: [{ href: '/calculator/date-diff', label: 'Калькулятор разницы дат' }, { href: '/calculator/age', label: 'Калькулятор возраста' }],
-  uk: [{ href: '/calculator/date-diff', label: 'Калькулятор різниці дат' }, { href: '/calculator/age', label: 'Калькулятор віку' }],
-  fr: [{ href: '/calculator/date-diff', label: 'Calculatrice de différence de dates' }, { href: '/calculator/age', label: 'Calculatrice d\'âge' }],
-  lt: [{ href: '/calculator/date-diff', label: 'Datų skirtumo skaičiuotuvas' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }],
+  en: [{ href: '/calculator/date-diff', label: 'Date Difference Calculator' }, { href: '/calculator/age', label: 'Age Calculator' }, { href: '/tools/word-counter', label: 'Word Counter' }, { href: '/converter/timezone', label: 'Timezone Converter' }, { href: '/tools/password-generator', label: 'Password Generator' }],
+  ru: [{ href: '/calculator/date-diff', label: 'Калькулятор разницы дат' }, { href: '/calculator/age', label: 'Калькулятор возраста' }, { href: '/tools/word-counter', label: 'Счётчик слов' }, { href: '/converter/timezone', label: 'Конвертер часовых поясов' }, { href: '/tools/password-generator', label: 'Генератор паролей' }],
+  uk: [{ href: '/calculator/date-diff', label: 'Калькулятор різниці дат' }, { href: '/calculator/age', label: 'Калькулятор віку' }, { href: '/tools/word-counter', label: 'Лічильник слів' }, { href: '/converter/timezone', label: 'Конвертер часових поясів' }, { href: '/tools/password-generator', label: 'Генератор паролів' }],
+  fr: [{ href: '/calculator/date-diff', label: 'Calculatrice de différence de dates' }, { href: '/calculator/age', label: 'Calculatrice d\'âge' }, { href: '/tools/word-counter', label: 'Compteur de mots' }, { href: '/converter/timezone', label: 'Convertisseur de fuseaux horaires' }, { href: '/tools/password-generator', label: 'Générateur de mot de passe' }],
+  lt: [{ href: '/calculator/date-diff', label: 'Datų skirtumo skaičiuotuvas' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/tools/word-counter', label: 'Žodžių skaitiklis' }, { href: '/converter/timezone', label: 'Laiko juostų keitiklis' }, { href: '/tools/password-generator', label: 'Slaptažodžių generatorius' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

@@ -11,26 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/crypto', label: 'Crypto Rates' },
-    { href: '/calculator/income-tax', label: 'Income Tax Calculator' },
-  ],
-  ru: [
-    { href: '/crypto', label: 'Курс криптовалют' },
-    { href: '/calculator/income-tax', label: 'Калькулятор подоходного налога' },
-  ],
-  uk: [
-    { href: '/crypto', label: 'Курс криптовалют' },
-    { href: '/calculator/income-tax', label: 'Калькулятор прибуткового податку' },
-  ],
-  fr: [
-    { href: '/crypto', label: 'Cours des cryptos' },
-    { href: '/calculator/income-tax', label: 'Calculatrice impôt sur le revenu' },
-  ],
-  lt: [
-    { href: '/crypto', label: 'Kriptovaliutų kursai' },
-    { href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' },
-  ],
+  en: [{ href: '/crypto', label: 'Crypto Rates' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/crypto/converter', label: 'Crypto Converter' }, { href: '/currency', label: 'Currency Converter' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }],
+  ru: [{ href: '/crypto', label: 'Курс криптовалют' }, { href: '/calculator/income-tax', label: 'Калькулятор подоходного налога' }, { href: '/crypto/converter', label: 'Конвертер криптовалют' }, { href: '/currency', label: 'Конвертер валют' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }],
+  uk: [{ href: '/crypto', label: 'Курс криптовалют' }, { href: '/calculator/income-tax', label: 'Калькулятор прибуткового податку' }, { href: '/crypto/converter', label: 'Конвертер криптовалют' }, { href: '/currency', label: 'Конвертер валют' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }],
+  fr: [{ href: '/crypto', label: 'Cours des cryptos' }, { href: '/calculator/income-tax', label: 'Calculatrice impôt sur le revenu' }, { href: '/crypto/converter', label: 'Convertisseur crypto' }, { href: '/currency', label: 'Convertisseur de devises' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }],
+  lt: [{ href: '/crypto', label: 'Kriptovaliutų kursai' }, { href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' }, { href: '/crypto/converter', label: 'Kriptovaliutų keitiklis' }, { href: '/currency', label: 'Valiutų keitiklis' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

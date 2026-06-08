@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/deposit', label: 'Deposit Calculator' }, { href: '/calculator/pension', label: 'Pension Calculator' }],
-  ru: [{ href: '/calculator/deposit', label: 'Калькулятор депозита' }, { href: '/calculator/pension', label: 'Пенсионный калькулятор' }],
-  uk: [{ href: '/calculator/deposit', label: 'Калькулятор депозиту' }, { href: '/calculator/pension', label: 'Пенсійний калькулятор' }],
-  fr: [{ href: '/calculator/deposit', label: 'Calculatrice de dépôt' }, { href: '/calculator/pension', label: 'Simulatrice Retraite' }],
-  lt: [{ href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/pension', label: 'Pensijų skaičiuotuvas' }],
+  en: [{ href: '/calculator/deposit', label: 'Deposit Calculator' }, { href: '/calculator/roi', label: 'ROI Calculator' }, { href: '/calculator/pension', label: 'Pension Calculator' }, { href: '/calculator/mortgage', label: 'Mortgage Calculator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }],
+  ru: [{ href: '/calculator/deposit', label: 'Калькулятор депозита' }, { href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/pension', label: 'Пенсионный калькулятор' }, { href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }],
+  uk: [{ href: '/calculator/deposit', label: 'Калькулятор депозиту' }, { href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/pension', label: 'Пенсійний калькулятор' }, { href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }],
+  fr: [{ href: '/calculator/deposit', label: 'Calculatrice de dépôt' }, { href: '/calculator/roi', label: 'Calculatrice ROI' }, { href: '/calculator/pension', label: 'Simulatrice Retraite' }, { href: '/calculator/mortgage', label: 'Calculatrice de prêt immobilier' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }],
+  lt: [{ href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/roi', label: 'ROI skaičiuotuvas' }, { href: '/calculator/pension', label: 'Pensijų skaičiuotuvas' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

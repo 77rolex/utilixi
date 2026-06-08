@@ -11,26 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/vat', label: 'VAT Calculator' },
-    { href: '/calculator/freelance-rate', label: 'Freelance Rate Calculator' },
-  ],
-  ru: [
-    { href: '/calculator/vat', label: 'Калькулятор НДС' },
-    { href: '/calculator/freelance-rate', label: 'Калькулятор ставки фрилансера' },
-  ],
-  uk: [
-    { href: '/calculator/vat', label: 'Калькулятор ПДВ' },
-    { href: '/calculator/freelance-rate', label: 'Калькулятор ставки фрилансера' },
-  ],
-  fr: [
-    { href: '/calculator/vat', label: 'Calculatrice TVA' },
-    { href: '/calculator/freelance-rate', label: 'Taux freelance' },
-  ],
-  lt: [
-    { href: '/calculator/vat', label: 'PVM skaičiuotuvas' },
-    { href: '/calculator/freelance-rate', label: 'Laisvai samdomų tarifas' },
-  ],
+  en: [{ href: '/calculator/vat', label: 'VAT Calculator' }, { href: '/calculator/freelance-rate', label: 'Freelance Rate Calculator' }, { href: '/calculator/salary', label: 'Salary Calculator' }, { href: '/calculator/margin', label: 'Margin Calculator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }],
+  ru: [{ href: '/calculator/vat', label: 'Калькулятор НДС' }, { href: '/calculator/freelance-rate', label: 'Калькулятор ставки фрилансера' }, { href: '/calculator/salary', label: 'Калькулятор зарплаты' }, { href: '/calculator/margin', label: 'Калькулятор маржи' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }],
+  uk: [{ href: '/calculator/vat', label: 'Калькулятор ПДВ' }, { href: '/calculator/freelance-rate', label: 'Калькулятор ставки фрилансера' }, { href: '/calculator/salary', label: 'Калькулятор зарплати' }, { href: '/calculator/margin', label: 'Калькулятор маржі' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }],
+  fr: [{ href: '/calculator/vat', label: 'Calculatrice TVA' }, { href: '/calculator/freelance-rate', label: 'Taux freelance' }, { href: '/calculator/salary', label: 'Calculatrice de salaire' }, { href: '/calculator/margin', label: 'Calculatrice marge' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }],
+  lt: [{ href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/freelance-rate', label: 'Laisvai samdomų tarifas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/calculator/margin', label: 'Maržos skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

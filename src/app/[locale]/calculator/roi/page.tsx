@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/deposit', label: 'Deposit Calculator' }, { href: '/calculator/mortgage', label: 'Mortgage Calculator' }],
-  ru: [{ href: '/calculator/deposit', label: 'Калькулятор депозита' }, { href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }],
-  uk: [{ href: '/calculator/deposit', label: 'Калькулятор депозиту' }, { href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }],
-  fr: [{ href: '/calculator/deposit', label: 'Calculatrice de dépôt' }, { href: '/calculator/mortgage', label: 'Calculatrice de prêt immobilier' }],
-  lt: [{ href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }],
+  en: [{ href: '/calculator/deposit', label: 'Deposit Calculator' }, { href: '/calculator/compound-interest', label: 'Compound Interest Calculator' }, { href: '/calculator/mortgage', label: 'Mortgage Calculator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }],
+  ru: [{ href: '/calculator/deposit', label: 'Калькулятор депозита' }, { href: '/calculator/compound-interest', label: 'Сложные проценты' }, { href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }],
+  uk: [{ href: '/calculator/deposit', label: 'Калькулятор депозиту' }, { href: '/calculator/compound-interest', label: 'Складні відсотки' }, { href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }],
+  fr: [{ href: '/calculator/deposit', label: 'Calculatrice de dépôt' }, { href: '/calculator/compound-interest', label: 'Intérêts composés' }, { href: '/calculator/mortgage', label: 'Calculatrice de prêt immobilier' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }],
+  lt: [{ href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/compound-interest', label: 'Sudėtinių palūkanų skaičiuotuvas' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

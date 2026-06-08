@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/tools/countdown', label: 'Countdown Timer' }, { href: '/converter/color', label: 'Color Converter' }],
-  ru: [{ href: '/tools/countdown', label: 'Таймер обратного отсчёта' }, { href: '/converter/color', label: 'Конвертер цветов' }],
-  uk: [{ href: '/tools/countdown', label: 'Таймер зворотного відліку' }, { href: '/converter/color', label: 'Конвертер кольорів' }],
-  fr: [{ href: '/tools/countdown', label: 'Compte à rebours' }, { href: '/converter/color', label: 'Convertisseur de couleurs' }],
-  lt: [{ href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }, { href: '/converter/color', label: 'Spalvų keitiklis' }],
+  en: [{ href: '/tools/word-counter', label: 'Word Counter' }, { href: '/tools/countdown', label: 'Countdown Timer' }, { href: '/calculator/engineering', label: 'Engineering Calculator' }, { href: '/calculator/basic', label: 'Basic Calculator' }, { href: '/converter/color', label: 'Color Converter' }],
+  ru: [{ href: '/tools/word-counter', label: 'Счётчик слов' }, { href: '/tools/countdown', label: 'Таймер обратного отсчёта' }, { href: '/calculator/engineering', label: 'Инженерный калькулятор' }, { href: '/calculator/basic', label: 'Простой калькулятор' }, { href: '/converter/color', label: 'Конвертер цветов' }],
+  uk: [{ href: '/tools/word-counter', label: 'Лічильник слів' }, { href: '/tools/countdown', label: 'Таймер зворотного відліку' }, { href: '/calculator/engineering', label: 'Інженерний калькулятор' }, { href: '/calculator/basic', label: 'Простий калькулятор' }, { href: '/converter/color', label: 'Конвертер кольорів' }],
+  fr: [{ href: '/tools/word-counter', label: 'Compteur de mots' }, { href: '/tools/countdown', label: 'Compte à rebours' }, { href: '/calculator/engineering', label: 'Calculatrice scientifique' }, { href: '/calculator/basic', label: 'Calculatrice basique' }, { href: '/converter/color', label: 'Convertisseur de couleurs' }],
+  lt: [{ href: '/tools/word-counter', label: 'Žodžių skaitiklis' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }, { href: '/calculator/engineering', label: 'Inžinerinis skaičiuotuvas' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/converter/color', label: 'Spalvų keitiklis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

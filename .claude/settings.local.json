@@ -40,7 +40,11 @@
       "Bash(git log *)",
       "Bash(ls -la .env*)",
       "Bash(grep -c '{ q:' '/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/__TRACKED_VAR__/page.tsx')",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(sed -n '340,395p' \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/pregnancy/page.tsx\")",
+      "Bash(sed -n '144,158p' \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/gpa/page.tsx\")",
+      "Bash(sed -n '220,270p' \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/currency/page.tsx\")",
+      "Bash(sed -n '150,195p' \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/currency/rates/page.tsx\")"
     ]
   }
 }

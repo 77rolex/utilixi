@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/vat', label: 'VAT Calculator' }, { href: '/currency', label: 'Currency Converter' }],
-  ru: [{ href: '/calculator/vat', label: 'Калькулятор НДС' }, { href: '/currency', label: 'Конвертер валют' }],
-  uk: [{ href: '/calculator/vat', label: 'Калькулятор ПДВ' }, { href: '/currency', label: 'Конвертер валют' }],
-  fr: [{ href: '/calculator/vat', label: 'Calculatrice TVA' }, { href: '/currency', label: 'Convertisseur de devises' }],
-  lt: [{ href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/currency', label: 'Valiutų keitiklis' }],
+  en: [{ href: '/calculator/percentage', label: 'Percentage Calculator' }, { href: '/calculator/basic', label: 'Basic Calculator' }, { href: '/calculator/vat', label: 'VAT Calculator' }, { href: '/calculator/discount', label: 'Discount Calculator' }, { href: '/calculator/salary', label: 'Salary Calculator' }],
+  ru: [{ href: '/calculator/percentage', label: 'Калькулятор процентов' }, { href: '/calculator/basic', label: 'Простой калькулятор' }, { href: '/calculator/vat', label: 'Калькулятор НДС' }, { href: '/calculator/discount', label: 'Калькулятор скидки' }, { href: '/calculator/salary', label: 'Калькулятор зарплаты' }],
+  uk: [{ href: '/calculator/percentage', label: 'Калькулятор відсотків' }, { href: '/calculator/basic', label: 'Простий калькулятор' }, { href: '/calculator/vat', label: 'Калькулятор ПДВ' }, { href: '/calculator/discount', label: 'Калькулятор знижки' }, { href: '/calculator/salary', label: 'Калькулятор зарплати' }],
+  fr: [{ href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }, { href: '/calculator/basic', label: 'Calculatrice basique' }, { href: '/calculator/vat', label: 'Calculatrice TVA' }, { href: '/calculator/discount', label: 'Calculatrice de remise' }, { href: '/calculator/salary', label: 'Calculatrice de salaire' }],
+  lt: [{ href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/discount', label: 'Nuolaidos skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

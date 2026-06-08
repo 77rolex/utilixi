@@ -11,31 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/income-tax', label: 'Income Tax Calculator' },
-    { href: '/calculator/roi', label: 'ROI Calculator' },
-    { href: '/calculator/salary', label: 'Salary Calculator' },
-  ],
-  ru: [
-    { href: '/calculator/income-tax', label: 'Калькулятор подоходного налога' },
-    { href: '/calculator/roi', label: 'Калькулятор ROI' },
-    { href: '/calculator/salary', label: 'Калькулятор зарплаты' },
-  ],
-  uk: [
-    { href: '/calculator/income-tax', label: 'Калькулятор прибуткового податку' },
-    { href: '/calculator/roi', label: 'Калькулятор ROI' },
-    { href: '/calculator/salary', label: 'Калькулятор зарплати' },
-  ],
-  fr: [
-    { href: '/calculator/income-tax', label: 'Calculatrice impôt sur le revenu' },
-    { href: '/calculator/roi', label: 'Calculatrice ROI' },
-    { href: '/calculator/salary', label: 'Calculatrice de salaire' },
-  ],
-  lt: [
-    { href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' },
-    { href: '/calculator/roi', label: 'RI skaičiuotuvas' },
-    { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' },
-  ],
+  en: [{ href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/roi', label: 'ROI Calculator' }, { href: '/calculator/salary', label: 'Salary Calculator' }, { href: '/calculator/vat', label: 'VAT Calculator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }],
+  ru: [{ href: '/calculator/income-tax', label: 'Калькулятор подоходного налога' }, { href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/salary', label: 'Калькулятор зарплаты' }, { href: '/calculator/vat', label: 'Калькулятор НДС' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }],
+  uk: [{ href: '/calculator/income-tax', label: 'Калькулятор прибуткового податку' }, { href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/salary', label: 'Калькулятор зарплати' }, { href: '/calculator/vat', label: 'Калькулятор ПДВ' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }],
+  fr: [{ href: '/calculator/income-tax', label: 'Calculatrice impôt sur le revenu' }, { href: '/calculator/roi', label: 'Calculatrice ROI' }, { href: '/calculator/salary', label: 'Calculatrice de salaire' }, { href: '/calculator/vat', label: 'Calculatrice TVA' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }],
+  lt: [{ href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' }, { href: '/calculator/roi', label: 'RI skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/basic', label: 'Basic Calculator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }, { href: '/calculator/compound-interest', label: 'Compound Interest Calculator' }],
-  ru: [{ href: '/calculator/basic', label: 'Простой калькулятор' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }, { href: '/calculator/compound-interest', label: 'Калькулятор сложных процентов' }],
-  uk: [{ href: '/calculator/basic', label: 'Простий калькулятор' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }, { href: '/calculator/compound-interest', label: 'Калькулятор складних відсотків' }],
-  fr: [{ href: '/calculator/basic', label: 'Calculatrice basique' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }, { href: '/calculator/compound-interest', label: 'Intérêts composés' }],
-  lt: [{ href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/compound-interest', label: 'Sudėtinių palūkanų skaičiuotuvas' }],
+  en: [{ href: '/calculator/basic', label: 'Basic Calculator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }, { href: '/calculator/compound-interest', label: 'Compound Interest Calculator' }, { href: '/converter/units', label: 'Unit Converter' }, { href: '/calculator/gpa', label: 'GPA Calculator' }],
+  ru: [{ href: '/calculator/basic', label: 'Простой калькулятор' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }, { href: '/calculator/compound-interest', label: 'Калькулятор сложных процентов' }, { href: '/converter/units', label: 'Конвертер единиц' }, { href: '/calculator/gpa', label: 'Калькулятор GPA' }],
+  uk: [{ href: '/calculator/basic', label: 'Простий калькулятор' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }, { href: '/calculator/compound-interest', label: 'Калькулятор складних відсотків' }, { href: '/converter/units', label: 'Конвертер одиниць' }, { href: '/calculator/gpa', label: 'Калькулятор GPA' }],
+  fr: [{ href: '/calculator/basic', label: 'Calculatrice basique' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }, { href: '/calculator/compound-interest', label: 'Intérêts composés' }, { href: '/converter/units', label: 'Convertisseur d\'unités' }, { href: '/calculator/gpa', label: 'Calculatrice GPA' }],
+  lt: [{ href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/compound-interest', label: 'Sudėtinių palūkanų skaičiuotuvas' }, { href: '/converter/units', label: 'Vienetų keitiklis' }, { href: '/calculator/gpa', label: 'GPA skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

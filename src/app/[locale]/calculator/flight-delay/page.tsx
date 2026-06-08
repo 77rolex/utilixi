@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/traffic-fine', label: 'Traffic Fine Calculator' }, { href: '/calculator/alimony', label: 'Alimony Calculator' }],
-  ru: [{ href: '/calculator/traffic-fine', label: 'Штрафы ПДД' }, { href: '/calculator/alimony', label: 'Калькулятор алиментов' }],
-  uk: [{ href: '/calculator/traffic-fine', label: 'Штрафи ПДР' }, { href: '/calculator/alimony', label: 'Калькулятор аліментів' }],
-  fr: [{ href: '/calculator/traffic-fine', label: 'Calculateur d\'amendes routières' }, { href: '/calculator/alimony', label: 'Calculatrice de pension alimentaire' }],
-  lt: [{ href: '/calculator/traffic-fine', label: 'Eismo baudų skaičiuotuvas' }, { href: '/calculator/alimony', label: 'Alimentų skaičiuotuvas' }],
+  en: [{ href: '/calculator/traffic-fine', label: 'Traffic Fine Calculator' }, { href: '/calculator/limitation', label: 'Statute of Limitations' }, { href: '/calculator/alimony', label: 'Alimony Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/salary', label: 'Salary Calculator' }],
+  ru: [{ href: '/calculator/traffic-fine', label: 'Штрафы ПДД' }, { href: '/calculator/limitation', label: 'Срок исковой давности' }, { href: '/calculator/alimony', label: 'Калькулятор алиментов' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }, { href: '/calculator/salary', label: 'Калькулятор зарплаты' }],
+  uk: [{ href: '/calculator/traffic-fine', label: 'Штрафи ПДР' }, { href: '/calculator/limitation', label: 'Строк позовної давності' }, { href: '/calculator/alimony', label: 'Калькулятор аліментів' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }, { href: '/calculator/salary', label: 'Калькулятор зарплати' }],
+  fr: [{ href: '/calculator/traffic-fine', label: 'Calculateur d\'amendes routières' }, { href: '/calculator/limitation', label: 'Délai de prescription' }, { href: '/calculator/alimony', label: 'Calculatrice de pension alimentaire' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }, { href: '/calculator/salary', label: 'Calculatrice de salaire' }],
+  lt: [{ href: '/calculator/traffic-fine', label: 'Eismo baudų skaičiuotuvas' }, { href: '/calculator/limitation', label: 'Ieškinio senaties terminas' }, { href: '/calculator/alimony', label: 'Alimentų skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

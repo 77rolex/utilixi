@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/freelance-rate', label: 'Freelance Rate Calculator' }, { href: '/calculator/margin', label: 'Margin Calculator' }],
-  ru: [{ href: '/calculator/income-tax', label: 'Калькулятор НДФЛ' }, { href: '/calculator/salary', label: 'Калькулятор зарплаты' }, { href: '/calculator/margin', label: 'Калькулятор маржи' }],
-  uk: [{ href: '/calculator/income-tax', label: 'Калькулятор ПДФО' }, { href: '/calculator/salary', label: 'Калькулятор зарплати' }, { href: '/calculator/margin', label: 'Калькулятор маржі' }],
-  fr: [{ href: '/calculator/income-tax', label: 'Impôt sur le revenu' }, { href: '/calculator/freelance-rate', label: 'Taux freelance' }, { href: '/calculator/margin', label: 'Calculatrice marge' }],
-  lt: [{ href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/calculator/margin', label: 'Maržos skaičiuotuvas' }],
+  en: [{ href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/freelance-rate', label: 'Freelance Rate Calculator' }, { href: '/calculator/margin', label: 'Margin Calculator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }, { href: '/calculator/discount', label: 'Discount Calculator' }],
+  ru: [{ href: '/calculator/income-tax', label: 'Калькулятор НДФЛ' }, { href: '/calculator/salary', label: 'Калькулятор зарплаты' }, { href: '/calculator/margin', label: 'Калькулятор маржи' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }, { href: '/calculator/discount', label: 'Калькулятор скидки' }],
+  uk: [{ href: '/calculator/income-tax', label: 'Калькулятор ПДФО' }, { href: '/calculator/salary', label: 'Калькулятор зарплати' }, { href: '/calculator/margin', label: 'Калькулятор маржі' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }, { href: '/calculator/discount', label: 'Калькулятор знижки' }],
+  fr: [{ href: '/calculator/income-tax', label: 'Impôt sur le revenu' }, { href: '/calculator/freelance-rate', label: 'Taux freelance' }, { href: '/calculator/margin', label: 'Calculatrice marge' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }, { href: '/calculator/discount', label: 'Calculatrice de remise' }],
+  lt: [{ href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/calculator/margin', label: 'Maržos skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/discount', label: 'Nuolaidos skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

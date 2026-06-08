@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/gpa', label: 'GPA Calculator' }, { href: '/converter/units', label: 'Unit Converter' }],
-  ru: [{ href: '/calculator/gpa', label: 'Калькулятор GPA' }, { href: '/converter/units', label: 'Конвертер единиц' }],
-  uk: [{ href: '/calculator/gpa', label: 'Калькулятор GPA' }, { href: '/converter/units', label: 'Конвертер одиниць' }],
-  fr: [{ href: '/calculator/gpa', label: 'Calculatrice GPA' }, { href: '/converter/units', label: 'Convertisseur d\'unités' }],
-  lt: [{ href: '/calculator/gpa', label: 'GPA skaičiuotuvas' }, { href: '/converter/units', label: 'Vienetų konverteris' }],
+  en: [{ href: '/calculator/gpa', label: 'GPA Calculator' }, { href: '/calculator/age', label: 'Age Calculator' }, { href: '/calculator/salary', label: 'Salary Calculator' }, { href: '/calculator/date-diff', label: 'Date Difference Calculator' }, { href: '/converter/units', label: 'Unit Converter' }],
+  ru: [{ href: '/calculator/gpa', label: 'Калькулятор GPA' }, { href: '/calculator/age', label: 'Калькулятор возраста' }, { href: '/calculator/salary', label: 'Калькулятор зарплаты' }, { href: '/calculator/date-diff', label: 'Разница дат' }, { href: '/converter/units', label: 'Конвертер единиц' }],
+  uk: [{ href: '/calculator/gpa', label: 'Калькулятор GPA' }, { href: '/calculator/age', label: 'Калькулятор віку' }, { href: '/calculator/salary', label: 'Калькулятор зарплати' }, { href: '/calculator/date-diff', label: 'Різниця дат' }, { href: '/converter/units', label: 'Конвертер одиниць' }],
+  fr: [{ href: '/calculator/gpa', label: 'Calculatrice GPA' }, { href: '/calculator/age', label: 'Calculatrice d\'âge' }, { href: '/calculator/salary', label: 'Calculatrice de salaire' }, { href: '/calculator/date-diff', label: 'Différence de dates' }, { href: '/converter/units', label: 'Convertisseur d\'unités' }],
+  lt: [{ href: '/calculator/gpa', label: 'GPA skaičiuotuvas' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/calculator/date-diff', label: 'Datų skirtumas' }, { href: '/converter/units', label: 'Vienetų keitiklis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

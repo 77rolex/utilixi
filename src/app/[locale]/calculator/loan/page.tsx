@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/mortgage', label: 'Mortgage Calculator' }, { href: '/calculator/deposit', label: 'Deposit Calculator' }],
-  ru: [{ href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }, { href: '/calculator/deposit', label: 'Калькулятор депозита' }],
-  uk: [{ href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }, { href: '/calculator/deposit', label: 'Калькулятор депозиту' }],
-  fr: [{ href: '/calculator/mortgage', label: 'Calculatrice de prêt immobilier' }, { href: '/calculator/deposit', label: 'Calculatrice de dépôt' }],
-  lt: [{ href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }],
+  en: [{ href: '/calculator/mortgage', label: 'Mortgage Calculator' }, { href: '/calculator/deposit', label: 'Deposit Calculator' }, { href: '/calculator/rent-vs-buy', label: 'Rent vs Buy' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/vat', label: 'VAT Calculator' }],
+  ru: [{ href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }, { href: '/calculator/deposit', label: 'Калькулятор депозита' }, { href: '/calculator/rent-vs-buy', label: 'Аренда vs Покупка' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }, { href: '/calculator/vat', label: 'Калькулятор НДС' }],
+  uk: [{ href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }, { href: '/calculator/deposit', label: 'Калькулятор депозиту' }, { href: '/calculator/rent-vs-buy', label: 'Оренда vs Купівля' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }, { href: '/calculator/vat', label: 'Калькулятор ПДВ' }],
+  fr: [{ href: '/calculator/mortgage', label: 'Calculatrice de prêt immobilier' }, { href: '/calculator/deposit', label: 'Calculatrice de dépôt' }, { href: '/calculator/rent-vs-buy', label: 'Louer vs Acheter' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }, { href: '/calculator/vat', label: 'Calculatrice TVA' }],
+  lt: [{ href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/rent-vs-buy', label: 'Nuoma vs Pirkimas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

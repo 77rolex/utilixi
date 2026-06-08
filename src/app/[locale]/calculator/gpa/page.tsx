@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/converter/grade-system', label: 'Grade System Converter' }, { href: '/calculator/age', label: 'Age Calculator' }, { href: '/calculator/date-diff', label: 'Date Difference Calculator' }],
-  ru: [{ href: '/converter/grade-system', label: 'Конвертер систем оценок' }, { href: '/calculator/age', label: 'Калькулятор возраста' }, { href: '/calculator/date-diff', label: 'Разница дат' }],
-  uk: [{ href: '/converter/grade-system', label: 'Конвертер систем оцінок' }, { href: '/calculator/age', label: 'Калькулятор віку' }, { href: '/calculator/date-diff', label: 'Різниця дат' }],
-  fr: [{ href: '/converter/grade-system', label: 'Convertisseur de notes' }, { href: '/calculator/age', label: 'Calculatrice d\'âge' }, { href: '/calculator/date-diff', label: 'Différence de dates' }],
-  lt: [{ href: '/converter/grade-system', label: 'Pažymių sistemų konverteris' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/calculator/date-diff', label: 'Datų skirtumas' }],
+  en: [{ href: '/converter/grade-system', label: 'Grade System Converter' }, { href: '/calculator/age', label: 'Age Calculator' }, { href: '/calculator/date-diff', label: 'Date Difference Calculator' }, { href: '/calculator/salary', label: 'Salary Calculator' }, { href: '/tools/countdown', label: 'Countdown Timer' }],
+  ru: [{ href: '/converter/grade-system', label: 'Конвертер систем оценок' }, { href: '/calculator/age', label: 'Калькулятор возраста' }, { href: '/calculator/date-diff', label: 'Разница дат' }, { href: '/calculator/salary', label: 'Калькулятор зарплаты' }, { href: '/tools/countdown', label: 'Таймер обратного отсчёта' }],
+  uk: [{ href: '/converter/grade-system', label: 'Конвертер систем оцінок' }, { href: '/calculator/age', label: 'Калькулятор віку' }, { href: '/calculator/date-diff', label: 'Різниця дат' }, { href: '/calculator/salary', label: 'Калькулятор зарплати' }, { href: '/tools/countdown', label: 'Таймер зворотного відліку' }],
+  fr: [{ href: '/converter/grade-system', label: 'Convertisseur de notes' }, { href: '/calculator/age', label: 'Calculatrice d\'âge' }, { href: '/calculator/date-diff', label: 'Différence de dates' }, { href: '/calculator/salary', label: 'Calculatrice de salaire' }, { href: '/tools/countdown', label: 'Compte à rebours' }],
+  lt: [{ href: '/converter/grade-system', label: 'Pažymių sistemų konverteris' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/calculator/date-diff', label: 'Datų skirtumas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {
@@ -147,9 +147,20 @@ export default async function GpaPage({ params }: Props) {
   const related = RELATED[locale] || RELATED.en;
   const jsonLd = { '@context': 'https://schema.org', '@type': 'WebApplication', name: meta.title, description: meta.description, url: `https://www.utilixi.com/${locale}/calculator/gpa`, applicationCategory: 'EducationApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <GpaCalculator locale={locale} />

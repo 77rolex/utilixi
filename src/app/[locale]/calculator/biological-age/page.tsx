@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/bmi', label: 'BMI Calculator' }, { href: '/calculator/heart-rate', label: 'Heart Rate Zones Calculator' }, { href: '/calculator/stress-level', label: 'Stress Level Test' }],
-  ru: [{ href: '/calculator/bmi', label: 'Калькулятор ИМТ' }, { href: '/calculator/heart-rate', label: 'Зоны пульса' }, { href: '/calculator/stress-level', label: 'Тест уровня стресса' }],
-  uk: [{ href: '/calculator/bmi', label: 'Калькулятор ІМТ' }, { href: '/calculator/heart-rate', label: 'Зони пульсу' }, { href: '/calculator/stress-level', label: 'Тест рівня стресу' }],
-  fr: [{ href: '/calculator/bmi', label: 'Calculatrice IMC' }, { href: '/calculator/heart-rate', label: 'Zones de fréquence cardiaque' }, { href: '/calculator/stress-level', label: 'Test de stress' }],
-  lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Širdies ritmo zonos' }, { href: '/calculator/stress-level', label: 'Streso lygio testas' }],
+  en: [{ href: '/calculator/bmi', label: 'BMI Calculator' }, { href: '/calculator/heart-rate', label: 'Heart Rate Zones Calculator' }, { href: '/calculator/stress-level', label: 'Stress Level Test' }, { href: '/calculator/calories', label: 'Calorie Calculator' }, { href: '/calculator/sleep', label: 'Sleep Calculator' }],
+  ru: [{ href: '/calculator/bmi', label: 'Калькулятор ИМТ' }, { href: '/calculator/heart-rate', label: 'Зоны пульса' }, { href: '/calculator/stress-level', label: 'Тест уровня стресса' }, { href: '/calculator/calories', label: 'Калькулятор калорий' }, { href: '/calculator/sleep', label: 'Калькулятор сна' }],
+  uk: [{ href: '/calculator/bmi', label: 'Калькулятор ІМТ' }, { href: '/calculator/heart-rate', label: 'Зони пульсу' }, { href: '/calculator/stress-level', label: 'Тест рівня стресу' }, { href: '/calculator/calories', label: 'Калькулятор калорій' }, { href: '/calculator/sleep', label: 'Калькулятор сну' }],
+  fr: [{ href: '/calculator/bmi', label: 'Calculatrice IMC' }, { href: '/calculator/heart-rate', label: 'Zones de fréquence cardiaque' }, { href: '/calculator/stress-level', label: 'Test de stress' }, { href: '/calculator/calories', label: 'Calculatrice de calories' }, { href: '/calculator/sleep', label: 'Calculatrice du sommeil' }],
+  lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Širdies ritmo zonos' }, { href: '/calculator/stress-level', label: 'Streso lygio testas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas' }, { href: '/calculator/sleep', label: 'Miego skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

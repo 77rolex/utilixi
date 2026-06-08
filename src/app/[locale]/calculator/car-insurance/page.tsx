@@ -11,26 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/loan', label: 'Loan Calculator' },
-    { href: '/calculator/roi', label: 'ROI Calculator' },
-  ],
-  ru: [
-    { href: '/calculator/loan', label: 'Калькулятор кредита' },
-    { href: '/calculator/roi', label: 'Калькулятор ROI' },
-  ],
-  uk: [
-    { href: '/calculator/loan', label: 'Калькулятор кредиту' },
-    { href: '/calculator/roi', label: 'Калькулятор ROI' },
-  ],
-  fr: [
-    { href: '/calculator/loan', label: 'Calculatrice de prêt' },
-    { href: '/calculator/roi', label: 'Calculatrice ROI' },
-  ],
-  lt: [
-    { href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' },
-    { href: '/calculator/roi', label: 'RI skaičiuotuvas' },
-  ],
+  en: [{ href: '/calculator/loan', label: 'Loan Calculator' }, { href: '/calculator/roi', label: 'ROI Calculator' }, { href: '/calculator/life-insurance', label: 'Life Insurance Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/mortgage', label: 'Mortgage Calculator' }],
+  ru: [{ href: '/calculator/loan', label: 'Калькулятор кредита' }, { href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/life-insurance', label: 'Калькулятор страхования жизни' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }, { href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }],
+  uk: [{ href: '/calculator/loan', label: 'Калькулятор кредиту' }, { href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/life-insurance', label: 'Калькулятор страхування життя' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }, { href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }],
+  fr: [{ href: '/calculator/loan', label: 'Calculatrice de prêt' }, { href: '/calculator/roi', label: 'Calculatrice ROI' }, { href: '/calculator/life-insurance', label: 'Assurance vie' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }, { href: '/calculator/mortgage', label: 'Calculatrice de prêt immobilier' }],
+  lt: [{ href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }, { href: '/calculator/roi', label: 'RI skaičiuotuvas' }, { href: '/calculator/life-insurance', label: 'Gyvybės draudimo skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

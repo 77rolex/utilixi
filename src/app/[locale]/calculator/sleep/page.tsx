@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/stress-level', label: 'Stress Level Calculator' }, { href: '/calculator/heart-rate', label: 'Heart Rate Zones' }, { href: '/calculator/biological-age', label: 'Biological Age Calculator' }],
-  ru: [{ href: '/calculator/stress-level', label: 'Калькулятор уровня стресса' }, { href: '/calculator/heart-rate', label: 'Пульсовые зоны' }, { href: '/calculator/biological-age', label: 'Калькулятор биологического возраста' }],
-  uk: [{ href: '/calculator/stress-level', label: 'Калькулятор рівня стресу' }, { href: '/calculator/heart-rate', label: 'Пульсові зони' }, { href: '/calculator/biological-age', label: 'Калькулятор біологічного віку' }],
-  fr: [{ href: '/calculator/stress-level', label: 'Calculatrice du stress' }, { href: '/calculator/heart-rate', label: 'Zones de FC' }, { href: '/calculator/biological-age', label: 'Âge biologique' }],
-  lt: [{ href: '/calculator/stress-level', label: 'Streso lygio skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }, { href: '/calculator/biological-age', label: 'Biologinio amžiaus skaičiuotuvas' }],
+  en: [{ href: '/calculator/stress-level', label: 'Stress Level Calculator' }, { href: '/calculator/heart-rate', label: 'Heart Rate Zones' }, { href: '/calculator/biological-age', label: 'Biological Age Calculator' }, { href: '/calculator/bmi', label: 'BMI Calculator' }, { href: '/calculator/calories', label: 'Calorie Calculator' }],
+  ru: [{ href: '/calculator/stress-level', label: 'Калькулятор уровня стресса' }, { href: '/calculator/heart-rate', label: 'Пульсовые зоны' }, { href: '/calculator/biological-age', label: 'Калькулятор биологического возраста' }, { href: '/calculator/bmi', label: 'Калькулятор ИМТ' }, { href: '/calculator/calories', label: 'Калькулятор калорий' }],
+  uk: [{ href: '/calculator/stress-level', label: 'Калькулятор рівня стресу' }, { href: '/calculator/heart-rate', label: 'Пульсові зони' }, { href: '/calculator/biological-age', label: 'Калькулятор біологічного віку' }, { href: '/calculator/bmi', label: 'Калькулятор ІМТ' }, { href: '/calculator/calories', label: 'Калькулятор калорій' }],
+  fr: [{ href: '/calculator/stress-level', label: 'Calculatrice du stress' }, { href: '/calculator/heart-rate', label: 'Zones de FC' }, { href: '/calculator/biological-age', label: 'Âge biologique' }, { href: '/calculator/bmi', label: 'Calculatrice IMC' }, { href: '/calculator/calories', label: 'Calculatrice de calories' }],
+  lt: [{ href: '/calculator/stress-level', label: 'Streso lygio skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }, { href: '/calculator/biological-age', label: 'Biologinio amžiaus skaičiuotuvas' }, { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

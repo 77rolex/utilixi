@@ -11,26 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/tools/countdown', label: 'Countdown Timer' },
-    { href: '/calculator/date-diff', label: 'Date Difference Calculator' },
-  ],
-  ru: [
-    { href: '/tools/countdown', label: 'Таймер обратного отсчёта' },
-    { href: '/calculator/date-diff', label: 'Калькулятор разницы дат' },
-  ],
-  uk: [
-    { href: '/tools/countdown', label: 'Таймер зворотного відліку' },
-    { href: '/calculator/date-diff', label: 'Калькулятор різниці дат' },
-  ],
-  fr: [
-    { href: '/tools/countdown', label: 'Compte à rebours' },
-    { href: '/calculator/date-diff', label: 'Calculatrice de différence de dates' },
-  ],
-  lt: [
-    { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' },
-    { href: '/calculator/date-diff', label: 'Datų skirtumo skaičiuotuvas' },
-  ],
+  en: [{ href: '/tools/countdown', label: 'Countdown Timer' }, { href: '/calculator/date-diff', label: 'Date Difference Calculator' }, { href: '/calculator/age', label: 'Age Calculator' }, { href: '/converter/timezone', label: 'Timezone Converter' }, { href: '/converter/units', label: 'Unit Converter' }],
+  ru: [{ href: '/tools/countdown', label: 'Таймер обратного отсчёта' }, { href: '/calculator/date-diff', label: 'Калькулятор разницы дат' }, { href: '/calculator/age', label: 'Калькулятор возраста' }, { href: '/converter/timezone', label: 'Конвертер часовых поясов' }, { href: '/converter/units', label: 'Конвертер единиц' }],
+  uk: [{ href: '/tools/countdown', label: 'Таймер зворотного відліку' }, { href: '/calculator/date-diff', label: 'Калькулятор різниці дат' }, { href: '/calculator/age', label: 'Калькулятор віку' }, { href: '/converter/timezone', label: 'Конвертер часових поясів' }, { href: '/converter/units', label: 'Конвертер одиниць' }],
+  fr: [{ href: '/tools/countdown', label: 'Compte à rebours' }, { href: '/calculator/date-diff', label: 'Calculatrice de différence de dates' }, { href: '/calculator/age', label: 'Calculatrice d\'âge' }, { href: '/converter/timezone', label: 'Convertisseur de fuseaux horaires' }, { href: '/converter/units', label: 'Convertisseur d\'unités' }],
+  lt: [{ href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }, { href: '/calculator/date-diff', label: 'Datų skirtumo skaičiuotuvas' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/converter/timezone', label: 'Laiko juostų keitiklis' }, { href: '/converter/units', label: 'Vienetų keitiklis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {
@@ -230,12 +215,23 @@ export default async function WeatherPage({ params }: Props) {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <WeatherWidget locale={locale} />

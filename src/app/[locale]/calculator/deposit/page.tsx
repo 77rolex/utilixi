@@ -11,26 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/mortgage', label: 'Mortgage Calculator' },
-    { href: '/calculator/loan', label: 'Loan Calculator' },
-  ],
-  ru: [
-    { href: '/calculator/mortgage', label: 'Ипотечный калькулятор' },
-    { href: '/calculator/loan', label: 'Калькулятор кредита' },
-  ],
-  uk: [
-    { href: '/calculator/mortgage', label: 'Іпотечний калькулятор' },
-    { href: '/calculator/loan', label: 'Калькулятор кредиту' },
-  ],
-  fr: [
-    { href: '/calculator/mortgage', label: 'Calculatrice de prêt immobilier' },
-    { href: '/calculator/loan', label: 'Calculatrice de prêt' },
-  ],
-  lt: [
-    { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' },
-    { href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' },
-  ],
+  en: [{ href: '/calculator/loan', label: 'Loan Calculator' }, { href: '/calculator/mortgage', label: 'Mortgage Calculator' }, { href: '/calculator/compound-interest', label: 'Compound Interest Calculator' }, { href: '/calculator/roi', label: 'ROI Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }],
+  ru: [{ href: '/calculator/loan', label: 'Калькулятор кредита' }, { href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }, { href: '/calculator/compound-interest', label: 'Сложные проценты' }, { href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }],
+  uk: [{ href: '/calculator/loan', label: 'Калькулятор кредиту' }, { href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }, { href: '/calculator/compound-interest', label: 'Складні відсотки' }, { href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }],
+  fr: [{ href: '/calculator/loan', label: 'Calculatrice de prêt' }, { href: '/calculator/mortgage', label: 'Calculatrice de prêt immobilier' }, { href: '/calculator/compound-interest', label: 'Intérêts composés' }, { href: '/calculator/roi', label: 'Calculatrice ROI' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }],
+  lt: [{ href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/compound-interest', label: 'Sudėtinių palūkanų skaičiuotuvas' }, { href: '/calculator/roi', label: 'ROI skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

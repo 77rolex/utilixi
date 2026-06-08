@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/discount', label: 'Discount Calculator' }, { href: '/calculator/vat', label: 'VAT Calculator' }, { href: '/calculator/margin', label: 'Margin & Markup Calculator' }],
-  ru: [{ href: '/calculator/discount', label: 'Калькулятор скидки' }, { href: '/calculator/vat', label: 'Калькулятор НДС' }, { href: '/calculator/margin', label: 'Калькулятор маржи' }],
-  uk: [{ href: '/calculator/discount', label: 'Калькулятор знижки' }, { href: '/calculator/vat', label: 'Калькулятор ПДВ' }, { href: '/calculator/margin', label: 'Калькулятор маржі' }],
-  fr: [{ href: '/calculator/discount', label: 'Calculatrice de remise' }, { href: '/calculator/vat', label: 'Calculatrice TVA' }, { href: '/calculator/margin', label: 'Calculatrice marge' }],
-  lt: [{ href: '/calculator/discount', label: 'Nuolaidos skaičiuotuvas' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/margin', label: 'Maržos skaičiuotuvas' }],
+  en: [{ href: '/calculator/discount', label: 'Discount Calculator' }, { href: '/calculator/vat', label: 'VAT Calculator' }, { href: '/calculator/margin', label: 'Margin & Markup Calculator' }, { href: '/calculator/basic', label: 'Basic Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }],
+  ru: [{ href: '/calculator/discount', label: 'Калькулятор скидки' }, { href: '/calculator/vat', label: 'Калькулятор НДС' }, { href: '/calculator/margin', label: 'Калькулятор маржи' }, { href: '/calculator/basic', label: 'Простой калькулятор' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }],
+  uk: [{ href: '/calculator/discount', label: 'Калькулятор знижки' }, { href: '/calculator/vat', label: 'Калькулятор ПДВ' }, { href: '/calculator/margin', label: 'Калькулятор маржі' }, { href: '/calculator/basic', label: 'Простий калькулятор' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }],
+  fr: [{ href: '/calculator/discount', label: 'Calculatrice de remise' }, { href: '/calculator/vat', label: 'Calculatrice TVA' }, { href: '/calculator/margin', label: 'Calculatrice marge' }, { href: '/calculator/basic', label: 'Calculatrice basique' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }],
+  lt: [{ href: '/calculator/discount', label: 'Nuolaidos skaičiuotuvas' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/margin', label: 'Maržos skaičiuotuvas' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

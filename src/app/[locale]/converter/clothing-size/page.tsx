@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/converter/units', label: 'Unit Converter' }, { href: '/converter/color', label: 'Color Converter' }],
-  ru: [{ href: '/converter/units', label: 'Конвертер единиц' }, { href: '/converter/color', label: 'Конвертер цветов' }],
-  uk: [{ href: '/converter/units', label: 'Конвертер одиниць' }, { href: '/converter/color', label: 'Конвертер кольорів' }],
-  fr: [{ href: '/converter/units', label: 'Convertisseur d\'unités' }, { href: '/converter/color', label: 'Convertisseur de couleurs' }],
-  lt: [{ href: '/converter/units', label: 'Vienetų keitiklis' }, { href: '/converter/color', label: 'Spalvų keitiklis' }],
+  en: [{ href: '/converter/units', label: 'Unit Converter' }, { href: '/converter/color', label: 'Color Converter' }, { href: '/converter/timezone', label: 'Timezone Converter' }, { href: '/converter/grade-system', label: 'Grade System Converter' }, { href: '/calculator/basic', label: 'Basic Calculator' }],
+  ru: [{ href: '/converter/units', label: 'Конвертер единиц' }, { href: '/converter/color', label: 'Конвертер цветов' }, { href: '/converter/timezone', label: 'Конвертер часовых поясов' }, { href: '/converter/grade-system', label: 'Конвертер систем оценок' }, { href: '/calculator/basic', label: 'Простой калькулятор' }],
+  uk: [{ href: '/converter/units', label: 'Конвертер одиниць' }, { href: '/converter/color', label: 'Конвертер кольорів' }, { href: '/converter/timezone', label: 'Конвертер часових поясів' }, { href: '/converter/grade-system', label: 'Конвертер систем оцінок' }, { href: '/calculator/basic', label: 'Простий калькулятор' }],
+  fr: [{ href: '/converter/units', label: 'Convertisseur d\'unités' }, { href: '/converter/color', label: 'Convertisseur de couleurs' }, { href: '/converter/timezone', label: 'Convertisseur de fuseaux horaires' }, { href: '/converter/grade-system', label: 'Convertisseur de notes' }, { href: '/calculator/basic', label: 'Calculatrice basique' }],
+  lt: [{ href: '/converter/units', label: 'Vienetų keitiklis' }, { href: '/converter/color', label: 'Spalvų keitiklis' }, { href: '/converter/timezone', label: 'Laiko juostų keitiklis' }, { href: '/converter/grade-system', label: 'Pažymių sistemų konverteris' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

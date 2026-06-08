@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/alimony', label: 'Alimony Calculator' }, { href: '/calculator/flight-delay', label: 'Flight Delay Compensation' }],
-  ru: [{ href: '/calculator/alimony', label: 'Калькулятор алиментов' }, { href: '/calculator/flight-delay', label: 'Компенсация за задержку рейса' }],
-  uk: [{ href: '/calculator/alimony', label: 'Калькулятор аліментів' }, { href: '/calculator/flight-delay', label: 'Компенсація за затримку рейсу' }],
-  fr: [{ href: '/calculator/alimony', label: 'Calculatrice de pension alimentaire' }, { href: '/calculator/flight-delay', label: 'Compensation retard de vol' }],
-  lt: [{ href: '/calculator/alimony', label: 'Alimentų skaičiuotuvas' }, { href: '/calculator/flight-delay', label: 'Kompensacija už skrydžio vėlavimą' }],
+  en: [{ href: '/calculator/alimony', label: 'Alimony Calculator' }, { href: '/calculator/limitation', label: 'Statute of Limitations' }, { href: '/calculator/flight-delay', label: 'Flight Delay Compensation' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/loan', label: 'Loan Calculator' }],
+  ru: [{ href: '/calculator/alimony', label: 'Калькулятор алиментов' }, { href: '/calculator/limitation', label: 'Срок исковой давности' }, { href: '/calculator/flight-delay', label: 'Компенсация за задержку рейса' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }, { href: '/calculator/loan', label: 'Калькулятор кредита' }],
+  uk: [{ href: '/calculator/alimony', label: 'Калькулятор аліментів' }, { href: '/calculator/limitation', label: 'Строк позовної давності' }, { href: '/calculator/flight-delay', label: 'Компенсація за затримку рейсу' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }, { href: '/calculator/loan', label: 'Калькулятор кредиту' }],
+  fr: [{ href: '/calculator/alimony', label: 'Calculatrice de pension alimentaire' }, { href: '/calculator/limitation', label: 'Délai de prescription' }, { href: '/calculator/flight-delay', label: 'Compensation retard de vol' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }, { href: '/calculator/loan', label: 'Calculatrice de prêt' }],
+  lt: [{ href: '/calculator/alimony', label: 'Alimentų skaičiuotuvas' }, { href: '/calculator/limitation', label: 'Ieškinio senaties terminas' }, { href: '/calculator/flight-delay', label: 'Kompensacija už skrydžio vėlavimą' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

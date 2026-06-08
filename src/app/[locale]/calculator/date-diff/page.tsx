@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/age', label: 'Age Calculator' }, { href: '/tools/countdown', label: 'Countdown Timer' }],
-  ru: [{ href: '/calculator/age', label: 'Калькулятор возраста' }, { href: '/tools/countdown', label: 'Таймер обратного отсчёта' }],
-  uk: [{ href: '/calculator/age', label: 'Калькулятор віку' }, { href: '/tools/countdown', label: 'Таймер зворотного відліку' }],
-  fr: [{ href: '/calculator/age', label: 'Calculatrice d\'âge' }, { href: '/tools/countdown', label: 'Minuteur de compte à rebours' }],
-  lt: [{ href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }],
+  en: [{ href: '/calculator/age', label: 'Age Calculator' }, { href: '/tools/countdown', label: 'Countdown Timer' }, { href: '/calculator/limitation', label: 'Statute of Limitations' }, { href: '/calculator/pregnancy', label: 'Pregnancy Calculator' }, { href: '/calculator/ovulation', label: 'Ovulation Calculator' }],
+  ru: [{ href: '/calculator/age', label: 'Калькулятор возраста' }, { href: '/tools/countdown', label: 'Таймер обратного отсчёта' }, { href: '/calculator/limitation', label: 'Срок исковой давности' }, { href: '/calculator/pregnancy', label: 'Калькулятор беременности' }, { href: '/calculator/ovulation', label: 'Калькулятор овуляции' }],
+  uk: [{ href: '/calculator/age', label: 'Калькулятор віку' }, { href: '/tools/countdown', label: 'Таймер зворотного відліку' }, { href: '/calculator/limitation', label: 'Строк позовної давності' }, { href: '/calculator/pregnancy', label: 'Калькулятор вагітності' }, { href: '/calculator/ovulation', label: 'Калькулятор овуляції' }],
+  fr: [{ href: '/calculator/age', label: 'Calculatrice d\'âge' }, { href: '/tools/countdown', label: 'Minuteur de compte à rebours' }, { href: '/calculator/limitation', label: 'Délai de prescription' }, { href: '/calculator/pregnancy', label: 'Calculatrice de grossesse' }, { href: '/calculator/ovulation', label: "Calculatrice d'Ovulation" }],
+  lt: [{ href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }, { href: '/calculator/limitation', label: 'Ieškinio senaties terminas' }, { href: '/calculator/pregnancy', label: 'Nėštumo skaičiuotuvas' }, { href: '/calculator/ovulation', label: 'Ovuliacijos skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/renovation', label: 'Renovation Cost Calculator' }, { href: '/calculator/mortgage', label: 'Mortgage Calculator' }],
-  ru: [{ href: '/calculator/renovation', label: 'Калькулятор стоимости ремонта' }, { href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }],
-  uk: [{ href: '/calculator/renovation', label: 'Калькулятор вартості ремонту' }, { href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }],
-  fr: [{ href: '/calculator/renovation', label: 'Calculateur de coût de rénovation' }, { href: '/calculator/mortgage', label: 'Calculateur de prêt immobilier' }],
-  lt: [{ href: '/calculator/renovation', label: 'Remonto kainos skaičiuotuvas' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }],
+  en: [{ href: '/calculator/renovation', label: 'Renovation Cost Calculator' }, { href: '/calculator/mortgage', label: 'Mortgage Calculator' }, { href: '/calculator/loan', label: 'Loan Calculator' }, { href: '/calculator/rent-vs-buy', label: 'Rent vs Buy Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }],
+  ru: [{ href: '/calculator/renovation', label: 'Калькулятор стоимости ремонта' }, { href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }, { href: '/calculator/loan', label: 'Калькулятор кредита' }, { href: '/calculator/rent-vs-buy', label: 'Аренда vs Покупка' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }],
+  uk: [{ href: '/calculator/renovation', label: 'Калькулятор вартості ремонту' }, { href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }, { href: '/calculator/loan', label: 'Калькулятор кредиту' }, { href: '/calculator/rent-vs-buy', label: 'Оренда vs Купівля' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }],
+  fr: [{ href: '/calculator/renovation', label: 'Calculateur de coût de rénovation' }, { href: '/calculator/mortgage', label: 'Calculateur de prêt immobilier' }, { href: '/calculator/loan', label: 'Calculatrice de prêt' }, { href: '/calculator/rent-vs-buy', label: 'Louer vs Acheter' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }],
+  lt: [{ href: '/calculator/renovation', label: 'Remonto kainos skaičiuotuvas' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }, { href: '/calculator/rent-vs-buy', label: 'Nuoma vs Pirkimas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

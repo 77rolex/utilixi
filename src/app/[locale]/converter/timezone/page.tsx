@@ -11,31 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/date-diff', label: 'Date Difference Calculator' },
-    { href: '/calculator/age', label: 'Age Calculator' },
-    { href: '/tools/countdown', label: 'Countdown Timer' },
-  ],
-  ru: [
-    { href: '/calculator/date-diff', label: 'Калькулятор разницы дат' },
-    { href: '/calculator/age', label: 'Калькулятор возраста' },
-    { href: '/tools/countdown', label: 'Таймер обратного отсчёта' },
-  ],
-  uk: [
-    { href: '/calculator/date-diff', label: 'Калькулятор різниці дат' },
-    { href: '/calculator/age', label: 'Калькулятор віку' },
-    { href: '/tools/countdown', label: 'Таймер зворотного відліку' },
-  ],
-  fr: [
-    { href: '/calculator/date-diff', label: 'Calculatrice de différence de dates' },
-    { href: '/calculator/age', label: 'Calculatrice d\'âge' },
-    { href: '/tools/countdown', label: 'Compte à rebours' },
-  ],
-  lt: [
-    { href: '/calculator/date-diff', label: 'Datų skirtumo skaičiuotuvas' },
-    { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' },
-    { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' },
-  ],
+  en: [{ href: '/calculator/date-diff', label: 'Date Difference Calculator' }, { href: '/calculator/age', label: 'Age Calculator' }, { href: '/tools/countdown', label: 'Countdown Timer' }, { href: '/converter/units', label: 'Unit Converter' }, { href: '/tools/word-counter', label: 'Word Counter' }],
+  ru: [{ href: '/calculator/date-diff', label: 'Калькулятор разницы дат' }, { href: '/calculator/age', label: 'Калькулятор возраста' }, { href: '/tools/countdown', label: 'Таймер обратного отсчёта' }, { href: '/converter/units', label: 'Конвертер единиц' }, { href: '/tools/word-counter', label: 'Счётчик слов' }],
+  uk: [{ href: '/calculator/date-diff', label: 'Калькулятор різниці дат' }, { href: '/calculator/age', label: 'Калькулятор віку' }, { href: '/tools/countdown', label: 'Таймер зворотного відліку' }, { href: '/converter/units', label: 'Конвертер одиниць' }, { href: '/tools/word-counter', label: 'Лічильник слів' }],
+  fr: [{ href: '/calculator/date-diff', label: 'Calculatrice de différence de dates' }, { href: '/calculator/age', label: 'Calculatrice d\'âge' }, { href: '/tools/countdown', label: 'Compte à rebours' }, { href: '/converter/units', label: 'Convertisseur d\'unités' }, { href: '/tools/word-counter', label: 'Compteur de mots' }],
+  lt: [{ href: '/calculator/date-diff', label: 'Datų skirtumo skaičiuotuvas' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }, { href: '/converter/units', label: 'Vienetų keitiklis' }, { href: '/tools/word-counter', label: 'Žodžių skaitiklis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

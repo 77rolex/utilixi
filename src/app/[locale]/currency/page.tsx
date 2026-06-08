@@ -9,11 +9,11 @@ import RelatedTools from '@/components/ui/RelatedTools';
 import styles from './page.module.scss';
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/crypto', label: 'Crypto Rates' }, { href: '/crypto/converter', label: 'Crypto Converter' }],
-  ru: [{ href: '/crypto', label: 'Курс криптовалют' }, { href: '/crypto/converter', label: 'Конвертер криптовалют' }],
-  uk: [{ href: '/crypto', label: 'Курс криптовалют' }, { href: '/crypto/converter', label: 'Конвертер криптовалют' }],
-  fr: [{ href: '/crypto', label: 'Cours des cryptos' }, { href: '/crypto/converter', label: 'Convertisseur crypto' }],
-  lt: [{ href: '/crypto', label: 'Kriptovaliutų kursai' }, { href: '/crypto/converter', label: 'Kriptovaliutų keitiklis' }],
+  en: [{ href: '/crypto', label: 'Crypto Rates' }, { href: '/currency/rates', label: 'Exchange Rates Table' }, { href: '/crypto/converter', label: 'Crypto Converter' }, { href: '/calculator/crypto-tax', label: 'Crypto Tax Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }],
+  ru: [{ href: '/crypto', label: 'Курс криптовалют' }, { href: '/currency/rates', label: 'Таблица курсов валют' }, { href: '/crypto/converter', label: 'Конвертер криптовалют' }, { href: '/calculator/crypto-tax', label: 'Калькулятор налога на крипту' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }],
+  uk: [{ href: '/crypto', label: 'Курс криптовалют' }, { href: '/currency/rates', label: 'Таблиця курсів валют' }, { href: '/crypto/converter', label: 'Конвертер криптовалют' }, { href: '/calculator/crypto-tax', label: 'Калькулятор податку на крипту' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }],
+  fr: [{ href: '/crypto', label: 'Cours des cryptos' }, { href: '/currency/rates', label: 'Tableau des taux de change' }, { href: '/crypto/converter', label: 'Convertisseur crypto' }, { href: '/calculator/crypto-tax', label: 'Taxe sur les cryptos' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }],
+  lt: [{ href: '/crypto', label: 'Kriptovaliutų kursai' }, { href: '/currency/rates', label: 'Valiutų kursų lentelė' }, { href: '/crypto/converter', label: 'Kriptovaliutų keitiklis' }, { href: '/calculator/crypto-tax', label: 'Kriptovaliutų mokesčiai' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
 type Props = { params: Promise<{ locale: string }> };
@@ -234,12 +234,23 @@ export default async function CurrencyPage({ params }: Props) {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <CurrencyConverter locale={locale} rates={rates} updatedAt={updatedAt} />

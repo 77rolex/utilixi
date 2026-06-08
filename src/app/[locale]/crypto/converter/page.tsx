@@ -123,11 +123,11 @@ const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q
 };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/crypto', label: 'Crypto Rates (Top 50)' }, { href: '/currency', label: 'Currency Converter' }],
-  ru: [{ href: '/crypto', label: 'Курс криптовалют (топ-50)' }, { href: '/currency', label: 'Конвертер валют' }],
-  uk: [{ href: '/crypto', label: 'Курс криптовалют (топ-50)' }, { href: '/currency', label: 'Конвертер валют' }],
-  fr: [{ href: '/crypto', label: 'Cours des Cryptos (top 50)' }, { href: '/currency', label: 'Convertisseur de devises' }],
-  lt: [{ href: '/crypto', label: 'Kriptovaliutų Kursai (top 50)' }, { href: '/currency', label: 'Valiutų keitiklis' }],
+  en: [{ href: '/crypto', label: 'Crypto Rates (Top 50)' }, { href: '/currency', label: 'Currency Converter' }, { href: '/calculator/crypto-tax', label: 'Crypto Tax Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }],
+  ru: [{ href: '/crypto', label: 'Курс криптовалют (топ-50)' }, { href: '/currency', label: 'Конвертер валют' }, { href: '/calculator/crypto-tax', label: 'Налог на крипту' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }],
+  uk: [{ href: '/crypto', label: 'Курс криптовалют (топ-50)' }, { href: '/currency', label: 'Конвертер валют' }, { href: '/calculator/crypto-tax', label: 'Податок на крипту' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }],
+  fr: [{ href: '/crypto', label: 'Cours des Cryptos (top 50)' }, { href: '/currency', label: 'Convertisseur de devises' }, { href: '/calculator/crypto-tax', label: 'Taxe sur les cryptos' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }],
+  lt: [{ href: '/crypto', label: 'Kriptovaliutų Kursai (top 50)' }, { href: '/currency', label: 'Valiutų keitiklis' }, { href: '/calculator/crypto-tax', label: 'Kriptovaliutų mokesčiai' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }],
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

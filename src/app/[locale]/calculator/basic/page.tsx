@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/engineering', label: 'Engineering Calculator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }, { href: '/calculator/discount', label: 'Discount Calculator' }],
-  ru: [{ href: '/calculator/engineering', label: 'Инженерный калькулятор' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }, { href: '/calculator/discount', label: 'Калькулятор скидки' }],
-  uk: [{ href: '/calculator/engineering', label: 'Інженерний калькулятор' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }, { href: '/calculator/discount', label: 'Калькулятор знижки' }],
-  fr: [{ href: '/calculator/engineering', label: 'Calculatrice scientifique' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }, { href: '/calculator/discount', label: 'Calculatrice de remise' }],
-  lt: [{ href: '/calculator/engineering', label: 'Inžinerinis skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/discount', label: 'Nuolaidos skaičiuotuvas' }],
+  en: [{ href: '/calculator/engineering', label: 'Engineering Calculator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }, { href: '/calculator/discount', label: 'Discount Calculator' }, { href: '/calculator/tip', label: 'Tip Calculator' }, { href: '/tools/word-counter', label: 'Word Counter' }],
+  ru: [{ href: '/calculator/engineering', label: 'Инженерный калькулятор' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }, { href: '/calculator/discount', label: 'Калькулятор скидки' }, { href: '/calculator/tip', label: 'Калькулятор чаевых' }, { href: '/tools/word-counter', label: 'Счётчик слов' }],
+  uk: [{ href: '/calculator/engineering', label: 'Інженерний калькулятор' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }, { href: '/calculator/discount', label: 'Калькулятор знижки' }, { href: '/calculator/tip', label: 'Калькулятор чайових' }, { href: '/tools/word-counter', label: 'Лічильник слів' }],
+  fr: [{ href: '/calculator/engineering', label: 'Calculatrice scientifique' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }, { href: '/calculator/discount', label: 'Calculatrice de remise' }, { href: '/calculator/tip', label: 'Calculatrice de pourboire' }, { href: '/tools/word-counter', label: 'Compteur de mots' }],
+  lt: [{ href: '/calculator/engineering', label: 'Inžinerinis skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/discount', label: 'Nuolaidos skaičiuotuvas' }, { href: '/calculator/tip', label: 'Arbatpinigių skaičiuotuvas' }, { href: '/tools/word-counter', label: 'Žodžių skaitiklis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

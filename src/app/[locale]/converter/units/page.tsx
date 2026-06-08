@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/converter/color', label: 'Color Converter' }, { href: '/converter/clothing-size', label: 'Clothing Size Converter' }],
-  ru: [{ href: '/converter/color', label: 'Конвертер цветов' }, { href: '/converter/clothing-size', label: 'Конвертер размеров одежды' }],
-  uk: [{ href: '/converter/color', label: 'Конвертер кольорів' }, { href: '/converter/clothing-size', label: 'Конвертер розмірів одягу' }],
-  fr: [{ href: '/converter/color', label: 'Convertisseur de couleurs' }, { href: '/converter/clothing-size', label: 'Convertisseur de tailles' }],
-  lt: [{ href: '/converter/color', label: 'Spalvų keitiklis' }, { href: '/converter/clothing-size', label: 'Drabužių dydžių keitiklis' }],
+  en: [{ href: '/converter/color', label: 'Color Converter' }, { href: '/converter/clothing-size', label: 'Clothing Size Converter' }, { href: '/converter/timezone', label: 'Timezone Converter' }, { href: '/calculator/basic', label: 'Basic Calculator' }, { href: '/converter/grade-system', label: 'Grade System Converter' }],
+  ru: [{ href: '/converter/color', label: 'Конвертер цветов' }, { href: '/converter/clothing-size', label: 'Конвертер размеров одежды' }, { href: '/converter/timezone', label: 'Конвертер часовых поясов' }, { href: '/calculator/basic', label: 'Простой калькулятор' }, { href: '/converter/grade-system', label: 'Конвертер систем оценок' }],
+  uk: [{ href: '/converter/color', label: 'Конвертер кольорів' }, { href: '/converter/clothing-size', label: 'Конвертер розмірів одягу' }, { href: '/converter/timezone', label: 'Конвертер часових поясів' }, { href: '/calculator/basic', label: 'Простий калькулятор' }, { href: '/converter/grade-system', label: 'Конвертер систем оцінок' }],
+  fr: [{ href: '/converter/color', label: 'Convertisseur de couleurs' }, { href: '/converter/clothing-size', label: 'Convertisseur de tailles' }, { href: '/converter/timezone', label: 'Convertisseur de fuseaux horaires' }, { href: '/calculator/basic', label: 'Calculatrice basique' }, { href: '/converter/grade-system', label: 'Convertisseur de notes' }],
+  lt: [{ href: '/converter/color', label: 'Spalvų keitiklis' }, { href: '/converter/clothing-size', label: 'Drabužių dydžių keitiklis' }, { href: '/converter/timezone', label: 'Laiko juostų keitiklis' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/converter/grade-system', label: 'Pažymių sistemų konverteris' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

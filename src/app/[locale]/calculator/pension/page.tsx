@@ -11,31 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/deposit', label: 'Deposit Calculator' },
-    { href: '/calculator/compound-interest', label: 'Compound Interest Calculator' },
-    { href: '/calculator/income-tax', label: 'Income Tax Calculator' },
-  ],
-  ru: [
-    { href: '/calculator/deposit', label: 'Калькулятор депозита' },
-    { href: '/calculator/compound-interest', label: 'Калькулятор сложных процентов' },
-    { href: '/calculator/income-tax', label: 'Калькулятор подоходного налога' },
-  ],
-  uk: [
-    { href: '/calculator/deposit', label: 'Калькулятор депозиту' },
-    { href: '/calculator/compound-interest', label: 'Калькулятор складних відсотків' },
-    { href: '/calculator/income-tax', label: 'Калькулятор прибуткового податку' },
-  ],
-  fr: [
-    { href: '/calculator/deposit', label: 'Calculatrice de dépôt' },
-    { href: '/calculator/compound-interest', label: 'Calculatrice d\'intérêts composés' },
-    { href: '/calculator/income-tax', label: 'Calculatrice d\'impôt sur le revenu' },
-  ],
-  lt: [
-    { href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' },
-    { href: '/calculator/compound-interest', label: 'Sudėtinių palūkanų skaičiuotuvas' },
-    { href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' },
-  ],
+  en: [{ href: '/calculator/deposit', label: 'Deposit Calculator' }, { href: '/calculator/compound-interest', label: 'Compound Interest Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/roi', label: 'ROI Calculator' }, { href: '/calculator/salary', label: 'Salary Calculator' }],
+  ru: [{ href: '/calculator/deposit', label: 'Калькулятор депозита' }, { href: '/calculator/compound-interest', label: 'Калькулятор сложных процентов' }, { href: '/calculator/income-tax', label: 'Калькулятор подоходного налога' }, { href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/salary', label: 'Калькулятор зарплаты' }],
+  uk: [{ href: '/calculator/deposit', label: 'Калькулятор депозиту' }, { href: '/calculator/compound-interest', label: 'Калькулятор складних відсотків' }, { href: '/calculator/income-tax', label: 'Калькулятор прибуткового податку' }, { href: '/calculator/roi', label: 'Калькулятор ROI' }, { href: '/calculator/salary', label: 'Калькулятор зарплати' }],
+  fr: [{ href: '/calculator/deposit', label: 'Calculatrice de dépôt' }, { href: '/calculator/compound-interest', label: 'Calculatrice d\'intérêts composés' }, { href: '/calculator/income-tax', label: 'Calculatrice d\'impôt sur le revenu' }, { href: '/calculator/roi', label: 'Calculatrice ROI' }, { href: '/calculator/salary', label: 'Calculatrice de salaire' }],
+  lt: [{ href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/compound-interest', label: 'Sudėtinių palūkanų skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' }, { href: '/calculator/roi', label: 'ROI skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/date-diff', label: 'Date Difference Calculator' }, { href: '/tools/countdown', label: 'Countdown Timer' }],
-  ru: [{ href: '/calculator/date-diff', label: 'Разница дат' }, { href: '/tools/countdown', label: 'Таймер обратного отсчёта' }],
-  uk: [{ href: '/calculator/date-diff', label: 'Різниця дат' }, { href: '/tools/countdown', label: 'Таймер зворотного відліку' }],
-  fr: [{ href: '/calculator/date-diff', label: 'Différence de dates' }, { href: '/tools/countdown', label: 'Compte à rebours' }],
-  lt: [{ href: '/calculator/date-diff', label: 'Datų skirtumas' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }],
+  en: [{ href: '/calculator/date-diff', label: 'Date Difference Calculator' }, { href: '/calculator/pregnancy', label: 'Pregnancy Calculator' }, { href: '/calculator/biological-age', label: 'Biological Age Calculator' }, { href: '/calculator/ovulation', label: 'Ovulation Calculator' }, { href: '/tools/countdown', label: 'Countdown Timer' }],
+  ru: [{ href: '/calculator/date-diff', label: 'Разница дат' }, { href: '/calculator/pregnancy', label: 'Калькулятор беременности' }, { href: '/calculator/biological-age', label: 'Биологический возраст' }, { href: '/calculator/ovulation', label: 'Калькулятор овуляции' }, { href: '/tools/countdown', label: 'Таймер обратного отсчёта' }],
+  uk: [{ href: '/calculator/date-diff', label: 'Різниця дат' }, { href: '/calculator/pregnancy', label: 'Калькулятор вагітності' }, { href: '/calculator/biological-age', label: 'Біологічний вік' }, { href: '/calculator/ovulation', label: 'Калькулятор овуляції' }, { href: '/tools/countdown', label: 'Таймер зворотного відліку' }],
+  fr: [{ href: '/calculator/date-diff', label: 'Différence de dates' }, { href: '/calculator/pregnancy', label: 'Calculatrice de grossesse' }, { href: '/calculator/biological-age', label: 'Âge biologique' }, { href: '/calculator/ovulation', label: "Calculatrice d'Ovulation" }, { href: '/tools/countdown', label: 'Compte à rebours' }],
+  lt: [{ href: '/calculator/date-diff', label: 'Datų skirtumas' }, { href: '/calculator/pregnancy', label: 'Nėštumo skaičiuotuvas' }, { href: '/calculator/biological-age', label: 'Biologinis amžius' }, { href: '/calculator/ovulation', label: 'Ovuliacijos skaičiuotuvas' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

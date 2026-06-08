@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/tools/password-generator', label: 'Password Generator' }, { href: '/calculator/percentage', label: 'Percentage Calculator' }],
-  ru: [{ href: '/tools/password-generator', label: 'Генератор паролей' }, { href: '/calculator/percentage', label: 'Калькулятор процентов' }],
-  uk: [{ href: '/tools/password-generator', label: 'Генератор паролів' }, { href: '/calculator/percentage', label: 'Калькулятор відсотків' }],
-  fr: [{ href: '/tools/password-generator', label: 'Générateur de mot de passe' }, { href: '/calculator/percentage', label: 'Calculatrice de pourcentage' }],
-  lt: [{ href: '/tools/password-generator', label: 'Slaptažodžių generatorius' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }],
+  en: [{ href: '/tools/password-generator', label: 'Password Generator' }, { href: '/tools/countdown', label: 'Countdown Timer' }, { href: '/calculator/basic', label: 'Basic Calculator' }, { href: '/calculator/engineering', label: 'Engineering Calculator' }, { href: '/calculator/tip', label: 'Tip Calculator' }],
+  ru: [{ href: '/tools/password-generator', label: 'Генератор паролей' }, { href: '/tools/countdown', label: 'Таймер обратного отсчёта' }, { href: '/calculator/basic', label: 'Простой калькулятор' }, { href: '/calculator/engineering', label: 'Инженерный калькулятор' }, { href: '/calculator/tip', label: 'Калькулятор чаевых' }],
+  uk: [{ href: '/tools/password-generator', label: 'Генератор паролів' }, { href: '/tools/countdown', label: 'Таймер зворотного відліку' }, { href: '/calculator/basic', label: 'Простий калькулятор' }, { href: '/calculator/engineering', label: 'Інженерний калькулятор' }, { href: '/calculator/tip', label: 'Калькулятор чайових' }],
+  fr: [{ href: '/tools/password-generator', label: 'Générateur de mot de passe' }, { href: '/tools/countdown', label: 'Compte à rebours' }, { href: '/calculator/basic', label: 'Calculatrice basique' }, { href: '/calculator/engineering', label: 'Calculatrice scientifique' }, { href: '/calculator/tip', label: 'Calculatrice de pourboire' }],
+  lt: [{ href: '/tools/password-generator', label: 'Slaptažodžių generatorius' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/calculator/engineering', label: 'Inžinerinis skaičiuotuvas' }, { href: '/calculator/tip', label: 'Arbatpinigių skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

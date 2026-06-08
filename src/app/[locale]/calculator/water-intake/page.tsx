@@ -11,31 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/bmi', label: 'BMI Calculator' },
-    { href: '/calculator/calories', label: 'Calorie Calculator (TDEE)' },
-    { href: '/calculator/body-fat', label: 'Body Fat Calculator' },
-  ],
-  ru: [
-    { href: '/calculator/bmi', label: 'Калькулятор ИМТ' },
-    { href: '/calculator/calories', label: 'Калькулятор калорий (TDEE)' },
-    { href: '/calculator/body-fat', label: 'Калькулятор % жира в теле' },
-  ],
-  uk: [
-    { href: '/calculator/bmi', label: 'Калькулятор ІМТ' },
-    { href: '/calculator/calories', label: 'Калькулятор калорій (TDEE)' },
-    { href: '/calculator/body-fat', label: 'Калькулятор % жиру в тілі' },
-  ],
-  fr: [
-    { href: '/calculator/bmi', label: 'Calculatrice IMC' },
-    { href: '/calculator/calories', label: 'Calculatrice de calories (TDEE)' },
-    { href: '/calculator/body-fat', label: 'Calculatrice de graisse corporelle' },
-  ],
-  lt: [
-    { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' },
-    { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' },
-    { href: '/calculator/body-fat', label: 'Kūno riebalų skaičiuotuvas' },
-  ],
+  en: [{ href: '/calculator/bmi', label: 'BMI Calculator' }, { href: '/calculator/calories', label: 'Calorie Calculator (TDEE)' }, { href: '/calculator/body-fat', label: 'Body Fat Calculator' }, { href: '/calculator/ideal-weight', label: 'Ideal Weight Calculator' }, { href: '/calculator/heart-rate', label: 'Heart Rate Zones' }],
+  ru: [{ href: '/calculator/bmi', label: 'Калькулятор ИМТ' }, { href: '/calculator/calories', label: 'Калькулятор калорий (TDEE)' }, { href: '/calculator/body-fat', label: 'Калькулятор % жира в теле' }, { href: '/calculator/ideal-weight', label: 'Калькулятор идеального веса' }, { href: '/calculator/heart-rate', label: 'Пульсовые зоны' }],
+  uk: [{ href: '/calculator/bmi', label: 'Калькулятор ІМТ' }, { href: '/calculator/calories', label: 'Калькулятор калорій (TDEE)' }, { href: '/calculator/body-fat', label: 'Калькулятор % жиру в тілі' }, { href: '/calculator/ideal-weight', label: 'Калькулятор ідеальної ваги' }, { href: '/calculator/heart-rate', label: 'Пульсові зони' }],
+  fr: [{ href: '/calculator/bmi', label: 'Calculatrice IMC' }, { href: '/calculator/calories', label: 'Calculatrice de calories (TDEE)' }, { href: '/calculator/body-fat', label: 'Calculatrice de graisse corporelle' }, { href: '/calculator/ideal-weight', label: 'Poids Idéal' }, { href: '/calculator/heart-rate', label: 'Zones de FC' }],
+  lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' }, { href: '/calculator/body-fat', label: 'Kūno riebalų skaičiuotuvas' }, { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

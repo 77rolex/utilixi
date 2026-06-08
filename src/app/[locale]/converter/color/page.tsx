@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/converter/units', label: 'Unit Converter' }, { href: '/converter/clothing-size', label: 'Clothing Size Converter' }],
-  ru: [{ href: '/converter/units', label: 'Конвертер единиц' }, { href: '/converter/clothing-size', label: 'Конвертер размеров одежды' }],
-  uk: [{ href: '/converter/units', label: 'Конвертер одиниць' }, { href: '/converter/clothing-size', label: 'Конвертер розмірів одягу' }],
-  fr: [{ href: '/converter/units', label: 'Convertisseur d\'unités' }, { href: '/converter/clothing-size', label: 'Convertisseur de tailles' }],
-  lt: [{ href: '/converter/units', label: 'Vienetų keitiklis' }, { href: '/converter/clothing-size', label: 'Drabužių dydžių keitiklis' }],
+  en: [{ href: '/converter/units', label: 'Unit Converter' }, { href: '/converter/clothing-size', label: 'Clothing Size Converter' }, { href: '/calculator/engineering', label: 'Engineering Calculator' }, { href: '/calculator/basic', label: 'Basic Calculator' }, { href: '/converter/grade-system', label: 'Grade System Converter' }],
+  ru: [{ href: '/converter/units', label: 'Конвертер единиц' }, { href: '/converter/clothing-size', label: 'Конвертер размеров одежды' }, { href: '/calculator/engineering', label: 'Инженерный калькулятор' }, { href: '/calculator/basic', label: 'Простой калькулятор' }, { href: '/converter/grade-system', label: 'Конвертер систем оценок' }],
+  uk: [{ href: '/converter/units', label: 'Конвертер одиниць' }, { href: '/converter/clothing-size', label: 'Конвертер розмірів одягу' }, { href: '/calculator/engineering', label: 'Інженерний калькулятор' }, { href: '/calculator/basic', label: 'Простий калькулятор' }, { href: '/converter/grade-system', label: 'Конвертер систем оцінок' }],
+  fr: [{ href: '/converter/units', label: 'Convertisseur d\'unités' }, { href: '/converter/clothing-size', label: 'Convertisseur de tailles' }, { href: '/calculator/engineering', label: 'Calculatrice scientifique' }, { href: '/calculator/basic', label: 'Calculatrice basique' }, { href: '/converter/grade-system', label: 'Convertisseur de notes' }],
+  lt: [{ href: '/converter/units', label: 'Vienetų keitiklis' }, { href: '/converter/clothing-size', label: 'Drabužių dydžių keitiklis' }, { href: '/calculator/engineering', label: 'Inžinerinis skaičiuotuvas' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/converter/grade-system', label: 'Pažymių sistemų konverteris' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

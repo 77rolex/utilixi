@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [{ href: '/calculator/mortgage', label: 'Mortgage Calculator' }, { href: '/calculator/loan', label: 'Loan Calculator' }],
-  ru: [{ href: '/calculator/mortgage', label: 'Ипотечный калькулятор' }, { href: '/calculator/loan', label: 'Калькулятор кредита' }],
-  uk: [{ href: '/calculator/mortgage', label: 'Іпотечний калькулятор' }, { href: '/calculator/loan', label: 'Калькулятор кредиту' }],
-  fr: [{ href: '/calculator/mortgage', label: 'Calculatrice de prêt immobilier' }, { href: '/calculator/loan', label: 'Calculatrice de prêt' }],
-  lt: [{ href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }],
+  en: [{ href: '/calculator/salary', label: 'Salary Calculator' }, { href: '/calculator/income-tax', label: 'Income Tax Calculator' }, { href: '/calculator/limitation', label: 'Statute of Limitations' }, { href: '/calculator/traffic-fine', label: 'Traffic Fine Calculator' }, { href: '/calculator/flight-delay', label: 'Flight Delay Compensation' }],
+  ru: [{ href: '/calculator/salary', label: 'Калькулятор зарплаты' }, { href: '/calculator/income-tax', label: 'Подоходный налог' }, { href: '/calculator/limitation', label: 'Срок исковой давности' }, { href: '/calculator/traffic-fine', label: 'Штрафы ПДД' }, { href: '/calculator/flight-delay', label: 'Компенсация за задержку рейса' }],
+  uk: [{ href: '/calculator/salary', label: 'Калькулятор зарплати' }, { href: '/calculator/income-tax', label: 'Прибутковий податок' }, { href: '/calculator/limitation', label: 'Строк позовної давності' }, { href: '/calculator/traffic-fine', label: 'Штрафи ПДР' }, { href: '/calculator/flight-delay', label: 'Компенсація за затримку рейсу' }],
+  fr: [{ href: '/calculator/salary', label: 'Calculatrice de salaire' }, { href: '/calculator/income-tax', label: 'Impôt sur le revenu' }, { href: '/calculator/limitation', label: 'Délai de prescription' }, { href: '/calculator/traffic-fine', label: 'Calculateur d\'amendes routières' }, { href: '/calculator/flight-delay', label: 'Indemnisation retard de vol' }],
+  lt: [{ href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/limitation', label: 'Ieškinio senaties terminas' }, { href: '/calculator/traffic-fine', label: 'Eismo baudų skaičiuotuvas' }, { href: '/calculator/flight-delay', label: 'Kompensacija už skrydžio vėlavimą' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {

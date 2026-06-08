@@ -11,31 +11,11 @@ import styles from './page.module.scss';
 type Props = { params: Promise<{ locale: string }> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
-  en: [
-    { href: '/calculator/pregnancy', label: 'Pregnancy Calculator' },
-    { href: '/calculator/bmi', label: 'BMI Calculator' },
-    { href: '/calculator/ideal-weight', label: 'Ideal Weight Calculator' },
-  ],
-  ru: [
-    { href: '/calculator/pregnancy', label: 'Калькулятор беременности' },
-    { href: '/calculator/bmi', label: 'Калькулятор ИМТ' },
-    { href: '/calculator/ideal-weight', label: 'Калькулятор идеального веса' },
-  ],
-  uk: [
-    { href: '/calculator/pregnancy', label: 'Калькулятор вагітності' },
-    { href: '/calculator/bmi', label: 'Калькулятор ІМТ' },
-    { href: '/calculator/ideal-weight', label: 'Калькулятор ідеальної ваги' },
-  ],
-  fr: [
-    { href: '/calculator/pregnancy', label: 'Calculatrice de grossesse' },
-    { href: '/calculator/bmi', label: 'Calculatrice IMC' },
-    { href: '/calculator/ideal-weight', label: 'Poids Idéal' },
-  ],
-  lt: [
-    { href: '/calculator/pregnancy', label: 'Nėštumo skaičiuotuvas' },
-    { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' },
-    { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' },
-  ],
+  en: [{ href: '/calculator/pregnancy', label: 'Pregnancy Calculator' }, { href: '/calculator/bmi', label: 'BMI Calculator' }, { href: '/calculator/ideal-weight', label: 'Ideal Weight Calculator' }, { href: '/calculator/calories', label: 'Calorie Calculator' }, { href: '/calculator/water-intake', label: 'Water Intake Calculator' }],
+  ru: [{ href: '/calculator/pregnancy', label: 'Калькулятор беременности' }, { href: '/calculator/bmi', label: 'Калькулятор ИМТ' }, { href: '/calculator/ideal-weight', label: 'Калькулятор идеального веса' }, { href: '/calculator/calories', label: 'Калькулятор калорий' }, { href: '/calculator/water-intake', label: 'Норма воды в день' }],
+  uk: [{ href: '/calculator/pregnancy', label: 'Калькулятор вагітності' }, { href: '/calculator/bmi', label: 'Калькулятор ІМТ' }, { href: '/calculator/ideal-weight', label: 'Калькулятор ідеальної ваги' }, { href: '/calculator/calories', label: 'Калькулятор калорій' }, { href: '/calculator/water-intake', label: 'Норма води на день' }],
+  fr: [{ href: '/calculator/pregnancy', label: 'Calculatrice de grossesse' }, { href: '/calculator/bmi', label: 'Calculatrice IMC' }, { href: '/calculator/ideal-weight', label: 'Poids Idéal' }, { href: '/calculator/calories', label: 'Calculatrice de calories' }, { href: '/calculator/water-intake', label: 'Apport en eau quotidien' }],
+  lt: [{ href: '/calculator/pregnancy', label: 'Nėštumo skaičiuotuvas' }, { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas' }, { href: '/calculator/water-intake', label: 'Vandens normos skaičiuotuvas' }],
 };
 
 const META: Record<string, { title: string; description: string; h1: string }> = {
