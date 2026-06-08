@@ -35,9 +35,9 @@ const META: Record<string, { title: string; description: string; h1: string }> =
     h1: 'Калькулятор аліментів',
   },
   fr: {
-    title: 'Calculatrice Pension Alimentaire — Calcul gratuit en ligne',
-    description: 'Calculatrice de pension alimentaire gratuite. Estimez le montant mensuel selon vos revenus, le nombre d\'enfants et la législation de votre pays. Couvre la France, la Belgique, la Suisse et d\'autres pays.',
-    h1: 'Calculatrice de pension alimentaire',
+    title: 'Calculateur Pension Alimentaire — Calcul gratuit en France',
+    description: 'Calculateur de pension alimentaire gratuit. Estimez le montant mensuel selon vos revenus nets, le nombre d\'enfants et le barème du Ministère de la Justice. Couvre la France, la Belgique, la Suisse et d\'autres pays.',
+    h1: 'Calculateur de pension alimentaire',
   },
   lt: {
     title: 'Alimentų Skaičiuotuvas — Apskaičiuokite internetu',

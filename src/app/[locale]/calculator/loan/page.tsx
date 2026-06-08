@@ -35,9 +35,9 @@ const META: Record<string, { title: string; description: string; h1: string }> =
     h1: 'Калькулятор кредиту',
   },
   fr: {
-    title: 'Simulateur de Prêt Personnel Gratuit — Calcul des Mensualités',
-    description: 'Simulateur de prêt personnel gratuit. Calculez vos mensualités, le coût total du crédit et les intérêts en quelques secondes. TAEG, durée, montant — résultats instantanés.',
-    h1: 'Simulateur de Prêt Personnel',
+    title: 'Calculatrice de Prêt — Calcul Mensualité Gratuit en ligne',
+    description: 'Calculatrice de prêt gratuite. Calcul mensualité instantané : saisissez le montant, le TAEG et la durée. Simulateur de prêt personnel — coût total et intérêts en quelques secondes.',
+    h1: 'Calculatrice de prêt personnel',
   },
   lt: {
     title: 'Paskolos Skaičiuotuvas — mėnesio įmoka internetu',
@@ -315,19 +315,29 @@ export default async function LoanPage({ params }: Props) {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  };
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <LoanCalculator locale={locale} />
 
         <AdInline locale={locale} />
         <div className={styles.page__content}>
-          <p className={styles.page__description}>{content.description}</p>
+          {content.description.split('\n\n').map((para, i) => (
+            <p key={i} className={styles.page__description}>{para}</p>
+          ))}
 
           <RelatedTools locale={locale} tools={related} />
           <section className={styles.faq}>

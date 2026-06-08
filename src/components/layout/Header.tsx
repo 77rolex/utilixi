@@ -15,7 +15,7 @@ export default function Header({ locale }: Props) {
         <Link href={`/${locale}`} className={styles.header__logo}>
           <Image
             src="/logo.svg"
-            alt="Utilixi"
+            alt="Utilixi — free online calculators"
             width={142}
             height={32}
             priority

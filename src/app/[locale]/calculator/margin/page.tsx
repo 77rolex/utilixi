@@ -63,53 +63,83 @@ const META: Record<string, { title: string; description: string; h1: string }> =
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
   en: {
-    description: 'Use our margin and markup calculator to analyze the profitability of your products. In "Calculate from prices" mode, enter the cost and selling price to instantly get the gross profit margin and markup percentage. In "Find selling price" mode, enter your cost and target margin or markup — and get the exact price you need to charge.',
+    description: 'Use our margin and markup calculator to analyze the profitability of your products. In "Calculate from prices" mode, enter the cost and selling price to instantly get the gross profit margin and markup percentage. In "Find selling price" mode, enter your cost and target margin or markup — and get the exact price you need to charge.\n\nMargin and markup are the two most important pricing metrics in business. Understanding the difference — and knowing which one your industry uses — is essential for setting correct prices, negotiating with suppliers, and benchmarking against competitors.',
     faqTitle: 'Frequently Asked Questions',
     faqs: [
-      { q: 'What is the difference between margin and markup?', a: 'Margin (gross profit margin) is profit as a percentage of the selling price: Margin = (Profit ÷ Revenue) × 100. Markup is profit as a percentage of the cost: Markup = (Profit ÷ Cost) × 100. For the same product, markup is always higher than margin. For example, a 50% markup corresponds to only a 33.3% margin.' },
-      { q: 'Which is more useful — margin or markup?', a: 'Margin is preferred in financial analysis and accounting because it directly shows what percentage of revenue is profit. Markup is more commonly used in retail and purchasing when you need to calculate the selling price from cost. Both metrics complement each other.' },
-      { q: 'How do I calculate selling price from a target margin?', a: 'Formula: Selling Price = Cost ÷ (1 − Margin%). For example, if your cost is $100 and you want a 30% margin: $100 ÷ (1 − 0.30) = $142.86. This is exactly what the "Find selling price" mode does automatically.' },
-      { q: 'What is a good profit margin?', a: 'It depends heavily on the industry. Grocery retail averages 2–5%, software and SaaS can reach 60–80%, while manufacturing typically ranges from 10–20%. The key is to benchmark against your specific industry and ensure your margin covers all fixed costs and provides a return on investment.' },
+      { q: 'What is the difference between margin and markup?', a: 'Margin is profit as a percentage of revenue: Margin = (Profit ÷ Revenue) × 100. Markup is profit as a percentage of cost: Markup = (Profit ÷ Cost) × 100. For the same product, markup is always higher than margin. Example: cost $100, sell $150 → profit $50 → Markup 50%, Margin 33.3%.' },
+      { q: 'Which is more useful — margin or markup?', a: 'Margin is preferred in financial analysis, P&L reporting, and accounting because it shows what percentage of revenue is profit. Markup is more common in retail and procurement when calculating the selling price from cost. Most financial software defaults to margin.' },
+      { q: 'How do I calculate selling price from a target margin?', a: 'Selling Price = Cost ÷ (1 − Margin%). Example: cost $100, target margin 30% → $100 ÷ 0.70 = $142.86. This is what the "Find selling price" mode does automatically.' },
+      { q: 'What is a good profit margin?', a: 'It varies by industry. Grocery retail: 2–5%. Food service: 3–9%. Manufacturing: 10–20%. Ecommerce: 15–30%. Software/SaaS: 60–80%. Consulting: 30–50%. Always benchmark against your specific industry and ensure your gross margin covers fixed costs plus net profit target.' },
+      { q: 'What is the formula for markup from margin?', a: 'Markup = Margin ÷ (1 − Margin). Example: 30% margin → 30% ÷ 70% = 42.86% markup. Conversely: Margin = Markup ÷ (1 + Markup). Example: 42.86% markup → 42.86% ÷ 142.86% = 30% margin.' },
+      { q: 'What is gross margin vs net margin?', a: 'Gross margin = (Revenue − Cost of Goods Sold) ÷ Revenue. Net margin = Net Profit ÷ Revenue (after all expenses including overheads, taxes, interest). This calculator computes gross margin. Net margin requires subtracting all operating and fixed costs.' },
+      { q: 'What is a retail markup percentage?', a: 'Common retail markup percentages by category: clothing 100–200%; electronics 10–30%; furniture 200–400%; jewelry 300–500%; grocery 10–20%; hardware 30–50%. These are typical ranges — individual products vary widely based on brand, exclusivity, and competition.' },
+      { q: 'What is the keystone markup?', a: 'Keystone markup is doubling the cost price to set the selling price — a 100% markup (50% margin). It was the traditional retail rule of thumb. Modern retailers often use higher markups for premium products and lower for commodities.' },
+      { q: 'How does VAT/sales tax affect margin calculation?', a: 'Margin should be calculated on prices excluding VAT, because VAT is collected on behalf of the government and is not your revenue. If your selling price includes VAT, remove it first: Price ex-VAT = Price incl. VAT ÷ (1 + VAT rate). Then calculate margin on the ex-VAT prices.' },
+      { q: 'What is contribution margin?', a: 'Contribution margin = Revenue − Variable Costs. It shows how much each sale contributes to covering fixed costs and generating profit. It differs from gross margin in that it only subtracts variable (not all direct) costs. Contribution margin is particularly useful for break-even analysis and pricing decisions.' },
     ],
   },
   ru: {
-    description: 'Используйте калькулятор маржи и наценки для анализа прибыльности ваших товаров. В режиме «Расчёт по ценам» введите себестоимость и цену продажи — мгновенно получите процент маржи и наценки. В режиме «Найти цену продажи» введите себестоимость и целевую маржу или наценку — и получите точную цену.',
+    description: 'Используйте калькулятор маржи и наценки для анализа прибыльности ваших товаров. В режиме «Расчёт по ценам» введите себестоимость и цену продажи — мгновенно получите процент маржи и наценки. В режиме «Найти цену продажи» введите себестоимость и целевую маржу или наценку — и получите точную цену.\n\nМаржа и наценка — два ключевых показателя ценообразования в бизнесе. Понимание разницы между ними и знание отраслевых норм необходимы для правильной цены, переговоров с поставщиками и сравнения с конкурентами.',
     faqTitle: 'Часто задаваемые вопросы',
     faqs: [
-      { q: 'В чём разница между маржой и наценкой?', a: 'Маржа (валовая) — это прибыль в процентах от цены продажи: Маржа = (Прибыль ÷ Выручка) × 100. Наценка — прибыль в процентах от себестоимости: Наценка = (Прибыль ÷ Себестоимость) × 100. Для одного и того же товара наценка всегда выше маржи. Например, наценка 50% соответствует марже только 33,3%.' },
-      { q: 'Что лучше использовать — маржу или наценку?', a: 'Маржа предпочтительна в финансовом анализе и бухгалтерии — она сразу показывает, какой процент выручки составляет прибыль. Наценка чаще используется в торговле и закупках, когда нужно рассчитать цену из себестоимости. Оба показателя дополняют друг друга.' },
-      { q: 'Как рассчитать цену продажи по целевой марже?', a: 'Формула: Цена продажи = Себестоимость ÷ (1 − Маржа%). Например, себестоимость 100 ₽ и желаемая маржа 30%: 100 ÷ (1 − 0,30) = 142,86 ₽. Именно это автоматически делает режим «Найти цену продажи».' },
-      { q: 'Какая маржа считается хорошей?', a: 'Зависит от отрасли. В розничной торговле продуктами — 2–5%, в ПО и SaaS — 60–80%, в производстве — 10–20%. Главное — сравнивать с показателями своей отрасли и убедиться, что маржа покрывает постоянные расходы и даёт достаточную отдачу на вложения.' },
+      { q: 'В чём разница между маржой и наценкой?', a: 'Маржа — прибыль в процентах от цены продажи: Маржа = (Прибыль ÷ Выручка) × 100. Наценка — прибыль в процентах от себестоимости: Наценка = (Прибыль ÷ Себестоимость) × 100. Пример: себест. 100 ₽, цена 150 ₽, прибыль 50 ₽ → Наценка 50%, Маржа 33,3%.' },
+      { q: 'Что лучше использовать — маржу или наценку?', a: 'Маржа предпочтительна в финансовом анализе и бухгалтерии — показывает, какой % выручки составляет прибыль. Наценка чаще используется в торговле и закупках для расчёта цены из себестоимости. Большинство бухгалтерских программ по умолчанию оперирует маржой.' },
+      { q: 'Как рассчитать цену продажи по целевой марже?', a: 'Цена продажи = Себестоимость ÷ (1 − Маржа%). Например: себест. 100 ₽, маржа 30% → 100 ÷ 0,70 = 142,86 ₽. Режим «Найти цену продажи» делает это автоматически.' },
+      { q: 'Какая маржа считается хорошей?', a: 'Зависит от отрасли. Продуктовый ретейл: 2–5%. Общепит: 5–15%. Производство: 10–25%. Интернет-торговля: 15–30%. ПО и SaaS: 60–80%. Консалтинг: 30–50%. Главное — сравнивать с нормами своей отрасли и контролировать покрытие постоянных расходов.' },
+      { q: 'Как перевести маржу в наценку и обратно?', a: 'Наценка из маржи: Наценка = Маржа ÷ (1 − Маржа). Пример: маржа 30% → 30% ÷ 70% = 42,86% наценка. Маржа из наценки: Маржа = Наценка ÷ (1 + Наценка). Пример: наценка 42,86% → 42,86% ÷ 142,86% = 30% маржа.' },
+      { q: 'Что такое валовая и чистая маржа?', a: 'Валовая маржа = (Выручка − Себестоимость) ÷ Выручка. Чистая маржа = Чистая прибыль ÷ Выручка (после всех расходов, включая аренду, зарплаты, налоги). Этот калькулятор рассчитывает валовую маржу.' },
+      { q: 'Каков типичный процент наценки в рознице?', a: 'Типичные наценки по категориям: одежда — 100–200%, электроника — 10–30%, мебель — 100–300%, ювелирные изделия — 200–400%, продукты — 10–25%, стройматериалы — 20–50%. Конкретные значения варьируются в зависимости от бренда и конкуренции.' },
+      { q: 'Что такое «двойная наценка» (keystone markup)?', a: '«Двойная наценка» — традиционное правило ретейла: удвоить себестоимость для получения цены продажи. Это наценка 100% или маржа 50%. Сегодня используется реже — в премиум-сегменте наценки выше, в массовом — ниже.' },
+      { q: 'Как НДС влияет на расчёт маржи?', a: 'Маржу нужно считать по ценам без НДС, так как НДС — это налог, перечисляемый в бюджет, а не доход. Если в цене продажи включён НДС 20%, то цена без НДС = Цена с НДС ÷ 1,2. Затем считайте маржу на основе цены без НДС.' },
+      { q: 'Что такое маржинальность как показатель эффективности бизнеса?', a: 'Маржинальность (или маржа вклада) = Выручка − Переменные расходы. Показывает, сколько каждая продажа вносит в покрытие постоянных расходов и прибыль. Используется для анализа точки безубыточности и оценки ценовых решений.' },
     ],
   },
   uk: {
-    description: 'Використовуйте калькулятор маржі та націнки для аналізу прибутковості ваших товарів. У режимі «Розрахунок за цінами» введіть собівартість і ціну продажу — миттєво отримайте відсоток маржі та націнки. У режимі «Знайти ціну продажу» введіть собівартість і цільову маржу або націнку.',
+    description: 'Використовуйте калькулятор маржі та націнки для аналізу прибутковості ваших товарів. У режимі «Розрахунок за цінами» введіть собівартість і ціну продажу — миттєво отримайте відсоток маржі та націнки. У режимі «Знайти ціну продажу» введіть собівартість і цільову маржу або націнку.\n\nМаржа і націнка — два ключові показники ціноутворення. Розуміння різниці між ними необхідне для правильного ціноутворення, переговорів з постачальниками та порівняння з конкурентами.',
     faqTitle: 'Часті запитання',
     faqs: [
-      { q: 'У чому різниця між маржею і націнкою?', a: 'Маржа (валова) — це прибуток у відсотках від ціни продажу: Маржа = (Прибуток ÷ Виручка) × 100. Націнка — прибуток у відсотках від собівартості: Націнка = (Прибуток ÷ Собівартість) × 100. Для одного товару націнка завжди вища за маржу. Наприклад, націнка 50% відповідає лише 33,3% маржі.' },
-      { q: 'Що краще використовувати — маржу чи націнку?', a: 'Маржа переважає у фінансовому аналізі та бухгалтерії — вона одразу показує, який відсоток виручки становить прибуток. Націнка частіше використовується в торгівлі та закупівлях для розрахунку ціни із собівартості.' },
-      { q: 'Як розрахувати ціну продажу за цільовою маржею?', a: 'Формула: Ціна продажу = Собівартість ÷ (1 − Маржа%). Наприклад, собівартість 100 ₴ і бажана маржа 30%: 100 ÷ (1 − 0,30) = 142,86 ₴. Саме це автоматично робить режим «Знайти ціну продажу».' },
-      { q: 'Яка маржа вважається гарною?', a: 'Залежить від галузі. У роздрібній торгівлі продуктами — 2–5%, у ПЗ та SaaS — 60–80%, у виробництві — 10–20%. Головне — порівнювати з показниками своєї галузі та переконатися, що маржа покриває постійні витрати.' },
+      { q: 'У чому різниця між маржею і націнкою?', a: 'Маржа — прибуток у відсотках від ціни продажу: Маржа = (Прибуток ÷ Виручка) × 100. Націнка — прибуток у відсотках від собівартості: Націнка = (Прибуток ÷ Собівартість) × 100. Приклад: собів. 100 ₴, ціна 150 ₴, прибуток 50 ₴ → Націнка 50%, Маржа 33,3%.' },
+      { q: 'Що краще використовувати — маржу чи націнку?', a: 'Маржа переважає у фінансовому аналізі — показує, який % виручки є прибутком. Націнка частіше використовується в торгівлі та закупівлях для розрахунку ціни із собівартості.' },
+      { q: 'Як розрахувати ціну продажу за цільовою маржею?', a: 'Ціна продажу = Собівартість ÷ (1 − Маржа%). Приклад: собів. 100 ₴, маржа 30% → 100 ÷ 0,70 = 142,86 ₴. Режим «Знайти ціну продажу» робить це автоматично.' },
+      { q: 'Яка маржа вважається гарною?', a: 'Залежить від галузі. Продуктовий ретейл: 2–5%. Виробництво: 10–25%. Інтернет-торгівля: 15–30%. ПЗ та SaaS: 60–80%. Консалтинг: 30–50%. Порівнюйте з нормами своєї галузі.' },
+      { q: 'Як перевести маржу в націнку і навпаки?', a: 'Націнка з маржі: Націнка = Маржа ÷ (1 − Маржа). Приклад: маржа 30% → 30% ÷ 70% = 42,86%. Маржа з націнки: Маржа = Націнка ÷ (1 + Націнка). Приклад: 42,86% → 42,86% ÷ 142,86% = 30% маржа.' },
+      { q: 'Що таке валова і чиста маржа?', a: 'Валова маржа = (Виручка − Собівартість) ÷ Виручка. Чиста маржа = Чистий прибуток ÷ Виручка (після всіх витрат включно з орендою, зарплатами, податками). Цей калькулятор розраховує валову маржу.' },
+      { q: 'Який типовий відсоток націнки в роздрібній торгівлі?', a: 'Типові націнки: одяг — 100–200%, електроніка — 10–30%, меблі — 100–300%, ювелірні вироби — 200–400%, продукти — 10–25%. Конкретні значення залежать від бренду та конкуренції.' },
+      { q: 'Що таке «подвійна наценка»?', a: 'Подвійна наценка (keystone markup) — традиційне правило ретейлу: подвоїти собівартість. Це наценка 100% або маржа 50%. Сьогодні застосовується рідше — у преміум-сегменті вона вища, у масовому — нижча.' },
+      { q: 'Як ПДВ впливає на розрахунок маржі?', a: 'Маржу треба рахувати за цінами без ПДВ, оскільки ПДВ — це податок, що перераховується до бюджету. Якщо ціна продажу включає ПДВ 20%, то ціна без ПДВ = Ціна з ПДВ ÷ 1,2. Потім розраховуйте маржу на основі ціни без ПДВ.' },
+      { q: 'Що таке маржинальність як показник ефективності бізнесу?', a: 'Маржинальність (маржа вкладу) = Виручка − Змінні витрати. Показує, скільки кожен продаж вносить у покриття постійних витрат і прибуток. Використовується для аналізу точки беззбитковості та цінових рішень.' },
     ],
   },
   fr: {
-    description: 'Utilisez notre calculatrice de marge et majoration pour analyser la rentabilité de vos produits. En mode «Calculer depuis les prix», entrez le coût et le prix de vente pour obtenir instantanément la marge brute et le taux de majoration. En mode «Trouver le prix de vente», entrez votre coût et la marge ou majoration cible.',
+    description: 'Utilisez notre calculatrice de marge et majoration pour analyser la rentabilité de vos produits. En mode « Calculer depuis les prix », entrez le coût et le prix de vente pour obtenir instantanément la marge brute et le taux de majoration. En mode « Trouver le prix de vente », entrez votre coût et la marge ou majoration cible.\n\nLa marge et la majoration sont les deux indicateurs de tarification les plus importants en commerce. Comprendre la différence — et savoir lequel utilise votre secteur — est essentiel pour fixer des prix corrects et négocier avec vos fournisseurs.',
     faqTitle: 'Questions fréquentes',
     faqs: [
-      { q: 'Quelle est la différence entre marge et majoration ?', a: 'La marge (brute) est le bénéfice en pourcentage du prix de vente : Marge = (Bénéfice ÷ CA) × 100. La majoration est le bénéfice en pourcentage du coût : Majoration = (Bénéfice ÷ Coût) × 100. Pour un même produit, la majoration est toujours supérieure à la marge. Par exemple, une majoration de 50 % correspond à une marge de seulement 33,3 %.' },
-      { q: 'Laquelle est la plus utile — marge ou majoration ?', a: 'La marge est préférée en analyse financière et comptabilité car elle montre directement quelle part du chiffre d\'affaires est du bénéfice. La majoration est plus courante dans le commerce de détail pour calculer le prix de vente à partir du coût.' },
-      { q: 'Comment calculer le prix de vente à partir d\'une marge cible ?', a: 'Formule : Prix de vente = Coût ÷ (1 − Marge%). Par exemple, coût de 100 € et marge souhaitée de 30 % : 100 ÷ (1 − 0,30) = 142,86 €. C\'est exactement ce que fait le mode «Trouver le prix de vente».' },
-      { q: 'Quelle est une bonne marge bénéficiaire ?', a: 'Cela dépend fortement du secteur. La distribution alimentaire tourne autour de 2 à 5 %, les logiciels et SaaS peuvent atteindre 60 à 80 %, tandis que la fabrication se situe généralement entre 10 et 20 %.' },
+      { q: 'Quelle est la différence entre marge et majoration ?', a: 'Marge = Bénéfice ÷ CA × 100. Majoration = Bénéfice ÷ Coût × 100. Pour le même produit, la majoration est toujours supérieure à la marge. Exemple : coût 100 €, prix 150 €, bénéfice 50 € → Majoration 50 %, Marge 33,3 %.' },
+      { q: 'Laquelle est la plus utile ?', a: 'La marge est préférée en analyse financière et comptabilité car elle montre quelle part du CA est du bénéfice. La majoration est plus utilisée dans le commerce pour calculer le prix de vente à partir du coût. La plupart des logiciels de gestion utilisent la marge par défaut.' },
+      { q: 'Comment calculer le prix de vente à partir d\'une marge cible ?', a: 'Prix de vente = Coût ÷ (1 − Marge%). Exemple : coût 100 €, marge 30 % → 100 ÷ 0,70 = 142,86 €. C\'est ce que fait le mode « Trouver le prix de vente ».' },
+      { q: 'Quelle est une bonne marge bénéficiaire ?', a: 'Cela varie par secteur. Distribution alimentaire : 2–5 %. Restauration : 5–15 %. Fabrication : 10–25 %. E-commerce : 15–30 %. Logiciels/SaaS : 60–80 %. Conseil : 30–50 %. Comparez toujours les normes de votre secteur.' },
+      { q: 'Comment convertir la marge en majoration et inversement ?', a: 'Majoration depuis marge : Majoration = Marge ÷ (1 − Marge). Exemple : marge 30 % → 30 % ÷ 70 % = 42,86 % de majoration. Marge depuis majoration : Marge = Majoration ÷ (1 + Majoration). Exemple : 42,86 % → 42,86 % ÷ 142,86 % = 30 %.' },
+      { q: 'Quelle est la différence entre marge brute et marge nette ?', a: 'Marge brute = (CA − Coût des ventes) ÷ CA. Marge nette = Bénéfice net ÷ CA (après toutes les charges : loyer, salaires, impôts). Cette calculatrice calcule la marge brute.' },
+      { q: 'Quels sont les taux de majoration typiques en retail ?', a: 'Taux de majoration courants : habillement 100–200 %, électronique 10–30 %, mobilier 100–300 %, bijouterie 200–400 %, alimentation 10–25 %. Les valeurs varient selon la marque et la concurrence.' },
+      { q: 'Qu\'est-ce que le « keystone markup » ?', a: 'Le keystone markup consiste à doubler le coût pour obtenir le prix de vente — soit une majoration de 100 % ou une marge de 50 %. C\'était la règle traditionnelle du commerce de détail. Aujourd\'hui, les détaillants premium appliquent des majorations plus élevées, les segments mass-market des majorations plus faibles.' },
+      { q: 'Comment la TVA affecte-t-elle le calcul de la marge ?', a: 'La marge doit être calculée sur les prix HT (hors taxe), car la TVA collectée est reversée à l\'État et n\'est pas un revenu. Si votre prix de vente est TTC (TVA 20 %), le prix HT = Prix TTC ÷ 1,20. Calculez ensuite la marge sur les prix HT.' },
+      { q: 'Qu\'est-ce que la marge sur coût variable ?', a: 'Marge sur coût variable = CA − Charges variables. Elle montre combien chaque vente contribue à couvrir les charges fixes et à générer du bénéfice. Elle diffère de la marge brute car elle ne soustrait que les charges variables. Utile pour l\'analyse du seuil de rentabilité.' },
     ],
   },
   lt: {
-    description: 'Naudokite maržos ir antkainių skaičiuotuvą savo produktų pelningumui analizuoti. Režimu „Skaičiuoti iš kainų" įveskite savikainą ir pardavimo kainą — iš karto gaukite bendrąją maržą ir antkainių procentą. Režimu „Rasti pardavimo kainą" įveskite savikainą ir tikslinę maržą arba antkainį.',
+    description: 'Naudokite maržos ir antkainių skaičiuotuvą savo produktų pelningumui analizuoti. Režimu „Skaičiuoti iš kainų" įveskite savikainą ir pardavimo kainą — iš karto gaukite bendrąją maržą ir antkainių procentą. Režimu „Rasti pardavimo kainą" įveskite savikainą ir tikslinę maržą arba antkainį.\n\nMarža ir antkainis — du svarbiausi kainodaros rodikliai versle. Skirtumas tarp jų ir pramonės normos žinojimas būtini teisingoms kainoms nustatyti ir deryboms su tiekėjais.',
     faqTitle: 'Dažniausiai užduodami klausimai',
     faqs: [
-      { q: 'Koks skirtumas tarp maržos ir antkainių?', a: 'Marža (bendroji) — tai pelnas procentais nuo pardavimo kainos: Marža = (Pelnas ÷ Pajamos) × 100. Antkainis — pelnas procentais nuo savikainos: Antkainis = (Pelnas ÷ Savikaina) × 100. Tam pačiam produktui antkainis visada didesnis už maržą. Pvz., 50 % antkainis atitinka tik 33,3 % maržą.' },
-      { q: 'Ką geriau naudoti — maržą ar antkainį?', a: 'Marža labiau tinka finansinei analizei ir apskaitai, nes tiesiogiai rodo, kokia pajamų dalis yra pelnas. Antkainis dažniau naudojamas prekyboje ir pirkimuose, kai reikia apskaičiuoti pardavimo kainą iš savikainos.' },
-      { q: 'Kaip apskaičiuoti pardavimo kainą pagal tikslinę maržą?', a: 'Formulė: Pardavimo kaina = Savikaina ÷ (1 − Marža%). Pvz., savikaina 100 € ir norima marža 30 %: 100 ÷ (1 − 0,30) = 142,86 €. Tai automatiškai atlieka režimas „Rasti pardavimo kainą".' },
-      { q: 'Kokia laikoma gera pelno marža?', a: 'Tai labai priklauso nuo sektoriaus. Maisto mažmeninėje prekyboje — 2–5 %, programinėje įrangoje ir SaaS — 60–80 %, gamyboje — 10–20 %. Svarbiausia lyginti su savo sektoriaus rodikliais.' },
+      { q: 'Koks skirtumas tarp maržos ir antkainių?', a: 'Marža = Pelnas ÷ Pajamos × 100. Antkainis = Pelnas ÷ Savikaina × 100. Tam pačiam produktui antkainis visada didesnis. Pvz.: savikaina 100 €, kaina 150 €, pelnas 50 € → Antkainis 50 %, Marža 33,3 %.' },
+      { q: 'Ką geriau naudoti?', a: 'Marža tinkamesnė finansinei analizei ir apskaitai — rodo, kokia pajamų dalis yra pelnas. Antkainis dažniau naudojamas prekyboje ir pirkimuose pardavimo kainai iš savikainos apskaičiuoti.' },
+      { q: 'Kaip apskaičiuoti pardavimo kainą pagal tikslinę maržą?', a: 'Pardavimo kaina = Savikaina ÷ (1 − Marža%). Pvz.: savikaina 100 €, marža 30 % → 100 ÷ 0,70 = 142,86 €. Tai automatiškai atlieka režimas „Rasti pardavimo kainą".' },
+      { q: 'Kokia laikoma gera pelno marža?', a: 'Priklauso nuo sektoriaus. Maisto mažmeninėje prekyboje: 2–5 %. Gamyboje: 10–25 %. E-komercijoje: 15–30 %. Programinėje įrangoje ir SaaS: 60–80 %. Konsultavime: 30–50 %. Lyginkite su savo sektoriaus standartais.' },
+      { q: 'Kaip konvertuoti maržą į antkainį ir atvirkščiai?', a: 'Antkainis iš maržos: Antkainis = Marža ÷ (1 − Marža). Pvz.: marža 30 % → 30 % ÷ 70 % = 42,86 %. Marža iš antkainių: Marža = Antkainis ÷ (1 + Antkainis). Pvz.: 42,86 % → 42,86 % ÷ 142,86 % = 30 %.' },
+      { q: 'Koks skirtumas tarp bendrosios ir grynosios maržos?', a: 'Bendroji marža = (Pajamos − Parduotų prekių savikaina) ÷ Pajamos. Grynoji marža = Grynasis pelnas ÷ Pajamos (po visų išlaidų). Šis skaičiuotuvas apskaičiuoja bendrąją maržą.' },
+      { q: 'Kokie tipiški antkainiai mažmeninėje prekyboje?', a: 'Tipiniai antkainiai: drabužiai 100–200 %, elektronika 10–30 %, baldai 100–300 %, juvelyriniai dirbiniai 200–400 %, maisto produktai 10–25 %. Konkrečios vertės priklauso nuo prekės ženklo ir konkurencijos.' },
+      { q: 'Kas yra „keystone" antkainis?', a: 'Keystone antkainis — tradicinė mažmenininkų taisyklė: padvigubinti savikainą. Tai 100 % antkainis arba 50 % marža. Šiandien dažniau taikoma specialiose kategorijose; masinio segmento parduotuvės dažnai naudoja mažesnius antkainius.' },
+      { q: 'Kaip PVM veikia maržos skaičiavimą?', a: 'Maržą reikia skaičiuoti pagal kainas be PVM, nes PVM pervedamas valstybei ir nėra pajamos. Jei pardavimo kainoje yra PVM 21 %, kaina be PVM = Kaina su PVM ÷ 1,21. Tada skaičiuokite maržą pagal kainą be PVM.' },
+      { q: 'Kas yra kintamoji marža?', a: 'Kintamoji marža = Pajamos − Kintamos išlaidos. Parodo, kiek kiekvienas pardavimas prisideda prie fiksuotų išlaidų padengimo ir pelno. Skirtingai nuo bendrosios maržos, atskaitomos tik kintamos (ne visos tiesioginės) išlaidos. Naudinga lyginamosios analizės taške.' },
     ],
   },
 };
@@ -145,16 +175,29 @@ export default async function MarginPage({ params }: Props) {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <MarginCalculator locale={locale} />
 
         <AdInline locale={locale} />
         <div className={styles.page__content}>
-          <p className={styles.page__description}>{content.description}</p>
+          {content.description.split('\n\n').map((para, i) => (
+            <p key={i} className={styles.page__description}>{para}</p>
+          ))}
           <RelatedTools locale={locale} tools={related} />
           <section className={styles.faq}>
             <h2 className={styles.faq__title}>{content.faqTitle}</h2>

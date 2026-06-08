@@ -28,53 +28,83 @@ const META: Record<string, { title: string; description: string; h1: string }> =
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
   en: {
-    description: 'Percentages are one of the most fundamental concepts in everyday math, used in finance, shopping, taxes, science, and statistics. This calculator covers the five most common percentage operations: finding X% of a value, determining what percentage one number is of another, calculating percentage change between two values, increasing a value by a percentage, and decreasing a value by a percentage. Each result shows the formula so you understand exactly how the answer was reached.',
+    description: 'Percentages are one of the most fundamental concepts in everyday math, used in finance, shopping, taxes, science, and statistics. This calculator covers the five most common percentage operations: finding X% of a value, determining what percentage one number is of another, calculating percentage change between two values, increasing a value by a percentage, and decreasing a value by a percentage. Each result shows the formula so you understand exactly how the answer was reached.\n\nFrom calculating VAT and discounts to tracking portfolio growth and exam scores, percentage calculations are unavoidable in daily life. Understanding the difference between percentage points and relative percent change prevents many common misunderstandings in finance and media reporting.',
     faqTitle: 'Frequently Asked Questions',
     faqs: [
-      { q: 'How do I calculate X% of Y?', a: 'Multiply Y by X/100. For example, 25% of 200 = 200 × 0.25 = 50. This is the most common percentage calculation used for tips, taxes, discounts, and commissions.' },
-      { q: 'How do I find what percentage X is of Y?', a: 'Divide X by Y and multiply by 100. For example, 50 is what % of 200? → (50 / 200) × 100 = 25%. This is useful for calculating test scores, market share, or completion rates.' },
-      { q: 'How is percentage change calculated?', a: 'Percentage change = ((New Value − Old Value) / Old Value) × 100. If sales went from 100 to 150: ((150 − 100) / 100) × 100 = +50%. A negative result indicates a decrease. This formula is used in finance, economics, and performance tracking.' },
-      { q: 'What\'s the difference between percentage points and percent?', a: 'Percentage points measure the arithmetic difference between two percentages. If interest rates go from 3% to 5%, that is a 2 percentage point increase, but a 66.7% increase in relative terms. Always clarify which is meant in financial or statistical contexts.' },
+      { q: 'How do I calculate X% of Y?', a: 'Multiply Y by X/100. For example, 25% of 200 = 200 × 0.25 = 50. Used for tips, taxes, discounts, and commissions.' },
+      { q: 'How do I find what percentage X is of Y?', a: 'Divide X by Y and multiply by 100. 50 is what % of 200? → (50 / 200) × 100 = 25%. Useful for test scores, market share, completion rates.' },
+      { q: 'How is percentage change calculated?', a: '% Change = ((New − Old) / Old) × 100. Sales from 100 to 150: ((150 − 100) / 100) × 100 = +50%. A negative result means a decrease.' },
+      { q: 'What is the difference between percentage points and percent?', a: 'Percentage points = arithmetic difference between two percentages. Interest from 3% to 5% = 2 percentage points, but a 66.7% increase in relative terms. This distinction matters in finance and statistics.' },
+      { q: 'How do I calculate compound percentage growth?', a: 'For compound growth over multiple periods: Final = Initial × (1 + rate)^n. Example: $1,000 growing at 5% per year for 3 years: $1,000 × 1.05³ = $1,157.63. This differs from simple percentage growth (1,000 × 1.15 = $1,150).' },
+      { q: 'What does a 200% increase mean?', a: 'A 200% increase means the value tripled (original + 200% of original = 3× original). Example: $100 increases by 200% → $100 + $200 = $300. Note: a 100% increase doubles the value; a 200% increase triples it. "Increased by 200%" ≠ "increased to 200%".' },
+      { q: 'What is a basis point (bp)?', a: 'A basis point is 0.01 percentage point, or 1/100th of 1%. Used in finance for interest rates and bond yields: 25 basis points = 0.25%. Example: if the ECB raises rates by 50bp from 3.5%, the new rate is 4.0%. Using basis points avoids ambiguity between "percent" and "percentage points".' },
+      { q: 'What is percentage error?', a: 'Percentage error = |Measured − Actual| / Actual × 100. It measures how far a measured value is from the true value. Example: estimated 95 km, actual 100 km → error = |95 − 100| / 100 × 100 = 5%. Used in science, engineering, and forecasting accuracy.' },
+      { q: 'How do I convert a percentage to a decimal and fraction?', a: 'Decimal: divide by 100. 75% → 0.75. Fraction: write as X/100 and simplify. 75% → 75/100 = 3/4. To go back: decimal × 100 = %. Common: 25% = 1/4, 50% = 1/2, 33.3% ≈ 1/3, 20% = 1/5, 10% = 1/10.' },
+      { q: 'What is relative vs absolute change?', a: 'Absolute change = New − Old (in original units). Relative change = (New − Old) / Old × 100 (in percent). Example: salary from €2,000 to €2,200. Absolute change: +€200. Relative change: +10%. Both are useful — absolute shows impact in real terms; relative allows fair comparison between different-sized values.' },
     ],
   },
   ru: {
-    description: 'Проценты — одна из фундаментальных концепций повседневной математики, применяемая в финансах, торговле, налогах, науке и статистике. Этот калькулятор охватывает пять наиболее распространённых операций с процентами: нахождение X% от числа, определение какой процент составляет одно число от другого, расчёт изменения в процентах, увеличение числа на процент и уменьшение числа на процент. Каждый результат сопровождается формулой.',
+    description: 'Проценты — одна из фундаментальных концепций повседневной математики, применяемая в финансах, торговле, налогах, науке и статистике. Этот калькулятор охватывает пять наиболее распространённых операций с процентами: нахождение X% от числа, определение какого процента составляет одно число от другого, расчёт изменения в процентах, увеличение и уменьшение числа на процент. Каждый результат сопровождается формулой.\n\nОт расчёта НДС и скидок до отслеживания доходности портфеля и результатов тестов — процентные вычисления повсеместны в повседневной жизни. Понимание разницы между процентными пунктами и относительным изменением в процентах предотвращает многие типичные ошибки в финансах.',
     faqTitle: 'Часто задаваемые вопросы',
     faqs: [
-      { q: 'Как рассчитать X% от Y?', a: 'Умножьте Y на X/100. Например, 25% от 200 = 200 × 0,25 = 50. Это наиболее распространённый расчёт процентов, используемый для чаевых, налогов, скидок и комиссий.' },
-      { q: 'Как найти, сколько процентов X составляет от Y?', a: 'Разделите X на Y и умножьте на 100. Например, 50 — это сколько % от 200? → (50 / 200) × 100 = 25%. Применяется для расчёта баллов, доли рынка или процента выполнения.' },
-      { q: 'Как рассчитывается изменение в процентах?', a: 'Изменение в % = ((Новое − Старое) / Старое) × 100. Если продажи выросли с 100 до 150: ((150 − 100) / 100) × 100 = +50%. Отрицательный результат указывает на снижение.' },
-      { q: 'В чём разница между процентными пунктами и процентами?', a: 'Процентные пункты — это арифметическая разница между двумя процентами. Если ставка выросла с 3% до 5% — это рост на 2 процентных пункта, но в относительном выражении — на 66,7%. В финансовых контекстах важно уточнять, что имеется в виду.' },
+      { q: 'Как рассчитать X% от Y?', a: 'Умножьте Y на X/100. Например, 25% от 200 = 50. Используется для расчёта чаевых, налогов, скидок и комиссий.' },
+      { q: 'Как найти, сколько процентов X составляет от Y?', a: '(X / Y) × 100. Например, 50 — это сколько % от 200? → 25%. Применяется для расчёта баллов, доли рынка или процента выполнения.' },
+      { q: 'Как рассчитывается изменение в процентах?', a: '((Новое − Старое) / Старое) × 100. Продажи выросли с 100 до 150 → +50%. Отрицательный результат — снижение.' },
+      { q: 'В чём разница между процентными пунктами и процентами?', a: 'Процентные пункты — арифметическая разница. Ставка с 3% до 5% = +2 пп, но в относительном выражении — +66,7%. В финансовых контекстах важно уточнять, что имеется в виду.' },
+      { q: 'Как рассчитать сложный процентный рост?', a: 'Итоговая сумма = Начальная × (1 + ставка)^n. Пример: 1 000 ₽ при 5% годовых за 3 года: 1 000 × 1,05³ = 1 157,63 ₽. Отличается от простого процента: 1 000 × 1,15 = 1 150 ₽.' },
+      { q: 'Что значит «рост на 200%»?', a: 'Рост на 200% означает утроение значения (исходное + 200% = ×3). Пример: 100 ₽ + 200% = 300 ₽. Рост на 100% — удвоение; рост на 200% — утроение. Важно: «вырасло на 200%» ≠ «выросло до 200%».' },
+      { q: 'Что такое базисный пункт (б.п.)?', a: 'Базисный пункт = 0,01 процентного пункта = 1/100 от 1%. Используется в финансах для ставок и доходностей: 25 б.п. = 0,25%. Пример: ЦБ повысил ставку на 50 б.п. с 7,5% → 8,0%.' },
+      { q: 'Что такое процентная погрешность?', a: '|Измеренное − Реальное| / Реальное × 100. Например, оценка 95 км, факт 100 км → погрешность 5%. Используется в науке, инженерии и оценке точности прогнозов.' },
+      { q: 'Как перевести процент в десятичную дробь и обычную дробь?', a: 'В десятичную: делим на 100. 75% → 0,75. В дробь: X/100, упрощаем. 75% → 3/4. Частые случаи: 25% = 1/4, 50% = 1/2, 33,3% ≈ 1/3, 20% = 1/5, 10% = 1/10.' },
+      { q: 'В чём разница между абсолютным и относительным изменением?', a: 'Абсолютное = Новое − Старое (в единицах). Относительное = (Новое − Старое) / Старое × 100 (в %). Пример: зарплата с 50 000 до 55 000 ₽. Абсолютно: +5 000 ₽. Относительно: +10%. Оба показателя важны для полного понимания.' },
     ],
   },
   uk: {
-    description: 'Відсотки — одна з фундаментальних концепцій повсякденної математики, яка застосовується у фінансах, торгівлі, податках, науці та статистиці. Цей калькулятор охоплює п\'ять найпоширеніших операцій з відсотками: знаходження X% від числа, визначення якого відсотку є одне число від іншого, розрахунок зміни у відсотках, збільшення числа на відсоток та зменшення числа на відсоток.',
+    description: 'Відсотки — одна з фундаментальних концепцій повсякденної математики, що застосовується у фінансах, торгівлі, податках та статистиці. Цей калькулятор охоплює п\'ять найпоширеніших операцій: знаходження X% від числа, визначення якого відсотку є одне число від іншого, розрахунок зміни у відсотках, збільшення та зменшення числа на відсоток. Кожен результат супроводжується формулою.\n\nВід розрахунку ПДВ і знижок до відстеження дохідності портфеля та результатів тестів — відсоткові обчислення повсюдні в повсякденному житті.',
     faqTitle: 'Часті запитання',
     faqs: [
-      { q: 'Як розрахувати X% від Y?', a: 'Помножте Y на X/100. Наприклад, 25% від 200 = 200 × 0,25 = 50. Це найпоширеніший розрахунок відсотків, що використовується для чайових, податків, знижок та комісій.' },
-      { q: 'Як знайти, скільки відсотків X становить від Y?', a: 'Розділіть X на Y і помножте на 100. Наприклад, 50 — це скільки % від 200? → (50 / 200) × 100 = 25%. Застосовується для розрахунку балів, частки ринку або відсотка виконання.' },
-      { q: 'Як розраховується зміна у відсотках?', a: 'Зміна в % = ((Нове − Старе) / Старе) × 100. Якщо продажі зросли зі 100 до 150: ((150 − 100) / 100) × 100 = +50%. Від\'ємний результат вказує на зниження.' },
-      { q: 'В чому різниця між відсотковими пунктами та відсотками?', a: 'Відсоткові пункти — це арифметична різниця між двома відсотками. Якщо ставка зросла з 3% до 5% — це зростання на 2 відсоткові пункти, але у відносному вираженні — на 66,7%.' },
+      { q: 'Як розрахувати X% від Y?', a: 'Помножте Y на X/100. Наприклад, 25% від 200 = 50. Для чайових, податків, знижок та комісій.' },
+      { q: 'Як знайти, скільки відсотків X становить від Y?', a: '(X / Y) × 100. Наприклад, 50 — це скільки % від 200? → 25%.' },
+      { q: 'Як розраховується зміна у відсотках?', a: '((Нове − Старе) / Старе) × 100. Продажі зросли зі 100 до 150 → +50%. Від\'ємний результат — зниження.' },
+      { q: 'В чому різниця між відсотковими пунктами та відсотками?', a: 'Відсоткові пункти — арифметична різниця. Ставка з 3% до 5% = +2 в.п., але у відносному вираженні — +66,7%.' },
+      { q: 'Як розрахувати складний відсотковий ріст?', a: 'Кінцева сума = Початкова × (1 + ставка)^n. Приклад: 1 000 грн при 5% річних за 3 роки: 1 000 × 1,05³ = 1 157,63 грн.' },
+      { q: 'Що означає «зріст на 200%»?', a: 'Зріст на 200% означає потроєння (вихідне + 200% = ×3). 100 грн + 200% = 300 грн. Зріст на 100% = подвоєння; зріст на 200% = потроєння.' },
+      { q: 'Що таке базисний пункт (б.п.)?', a: 'Базисний пункт = 0,01 відсоткового пункту. Використовується у фінансах: 25 б.п. = 0,25%. НБУ підвищив ставку на 50 б.п. з 7,5% → 8,0%.' },
+      { q: 'Що таке відсоткова похибка?', a: '|Виміряне − Реальне| / Реальне × 100. Наприклад, оцінка 95 км, факт 100 км → похибка 5%.' },
+      { q: 'Як перевести відсоток у десятковий дріб та звичайний дріб?', a: 'У десятковий: ділимо на 100. 75% → 0,75. У дріб: X/100, скорочуємо. 75% → 3/4. Часті випадки: 25% = 1/4, 50% = 1/2, 33,3% ≈ 1/3.' },
+      { q: 'В чому різниця між абсолютною та відносною зміною?', a: 'Абсолютна = Нове − Старе (в одиницях). Відносна = (Нове − Старе) / Старе × 100 (у %). Зарплата з 20 000 до 22 000 грн: абсолютно +2 000 грн, відносно +10%.' },
     ],
   },
   fr: {
-    description: 'Les pourcentages sont l\'un des concepts fondamentaux des mathématiques quotidiennes, utilisés en finance, commerce, fiscalité, science et statistiques. Cette calculatrice couvre les cinq opérations les plus courantes : trouver X% de Y, déterminer quel pourcentage X représente de Y, calculer la variation en %, augmenter une valeur d\'un pourcentage, et diminuer une valeur d\'un pourcentage. Chaque résultat affiche la formule utilisée.',
+    description: 'Les pourcentages sont l\'un des concepts fondamentaux des mathématiques quotidiennes, utilisés en finance, commerce, fiscalité, science et statistiques. Cette calculatrice couvre les cinq opérations les plus courantes : trouver X% de Y, déterminer quel % X représente de Y, calculer la variation en %, augmenter et diminuer une valeur. Chaque résultat affiche la formule utilisée.\n\nDu calcul de la TVA et des remises au suivi de la performance d\'un portefeuille, les calculs de pourcentages sont omniprésents. Comprendre la différence entre points de pourcentage et variation relative prévient de nombreuses erreurs en finance.',
     faqTitle: 'Questions fréquentes',
     faqs: [
-      { q: 'Comment calculer X% de Y ?', a: 'Multipliez Y par X/100. Par exemple, 25% de 200 = 200 × 0,25 = 50. C\'est le calcul de pourcentage le plus courant, utilisé pour les pourboires, les taxes, les remises et les commissions.' },
-      { q: 'Comment trouver quel pourcentage X représente de Y ?', a: 'Divisez X par Y et multipliez par 100. Par exemple, 50 est quel % de 200 ? → (50 / 200) × 100 = 25%. Utile pour calculer des notes, des parts de marché ou des taux de réalisation.' },
-      { q: 'Comment calcule-t-on la variation en pourcentage ?', a: 'Variation % = ((Nouvelle valeur − Ancienne valeur) / Ancienne valeur) × 100. Si les ventes passent de 100 à 150 : ((150 − 100) / 100) × 100 = +50%. Un résultat négatif indique une baisse.' },
-      { q: 'Quelle est la différence entre points de pourcentage et pourcentage ?', a: 'Les points de pourcentage mesurent la différence arithmétique entre deux pourcentages. Si les taux passent de 3% à 5%, c\'est une augmentation de 2 points de pourcentage, mais une augmentation de 66,7% en termes relatifs.' },
+      { q: 'Comment calculer X% de Y ?', a: 'Multipliez Y par X/100. 25 % de 200 = 50. Utilisé pour pourboires, taxes, remises et commissions.' },
+      { q: 'Comment trouver quel pourcentage X représente de Y ?', a: '(X / Y) × 100. 50 est quel % de 200 ? → 25 %. Utile pour les notes, parts de marché, taux de complétion.' },
+      { q: 'Comment calcule-t-on la variation en pourcentage ?', a: '((Nouvelle − Ancienne) / Ancienne) × 100. Ventes de 100 à 150 : +50 %. Un résultat négatif indique une baisse.' },
+      { q: 'Quelle est la différence entre points de pourcentage et pourcentage ?', a: 'Points de pourcentage = différence arithmétique. De 3 % à 5 % = +2 points, mais +66,7 % en relatif. Cette distinction est cruciale en finance.' },
+      { q: 'Comment calculer la croissance en pourcentage composé ?', a: 'Valeur finale = Initiale × (1 + taux)^n. 1 000 € à 5 %/an sur 3 ans : 1 000 × 1,05³ = 1 157,63 €. Différent de la croissance simple : 1 000 × 1,15 = 1 150 €.' },
+      { q: 'Que signifie une augmentation de 200 % ?', a: 'Une augmentation de 200 % = la valeur est multipliée par 3. 100 € + 200 % = 300 €. +100 % = doublement ; +200 % = triplement. "Augmenté de 200 %" ≠ "augmenté à 200 %".' },
+      { q: 'Qu\'est-ce qu\'un point de base (pb) ?', a: 'Un point de base = 0,01 point de pourcentage. 25 pb = 0,25 %. Utilisé pour les taux d\'intérêt et rendements obligataires. La BCE relève ses taux de 50 pb depuis 3,5 % → 4,0 %.' },
+      { q: 'Qu\'est-ce que l\'erreur en pourcentage ?', a: '|Mesuré − Réel| / Réel × 100. Estimation 95 km, réalité 100 km → erreur 5 %. Utilisé en sciences et pour mesurer la précision des prévisions.' },
+      { q: 'Comment convertir un pourcentage en décimal et en fraction ?', a: 'Décimal : diviser par 100. 75 % → 0,75. Fraction : X/100 simplifié. 75 % → 3/4. Fréquents : 25 % = 1/4, 50 % = 1/2, 33,3 % ≈ 1/3, 20 % = 1/5.' },
+      { q: 'Quelle est la différence entre variation absolue et relative ?', a: 'Absolue = Nouvelle − Ancienne (en unités). Relative = (Nouvelle − Ancienne) / Ancienne × 100 (en %). Salaire de 2 000 € à 2 200 € : absolu +200 €, relatif +10 %. Les deux sont utiles.' },
     ],
   },
   lt: {
-    description: 'Procentai yra viena iš svarbiausių kasdienės matematikos sąvokų, naudojamų finansuose, prekyboje, mokesčiuose, moksle ir statistikoje. Šis skaičiuotuvas apima penkias dažniausiai naudojamas procentų operacijas: X% iš Y radimas, nustatymas koks % yra X nuo Y, procentinio pokyčio skaičiavimas, vertės didinimas procentu ir mažinimas procentu.',
+    description: 'Procentai yra viena iš svarbiausių kasdienės matematikos sąvokų, naudojamų finansuose, prekyboje, mokesčiuose ir statistikoje. Šis skaičiuotuvas apima penkias dažniausiai naudojamas procentų operacijas: X% iš Y radimas, nustatymas koks % yra X nuo Y, procentinio pokyčio skaičiavimas, vertės didinimas ir mažinimas procentu. Kiekvienas rezultatas pateikiamas su formule.\n\nNuo PVM ir nuolaidų skaičiavimo iki portfelio grąžos sekimo — procentų skaičiavimai neišvengiami kasdieniniame gyvenime.',
     faqTitle: 'Dažniausiai užduodami klausimai',
     faqs: [
-      { q: 'Kaip apskaičiuoti X% iš Y?', a: 'Padauginkite Y iš X/100. Pavyzdžiui, 25% iš 200 = 200 × 0,25 = 50. Tai dažniausiai naudojamas procentų skaičiavimas arbatpinigių, mokesčių, nuolaidų ir komisinių atveju.' },
-      { q: 'Kaip rasti, koks % yra X nuo Y?', a: 'Padalinkite X iš Y ir padauginkite iš 100. Pavyzdžiui, 50 yra koks % nuo 200? → (50 / 200) × 100 = 25%. Naudinga balams, rinkos daliai ar užbaigimo procentui skaičiuoti.' },
-      { q: 'Kaip skaičiuojamas procentinis pokytis?', a: 'Pokytis % = ((Nauja vertė − Sena vertė) / Sena vertė) × 100. Jei pardavimai išaugo nuo 100 iki 150: ((150 − 100) / 100) × 100 = +50%. Neigiamas rezultatas rodo sumažėjimą.' },
-      { q: 'Koks skirtumas tarp procentinių punktų ir procentų?', a: 'Procentiniai punktai matuoja aritmetinį skirtumą tarp dviejų procentų. Jei palūkanos padidėjo nuo 3% iki 5%, tai yra 2 procentinių punktų padidėjimas, bet santykine prasme — 66,7% padidėjimas.' },
+      { q: 'Kaip apskaičiuoti X% iš Y?', a: 'Padauginkite Y iš X/100. 25 % iš 200 = 50. Naudojama arbatpinigių, mokesčių, nuolaidų ir komisinių skaičiavimui.' },
+      { q: 'Kaip rasti, koks % yra X nuo Y?', a: '(X / Y) × 100. 50 yra koks % nuo 200? → 25 %. Naudinga balams, rinkos daliai ar užbaigimo procentui.' },
+      { q: 'Kaip skaičiuojamas procentinis pokytis?', a: '((Nauja − Sena) / Sena) × 100. Pardavimai išaugo nuo 100 iki 150 → +50 %. Neigiamas rezultatas = sumažėjimas.' },
+      { q: 'Koks skirtumas tarp procentinių punktų ir procentų?', a: 'Procentiniai punktai = aritmetinis skirtumas. Nuo 3 % iki 5 % = +2 p.p., bet santykine prasme +66,7 %.' },
+      { q: 'Kaip apskaičiuoti sudėtinį procentinį augimą?', a: 'Galutinė = Pradinė × (1 + norma)^n. 1 000 € prie 5 %/m. 3 metus: 1 000 × 1,05³ = 1 157,63 €.' },
+      { q: 'Ką reiškia „200 % padidėjimas"?', a: '200 % padidėjimas = vertė padidėja 3 kartus. 100 € + 200 % = 300 €. +100 % = padvigubinimas; +200 % = patrigubinimas.' },
+      { q: 'Kas yra bazinis punktas (b.p.)?', a: 'Bazinis punktas = 0,01 procentinio punkto. 25 b.p. = 0,25 %. Naudojama palūkanų normoms: ECB pakėlė normą 50 b.p. nuo 3,5 % → 4,0 %.' },
+      { q: 'Kas yra procentinė paklaida?', a: '|Išmatuota − Reali| / Reali × 100. Pvz., įvertinta 95 km, tikra 100 km → paklaida 5 %.' },
+      { q: 'Kaip konvertuoti procentą į dešimtainę ir paprastąją trupmenas?', a: 'Į dešimtainę: dalyti iš 100. 75 % → 0,75. Į trupmenas: X/100, supaprastinti. 75 % → 3/4. Dažni: 25 % = 1/4, 50 % = 1/2.' },
+      { q: 'Koks skirtumas tarp absoliutaus ir santykinio pokyčio?', a: 'Absoliutus = Nauja − Sena (vienetais). Santykinis = (Nauja − Sena) / Sena × 100 (%). Atlyginimas nuo 1 500 € iki 1 650 €: absoliučiai +150 €, santykinai +10 %.' },
     ],
   },
 };
@@ -104,33 +134,48 @@ export default async function PercentagePage({ params }: Props) {
     '@type': 'WebApplication',
     name: m.h1,
     description: m.description,
-    url: `https://utilixi.com/${locale}/calculator/percentage`,
+    url: `https://www.utilixi.com/${locale}/calculator/percentage`,
     applicationCategory: 'FinanceApplication',
     operatingSystem: 'Any',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: c.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  };
+
   return (
-    <PageLayout sidebar={<AdSidebar locale={locale} />}>
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <h1 className={styles.page__title}>{m.h1}</h1>
-      <PercentageCalculator locale={locale} />
-      <AdInline locale={locale} />
-      <div className={styles.page__content}>
-        <p className={styles.page__description}>{c.description}</p>
-        <RelatedTools locale={locale} tools={related} />
-        <div className={styles.faq}>
-          <h2 className={styles.faq__title}>{c.faqTitle}</h2>
-          <div className={styles.faq__list}>
-            {c.faqs.map((f, i) => (
-              <div key={i} className={styles.faq__item}>
-                <p className={styles.faq__question}>{f.q}</p>
-                <p className={styles.faq__answer}>{f.a}</p>
-              </div>
-            ))}
-          </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <PageLayout sidebar={<AdSidebar locale={locale} />}>
+        <h1 className={styles.page__title}>{m.h1}</h1>
+        <PercentageCalculator locale={locale} />
+        <AdInline locale={locale} />
+        <div className={styles.page__content}>
+          {c.description.split('\n\n').map((para, i) => (
+            <p key={i} className={styles.page__description}>{para}</p>
+          ))}
+          <RelatedTools locale={locale} tools={related} />
+          <section className={styles.faq}>
+            <h2 className={styles.faq__title}>{c.faqTitle}</h2>
+            <div className={styles.faq__list}>
+              {c.faqs.map((f, i) => (
+                <div key={i} className={styles.faq__item}>
+                  <h3 className={styles.faq__question}>{f.q}</h3>
+                  <p className={styles.faq__answer}>{f.a}</p>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
-      </div>
-    </PageLayout>
+      </PageLayout>
+    </>
   );
 }

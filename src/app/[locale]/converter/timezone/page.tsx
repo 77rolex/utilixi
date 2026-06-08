@@ -60,8 +60,8 @@ const META: Record<string, { title: string; description: string; h1: string }> =
     h1: 'Convertisseur de fuseaux horaires',
   },
   lt: {
-    title: 'Laiko juostų keitiklis — pasaulio laikrodis internete',
-    description: 'Nemokamas laiko juostų keitiklis. Pasirinkite datą, laiką ir šaltinio laiko juostą, kad akimirksniu pamatytumėte tą patį momentą 50+ pasaulio miestuose.',
+    title: 'Laiko juostų skaičiuoklė — laiko juostos pasaulyje internetu',
+    description: 'Laiko juostų skaičiuoklė nemokamai. Lietuvos laiko juosta GMT, pasaulio laiko juostos — pamatykite tą patį momentą 50+ miestuose. Pasirinkite datą, laiką ir šaltinio laiko juostą.',
     h1: 'Laiko juostų keitiklis',
   },
 };
@@ -72,7 +72,7 @@ const CONTENT: Record<string, {
   faqs: { q: string; a: string }[];
 }> = {
   en: {
-    description: 'Our timezone converter shows the same point in time across 50+ major world cities instantly. Pick any date and time, select your source timezone, and the tool automatically displays the equivalent local time for every city in the list — including the UTC offset for each zone.',
+    description: 'Our timezone converter shows the same point in time across 50+ major world cities instantly. Pick any date and time, select your source timezone, and the tool automatically displays the equivalent local time for every city in the list — including the UTC offset for each zone.\n\nTime zone conversion is critical for scheduling international meetings, planning travel, and coordinating remote teams. Getting it wrong means calling colleagues at 3 AM or missing a flight. Use this tool to find a time that works across multiple zones, and check whether daylight saving time is currently in effect in your target locations.',
     faqTitle: 'Frequently Asked Questions',
     faqs: [
       {
@@ -91,10 +91,34 @@ const CONTENT: Record<string, {
         q: 'Why might a meeting scheduled at "9 AM EST" be confusing?',
         a: 'Timezone abbreviations like EST can be ambiguous — EST means UTC−5 in North America, but different abbreviations overlap across the world. It is always safer to specify a full timezone name (e.g., "America/New_York") or state the UTC offset explicitly.',
       },
+      {
+        q: 'How many time zones exist in the world?',
+        a: 'There are 24 standard time zones based on 15-degree longitude increments, but in practice there are 40+ actual time zones, including half-hour offsets (India UTC+5:30, Iran UTC+3:30) and quarter-hour offsets (Nepal UTC+5:45). Some territories use non-standard offsets to align with their geography or national preference.',
+      },
+      {
+        q: 'What is the International Date Line?',
+        a: 'The International Date Line runs roughly along the 180° meridian in the Pacific Ocean. Crossing it eastward (towards the Americas) sets you back one calendar day; crossing westward (towards Asia/Pacific) advances you one day. This is why it\'s possible to have two different dates simultaneously on Earth.',
+      },
+      {
+        q: 'Which countries span the most time zones?',
+        a: 'France has the most time zones (12) due to its overseas territories. Russia has 11, the United States has 6 (including territories), and Australia has 5 (including half-hour zones like ACST UTC+9:30). China officially uses only 1 time zone (UTC+8) despite spanning 5 geographical zones.',
+      },
+      {
+        q: 'What is the difference between GMT and UTC?',
+        a: 'GMT (Greenwich Mean Time) is a timezone at Greenwich, London, with UTC offset +0. UTC (Coordinated Universal Time) is an atomic clock standard that is also at UTC+0 offset. In practice they show the same time, but UTC is the modern scientific standard. Neither observes daylight saving time.',
+      },
+      {
+        q: 'What is a good time to schedule a meeting between the US and Europe?',
+        a: '9–10 AM Eastern Time (ET) works well for US/Europe overlap: it\'s 3–4 PM in London, 4–5 PM in Paris/Berlin, and 6–7 PM in Moscow. For US West Coast (PT) and Europe, 8–9 AM PT = 4–5 PM CET. For US and Asia, there is usually no good overlap — one side works early morning or late evening.',
+      },
+      {
+        q: 'What does a UTC offset like "UTC+3" mean?',
+        a: 'A UTC offset tells you how many hours ahead or behind UTC a timezone is. UTC+3 means the local time is 3 hours ahead of UTC — e.g., when it\'s 12:00 UTC, it\'s 15:00 in UTC+3. UTC−5 (Eastern Standard Time) means 5 hours behind: 12:00 UTC = 07:00 ET. UTC offsets range from UTC−12 to UTC+14.',
+      },
     ],
   },
   ru: {
-    description: 'Конвертер часовых поясов мгновенно показывает один и тот же момент времени в 50+ крупных городах мира. Выберите дату, время и исходный часовой пояс — инструмент автоматически отобразит местное время для каждого города, включая смещение UTC.',
+    description: 'Конвертер часовых поясов мгновенно показывает один и тот же момент времени в 50+ крупных городах мира. Выберите дату, время и исходный часовой пояс — инструмент автоматически отобразит местное время для каждого города, включая смещение UTC.\n\nКонвертация часовых поясов необходима для планирования международных встреч, путешествий и координации удалённых команд. Ошибка означает звонок коллегам в 3 часа ночи или пропущенный рейс. Используйте этот инструмент, чтобы найти удобное время для нескольких часовых поясов и проверить, действует ли сейчас переход на летнее время в нужных локациях.',
     faqTitle: 'Часто задаваемые вопросы',
     faqs: [
       {
@@ -113,10 +137,34 @@ const CONTENT: Record<string, {
         q: 'Почему сокращения часовых поясов могут быть неоднозначными?',
         a: 'Сокращения часовых поясов, например EST, могут быть неточными — EST означает UTC−5 в Северной Америке, но похожие аббревиатуры используются по всему миру. Лучше указывать полное название часового пояса (например, "America/New_York") или явно указывать смещение UTC.',
       },
+      {
+        q: 'Сколько часовых поясов существует в мире?',
+        a: 'Существует 24 стандартных часовых пояса, основанных на 15-градусных приращениях долготы, но на практике их 40+, включая получасовые смещения (Индия UTC+5:30, Иран UTC+3:30) и четверть-часовые (Непал UTC+5:45). Некоторые территории используют нестандартные смещения.',
+      },
+      {
+        q: 'Что такое линия перемены дат?',
+        a: 'Линия перемены дат проходит примерно по 180-му меридиану в Тихом океане. При пересечении на восток (в сторону Америки) дата откатывается на один день, на запад (в сторону Азии/Тихого океана) — прибавляется один день. Поэтому на Земле одновременно могут существовать две разные календарные даты.',
+      },
+      {
+        q: 'В каких странах больше всего часовых поясов?',
+        a: 'Больше всего часовых поясов у Франции (12) — за счёт заморских территорий. У России — 11, у США — 6 (включая территории), у Австралии — 5. Китай официально использует только 1 часовой пояс (UTC+8), несмотря на охват 5 географических зон.',
+      },
+      {
+        q: 'В чём разница между GMT и UTC?',
+        a: 'GMT (среднее время по Гринвичу) — это часовой пояс в Гринвиче (Лондон) со смещением UTC+0. UTC — атомный стандарт времени, также UTC+0. Практически они показывают одинаковое время, но UTC — современный научный стандарт. Ни один из них не переходит на летнее время.',
+      },
+      {
+        q: 'Когда удобнее всего проводить встречу между США и Европой?',
+        a: '9–10 утра по восточному времени (ET) хорошо подходит для США/Европы: это 15–16 часов в Лондоне, 16–17 в Париже/Берлине, 18–19 в Москве. Для западного побережья США (PT) и Европы: 8–9 утра PT = 16–17 CET.',
+      },
+      {
+        q: 'Что означает смещение UTC, например "UTC+3"?',
+        a: 'Смещение UTC показывает, на сколько часов местное время опережает или отстаёт от UTC. UTC+3 означает, что местное время на 3 часа впереди UTC — например, когда UTC 12:00, в UTC+3 уже 15:00. Смещения UTC варьируются от UTC−12 до UTC+14.',
+      },
     ],
   },
   uk: {
-    description: 'Конвертер часових поясів миттєво показує один і той самий момент часу в 50+ великих містах світу. Виберіть дату, час та вихідний часовий пояс — інструмент автоматично відобразить місцевий час для кожного міста, включаючи зміщення UTC.',
+    description: 'Конвертер часових поясів миттєво показує один і той самий момент часу в 50+ великих містах світу. Виберіть дату, час та вихідний часовий пояс — інструмент автоматично відобразить місцевий час для кожного міста, включаючи зміщення UTC.\n\nКонвертація часових поясів необхідна для планування міжнародних зустрічей, подорожей та координації розподілених команд. Помилка означає дзвінок колегам о 3 годині ночі або пропущений рейс. Використовуйте цей інструмент, щоб знайти зручний час для кількох часових поясів.',
     faqTitle: 'Часті запитання',
     faqs: [
       {
@@ -133,12 +181,36 @@ const CONTENT: Record<string, {
       },
       {
         q: 'Чому скорочення часових поясів можуть бути неоднозначними?',
-        a: 'Скорочення часових поясів, наприклад EST, можуть бути неточними — EST означає UTC−5 у Північній Америці, але схожі абревіатури використовуються по всьому світу. Краще вказувати повну назву часового поясу (наприклад, "America/New_York") або явно вказувати зміщення UTC.',
+        a: 'Скорочення часових поясів, наприклад EST, можуть бути неточними — EST означає UTC−5 у Північній Америці, але схожі абревіатури використовуються по всьому світу. Краще вказувати повну назву часового поясу або явно вказувати зміщення UTC.',
+      },
+      {
+        q: 'Скільки часових поясів існує у світі?',
+        a: 'Існує 24 стандартних часових пояси, але на практиці їх 40+, включаючи напівгодинні зміщення (Індія UTC+5:30, Іран UTC+3:30) і чверть-годинні (Непал UTC+5:45). Деякі території використовують нестандартні зміщення.',
+      },
+      {
+        q: 'Що таке лінія зміни дат?',
+        a: 'Лінія зміни дат проходить приблизно по 180-му меридіану в Тихому океані. При перетині на схід (в бік Америки) дата відкочується на один день, на захід (в бік Азії/Тихого океану) — додається один день.',
+      },
+      {
+        q: 'У яких країнах найбільше часових поясів?',
+        a: 'Найбільше часових поясів у Франції (12) — за рахунок заморських територій. У Росії — 11, у США — 6, в Австралії — 5. Китай офіційно використовує лише 1 часовий пояс (UTC+8), незважаючи на охоплення 5 географічних зон.',
+      },
+      {
+        q: 'У чому різниця між GMT та UTC?',
+        a: 'GMT (середній час за Гринвічем) — це часовий пояс у Гринвічі (Лондон) зі зміщенням UTC+0. UTC — атомний стандарт часу, також UTC+0. Практично вони показують однаковий час, але UTC — сучасний науковий стандарт. Жоден з них не переходить на літній час.',
+      },
+      {
+        q: 'Коли зручніше проводити зустріч між США та Європою?',
+        a: '9–10 ранку за східним часом (ET) підходить для США/Європи: це 15–16 годин у Лондоні, 16–17 у Парижі/Берліні. Для тихоокеанського узбережжя США (PT) та Європи: 8–9 ранку PT = 16–17 CET.',
+      },
+      {
+        q: 'Що означає зміщення UTC, наприклад "UTC+3"?',
+        a: 'Зміщення UTC показує, на скільки годин місцевий час випереджає або відстає від UTC. UTC+3 означає, що місцевий час на 3 години попереду UTC — наприклад, коли UTC 12:00, в UTC+3 вже 15:00. Зміщення UTC варіюються від UTC−12 до UTC+14.',
       },
     ],
   },
   fr: {
-    description: 'Notre convertisseur de fuseaux horaires affiche instantanément le même moment dans 50+ grandes villes du monde. Choisissez une date et une heure, sélectionnez votre fuseau source, et l\'outil affiche automatiquement l\'heure locale équivalente pour chaque ville, avec le décalage UTC.',
+    description: 'Notre convertisseur de fuseaux horaires affiche instantanément le même moment dans 50+ grandes villes du monde. Choisissez une date et une heure, sélectionnez votre fuseau source, et l\'outil affiche automatiquement l\'heure locale équivalente pour chaque ville, avec le décalage UTC.\n\nLa conversion de fuseaux horaires est essentielle pour planifier des réunions internationales, organiser des voyages et coordonner des équipes à distance. Une erreur peut signifier un appel à 3h du matin ou un vol raté. Utilisez cet outil pour trouver un horaire qui convient à plusieurs fuseaux et vérifier si l\'heure d\'été est actuellement appliquée dans vos destinations.',
     faqTitle: 'Questions fréquentes',
     faqs: [
       {
@@ -157,10 +229,34 @@ const CONTENT: Record<string, {
         q: 'Pourquoi les abréviations de fuseaux horaires peuvent-elles prêter à confusion ?',
         a: 'Les abréviations comme EST peuvent être ambiguës — EST signifie UTC−5 en Amérique du Nord, mais des abréviations similaires existent dans le monde entier. Il est préférable de préciser le nom complet du fuseau (p. ex. "America/New_York") ou d\'indiquer explicitement le décalage UTC.',
       },
+      {
+        q: 'Combien de fuseaux horaires existe-t-il dans le monde ?',
+        a: 'Il existe 24 fuseaux horaires standard basés sur des incréments de 15 degrés de longitude, mais en pratique il y en a plus de 40, dont des décalages de demi-heure (Inde UTC+5:30, Iran UTC+3:30) et de quart d\'heure (Népal UTC+5:45).',
+      },
+      {
+        q: 'Qu\'est-ce que la ligne de changement de date ?',
+        a: 'La ligne de changement de date longe approximativement le méridien 180° dans le Pacifique. La traverser vers l\'est (vers les Amériques) recule d\'un jour ; vers l\'ouest (vers l\'Asie/Pacifique), avance d\'un jour. C\'est pourquoi deux dates différentes peuvent coexister simultanément sur Terre.',
+      },
+      {
+        q: 'Quels pays ont le plus de fuseaux horaires ?',
+        a: 'La France en a le plus (12) grâce à ses territoires d\'outre-mer. La Russie en a 11, les États-Unis 6 (avec territoires), l\'Australie 5. La Chine n\'utilise officiellement qu\'1 fuseau (UTC+8) malgré une étendue de 5 zones géographiques.',
+      },
+      {
+        q: 'Quelle est la différence entre GMT et UTC ?',
+        a: 'GMT (Greenwich Mean Time) est un fuseau horaire à Greenwich (Londres), UTC+0. UTC est un standard d\'horloge atomique, également à UTC+0. En pratique ils affichent la même heure, mais UTC est le standard scientifique moderne. Aucun des deux n\'observe l\'heure d\'été.',
+      },
+      {
+        q: 'À quelle heure organiser une réunion entre les États-Unis et l\'Europe ?',
+        a: '9h–10h heure de l\'Est (ET) convient bien pour les États-Unis/Europe : c\'est 15h–16h à Londres, 16h–17h à Paris/Berlin. Pour la côte ouest américaine (PT) et l\'Europe : 8h–9h PT = 16h–17h CET.',
+      },
+      {
+        q: 'Que signifie un décalage UTC comme "UTC+3" ?',
+        a: 'Un décalage UTC indique combien d\'heures l\'heure locale est en avance ou en retard sur UTC. UTC+3 signifie que l\'heure locale est 3 heures en avance : quand il est 12h UTC, il est 15h en UTC+3. Les décalages UTC vont de UTC−12 à UTC+14.',
+      },
     ],
   },
   lt: {
-    description: 'Mūsų laiko juostų keitiklis akimirksniu rodo tą patį laiko momentą 25 didžiuosiuose pasaulio miestuose. Pasirinkite datą, laiką ir šaltinio laiko juostą — įrankis automatiškai rodo atitinkamą vietos laiką kiekvienam miestui su UTC poslinkiu.',
+    description: 'Mūsų laiko juostų keitiklis akimirksniu rodo tą patį laiko momentą 50+ didžiuosiuose pasaulio miestuose. Pasirinkite datą, laiką ir šaltinio laiko juostą — įrankis automatiškai rodo atitinkamą vietos laiką kiekvienam miestui su UTC poslinkiu.\n\nLaiko juostų konvertavimas būtinas planuojant tarptautinius susitikimus, keliones ir koordinuojant nuotolines komandas. Klaida gali reikšti skambutį kolegoms 3 val. nakties arba praleistą skrydį. Naudokite šį įrankį, kad rastumėte patogų laiką kelioms laiko juostoms.',
     faqTitle: 'Dažniausiai užduodami klausimai',
     faqs: [
       {
@@ -177,7 +273,31 @@ const CONTENT: Record<string, {
       },
       {
         q: 'Kodėl laiko juostų santrumpos gali kelti painiavą?',
-        a: 'Laiko juostų santrumpos, pvz., EST, gali būti dviprasmiškos — EST reiškia UTC−5 Šiaurės Amerikoje, tačiau panašios santrumpos naudojamos visame pasaulyje. Visada geriau nurodyti visą laiko juostos pavadinimą (pvz., "America/New_York") arba aiškiai nurodyti UTC poslinkį.',
+        a: 'Laiko juostų santrumpos, pvz., EST, gali būti dviprasmiškos — EST reiškia UTC−5 Šiaurės Amerikoje, tačiau panašios santrumpos naudojamos visame pasaulyje. Visada geriau nurodyti visą laiko juostos pavadinimą arba aiškiai nurodyti UTC poslinkį.',
+      },
+      {
+        q: 'Kiek laiko juostų yra pasaulyje?',
+        a: 'Yra 24 standartinės laiko juostos, pagrįstos 15 laipsnių ilgumos žingsniais, tačiau praktiškai jų yra 40+, įskaitant pusvalandžio poslinkius (Indija UTC+5:30, Iranas UTC+3:30) ir ketvirtvalandžio poslinkius (Nepalas UTC+5:45).',
+      },
+      {
+        q: 'Kas yra tarptautinė datų keitimo linija?',
+        a: 'Tarptautinė datų keitimo linija eina maždaug palei 180-ąjį meridianą Ramiajame vandenyne. Kertant ją į rytus (link Amerikos) datos eina atgal viena diena, į vakarus (link Azijos/Ramiojo vandenyno) — pirmyn viena diena.',
+      },
+      {
+        q: 'Kuriose šalyse daugiausia laiko juostų?',
+        a: 'Prancūzija turi daugiausiai laiko juostų (12) dėl užjūrio teritorijų. Rusijoje — 11, JAV — 6 (su teritorijomis), Australijoje — 5. Kinija oficialiai naudoja tik 1 laiko juostą (UTC+8), nepaisant 5 geografinių zonų aprėpties.',
+      },
+      {
+        q: 'Kuo skiriasi GMT ir UTC?',
+        a: 'GMT (Grinvičo vidutinis laikas) yra laiko juosta Grinviče (Londone), UTC poslinkis +0. UTC yra atominių laikrodžių standartas, taip pat UTC+0. Praktiškai jie rodo tą patį laiką, tačiau UTC yra šiuolaikinis mokslinis standartas. Nė vienas nesilaikomas vasaros laiko.',
+      },
+      {
+        q: 'Kada geriausia planuoti susitikimą tarp JAV ir Europos?',
+        a: '9–10 val. Rytų laiku (ET) tinka JAV/Europai: tai 15–16 val. Londone, 16–17 val. Paryžiuje/Berlyne. Vakarų pakrantės JAV (PT) ir Europai: 8–9 val. PT = 16–17 val. CET.',
+      },
+      {
+        q: 'Ką reiškia UTC poslinkis, pvz., „UTC+3"?',
+        a: 'UTC poslinkis nurodo, kiek valandų vietos laikas yra priekyje ar atsilikęs nuo UTC. UTC+3 reiškia, kad vietos laikas 3 valandomis lenkia UTC — pvz., kai UTC yra 12:00, UTC+3 yra 15:00. UTC poslinkiai svyruoja nuo UTC−12 iki UTC+14.',
       },
     ],
   },
@@ -215,19 +335,29 @@ export default async function TimezonePage({ params }: Props) {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  };
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <TimezoneConverter locale={locale} />
 
         <AdInline locale={locale} />
         <div className={styles.page__content}>
-          <p className={styles.page__description}>{content.description}</p>
+          {content.description.split('\n\n').map((para, i) => (
+            <p key={i} className={styles.page__description}>{para}</p>
+          ))}
 
           <RelatedTools locale={locale} tools={related} />
           <section className={styles.faq}>

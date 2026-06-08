@@ -28,14 +28,19 @@ const META: Record<string, { title: string; description: string; h1: string }> =
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
   en: {
-    description: 'Property taxes vary significantly between countries and even between regions within the same country. This calculator provides approximate annual tax estimates based on typical effective rates for your selected country and property type. Always consult official tax authority data or a tax professional for precise calculations, as rates change and may depend on specific local conditions.',
+    description: 'Property taxes vary significantly between countries and even between regions within the same country. This calculator provides approximate annual tax estimates based on typical effective rates for your selected country and property type. Always consult official tax authority data or a tax professional for precise calculations, as rates change and may depend on specific local conditions.\n\nUnderstanding property tax is essential for property investment, budgeting, and cross-border comparison. In the US, property taxes can range from 0.3% (Hawaii) to 2.5% (New Jersey) of property value per year. In Europe, systems vary from France\'s taxe foncière to Germany\'s Grundsteuer to the UK\'s council tax — all calculated differently.',
     faqTitle: 'Frequently Asked Questions',
     faqs: [
-      { q: 'How is property tax calculated?', a: 'Most countries calculate property tax as a percentage of the property\'s assessed or market value. The rate may differ by property type (residential vs. commercial), primary vs. secondary home status, and municipality. Some countries (e.g. the UK and Poland) use fixed rates per square metre or per valuation band rather than a percentage of market value.' },
-      { q: 'Is property tax paid by the owner or the tenant?', a: 'In almost all countries, property tax is the legal responsibility of the owner, not the tenant. However, landlords often factor property tax into the rent they charge. In France, the taxe d\'habitation (abolished for primary residences) was historically paid by the occupant, but taxe foncière is always the owner\'s responsibility.' },
-      { q: 'Are there exemptions or reductions?', a: 'Yes. Common exemptions include: primary residence reductions (Lithuania, France), exemptions for low-income elderly owners (USA, many states), agricultural land at lower rates or fully exempt (UK), new construction holidays (various countries), and reductions for disabled persons. Rules vary greatly by country and even by municipality.' },
-      { q: 'What happens if I don\'t pay property tax?', a: 'Non-payment typically results in penalties, interest charges, and eventually a tax lien against the property. In serious cases, tax authorities can force a sale of the property to recover unpaid taxes. In the UK, council tax debt is collected through courts and can result in bailiff action. Always pay on time or arrange a payment plan.' },
-      { q: 'How often is property tax assessed and paid?', a: 'Frequency varies by country. In Germany and France, it\'s annual. In the UK, council tax is usually paid in 10 monthly instalments. In the USA, property tax is typically annual but many counties allow semi-annual or quarterly payments. In Lithuania, property tax is assessed annually based on the cadastral value from January 1st of that year.' },
+      { q: 'How is property tax calculated?', a: 'Most countries calculate property tax as a percentage of assessed or market value. The rate may differ by property type (residential vs commercial), primary vs secondary home, and municipality. Some countries (UK, Poland) use fixed rates per square metre or per valuation band.' },
+      { q: 'Is property tax paid by the owner or the tenant?', a: 'In almost all countries, property tax is the owner\'s legal responsibility. Landlords typically factor it into rent. Exception: in France, taxe d\'habitation (now abolished for primary residences) was historically paid by the occupant; taxe foncière is always the owner\'s.' },
+      { q: 'Are there exemptions or reductions?', a: 'Yes. Common exemptions: primary residence reductions (Lithuania, France), exemptions for low-income elderly owners (USA), agricultural land at lower rates (UK), new construction holidays, and reductions for disabled persons. Rules vary greatly by country and municipality.' },
+      { q: 'What happens if I don\'t pay property tax?', a: 'Non-payment results in penalties, interest, and eventually a tax lien. Tax authorities can force a property sale to recover unpaid taxes. In the UK, council tax debt is collected through courts and can lead to bailiff action. Always pay on time or arrange a payment plan.' },
+      { q: 'How often is property tax assessed and paid?', a: 'Germany and France: annually. UK: 10 monthly council tax instalments. USA: annual, with many counties allowing semi-annual/quarterly payments. Lithuania: annually, based on cadastral value as of January 1st.' },
+      { q: 'How is property tax calculated in Lithuania?', a: 'In Lithuania, property tax for individuals is 0.5% of the cadastral value per year for the portion above the tax-free threshold (€150,000 for residential property as of 2024). For commercial property, the rate is 0.3–3% depending on the municipality. The tax is assessed annually on the cadastral value registered on January 1st.' },
+      { q: 'What is the Grundsteuer in Germany?', a: 'Germany\'s Grundsteuer (property tax) was reformed in 2025. The new system uses the property value, a federal base rate, and a municipal multiplier (Hebesatz). Rates vary enormously by municipality — from ~250% (some rural areas) to over 1,000% (some cities). The effective rate is typically 0.3–1% of market value per year.' },
+      { q: 'How does UK council tax work?', a: 'In the UK, council tax is based on property valuation bands (A–H), last assessed in 1991 (England/Wales). Each council sets its own annual rate per band. A typical Band D property pays £1,500–£2,500/year depending on the council. Scotland and Northern Ireland have separate systems.' },
+      { q: 'What is the millage rate in the USA?', a: 'The millage rate is the tax rate expressed per $1,000 of assessed property value. 1 mill = $1 per $1,000 of value. For example, a 20 mill rate on a $300,000 property assessed at 80% = $300,000 × 0.8 × 0.020 = $4,800/year. Rates vary enormously by state and county: from ~3 mills (some Hawaii counties) to 30+ mills (some New Jersey counties).' },
+      { q: 'Are commercial properties taxed differently?', a: 'Yes — in most countries, commercial property faces higher tax rates than residential. In the UK, non-domestic rates (business rates) use a separate rateable value system with a national multiplier (~51p per £1 of rateable value). In Lithuania, commercial property is taxed at 0.3–3% vs 0.5% for residential. In France, commercial property faces both taxe foncière and a separate CFE business tax.' },
     ],
   },
   ru: {
@@ -108,15 +113,28 @@ export default async function PropertyTaxPage({ params }: Props) {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <PropertyTaxCalculator locale={locale} />
         <AdInline locale={locale} />
         <div className={styles.page__content}>
-          <p className={styles.page__description}>{content.description}</p>
+          {content.description.split('\n\n').map((para, i) => (
+            <p key={i} className={styles.page__description}>{para}</p>
+          ))}
           <RelatedTools locale={locale} tools={related} />
           <section className={styles.faq}>
             <h2 className={styles.faq__title}>{content.faqTitle}</h2>

@@ -67,7 +67,7 @@ const CONTENT: Record<string, {
   faqs: { q: string; a: string }[];
 }> = {
   en: {
-    description: 'Our free ideal weight calculator helps you find a healthy weight range for your height and gender. Enter your height in metric (cm) or imperial (ft/in) units, select your gender, and get results from four widely used medical formulas — Devine, Hamwi, Robinson, and Miller — alongside the WHO-recommended healthy BMI range (18.5–24.9).',
+    description: 'Our free ideal weight calculator helps you find a healthy weight range for your height and gender. Enter your height in metric (cm) or imperial (ft/in) units, select your gender, and get results from four widely used medical formulas — Devine, Hamwi, Robinson, and Miller — alongside the WHO-recommended healthy BMI range (18.5–24.9).\n\nNo single formula defines "perfect" weight. These tools are reference points used in medicine for dosing calculations and nutritional assessment. Your ideal weight in practice depends on muscle mass, bone structure, and overall fitness — not just height and gender.',
     faqTitle: 'Frequently Asked Questions',
     faqs: [
       {
@@ -90,10 +90,30 @@ const CONTENT: Record<string, {
         q: 'What if my actual weight is above or below the ideal range?',
         a: 'Ideal weight is a reference guideline, not a strict health boundary. Many factors affect healthy weight: muscle mass, bone structure, age, and fitness level. If your weight differs significantly from the range, consult a doctor or registered dietitian — weight alone does not fully determine health status.',
       },
+      {
+        q: 'Which ideal weight formula is most commonly used in medicine?',
+        a: 'The Devine formula (1974) is the most widely used in clinical settings, particularly for calculating drug dosages such as for chemotherapy and anesthesia. It was originally developed for men, with a modification for women. The other formulas (Hamwi, Robinson, Miller) were also widely used but are now mainly seen in nutritional and fitness contexts.',
+      },
+      {
+        q: 'How much does height affect ideal weight?',
+        a: 'Height is the primary driver of ideal weight in all four formulas. As a rough guide, each additional centimetre of height above 152 cm (5 ft) adds approximately 0.9–1.1 kg to the ideal weight for men, and 0.7–0.9 kg for women, depending on the formula used. Taller individuals have proportionally higher ideal weights.',
+      },
+      {
+        q: 'What is the difference between ideal weight and healthy weight?',
+        a: 'Ideal weight (from the four formulas) is a specific target value — a single number per gender and height. Healthy weight (from BMI 18.5–24.9) is a range. In practice, your healthy weight range is typically broader than the single ideal weight figure. Both are guidelines, not medical diagnoses.',
+      },
+      {
+        q: 'Does age affect ideal weight calculations?',
+        a: 'The four classic formulas do not adjust for age — they were developed primarily for adults aged 18–65. However, older adults (65+) tend to have less muscle mass and more body fat at the same weight. Some specialists suggest that a slightly higher body weight may be protective in elderly individuals, and waist circumference becomes a more relevant health marker.',
+      },
+      {
+        q: 'Is my ideal weight the same as my goal weight?',
+        a: 'Not necessarily. Your goal weight is a personal target based on how you feel, your fitness objectives, and health recommendations from your doctor. Your ideal weight (from formulas) is a statistical reference based on height and gender. For athletes with high muscle mass, the formula-based ideal weight may seem too low. Use ideal weight as a starting reference, then personalise with professional guidance.',
+      },
     ],
   },
   ru: {
-    description: 'Наш бесплатный калькулятор идеального веса помогает найти оптимальный диапазон веса для вашего роста и пола. Введите рост в метрической (см) или имперской (фут/дюйм) системе, выберите пол — и получите результаты по четырём медицинским формулам (Девайн, Хамви, Робинсон, Миллер), а также рекомендованный ВОЗ диапазон здорового ИМТ (18,5–24,9).',
+    description: 'Наш бесплатный калькулятор идеального веса помогает найти оптимальный диапазон веса для вашего роста и пола. Введите рост в метрической (см) или имперской (фут/дюйм) системе, выберите пол — и получите результаты по четырём медицинским формулам (Девайн, Хамви, Робинсон, Миллер), а также рекомендованный ВОЗ диапазон здорового ИМТ (18,5–24,9).\n\nНи одна формула не определяет «идеальный» вес точно. Это ориентиры, используемые в медицине для расчёта доз и оценки питания. Реальный оптимальный вес зависит от мышечной массы, костной структуры и общего физического состояния.',
     faqTitle: 'Часто задаваемые вопросы',
     faqs: [
       {
@@ -110,16 +130,36 @@ const CONTENT: Record<string, {
       },
       {
         q: 'Влияет ли пол на идеальный вес?',
-        a: 'Да. У женщин naturally выше доля жировой ткани и иной состав тела, чем у мужчин того же роста. Все четыре формулы используют меньшее базовое значение для женщин, поэтому идеальный вес для женщин ниже, чем для мужчин того же роста.',
+        a: 'Да. У женщин от природы выше доля жировой ткани и иной состав тела, чем у мужчин того же роста. Все четыре формулы используют меньшее базовое значение для женщин, поэтому идеальный вес для женщин ниже, чем для мужчин того же роста.',
       },
       {
         q: 'Что делать, если мой реальный вес отличается от нормы?',
         a: 'Идеальный вес — это ориентир, а не жёсткая граница здоровья. На оптимальный вес влияют мышечная масса, костная структура, возраст и образ жизни. Если ваш вес значительно отличается от расчётного диапазона, проконсультируйтесь с врачом или диетологом.',
       },
+      {
+        q: 'Какая формула чаще всего используется в медицине?',
+        a: 'Формула Девайна (1974) наиболее широко применяется в клинической практике, особенно для расчёта доз препаратов (химиотерапия, анестезия). Изначально разработана для мужчин с поправкой для женщин. Формулы Хамви, Робинсона и Миллера сейчас используются преимущественно в контексте питания и фитнеса.',
+      },
+      {
+        q: 'Насколько сильно рост влияет на идеальный вес?',
+        a: 'Рост — основной фактор всех четырёх формул. Каждый дополнительный сантиметр роста сверх 152 см добавляет примерно 0,9–1,1 кг к идеальному весу мужчин и 0,7–0,9 кг — для женщин, в зависимости от формулы. У высоких людей пропорционально выше идеальный вес.',
+      },
+      {
+        q: 'В чём разница между идеальным весом и здоровым весом?',
+        a: 'Идеальный вес (по формулам) — это конкретное целевое значение: одно число для данного пола и роста. Здоровый вес (ИМТ 18,5–24,9) — это диапазон. На практике диапазон здорового веса шире одного значения идеального веса. Оба показателя — ориентиры, а не медицинские диагнозы.',
+      },
+      {
+        q: 'Влияет ли возраст на расчёт идеального веса?',
+        a: 'Четыре классические формулы не учитывают возраст — они разработаны для взрослых 18–65 лет. У пожилых (65+) снижается мышечная масса и растёт доля жира при неизменном весе. Ряд специалистов считает, что слегка повышенный вес может быть защитным у пожилых людей, а обхват талии становится более значимым показателем.',
+      },
+      {
+        q: 'Совпадает ли идеальный вес с целевым весом для похудения?',
+        a: 'Не обязательно. Целевой вес — личная цель, основанная на самочувствии, спортивных задачах и рекомендациях врача. Идеальный вес по формулам — статистический ориентир по росту и полу. Для спортсменов с большой мышечной массой формульный идеальный вес может казаться заниженным. Используйте его как отправную точку, а затем консультируйтесь со специалистом.',
+      },
     ],
   },
   uk: {
-    description: 'Наш безкоштовний калькулятор ідеальної ваги допомагає знайти оптимальний діапазон ваги для вашого зросту і статі. Введіть зріст у метричній (см) або імперській (фут/дюйм) системі, оберіть стать — і отримайте результати за чотирма медичними формулами (Девайн, Хамві, Робінсон, Міллер) та рекомендований ВООЗ діапазон здорового ІМТ (18,5–24,9).',
+    description: 'Наш безкоштовний калькулятор ідеальної ваги допомагає знайти оптимальний діапазон ваги для вашого зросту і статі. Введіть зріст у метричній (см) або імперській (фут/дюйм) системі, оберіть стать — і отримайте результати за чотирма медичними формулами (Девайн, Хамві, Робінсон, Міллер) та рекомендований ВООЗ діапазон здорового ІМТ (18,5–24,9).\n\nЖодна формула не визначає «ідеальну» вагу точно. Це орієнтири, що використовуються в медицині для розрахунку доз і оцінки харчування. Реальна оптимальна вага залежить від м\'язової маси, кісткової структури та загального фізичного стану.',
     faqTitle: 'Часті запитання',
     faqs: [
       {
@@ -142,10 +182,30 @@ const CONTENT: Record<string, {
         q: 'Що робити, якщо моя реальна вага відрізняється від норми?',
         a: 'Ідеальна вага — це орієнтир, а не жорстка межа здоров\'я. На оптимальну вагу впливають м\'язова маса, кісткова структура, вік і спосіб життя. Якщо ваша вага значно відрізняється від розрахункового діапазону, проконсультуйтеся з лікарем або дієтологом.',
       },
+      {
+        q: 'Яка формула найчастіше використовується в медицині?',
+        a: 'Формула Девайна (1974) найширше застосовується в клінічній практиці, особливо для розрахунку доз препаратів (хіміотерапія, анестезія). Спочатку розроблена для чоловіків із поправкою для жінок. Формули Хамві, Робінсона та Міллера зараз використовуються переважно у контексті харчування та фітнесу.',
+      },
+      {
+        q: 'Наскільки сильно зріст впливає на ідеальну вагу?',
+        a: 'Зріст — основний фактор усіх чотирьох формул. Кожен додатковий сантиметр зросту понад 152 см додає приблизно 0,9–1,1 кг до ідеальної ваги чоловіків і 0,7–0,9 кг — для жінок, залежно від формули. У високих людей пропорційно вища ідеальна вага.',
+      },
+      {
+        q: 'У чому різниця між ідеальною вагою та здоровою вагою?',
+        a: 'Ідеальна вага (за формулами) — це конкретне цільове значення: одне число для даної статі та зросту. Здорова вага (ІМТ 18,5–24,9) — це діапазон. На практиці діапазон здорової ваги ширший за одне значення ідеальної ваги. Обидва показники — орієнтири, а не медичні діагнози.',
+      },
+      {
+        q: 'Чи впливає вік на розрахунок ідеальної ваги?',
+        a: 'Чотири класичні формули не враховують вік — вони розроблені для дорослих 18–65 років. У літніх людей (65+) знижується м\'язова маса і зростає частка жиру при незмінній вазі. Ряд фахівців вважає, що дещо підвищена вага може бути захисною у людей похилого віку, а обхват талії стає більш значущим показником.',
+      },
+      {
+        q: 'Чи збігається ідеальна вага з цільовою вагою для схуднення?',
+        a: 'Не обов\'язково. Цільова вага — особиста мета, заснована на самопочутті, спортивних задачах і рекомендаціях лікаря. Ідеальна вага за формулами — статистичний орієнтир за зростом і статтю. Для спортсменів із великою м\'язовою масою формульна ідеальна вага може здаватися заниженою. Використовуйте її як відправну точку, а потім консультуйтеся зі спеціалістом.',
+      },
     ],
   },
   fr: {
-    description: "Notre calculatrice du poids idéal gratuite vous aide à trouver une plage de poids sain pour votre taille et votre sexe. Entrez votre taille en unités métriques (cm) ou impériales (pi/po), sélectionnez votre sexe — et obtenez les résultats de quatre formules médicales reconnues (Devine, Hamwi, Robinson, Miller) ainsi que la plage IMC sain recommandée par l'OMS (18,5–24,9).",
+    description: "Notre calculatrice du poids idéal gratuite vous aide à trouver une plage de poids sain pour votre taille et votre sexe. Entrez votre taille en unités métriques (cm) ou impériales (pi/po), sélectionnez votre sexe — et obtenez les résultats de quatre formules médicales reconnues (Devine, Hamwi, Robinson, Miller) ainsi que la plage IMC sain recommandée par l'OMS (18,5–24,9).\n\nAucune formule ne définit le poids « parfait » avec précision. Ces outils sont des points de référence utilisés en médecine pour les calculs de dosage et l'évaluation nutritionnelle. Votre poids idéal en pratique dépend de la masse musculaire, de la structure osseuse et de la condition physique générale.",
     faqTitle: 'Questions fréquentes',
     faqs: [
       {
@@ -168,10 +228,30 @@ const CONTENT: Record<string, {
         q: 'Que faire si mon poids réel diffère de la plage idéale ?',
         a: "Le poids idéal est une référence, pas une frontière stricte de santé. De nombreux facteurs influent sur le poids optimal : masse musculaire, structure osseuse, âge et niveau d'activité physique. Si votre poids diffère significativement de la plage calculée, consultez un médecin ou un diététicien.",
       },
+      {
+        q: 'Quelle formule est la plus utilisée en médecine ?',
+        a: "La formule de Devine (1974) est la plus utilisée en clinique, notamment pour calculer les posologies de médicaments (chimiothérapie, anesthésie). Elle a été développée à l'origine pour les hommes, avec une adaptation pour les femmes. Les formules de Hamwi, Robinson et Miller sont maintenant principalement utilisées dans les contextes nutritionnels et de fitness.",
+      },
+      {
+        q: 'Dans quelle mesure la taille influence-t-elle le poids idéal ?',
+        a: 'La taille est le principal facteur de toutes les formules. En règle générale, chaque centimètre supplémentaire au-dessus de 152 cm (5 pieds) ajoute environ 0,9 à 1,1 kg au poids idéal des hommes, et 0,7 à 0,9 kg pour les femmes, selon la formule. Les personnes de grande taille ont un poids idéal proportionnellement plus élevé.',
+      },
+      {
+        q: 'Quelle est la différence entre poids idéal et poids santé ?',
+        a: "Le poids idéal (selon les formules) est une valeur cible spécifique — un seul chiffre pour un sexe et une taille donnés. Le poids santé (IMC 18,5–24,9) est une plage. En pratique, la plage de poids santé est plus large que la valeur de poids idéal. Les deux sont des repères, non des diagnostics médicaux.",
+      },
+      {
+        q: "L'âge influe-t-il sur le calcul du poids idéal ?",
+        a: "Les quatre formules classiques n'ajustent pas pour l'âge — elles ont été développées pour les adultes de 18 à 65 ans. Chez les personnes âgées (65+), la masse musculaire diminue et la masse grasse augmente à poids égal. Certains spécialistes suggèrent qu'un poids légèrement plus élevé peut être protecteur chez les personnes âgées, et que le tour de taille devient un indicateur plus pertinent.",
+      },
+      {
+        q: 'Mon poids idéal correspond-il à mon objectif de poids ?',
+        a: "Pas nécessairement. Votre objectif de poids est une cible personnelle basée sur votre ressenti, vos objectifs sportifs et les recommandations de votre médecin. Le poids idéal (selon les formules) est une référence statistique basée sur la taille et le sexe. Pour les athlètes avec une masse musculaire élevée, le poids idéal calculé peut sembler trop bas. Utilisez-le comme point de départ, puis personnalisez avec l'aide d'un professionnel.",
+      },
     ],
   },
   lt: {
-    description: 'Mūsų nemokamas idealaus svorio skaičiuotuvas padės rasti sveiką svorio intervalą pagal jūsų ūgį ir lytį. Įveskite ūgį metrinėje (cm) arba imperinėje (pėd./col.) sistemoje, pasirinkite lytį — ir gaukite rezultatus pagal keturias medicinine formules (Devine, Hamwi, Robinson, Miller) bei PSO rekomenduojamą sveiką KMI intervalą (18,5–24,9).',
+    description: 'Mūsų nemokamas idealaus svorio skaičiuotuvas padės rasti sveiką svorio intervalą pagal jūsų ūgį ir lytį. Įveskite ūgį metrinėje (cm) arba imperinėje (pėd./col.) sistemoje, pasirinkite lytį — ir gaukite rezultatus pagal keturias medicinine formules (Devine, Hamwi, Robinson, Miller) bei PSO rekomenduojamą sveiką KMI intervalą (18,5–24,9).\n\nNė viena formulė tiksliai nenustato „tobulo" svorio. Tai orientyrai, naudojami medicinoje dozavimo skaičiavimams ir mitybos vertinimui. Jūsų praktinis optimalus svoris priklauso nuo raumenų masės, kaulų struktūros ir bendros fizinės būklės.',
     faqTitle: 'Dažniausiai užduodami klausimai',
     faqs: [
       {
@@ -193,6 +273,26 @@ const CONTENT: Record<string, {
       {
         q: 'Ką daryti, jei mano tikrasis svoris skiriasi nuo idealaus intervalo?',
         a: 'Idealus svoris yra orientyras, o ne griežta sveikatos riba. Optimalų svorį lemia daugelis veiksnių: raumenų masė, kaulų struktūra, amžius ir fizinis aktyvumas. Jei jūsų svoris gerokai skiriasi nuo apskaičiuoto intervalo, pasitarkite su gydytoju arba dietologu.',
+      },
+      {
+        q: 'Kuri formulė dažniausiai naudojama medicinoje?',
+        a: 'Devine formulė (1974) plačiausiai naudojama klinikiniu požiūriu, ypač skaičiuojant vaistų dozes (chemoterapija, anestezija). Iš pradžių sukurta vyrams su pataisymu moterims. Hamwi, Robinson ir Miller formulės dabar daugiausia naudojamos mitybos ir fitneso kontekstuose.',
+      },
+      {
+        q: 'Kaip stipriai ūgis veikia idealų svorį?',
+        a: 'Ūgis yra pagrindinis visų keturių formulių veiksnys. Kiekvienas papildomas centimetras virš 152 cm (5 pėdų) prideda apytiksliai 0,9–1,1 kg prie vyrų idealaus svorio ir 0,7–0,9 kg moterims, priklausomai nuo formulės. Aukštesni žmonės turi proporcingai didesnį idealų svorį.',
+      },
+      {
+        q: 'Koks skirtumas tarp idealaus svorio ir sveiko svorio?',
+        a: 'Idealus svoris (pagal formules) yra konkretus tikslinis dydis — vienas skaičius pagal lytį ir ūgį. Sveikas svoris (KMI 18,5–24,9) yra intervalas. Praktiškai sveiko svorio intervalas yra platesnis nei viena idealaus svorio reikšmė. Abu yra orientyrai, o ne medicininė diagnozė.',
+      },
+      {
+        q: 'Ar amžius veikia idealaus svorio skaičiavimus?',
+        a: 'Keturios klasikinės formulės neprisitaiko prie amžiaus — jos sukurtos 18–65 metų suaugusiesiems. Vyresnio amžiaus žmonėms (65+) raumenų masė mažėja, o riebalų masė auga esant tam pačiam svoriui. Kai kurie specialistai mano, kad šiek tiek didesnis svoris gali būti apsauginis vyresniems žmonėms, o juosmens apimtis tampa reikšmingesniu rodikliu.',
+      },
+      {
+        q: 'Ar idealus svoris sutampa su mano tiksliniu svoriu?',
+        a: 'Nebūtinai. Tikslinis svoris yra asmeninis tikslas, pagrįstas savijautu, sporto tikslais ir gydytojo rekomendacijomis. Idealus svoris pagal formules yra statistinis orientyras pagal ūgį ir lytį. Didelio raumenų masės sportininkams formulinis idealus svoris gali atrodyti per mažas. Naudokite jį kaip pradinį tašką, o tada konsultuokitės su specialistu.',
       },
     ],
   },
@@ -230,19 +330,32 @@ export default async function IdealWeightPage({ params }: Props) {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         <IdealWeightCalculator locale={locale} />
 
         <AdInline locale={locale} />
         <div className={styles.page__content}>
-          <p className={styles.page__description}>{content.description}</p>
+          {content.description.split('\n\n').map((para, i) => (
+            <p key={i} className={styles.page__description}>{para}</p>
+          ))}
 
           <RelatedTools locale={locale} tools={related} />
           <section className={styles.faq}>
