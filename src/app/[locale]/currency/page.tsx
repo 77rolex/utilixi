@@ -70,7 +70,7 @@ const CONTENT: Record<string, {
   faqs: { q: string; a: string }[];
 }> = {
   en: {
-    description: 'Our free currency converter uses live exchange rates updated every 6 hours to give you accurate conversions for over 150 world currencies. Whether you need to convert dollars to euros, rubles to dollars, or any other pair — simply enter the amount, select currencies, and get the result instantly.',
+    description: 'Our free currency converter uses live exchange rates updated every 6 hours to give you accurate conversions for over 150 world currencies. Whether you need to convert dollars to euros, rubles to dollars, or any other pair — simply enter the amount, select currencies, and get the result instantly.\n\nThe converter also shows a popular rates table with 12 major currencies so you can compare multiple pairs at a glance. No registration, no sign-up — just fast, accurate currency conversion.',
     faqTitle: 'Frequently Asked Questions',
     faqs: [
       {
@@ -93,10 +93,30 @@ const CONTENT: Record<string, {
         q: 'How do I convert multiple amounts at once?',
         a: 'The popular rates table below the converter shows 1 unit of your selected currency converted to 12 popular currencies simultaneously. Change the "From" currency to update the entire table.',
       },
+      {
+        q: 'What is the difference between mid-market rate and bank rate?',
+        a: 'The mid-market rate (also called interbank rate) is the midpoint between buy and sell prices on global currency markets. Banks and exchange offices add a spread or commission on top, so the rate they offer is less favourable. Our converter shows the raw mid-market rate.',
+      },
+      {
+        q: 'How do I calculate the reverse conversion?',
+        a: 'Simply swap the "From" and "To" currencies by clicking the swap button (↕). Alternatively, divide 1 by the displayed rate. For example, if 1 USD = 0.92 EUR, then 1 EUR = 1 ÷ 0.92 = 1.087 USD.',
+      },
+      {
+        q: 'Why do airport and hotel exchange rates differ so much?',
+        a: 'Airport and hotel exchange desks charge much higher spreads (often 5–15%) compared to mid-market rates because they rely on convenience. For better rates, use a local ATM or a digital bank like Wise, Revolut, or N26 for international travel.',
+      },
+      {
+        q: 'Does the converter support cryptocurrencies?',
+        a: 'This converter focuses on fiat currencies (government-issued money). For cryptocurrency conversions, use the Crypto Converter tool which covers Bitcoin, Ethereum, and 50+ other coins with live CoinGecko prices.',
+      },
+      {
+        q: 'What is a currency cross-rate?',
+        a: 'A cross-rate is the exchange rate between two currencies that are both quoted against a third currency (usually USD). For example, the EUR/GBP rate is calculated as EUR/USD ÷ GBP/USD. Our converter performs this calculation automatically.',
+      },
     ],
   },
   ru: {
-    description: 'Наш бесплатный конвертер валют использует актуальные курсы, обновляемые каждые 6 часов, для точного пересчёта более 150 мировых валют. Введите сумму, выберите валюты и мгновенно получите результат.',
+    description: 'Наш бесплатный конвертер валют использует актуальные курсы, обновляемые каждые 6 часов, для точного пересчёта более 150 мировых валют. Введите сумму, выберите валюты и мгновенно получите результат.\n\nКонвертер также показывает таблицу популярных курсов с 12 основными валютами, чтобы сразу сравнить несколько пар. Без регистрации и подписки — быстро и точно.',
     faqTitle: 'Часто задаваемые вопросы',
     faqs: [
       {
@@ -119,10 +139,30 @@ const CONTENT: Record<string, {
         q: 'Как увидеть курсы сразу ко многим валютам?',
         a: 'Таблица популярных курсов под конвертером показывает 1 единицу выбранной валюты «Из» в пересчёте на 12 популярных валют одновременно. Смените валюту «Из», чтобы обновить всю таблицу.',
       },
+      {
+        q: 'Чем среднерыночный курс отличается от банковского?',
+        a: 'Среднерыночный курс (межбанковский) — это середина между ценами покупки и продажи на мировом рынке. Банки и обменники добавляют сверху спред или комиссию, поэтому предлагаемый ими курс хуже. Конвертер показывает «чистый» рыночный курс.',
+      },
+      {
+        q: 'Как рассчитать обратную конвертацию?',
+        a: 'Нажмите кнопку обмена (↕), чтобы поменять валюты местами. Или разделите 1 на отображаемый курс: если 1 USD = 90 RUB, то 1 RUB = 1 ÷ 90 = 0,0111 USD.',
+      },
+      {
+        q: 'Почему курс в аэропорту и гостинице хуже?',
+        a: 'Обменники в аэропортах и отелях добавляют высокий спред (нередко 5–15%) ради удобства расположения. Для выгодного обмена лучше использовать банкомат местного банка или карту с мультивалютным счётом (Wise, Revolut).',
+      },
+      {
+        q: 'Поддерживаются ли криптовалюты?',
+        a: 'Этот конвертер работает с фиатными (обычными государственными) валютами. Для конвертации криптовалют используйте инструмент «Конвертер криптовалют», который охватывает Bitcoin, Ethereum и 50+ монет по ценам CoinGecko.',
+      },
+      {
+        q: 'Что такое кросс-курс?',
+        a: 'Кросс-курс — это обменный курс между двумя валютами, рассчитанный через третью (обычно USD). Например, курс EUR/RUB = EUR/USD ÷ 1 × USD/RUB. Конвертер выполняет этот расчёт автоматически.',
+      },
     ],
   },
   uk: {
-    description: 'Наш безкоштовний конвертер валют використовує актуальні курси, які оновлюються кожні 6 годин, для точного перерахунку понад 150 світових валют. Введіть суму, оберіть валюти та миттєво отримайте результат.',
+    description: 'Наш безкоштовний конвертер валют використовує актуальні курси, які оновлюються кожні 6 годин, для точного перерахунку понад 150 світових валют. Введіть суму, оберіть валюти та миттєво отримайте результат.\n\nКонвертер також показує таблицю популярних курсів з 12 основними валютами для швидкого порівняння. Без реєстрації — швидко та точно.',
     faqTitle: 'Часті запитання',
     faqs: [
       {
@@ -145,10 +185,30 @@ const CONTENT: Record<string, {
         q: 'Як побачити курси до багатьох валют одразу?',
         a: 'Таблиця популярних курсів під конвертером показує 1 одиницю обраної валюти «З» у перерахунку на 12 популярних валют одночасно. Змініть валюту «З», щоб оновити всю таблицю.',
       },
+      {
+        q: 'Чим середньоринковий курс відрізняється від банківського?',
+        a: 'Середньоринковий курс (міжбанківський) — це середина між ціною купівлі та продажу на світовому ринку. Банки та обмінники додають зверху спред або комісію, тому запропонований ними курс гірший. Конвертер показує «чистий» ринковий курс.',
+      },
+      {
+        q: 'Як розрахувати зворотну конвертацію?',
+        a: 'Натисніть кнопку обміну (↕), щоб поміняти валюти місцями. Або розділіть 1 на відображуваний курс: якщо 1 USD = 41 UAH, то 1 UAH = 1 ÷ 41 = 0,0244 USD.',
+      },
+      {
+        q: 'Чому курс в аеропорту і готелі гірший?',
+        a: 'Обмінники в аеропортах та готелях додають високий спред (часто 5–15%) через зручність розташування. Для вигідного обміну краще використовувати банкомат місцевого банку або картку з мультивалютним рахунком (Wise, Revolut).',
+      },
+      {
+        q: 'Чи підтримуються криптовалюти?',
+        a: 'Цей конвертер працює з фіатними (державними) валютами. Для конвертації криптовалют використовуйте інструмент «Конвертер криптовалют», який охоплює Bitcoin, Ethereum та 50+ монет за цінами CoinGecko.',
+      },
+      {
+        q: 'Що таке крос-курс?',
+        a: 'Крос-курс — це обмінний курс між двома валютами, розрахований через третю (зазвичай USD). Наприклад, курс EUR/UAH = EUR/USD × USD/UAH. Конвертер виконує цей розрахунок автоматично.',
+      },
     ],
   },
   fr: {
-    description: 'Notre convertisseur de devises gratuit utilise des taux de change mis à jour toutes les 6 heures pour vous fournir des conversions précises pour plus de 150 devises mondiales. Entrez le montant, sélectionnez les devises et obtenez le résultat instantanément.',
+    description: 'Notre convertisseur de devises gratuit utilise des taux de change mis à jour toutes les 6 heures pour vous fournir des conversions précises pour plus de 150 devises mondiales. Entrez le montant, sélectionnez les devises et obtenez le résultat instantanément.\n\nLe convertisseur affiche également un tableau des taux populaires avec 12 devises majeures pour comparer plusieurs paires d\'un coup d\'œil. Sans inscription ni abonnement.',
     faqTitle: 'Questions fréquentes',
     faqs: [
       {
@@ -171,10 +231,30 @@ const CONTENT: Record<string, {
         q: 'Comment voir les taux pour plusieurs devises à la fois ?',
         a: 'Le tableau des taux populaires sous le convertisseur affiche 1 unité de votre devise source convertie en 12 devises populaires simultanément. Changez la devise « De » pour mettre à jour tout le tableau.',
       },
+      {
+        q: 'Quelle est la différence entre taux interbancaire et taux bancaire ?',
+        a: "Le taux interbancaire (mid-market) est le point médian entre les cours d\'achat et de vente sur les marchés mondiaux. Les banques et bureaux de change ajoutent une marge ou commission, rendant leur offre moins avantageuse. Notre convertisseur affiche le taux brut du marché.",
+      },
+      {
+        q: 'Comment calculer la conversion inverse ?',
+        a: 'Cliquez sur le bouton d\'échange (↕) pour inverser les devises. Ou divisez 1 par le taux affiché : si 1 USD = 0,92 EUR, alors 1 EUR = 1 ÷ 0,92 = 1,087 USD.',
+      },
+      {
+        q: 'Pourquoi les taux en aéroport sont-ils si mauvais ?',
+        a: 'Les bureaux de change en aéroport pratiquent des marges élevées (souvent 5–15%) en profitant de la captivité des voyageurs. Pour de meilleurs taux, utilisez un distributeur local ou une néobanque comme Wise ou Revolut lors de vos voyages.',
+      },
+      {
+        q: 'Le convertisseur prend-il en charge les cryptomonnaies ?',
+        a: "Ce convertisseur est dédié aux devises fiduciaires. Pour les cryptomonnaies, utilisez l\'outil Convertisseur Crypto qui couvre Bitcoin, Ethereum et plus de 50 monnaies avec des prix en temps réel de CoinGecko.",
+      },
+      {
+        q: "Qu\'est-ce qu\'un taux croisé (cross-rate) ?",
+        a: "Un taux croisé est le taux de change entre deux devises calculé via une troisième devise (généralement USD). Par exemple, le taux EUR/CHF = EUR/USD ÷ CHF/USD. Notre convertisseur effectue ce calcul automatiquement.",
+      },
     ],
   },
   lt: {
-    description: 'Mūsų nemokamas valiutų keitiklis naudoja aktualius kursus, atnaujinamus kas 6 valandas, tiksliam daugiau nei 150 pasaulio valiutų konvertavimui. Įveskite sumą, pasirinkite valiutas ir gaukite rezultatą akimirksniu.',
+    description: 'Mūsų nemokamas valiutų keitiklis naudoja aktualius kursus, atnaujinamus kas 6 valandas, tiksliam daugiau nei 150 pasaulio valiutų konvertavimui. Įveskite sumą, pasirinkite valiutas ir gaukite rezultatą akimirksniu.\n\nKeitiklis taip pat rodo populiarių kursų lentelę su 12 pagrindinių valiutų greitam palyginimui. Be registracijos — greitai ir tiksliai.',
     faqTitle: 'Dažniausiai užduodami klausimai',
     faqs: [
       {
@@ -196,6 +276,26 @@ const CONTENT: Record<string, {
       {
         q: 'Kaip vienu metu pamatyti kursus keliomis valiutomis?',
         a: 'Populiarių kursų lentelė po keitikliu rodo 1 pasirinktos valiutos vienetą, konvertuotą į 12 populiarių valiutų vienu metu. Pakeiskite valiutą „Iš", kad atnaujintumėte visą lentelę.',
+      },
+      {
+        q: 'Kuo skiriasi tarpbankinis kursas nuo banko kurso?',
+        a: 'Tarpbankinis kursas (vidutinės rinkos kursas) yra pirkimo ir pardavimo kainų vidurkis pasaulinėje rinkoje. Bankai ir valiutų keityklos prideda maržą arba komisiją, todėl jų siūlomas kursas yra mažiau palankus. Mūsų keitiklis rodo „švarų" rinkos kursą.',
+      },
+      {
+        q: 'Kaip apskaičiuoti atvirkštinį konvertavimą?',
+        a: 'Paspauskite keitimo mygtuką (↕), kad sukeistumėte valiutas vietomis. Arba padalykite 1 iš rodomos normos: jei 1 USD = 0,92 EUR, tai 1 EUR = 1 ÷ 0,92 = 1,087 USD.',
+      },
+      {
+        q: 'Kodėl oro uosto kursai tokie nepalankūs?',
+        a: 'Oro uostų ir viešbučių valiutų keityklos taiko dideles maržas (dažnai 5–15%), naudodamosi keleivių patogumu. Geresniam kursui naudokite vietos bankomatą arba daugiavaliutę kortelę (Wise, Revolut) kelionių metu.',
+      },
+      {
+        q: 'Ar keitiklis palaiko kriptovaliutas?',
+        a: 'Šis keitiklis skirtas fiat (valstybinėms) valiutoms. Kriptovaliutų konvertavimui naudokite Kriptovaliutų keitiklį, kuris apima Bitcoin, Ethereum ir 50+ monetų su CoinGecko kainomis.',
+      },
+      {
+        q: 'Kas yra kryžminis kursas?',
+        a: 'Kryžminis kursas yra dviejų valiutų keitimo kursas, apskaičiuotas per trečiąją valiutą (paprastai USD). Pavyzdžiui, EUR/PLN = EUR/USD × USD/PLN. Mūsų keitiklis šį skaičiavimą atlieka automatiškai.',
       },
     ],
   },

@@ -84,6 +84,14 @@ const WMO: Record<number, [string, string, string, string, string, string]> = {
 
 const LANG_IDX: Record<LangKey, number> = { en: 0, ru: 1, uk: 2, fr: 3, lt: 4 };
 
+const DEFAULT_CITY: Record<LangKey, { name: string; lat: number; lon: number }> = {
+  en: { name: 'London, United Kingdom', lat: 51.5074, lon: -0.1278 },
+  ru: { name: 'Алматы, Казахстан', lat: 43.2220, lon: 76.8512 },
+  uk: { name: 'Київ, Україна', lat: 50.4501, lon: 30.5234 },
+  fr: { name: 'Paris, France', lat: 48.8566, lon: 2.3522 },
+  lt: { name: 'Vilnius, Lietuva', lat: 54.6872, lon: 25.2797 },
+};
+
 function getWmo(code: number, locale: string): { label: string; icon: string } {
   const row = WMO[code] ?? WMO[0];
   const idx = LANG_IDX[locale as LangKey] ?? 0;
@@ -282,6 +290,18 @@ export default function WeatherWidget({ locale }: { locale: string }) {
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const sugRef = useRef<HTMLDivElement>(null);
+  const initDone = useRef(false);
+
+  useEffect(() => {
+    if (initDone.current) return;
+    initDone.current = true;
+    const d = DEFAULT_CITY[locale as LangKey] ?? DEFAULT_CITY.en;
+    setStatus('loading');
+    fetchWeather(d.lat, d.lon)
+      .then(data => { setWeather(data); setCityName(d.name); setStatus('idle'); })
+      .catch(() => setStatus('idle'));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     function onOutside(e: MouseEvent) {

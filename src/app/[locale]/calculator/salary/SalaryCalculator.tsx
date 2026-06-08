@@ -852,13 +852,21 @@ function calculate(countryCode: string, grossAnnual: number): CalcResult {
   }
 }
 
+const DEFAULT_COUNTRY: Record<LK, string> = {
+  en: 'gb',
+  ru: 'ru',
+  uk: 'ua',
+  fr: 'fr',
+  lt: 'lt',
+};
+
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function SalaryCalculator({ locale }: Props) {
   const t = T[locale as LK] ?? T.en;
   const l = (locale as LK) in T ? (locale as LK) : 'en';
 
-  const [country, setCountry] = useState('ua');
+  const [country, setCountry] = useState(() => DEFAULT_COUNTRY[l] ?? 'ua');
   const [period, setPeriod] = useState<Period>('monthly');
   const [grossInput, setGrossInput] = useState('');
   const [result, setResult] = useState<CalcResult | null>(null);
@@ -911,6 +919,13 @@ export default function SalaryCalculator({ locale }: Props) {
             <div className={styles['salary-widget__toggle']} role="group" aria-label={t.period}>
               <button
                 type="button"
+                className={`${styles['salary-widget__toggle-btn']} ${period === 'hourly' ? styles['salary-widget__toggle-btn--active'] : ''}`}
+                onClick={() => { setPeriod('hourly'); setResult(null); }}
+              >
+                {t.hourly}
+              </button>
+              <button
+                type="button"
                 className={`${styles['salary-widget__toggle-btn']} ${period === 'monthly' ? styles['salary-widget__toggle-btn--active'] : ''}`}
                 onClick={() => { setPeriod('monthly'); setResult(null); }}
               >
@@ -922,13 +937,6 @@ export default function SalaryCalculator({ locale }: Props) {
                 onClick={() => { setPeriod('annual'); setResult(null); }}
               >
                 {t.annual}
-              </button>
-              <button
-                type="button"
-                className={`${styles['salary-widget__toggle-btn']} ${period === 'hourly' ? styles['salary-widget__toggle-btn--active'] : ''}`}
-                onClick={() => { setPeriod('hourly'); setResult(null); }}
-              >
-                {t.hourly}
               </button>
             </div>
           </div>

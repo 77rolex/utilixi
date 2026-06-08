@@ -44,7 +44,11 @@
       "Bash(sed -n '340,395p' \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/pregnancy/page.tsx\")",
       "Bash(sed -n '144,158p' \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/gpa/page.tsx\")",
       "Bash(sed -n '220,270p' \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/currency/page.tsx\")",
-      "Bash(sed -n '150,195p' \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/currency/rates/page.tsx\")"
+      "Bash(sed -n '150,195p' \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/currency/rates/page.tsx\")",
+      "WebFetch(domain:www.utilixi.com)",
+      "Bash(grep -c \"^      {$\\\\|^        q:\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/weather/page.tsx\")",
+      "Bash(grep -c \"^      {$\\\\|^        q:\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/currency/page.tsx\")",
+      "Bash(grep -c \"^      {$\\\\|^        q:\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/currency/rates/page.tsx\")"
     ]
   }
 }
