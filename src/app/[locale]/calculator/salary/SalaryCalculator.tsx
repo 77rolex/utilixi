@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 import styles from './SalaryCalculator.module.scss';
 
 type Props = { locale: string };
-type Period = 'monthly' | 'annual';
+type Period = 'monthly' | 'annual' | 'hourly';
 type LK = 'en' | 'ru' | 'uk' | 'fr' | 'lt';
 
 const T: Record<LK, {
@@ -12,10 +12,12 @@ const T: Record<LK, {
   period: string;
   monthly: string;
   annual: string;
+  hourly: string;
   grossSalary: string;
   calculate: string;
   netMonthly: string;
   netAnnual: string;
+  netHourly: string;
   grossAnnual: string;
   grossMonthly: string;
   breakdown: string;
@@ -30,10 +32,12 @@ const T: Record<LK, {
     period: 'Salary period',
     monthly: 'Monthly',
     annual: 'Annual',
+    hourly: 'Per hour',
     grossSalary: 'Gross salary',
     calculate: 'Calculate Net Salary',
     netMonthly: 'Net per month',
     netAnnual: 'Net per year',
+    netHourly: 'Net per hour',
     grossAnnual: 'Gross (annual)',
     grossMonthly: 'Gross (monthly)',
     breakdown: 'Deductions breakdown',
@@ -48,10 +52,12 @@ const T: Record<LK, {
     period: 'Период зарплаты',
     monthly: 'В месяц',
     annual: 'В год',
+    hourly: 'В час',
     grossSalary: 'Зарплата брутто',
     calculate: 'Рассчитать нетто',
     netMonthly: 'Нетто в месяц',
     netAnnual: 'Нетто в год',
+    netHourly: 'Нетто в час',
     grossAnnual: 'Брутто (в год)',
     grossMonthly: 'Брутто (в месяц)',
     breakdown: 'Расшифровка вычетов',
@@ -66,10 +72,12 @@ const T: Record<LK, {
     period: 'Період зарплати',
     monthly: 'На місяць',
     annual: 'На рік',
+    hourly: 'На годину',
     grossSalary: 'Зарплата брутто',
     calculate: 'Розрахувати нетто',
     netMonthly: 'Нетто на місяць',
     netAnnual: 'Нетто на рік',
+    netHourly: 'Нетто на годину',
     grossAnnual: 'Брутто (на рік)',
     grossMonthly: 'Брутто (на місяць)',
     breakdown: 'Розшифровка вирахувань',
@@ -84,10 +92,12 @@ const T: Record<LK, {
     period: 'Période de salaire',
     monthly: 'Mensuel',
     annual: 'Annuel',
+    hourly: 'Par heure',
     grossSalary: 'Salaire brut',
     calculate: 'Calculer le salaire net',
     netMonthly: 'Net par mois',
     netAnnual: 'Net par an',
+    netHourly: 'Net par heure',
     grossAnnual: 'Brut (annuel)',
     grossMonthly: 'Brut (mensuel)',
     breakdown: 'Détail des prélèvements',
@@ -102,10 +112,12 @@ const T: Record<LK, {
     period: 'Atlyginimo laikotarpis',
     monthly: 'Mėnesinis',
     annual: 'Metinis',
+    hourly: 'Per valandą',
     grossSalary: 'Bruto atlyginimas',
     calculate: 'Apskaičiuoti neto',
     netMonthly: 'Neto per mėnesį',
     netAnnual: 'Neto per metus',
+    netHourly: 'Neto per valandą',
     grossAnnual: 'Bruto (metinis)',
     grossMonthly: 'Bruto (mėnesinis)',
     breakdown: 'Išskaitymų sąrašas',
@@ -860,7 +872,7 @@ export default function SalaryCalculator({ locale }: Props) {
     const val = parseFloat(raw);
     if (isNaN(val) || val <= 0) { setError(t.errorInvalid); setResult(null); return; }
     setError('');
-    setResult(calculate(country, period === 'monthly' ? val * 12 : val));
+    setResult(calculate(country, period === 'monthly' ? val * 12 : period === 'hourly' ? val * 2080 : val));
   }, [grossInput, period, country, t]);
 
   const fmt = useCallback(
@@ -911,6 +923,13 @@ export default function SalaryCalculator({ locale }: Props) {
               >
                 {t.annual}
               </button>
+              <button
+                type="button"
+                className={`${styles['salary-widget__toggle-btn']} ${period === 'hourly' ? styles['salary-widget__toggle-btn--active'] : ''}`}
+                onClick={() => { setPeriod('hourly'); setResult(null); }}
+              >
+                {t.hourly}
+              </button>
             </div>
           </div>
         </div>
@@ -918,7 +937,7 @@ export default function SalaryCalculator({ locale }: Props) {
         {/* Gross salary */}
         <div className={styles['salary-widget__field']}>
           <label className={styles['salary-widget__label']} htmlFor="salary-gross">
-            {t.grossSalary} ({period === 'monthly' ? t.monthly : t.annual})
+            {t.grossSalary} ({period === 'monthly' ? t.monthly : period === 'annual' ? t.annual : t.hourly})
           </label>
           <div className={styles['salary-widget__input-wrap']}>
             <input
@@ -930,7 +949,7 @@ export default function SalaryCalculator({ locale }: Props) {
               value={grossInput}
               onChange={e => setGrossInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleCalculate()}
-              placeholder={period === 'monthly' ? '50 000' : '600 000'}
+              placeholder={period === 'monthly' ? '50 000' : period === 'annual' ? '600 000' : '25'}
             />
             <span className={styles['salary-widget__suffix']}>{countryMeta.currency}</span>
           </div>
@@ -948,6 +967,10 @@ export default function SalaryCalculator({ locale }: Props) {
 
           {/* Net hero */}
           <div className={styles['salary-widget__net']}>
+            <div className={styles['salary-widget__net-block']}>
+              <span className={styles['salary-widget__net-label']}>{t.netHourly}</span>
+              <span className={styles['salary-widget__net-value']}>{fmt(result.netAnnual / 2080)}</span>
+            </div>
             <div className={styles['salary-widget__net-block']}>
               <span className={styles['salary-widget__net-label']}>{t.netMonthly}</span>
               <span className={styles['salary-widget__net-value']}>{fmt(result.netAnnual / 12)}</span>
