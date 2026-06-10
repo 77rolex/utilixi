@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { getFavorites } from '@/lib/favorites';
 import styles from './ToolGrid.module.scss';
 
 export type ToolCategory = 'finance' | 'crypto' | 'health' | 'utility' | 'legal' | 'measure' | 'realestate' | 'esoteric';
@@ -15,14 +16,14 @@ export type ToolItem = {
   category: ToolCategory;
 };
 
-type FilterCategory = 'all' | ToolCategory;
+type FilterCategory = 'favorites' | 'all' | ToolCategory;
 
 const CATEGORY_LABELS: Record<string, Record<FilterCategory, string>> = {
-  en: { all: 'All', finance: 'Finance', crypto: 'Crypto', health: 'Health', utility: 'Utilities', legal: 'Legal', measure: 'Measurements', realestate: 'Real Estate', esoteric: 'Esoteric' },
-  ru: { all: 'Все', finance: 'Финансы', crypto: 'Криптовалюта', health: 'Здоровье', utility: 'Утилиты', legal: 'Юридические', measure: 'Измерения', realestate: 'Недвижимость', esoteric: 'Эзотерика' },
-  uk: { all: 'Усі', finance: 'Фінанси', crypto: 'Криптовалюта', health: 'Здоров\'я', utility: 'Утиліти', legal: 'Юридичні', measure: 'Вимірювання', realestate: 'Нерухомість', esoteric: 'Езотерика' },
-  fr: { all: 'Tout', finance: 'Finance', crypto: 'Crypto', health: 'Santé', utility: 'Utilitaires', legal: 'Juridique', measure: 'Mesures', realestate: 'Immobilier', esoteric: 'Ésotérique' },
-  lt: { all: 'Visi', finance: 'Finansai', crypto: 'Kripto', health: 'Sveikata', utility: 'Priemonės', legal: 'Teisiniai', measure: 'Matavimai', realestate: 'Nekilnojamasis turtas', esoteric: 'Ezoterika' },
+  en: { favorites: 'Favorites', all: 'All', finance: 'Finance', crypto: 'Crypto', health: 'Health', utility: 'Utilities', legal: 'Legal', measure: 'Measurements', realestate: 'Real Estate', esoteric: 'Esoteric' },
+  ru: { favorites: 'Избранное', all: 'Все', finance: 'Финансы', crypto: 'Криптовалюта', health: 'Здоровье', utility: 'Утилиты', legal: 'Юридические', measure: 'Измерения', realestate: 'Недвижимость', esoteric: 'Эзотерика' },
+  uk: { favorites: 'Вибране', all: 'Усі', finance: 'Фінанси', crypto: 'Криптовалюта', health: 'Здоров\'я', utility: 'Утиліти', legal: 'Юридичні', measure: 'Вимірювання', realestate: 'Нерухомість', esoteric: 'Езотерика' },
+  fr: { favorites: 'Favoris', all: 'Tout', finance: 'Finance', crypto: 'Crypto', health: 'Santé', utility: 'Utilitaires', legal: 'Juridique', measure: 'Mesures', realestate: 'Immobilier', esoteric: 'Ésotérique' },
+  lt: { favorites: 'Mėgstamiausi', all: 'Visi', finance: 'Finansai', crypto: 'Kripto', health: 'Sveikata', utility: 'Priemonės', legal: 'Teisiniai', measure: 'Matavimai', realestate: 'Nekilnojamasis turtas', esoteric: 'Ezoterika' },
 };
 
 const SEARCH_PLACEHOLDER: Record<string, string> = {
@@ -41,6 +42,22 @@ const NO_RESULTS: Record<string, string> = {
   lt: 'Įrankių nerasta',
 };
 
+const NO_FAVORITES: Record<string, string> = {
+  en: 'No favorites yet. Open any tool and press ⭐ to save it here.',
+  ru: 'Избранных пока нет. Откройте любой инструмент и нажмите ⭐, чтобы добавить его сюда.',
+  uk: 'Вибраних поки немає. Відкрийте будь-який інструмент і натисніть ⭐, щоб додати його сюди.',
+  fr: 'Aucun favori pour l\'instant. Ouvrez un outil et appuyez sur ⭐ pour l\'enregistrer ici.',
+  lt: 'Kol kas mėgstamiausių nėra. Atidarykite bet kurį įrankį ir paspauskite ⭐, kad jį čia išsaugotumėte.',
+};
+
+const FAVORITES_TIP: Record<string, string> = {
+  en: 'Tip: Bookmark this page in your browser (Ctrl+D) so your Favorites don\'t disappear after clearing cache.',
+  ru: 'Совет: добавьте страницу в закладки браузера (Ctrl+D) — иначе «Избранное» очистится при очистке кеша.',
+  uk: 'Порада: додайте сторінку до закладок браузера (Ctrl+D) — інакше «Вибране» очиститься при очищенні кешу.',
+  fr: 'Conseil : ajoutez cette page à vos favoris (Ctrl+D) pour ne pas perdre vos Favoris après avoir vidé le cache.',
+  lt: 'Patarimas: pridėkite puslapį prie naršyklės žymių (Ctrl+D), kad „Mėgstamiausi" nedingtų po talpyklos išvalymo.',
+};
+
 const FILTER_ORDER: FilterCategory[] = ['all', 'finance', 'crypto', 'health', 'utility', 'legal', 'measure', 'realestate', 'esoteric'];
 
 type Props = {
@@ -54,12 +71,18 @@ export default function ToolGrid({ locale, tools, initialCategory }: Props) {
   const pathname = usePathname();
 
   const resolveCategory = (cat?: string): FilterCategory => {
+    if (cat === 'favorites') return 'favorites';
     if (cat && FILTER_ORDER.includes(cat as FilterCategory)) return cat as FilterCategory;
     return 'finance';
   };
 
   const [active, setActive] = useState<FilterCategory>(resolveCategory(initialCategory));
   const [search, setSearch] = useState('');
+  const [favPaths, setFavPaths] = useState<string[]>([]);
+
+  useEffect(() => {
+    setFavPaths(getFavorites());
+  }, [active]); // обновляем при смене категории (пользователь мог добавить на другой странице)
 
   const labels = CATEGORY_LABELS[locale] || CATEGORY_LABELS.en;
   const placeholder = SEARCH_PLACEHOLDER[locale] || SEARCH_PLACEHOLDER.en;
@@ -71,7 +94,9 @@ export default function ToolGrid({ locale, tools, initialCategory }: Props) {
   };
 
   const q = search.trim().toLowerCase();
+
   const filtered = tools.filter((t) => {
+    if (active === 'favorites') return favPaths.includes(t.href);
     const matchesCategory = q !== '' || active === 'all' || t.category === active;
     const matchesSearch = q === '' || t.title.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q);
     return matchesCategory && matchesSearch;
@@ -109,7 +134,22 @@ export default function ToolGrid({ locale, tools, initialCategory }: Props) {
           aria-label={placeholder}
         />
       </div>
+
       <div className={styles['tool-filter']}>
+        <button
+          type="button"
+          className={`${styles['tool-filter__btn']} ${styles['tool-filter__btn--fav']}${active === 'favorites' ? ` ${styles['tool-filter__btn--active']}` : ''}`}
+          onClick={() => handleCategoryChange('favorites')}
+          aria-label={labels.favorites}
+          title={labels.favorites}
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill={active === 'favorites' ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+          </svg>
+        </button>
+
+        <div className={styles['tool-filter__divider']} aria-hidden="true" />
+
         {FILTER_ORDER.map((cat) => (
           <button
             key={cat}
@@ -121,8 +161,17 @@ export default function ToolGrid({ locale, tools, initialCategory }: Props) {
           </button>
         ))}
       </div>
+
+      {active === 'favorites' && (
+        <p className={styles['tool-filter__tip']}>
+          {FAVORITES_TIP[locale] || FAVORITES_TIP.en}
+        </p>
+      )}
+
       <div className={styles['tool-grid']}>
-        {filtered.length === 0 ? (
+        {active === 'favorites' && filtered.length === 0 ? (
+          <p className={styles['tool-grid__empty']}>{NO_FAVORITES[locale] || NO_FAVORITES.en}</p>
+        ) : filtered.length === 0 ? (
           <p className={styles['tool-grid__empty']}>{noResults}</p>
         ) : filtered.map((tool) => (
           <Link key={tool.href} href={`/${locale}${tool.href}`} className={styles['tool-card']}>

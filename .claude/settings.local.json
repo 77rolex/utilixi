@@ -57,7 +57,8 @@
       "Bash(cp \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/zodiac-sign/page.module.scss\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/biorhythm/page.module.scss\")",
       "Bash(claude --version)",
       "Bash(npm show *)",
-      "Bash(grep -v \"\\\\.ts$\")"
+      "Bash(grep -v \"\\\\.ts$\")",
+      "Bash(grep -E \"^.*error.*$|✓ Compiled|Build completed|Failed\")"
     ]
   }
 }

@@ -1,5 +1,6 @@
+import ToolActions from '@/components/ui/ToolActions';
 import { Metadata } from 'next';
-import { buildAlternates } from '@/lib/seo';
+import { buildMetadata } from '@/lib/seo';
 import PageLayout from '@/components/layout/PageLayout';
 import AdSidebar from '@/components/ui/AdSidebar';
 import AdInline from '@/components/ui/AdInline';
@@ -161,11 +162,7 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const meta = META[locale] ?? META.en;
-  return {
-    title: meta.title,
-    description: meta.description,
-    ...buildAlternates(locale, '/calculator/name-number'),
-  };
+  return buildMetadata(locale, '/calculator/name-number', meta);
 }
 
 export async function generateStaticParams() {
@@ -206,6 +203,7 @@ export default async function NameNumberPage({ params }: Props) {
 
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        <ToolActions />
         <NameNumberCalculator locale={locale} />
         <AdInline locale={locale} />
         <div className={styles.page__content}>

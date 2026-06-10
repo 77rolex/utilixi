@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { buildAlternates } from '@/lib/seo';
+import { buildMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import { routing } from '@/i18n/routing';
 import PageLayout from '@/components/layout/PageLayout';
@@ -18,12 +18,12 @@ type LocaleContent = {
 const CONTENT: Record<string, LocaleContent> = {
   en: {
     title: 'About Utilixi',
-    description: 'Learn about Utilixi — a free collection of online calculators and tools.',
+    description: 'Learn about Utilixi — 71 free online calculators and tools across finance, health, legal, esoteric, and more.',
     h1: 'About Utilixi',
     sections: [
       {
         heading: 'What is Utilixi?',
-        body: 'Utilixi is a free collection of online tools and calculators designed to help you make smarter decisions — faster. Whether you\'re planning a mortgage, tracking your health, converting currencies, or calculating calories, Utilixi provides accurate, easy-to-use tools at no cost.',
+        body: 'Utilixi is a free collection of 71 online tools and calculators built to help you make smarter decisions — faster. We cover finance (mortgage, loans, taxes, insurance), health (BMI, calories, heart rate, pregnancy), legal (alimony, flight delays), real estate, utilities, unit converters, live currency and crypto rates, weather forecasts, and esoteric tools (numerology, biorhythm, zodiac). Everything in one place, at no cost.',
       },
       {
         heading: 'Our mission',
@@ -42,12 +42,12 @@ const CONTENT: Record<string, LocaleContent> = {
   },
   ru: {
     title: 'О проекте Utilixi',
-    description: 'Узнайте об Utilixi — бесплатной коллекции онлайн-калькуляторов и инструментов.',
+    description: 'Узнайте об Utilixi — 71 бесплатный онлайн-калькулятор и инструмент: финансы, здоровье, юридика, эзотерика и не только.',
     h1: 'О проекте Utilixi',
     sections: [
       {
         heading: 'Что такое Utilixi?',
-        body: 'Utilixi — это бесплатная коллекция онлайн-инструментов и калькуляторов, которая помогает принимать взвешенные решения быстрее. Ипотека, здоровье, валюты, калории — всё в одном месте, точно и удобно.',
+        body: 'Utilixi — это бесплатная коллекция из 71 онлайн-инструмента и калькулятора для принятия взвешенных решений. Финансы (ипотека, кредиты, налоги, страхование), здоровье (ИМТ, калории, ЧСС, беременность), юридические инструменты, недвижимость, конвертеры единиц, актуальные курсы валют и криптовалют, прогноз погоды, а также эзотерические инструменты (нумерология, биоритмы, зодиак) — всё в одном месте, бесплатно.',
       },
       {
         heading: 'Наша миссия',
@@ -66,12 +66,12 @@ const CONTENT: Record<string, LocaleContent> = {
   },
   uk: {
     title: 'Про проект Utilixi',
-    description: 'Дізнайтесь про Utilixi — безкоштовну колекцію онлайн-калькуляторів та інструментів.',
+    description: 'Дізнайтесь про Utilixi — 71 безкоштовний онлайн-калькулятор та інструмент: фінанси, здоров\'я, юридика, езотерика та інше.',
     h1: 'Про проект Utilixi',
     sections: [
       {
         heading: 'Що таке Utilixi?',
-        body: 'Utilixi — це безкоштовна колекція онлайн-інструментів та калькуляторів для прийняття розумних рішень. Іпотека, здоров\'я, валюти, калорії — все в одному місці.',
+        body: 'Utilixi — це безкоштовна колекція з 71 онлайн-інструменту та калькулятора для прийняття розумних рішень. Фінанси (іпотека, кредити, податки, страхування), здоров\'я (ІМТ, калорії, ЧСС, вагітність), юридичні інструменти, нерухомість, конвертери одиниць, актуальні курси валют та криптовалют, прогноз погоди, а також езотеричні інструменти (нумерологія, біоритми, зодіак) — все в одному місці, безкоштовно.',
       },
       {
         heading: 'Наша місія',
@@ -90,12 +90,12 @@ const CONTENT: Record<string, LocaleContent> = {
   },
   fr: {
     title: 'À propos d\'Utilixi',
-    description: 'Découvrez Utilixi — une collection gratuite de calculatrices et d\'outils en ligne.',
+    description: 'Découvrez Utilixi — 71 calculatrices et outils en ligne gratuits : finances, santé, juridique, ésotérisme et plus.',
     h1: 'À propos d\'Utilixi',
     sections: [
       {
         heading: 'Qu\'est-ce qu\'Utilixi ?',
-        body: 'Utilixi est une collection gratuite d\'outils en ligne et de calculatrices conçus pour vous aider à prendre de meilleures décisions, plus rapidement. Crédit immobilier, santé, devises, calories — tout en un seul endroit.',
+        body: 'Utilixi est une collection gratuite de 71 outils en ligne et calculatrices pour prendre de meilleures décisions. Finances (prêt immobilier, impôts, assurances), santé (IMC, calories, fréquence cardiaque, grossesse), outils juridiques, immobilier, convertisseurs, taux de change et cryptos en direct, météo, ainsi que des outils ésotériques (numérologie, biorythme, zodiaque) — tout en un seul endroit, gratuitement.',
       },
       {
         heading: 'Notre mission',
@@ -114,12 +114,12 @@ const CONTENT: Record<string, LocaleContent> = {
   },
   lt: {
     title: 'Apie Utilixi',
-    description: 'Sužinokite apie Utilixi — nemokamą internetinių skaičiuotuvų ir įrankių kolekciją.',
+    description: 'Sužinokite apie Utilixi — 71 nemokamas internetinis skaičiuotuvas ir įrankis: finansai, sveikata, teisė, ezoterika ir daugiau.',
     h1: 'Apie Utilixi',
     sections: [
       {
         heading: 'Kas yra Utilixi?',
-        body: 'Utilixi — tai nemokamų internetinių įrankių ir skaičiuotuvų kolekcija, padedanti priimti geresnius sprendimus greičiau. Hipoteka, sveikata, valiutos, kalorijos — viskas vienoje vietoje.',
+        body: 'Utilixi — tai nemokama 71 internetinio įrankio ir skaičiuotuvo kolekcija, padedanti priimti geresnius sprendimus. Finansai (hipoteka, paskolos, mokesčiai, draudimas), sveikata (KMI, kalorijos, širdies ritmas, nėštumas), teisiniai įrankiai, nekilnojamasis turtas, vienetų keitikliai, valiutų ir kriptovaliutų kursai, orų prognozė bei ezoteriniai įrankiai (numerologija, bioritmas, zodiako ženklai) — viskas vienoje vietoje, nemokamai.',
       },
       {
         heading: 'Mūsų misija',
@@ -141,7 +141,7 @@ const CONTENT: Record<string, LocaleContent> = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const c = CONTENT[locale] || CONTENT.en;
-  return { title: c.title, description: c.description, alternates: buildAlternates(locale, '/about') };
+  return buildMetadata(locale, '/about', c);
 }
 
 export function generateStaticParams() {

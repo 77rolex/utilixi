@@ -1,5 +1,6 @@
+import ToolActions from '@/components/ui/ToolActions';
 import type { Metadata } from 'next';
-import { buildAlternates } from '@/lib/seo';
+import { buildMetadata } from '@/lib/seo';
 import { routing } from '@/i18n/routing';
 import EngineeringCalculator from './EngineeringCalculator';
 import PageLayout from '@/components/layout/PageLayout';
@@ -116,11 +117,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const m = META[locale] || META.en;
-  return {
-    title: m.title,
-    description: m.description,
-    alternates: buildAlternates(locale, '/calculator/engineering'),
-  };
+  return buildMetadata(locale, '/calculator/engineering', m);
 }
 
 export default async function EngineeringCalculatorPage({ params }: Props) {
@@ -156,6 +153,7 @@ export default async function EngineeringCalculatorPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{m.h1}</h1>
+        <ToolActions />
         <EngineeringCalculator locale={locale} />
         <AdInline locale={locale} />
         <div className={styles.page__content}>

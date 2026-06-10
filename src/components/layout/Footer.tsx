@@ -9,6 +9,7 @@ type LocaleKey = 'en' | 'ru' | 'uk' | 'fr' | 'lt';
 
 const T: Record<LocaleKey, {
   home: string;
+  favorites: string;
   toolsTitle: string;
   pagesTitle: string;
   about: string;
@@ -18,6 +19,7 @@ const T: Record<LocaleKey, {
 }> = {
   en: {
     home: 'Home',
+    favorites: 'Favorites',
     toolsTitle: 'Tools',
     pagesTitle: 'Pages',
     about: 'About',
@@ -27,6 +29,7 @@ const T: Record<LocaleKey, {
   },
   ru: {
     home: 'Главная',
+    favorites: 'Избранное',
     toolsTitle: 'Инструменты',
     pagesTitle: 'Страницы',
     about: 'О проекте',
@@ -36,6 +39,7 @@ const T: Record<LocaleKey, {
   },
   uk: {
     home: 'Головна',
+    favorites: 'Вибране',
     toolsTitle: 'Інструменти',
     pagesTitle: 'Сторінки',
     about: 'Про проект',
@@ -45,6 +49,7 @@ const T: Record<LocaleKey, {
   },
   fr: {
     home: 'Accueil',
+    favorites: 'Favoris',
     toolsTitle: 'Outils',
     pagesTitle: 'Pages',
     about: 'À propos',
@@ -54,6 +59,7 @@ const T: Record<LocaleKey, {
   },
   lt: {
     home: 'Pradžia',
+    favorites: 'Mėgstamiausi',
     toolsTitle: 'Įrankiai',
     pagesTitle: 'Puslapiai',
     about: 'Apie mus',
@@ -217,6 +223,9 @@ export default function Footer({ locale }: Props) {
           <div className={styles.footer__tools}>
             <p className={styles['footer__section-title']}>{t.toolsTitle}</p>
             <div className={styles['footer__categories']}>
+              <Link href={`/${locale}?category=favorites`} className={`${styles.footer__link} ${styles['footer__fav-link']}`}>
+                ⭐ {t.favorites}
+              </Link>
               {FOOTER_CATEGORIES.map((cat) => (
                 <details key={cat.key} className={styles['footer__cat']}>
                   <summary className={styles['footer__cat-summary']}>

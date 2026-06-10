@@ -1,5 +1,6 @@
+import ToolActions from '@/components/ui/ToolActions';
 import type { Metadata } from 'next';
-import { buildAlternates } from '@/lib/seo';
+import { buildMetadata } from '@/lib/seo';
 import { routing } from '@/i18n/routing';
 import TimezoneConverter from './TimezoneConverter';
 import PageLayout from '@/components/layout/PageLayout';
@@ -287,11 +288,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const meta = META[locale] || META.en;
 
-  return {
-    title: meta.title,
-    description: meta.description,
-    alternates: buildAlternates(locale, '/converter/timezone'),
-  };
+  return buildMetadata(locale, '/converter/timezone', meta);
 }
 
 export function generateStaticParams() {
@@ -331,6 +328,7 @@ export default async function TimezonePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        <ToolActions />
         <TimezoneConverter locale={locale} />
 
         <AdInline locale={locale} />

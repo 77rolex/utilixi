@@ -106,6 +106,12 @@
       text-decoration: none;
       color: inherit;
     }
+
+    &--fav {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
   }
 
   // Bottom panel: tools for active category — columns of 5
@@ -340,10 +346,23 @@
     color: var(--color-text-primary);
     min-height: 52px;
     text-align: left;
+    text-decoration: none;
     transition: background-color var(--transition-base);
 
     &:hover {
       background-color: var(--color-bg-secondary);
+      text-decoration: none;
+    }
+
+    &--fav {
+      gap: var(--spacing-sm);
+      justify-content: flex-start;
+      color: var(--color-text-primary);
+
+      &:hover {
+        color: #D97706;
+        background-color: #FFFBEB;
+      }
     }
   }
 

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { buildAlternates } from '@/lib/seo';
+import { buildMetadata } from '@/lib/seo';
 import AdPlaceholder from '@/components/ui/AdPlaceholder';
 import AdSidebar from '@/components/ui/AdSidebar';
 import ToolGrid, { type ToolItem } from '@/components/home/ToolGrid';
@@ -22,18 +22,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 
   const descriptions: Record<string, string> = {
-    en: 'Free online tools — mortgage calculator, BMI, calorie counter, currency converter and more.',
-    ru: 'Бесплатные онлайн-инструменты — ипотечный калькулятор, ИМТ, счётчик калорий, конвертер валют и другие.',
-    uk: 'Безкоштовні онлайн-інструменти — іпотечний калькулятор, ІМТ, лічильник калорій, конвертер валют та інші.',
-    fr: 'Outils en ligne gratuits — calculatrice de prêt immobilier, IMC, compteur de calories, convertisseur de devises et plus.',
-    lt: 'Nemokomi internetiniai įrankiai — hipotekos skaičiuotuvas, KMI, kalorijų skaičiuotuvas, valiutų keitiklis ir daugiau.',
+    en: '71 free online tools — mortgage, tax & insurance calculators, BMI, calorie counter, numerology, live currency & crypto rates, weather forecast and more.',
+    ru: '71 бесплатный онлайн-инструмент — ипотека, налоги, ИМТ, нумерология, курсы валют и криптовалют, прогноз погоды и многое другое.',
+    uk: '71 безкоштовний онлайн-інструмент — іпотека, податки, ІМТ, нумерологія, курси валют і криптовалют, прогноз погоди та інше.',
+    fr: '71 outils en ligne gratuits — prêt immobilier, impôts, IMC, numérologie, taux de change et crypto en direct, météo et plus encore.',
+    lt: '71 nemokamas internetinis įrankis — hipoteka, mokesčiai, KMI, numerologija, valiutų ir kriptovaliutų kursai, orų prognozė ir daugiau.',
   };
 
-  return {
+  return buildMetadata(locale, '', {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
-    alternates: buildAlternates(locale, ''),
-  };
+  });
 }
 
 type RawTool = {

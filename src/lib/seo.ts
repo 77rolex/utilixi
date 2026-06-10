@@ -12,3 +12,23 @@ export function buildAlternates(locale: string, path: string) {
     languages,
   };
 }
+
+export function buildMetadata(locale: string, path: string, meta: { title: string; description: string }) {
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: buildAlternates(locale, path),
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `${BASE_URL}/${locale}${path}`,
+      siteName: 'Utilixi',
+      type: 'website' as const,
+    },
+    twitter: {
+      card: 'summary' as const,
+      title: meta.title,
+      description: meta.description,
+    },
+  };
+}

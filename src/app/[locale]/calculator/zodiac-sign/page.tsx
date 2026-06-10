@@ -1,5 +1,6 @@
+import ToolActions from '@/components/ui/ToolActions';
 import type { Metadata } from 'next';
-import { buildAlternates } from '@/lib/seo';
+import { buildMetadata } from '@/lib/seo';
 import PageLayout from '@/components/layout/PageLayout';
 import AdSidebar from '@/components/ui/AdSidebar';
 import AdInline from '@/components/ui/AdInline';
@@ -142,7 +143,7 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const meta = META[locale] ?? META.en;
-  return { title: meta.title, description: meta.description, alternates: buildAlternates(locale, '/calculator/zodiac-sign') };
+  return buildMetadata(locale, '/calculator/zodiac-sign', meta);
 }
 
 export function generateStaticParams() {
@@ -182,6 +183,7 @@ export default async function ZodiacSignPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        <ToolActions />
         <ZodiacSignCalculator locale={locale} />
         <AdInline locale={locale} />
         <div className={styles.page__content}>
