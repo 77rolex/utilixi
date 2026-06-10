@@ -1,6 +1,10 @@
 .page-layout {
   padding: var(--spacing-lg) 0 var(--spacing-2xl);
 
+  @media (max-width: 1023px) {
+    padding-top: var(--spacing-md);
+  }
+
   &__inner {
     display: flex;
     flex-direction: column;

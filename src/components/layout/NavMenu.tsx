@@ -423,7 +423,8 @@ export default function NavMenu({ locale }: { locale: string }) {
           >
             <span>{pagesLabel}</span>
             <svg
-              className={`${styles['sidebar__section-arrow']}${openSection === '__pages__' ? ` ${styles['sidebar__section-arrow--open']}` : ''}`}
+              className={styles['sidebar__section-arrow']}
+              style={{ transform: openSection === '__pages__' ? 'rotate(0deg)' : 'rotate(180deg)' }}
               width="12"
               height="8"
               viewBox="0 0 12 8"

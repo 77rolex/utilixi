@@ -4,6 +4,10 @@
   margin: 0 auto;
   padding: var(--spacing-lg) var(--container-padding) var(--spacing-xs);
 
+  @media (max-width: 1023px) {
+    padding: var(--spacing-md) var(--container-padding) 0;
+  }
+
   &__link {
     display: inline-flex;
     align-items: center;

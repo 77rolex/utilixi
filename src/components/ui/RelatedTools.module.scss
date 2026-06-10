@@ -33,6 +33,10 @@
     display: inline-flex;
     align-items: center;
     padding: var(--spacing-sm) var(--spacing-md);
+
+    @media (max-width: 1023px) {
+      padding: 5px var(--spacing-sm);
+    }
     background-color: var(--color-primary-light);
     color: var(--color-primary);
     border-radius: var(--radius-sm);

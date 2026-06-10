@@ -127,4 +127,8 @@ textarea {
 
 .main-content {
   min-height: calc(100vh - 60px - 180px);
+
+  h1 {
+    line-height: 1.2;
+  }
 }
