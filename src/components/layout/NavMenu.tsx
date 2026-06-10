@@ -6,6 +6,7 @@ import styles from './NavMenu.module.scss';
 
 type NavTool = { href: string; labels: Record<string, string> };
 type NavCategory = { key: string; labelsByLocale: Record<string, string>; tools: NavTool[] };
+type NavPage = { href: string; labels: Record<string, string> };
 
 const NAV_CATEGORIES: NavCategory[] = [
   {
@@ -50,14 +51,14 @@ const NAV_CATEGORIES: NavCategory[] = [
     ],
   },
   {
-    key: 'utilities',
+    key: 'utility',
     labelsByLocale: { en: 'Utilities', ru: 'Утилиты', uk: 'Утиліти', fr: 'Utilitaires', lt: 'Priemonės' },
     tools: [
       { href: '/weather', labels: { en: 'Weather Forecast', ru: 'Прогноз погоды', uk: 'Прогноз погоди', fr: 'Météo', lt: 'Oro prognozė' } },
       { href: '/tools/password-generator', labels: { en: 'Password Generator', ru: 'Генератор паролей', uk: 'Генератор паролів', fr: 'Générateur de mot de passe', lt: 'Slaptažodžių generatorius' } },
-      { href: '/converter/units', labels: { en: 'Unit Converter', ru: 'Конвертер единиц', uk: 'Конвертер одиниць', fr: 'Convertisseur d\'unités', lt: 'Vienetų keitiklis' } },
+      { href: '/converter/units', labels: { en: 'Unit Converter', ru: 'Конвертер единиц', uk: 'Конвертер одиниць', fr: "Convertisseur d'unités", lt: 'Vienetų keitiklis' } },
       { href: '/calculator/tip', labels: { en: 'Tip Calculator', ru: 'Калькулятор чаевых', uk: 'Калькулятор чайових', fr: 'Calculatrice de pourboire', lt: 'Arbatpinigių skaičiuotuvas' } },
-      { href: '/calculator/age', labels: { en: 'Age Calculator', ru: 'Калькулятор возраста', uk: 'Калькулятор віку', fr: 'Calculatrice d\'âge', lt: 'Amžiaus skaičiuotuvas' } },
+      { href: '/calculator/age', labels: { en: 'Age Calculator', ru: 'Калькулятор возраста', uk: 'Калькулятор віку', fr: "Calculatrice d'âge", lt: 'Amžiaus skaičiuotuvas' } },
       { href: '/calculator/date-diff', labels: { en: 'Date Difference', ru: 'Разница дат', uk: 'Різниця дат', fr: 'Différence de dates', lt: 'Datų skirtumas' } },
       { href: '/tools/countdown', labels: { en: 'Countdown Timer', ru: 'Таймер обратного отсчёта', uk: 'Таймер зворотного відліку', fr: 'Compte à rebours', lt: 'Atgalinio skaičiavimo laikmatis' } },
     ],
@@ -95,7 +96,7 @@ const NAV_CATEGORIES: NavCategory[] = [
   },
   {
     key: 'health',
-    labelsByLocale: { en: 'Health', ru: 'Здоровье', uk: 'Здоров\'я', fr: 'Santé', lt: 'Sveikata' },
+    labelsByLocale: { en: 'Health', ru: 'Здоровье', uk: "Здоров'я", fr: 'Santé', lt: 'Sveikata' },
     tools: [
       { href: '/calculator/bmi', labels: { en: 'BMI Calculator', ru: 'Калькулятор ИМТ', uk: 'Калькулятор ІМТ', fr: 'Calculatrice IMC', lt: 'KMI skaičiuotuvas' } },
       { href: '/calculator/calories', labels: { en: 'Calorie Calculator', ru: 'Калькулятор калорий', uk: 'Калькулятор калорій', fr: 'Calculatrice de calories', lt: 'Kalorijų skaičiuotuvas' } },
@@ -108,13 +109,24 @@ const NAV_CATEGORIES: NavCategory[] = [
       { href: '/calculator/sleep', labels: { en: 'Sleep Calculator', ru: 'Калькулятор сна', uk: 'Калькулятор сну', fr: 'Calculatrice de sommeil', lt: 'Miego skaičiuotuvas' } },
       { href: '/calculator/body-fat', labels: { en: 'Body Fat Calculator', ru: 'Калькулятор жира', uk: 'Калькулятор жиру', fr: 'Calculatrice de graisse', lt: 'Kūno riebalų skaičiuotuvas' } },
       { href: '/calculator/water-intake', labels: { en: 'Water Intake Calculator', ru: 'Норма воды', uk: 'Норма води', fr: 'Apport en eau', lt: 'Vandens norma' } },
-      { href: '/calculator/ovulation', labels: { en: 'Ovulation Calculator', ru: 'Калькулятор овуляции', uk: 'Калькулятор овуляції', fr: 'Calculatrice d\'ovulation', lt: 'Ovuliacijos skaičiuotuvas' } },
+      { href: '/calculator/ovulation', labels: { en: 'Ovulation Calculator', ru: 'Калькулятор овуляции', uk: 'Калькулятор овуляції', fr: "Calculatrice d'ovulation", lt: 'Ovuliacijos skaičiuotuvas' } },
     ],
   },
 ];
 
+const NAV_PAGES: NavPage[] = [
+  { href: '', labels: { en: 'Home', ru: 'Главная', uk: 'Головна', fr: 'Accueil', lt: 'Pradžia' } },
+  { href: '/about', labels: { en: 'About', ru: 'О нас', uk: 'Про нас', fr: 'À propos', lt: 'Apie mus' } },
+  { href: '/contact', labels: { en: 'Contact', ru: 'Контакты', uk: 'Контакти', fr: 'Contact', lt: 'Kontaktai' } },
+  { href: '/privacy-policy', labels: { en: 'Privacy Policy', ru: 'Конфиденциальность', uk: 'Конфіденційність', fr: 'Confidentialité', lt: 'Privatumas' } },
+];
+
 const TRIGGER_LABEL: Record<string, string> = {
   en: 'Tools', ru: 'Инструменты', uk: 'Інструменти', fr: 'Outils', lt: 'Įrankiai',
+};
+
+const PAGES_LABEL: Record<string, string> = {
+  en: 'Pages', ru: 'Страницы', uk: 'Сторінки', fr: 'Pages', lt: 'Puslapiai',
 };
 
 const SIDEBAR_HOME_LABEL: Record<string, string> = {
@@ -124,9 +136,11 @@ const SIDEBAR_HOME_LABEL: Record<string, string> = {
 export default function NavMenu({ locale }: { locale: string }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [desktopOpen, setDesktopOpen] = useState(false);
+  const [pagesOpen, setPagesOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [activeCat, setActiveCat] = useState<string | null>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pagesTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const openDesktop = () => {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
@@ -144,6 +158,18 @@ export default function NavMenu({ locale }: { locale: string }) {
     setActiveCat(null);
   };
 
+  const openPages = () => {
+    if (pagesTimerRef.current) clearTimeout(pagesTimerRef.current);
+    setPagesOpen(true);
+  };
+  const schedulePagesClose = () => {
+    pagesTimerRef.current = setTimeout(() => setPagesOpen(false), 150);
+  };
+  const closePages = () => {
+    if (pagesTimerRef.current) clearTimeout(pagesTimerRef.current);
+    setPagesOpen(false);
+  };
+
   useEffect(() => {
     document.body.style.overflow = sidebarOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -159,13 +185,20 @@ export default function NavMenu({ locale }: { locale: string }) {
   };
 
   const triggerLabel = TRIGGER_LABEL[locale] || TRIGGER_LABEL.en;
+  const pagesLabel = PAGES_LABEL[locale] || PAGES_LABEL.en;
   const sidebarHomeLabel = SIDEBAR_HOME_LABEL[locale] || SIDEBAR_HOME_LABEL.en;
   const effectiveCat = activeCat ?? NAV_CATEGORIES[0].key;
   const activeCatData = NAV_CATEGORIES.find(c => c.key === effectiveCat) ?? NAV_CATEGORIES[0];
 
+  const chevronSvg = (
+    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+      <path d="M1 1.5l5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+
   return (
     <>
-      {/* Desktop two-panel menu — hidden on mobile */}
+      {/* Desktop Tools nav */}
       <nav
         className={styles.nav}
         onMouseEnter={openDesktop}
@@ -179,9 +212,7 @@ export default function NavMenu({ locale }: { locale: string }) {
           aria-expanded={desktopOpen}
         >
           {triggerLabel}
-          <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-            <path d="M1 1.5l5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          {chevronSvg}
         </button>
 
         <div
@@ -191,7 +222,7 @@ export default function NavMenu({ locale }: { locale: string }) {
           onMouseLeave={scheduleClose}
         >
           <div className={styles['nav__dropdown-inner']}>
-            {/* Top row: category tabs */}
+            {/* Top row: category tabs — now as links */}
             <ul className={styles['nav__cat-list']}>
               {NAV_CATEGORIES.map((cat) => (
                 <li
@@ -200,7 +231,13 @@ export default function NavMenu({ locale }: { locale: string }) {
                   onMouseEnter={() => setActiveCat(cat.key)}
                   role="none"
                 >
-                  {cat.labelsByLocale[locale] || cat.labelsByLocale.en}
+                  <Link
+                    href={`/${locale}?category=${cat.key}`}
+                    className={styles['nav__cat-link']}
+                    onClick={closeDesktop}
+                  >
+                    {cat.labelsByLocale[locale] || cat.labelsByLocale.en}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -220,6 +257,41 @@ export default function NavMenu({ locale }: { locale: string }) {
               ))}
             </div>
           </div>
+        </div>
+      </nav>
+
+      {/* Desktop Pages nav */}
+      <nav
+        className={styles['nav-pages']}
+        onMouseEnter={openPages}
+        onMouseLeave={schedulePagesClose}
+        aria-label={pagesLabel}
+      >
+        <button
+          type="button"
+          className={`${styles['nav-pages__trigger']}${pagesOpen ? ` ${styles['nav-pages__trigger--open']}` : ''}`}
+          aria-haspopup="true"
+          aria-expanded={pagesOpen}
+        >
+          {pagesLabel}
+          {chevronSvg}
+        </button>
+
+        <div
+          className={`${styles['nav-pages__dropdown']}${pagesOpen ? ` ${styles['nav-pages__dropdown--open']}` : ''}`}
+          role="menu"
+        >
+          {NAV_PAGES.map((page) => (
+            <Link
+              key={page.href}
+              href={`/${locale}${page.href}`}
+              className={styles['nav-pages__link']}
+              role="menuitem"
+              onClick={closePages}
+            >
+              {page.labels[locale] || page.labels.en}
+            </Link>
+          ))}
         </div>
       </nav>
 
@@ -249,7 +321,7 @@ export default function NavMenu({ locale }: { locale: string }) {
         aria-label={sidebarHomeLabel}
       >
         <div className={styles.sidebar__header}>
-          <Link href={`/${locale}`} className={styles.sidebar__home} onClick={closeSidebar}>
+          <Link href={`/${locale}?category=all`} className={styles.sidebar__home} onClick={closeSidebar}>
             {sidebarHomeLabel}
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -267,46 +339,86 @@ export default function NavMenu({ locale }: { locale: string }) {
           </button>
         </div>
 
-        {NAV_CATEGORIES.map((cat) => {
-          const isOpen = openSection === cat.key;
-          return (
-            <div key={cat.key} className={styles.sidebar__section}>
-              <button
-                type="button"
-                className={styles['sidebar__section-btn']}
-                onClick={() => toggleSection(cat.key)}
-                aria-expanded={isOpen}
-              >
-                <span>{cat.labelsByLocale[locale] || cat.labelsByLocale.en}</span>
-                <svg
-                  className={`${styles['sidebar__section-arrow']}${isOpen ? ` ${styles['sidebar__section-arrow--open']}` : ''}`}
-                  width="12"
-                  height="8"
-                  viewBox="0 0 12 8"
-                  fill="none"
-                  aria-hidden="true"
+        {/* Tool categories — scrollable area */}
+        <div className={styles['sidebar__categories']}>
+          {NAV_CATEGORIES.map((cat) => {
+            const isOpen = openSection === cat.key;
+            return (
+              <div key={cat.key} className={styles.sidebar__section}>
+                <button
+                  type="button"
+                  className={styles['sidebar__section-btn']}
+                  onClick={() => toggleSection(cat.key)}
+                  aria-expanded={isOpen}
                 >
-                  <path d="M1 1.5l5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-              {isOpen && (
-                <ul className={styles['sidebar__tool-list']}>
-                  {cat.tools.map((tool) => (
-                    <li key={tool.href}>
-                      <Link
-                        href={`/${locale}${tool.href}`}
-                        className={styles['sidebar__tool-link']}
-                        onClick={closeSidebar}
-                      >
-                        {tool.labels[locale] || tool.labels.en}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          );
-        })}
+                  <span>{cat.labelsByLocale[locale] || cat.labelsByLocale.en}</span>
+                  <svg
+                    className={`${styles['sidebar__section-arrow']}${isOpen ? ` ${styles['sidebar__section-arrow--open']}` : ''}`}
+                    width="12"
+                    height="8"
+                    viewBox="0 0 12 8"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path d="M1 1.5l5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                {isOpen && (
+                  <ul className={styles['sidebar__tool-list']}>
+                    {cat.tools.map((tool) => (
+                      <li key={tool.href}>
+                        <Link
+                          href={`/${locale}${tool.href}`}
+                          className={styles['sidebar__tool-link']}
+                          onClick={closeSidebar}
+                        >
+                          {tool.labels[locale] || tool.labels.en}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Pages section — fixed at the very bottom */}
+        <div className={`${styles.sidebar__section} ${styles['sidebar__section--pages']}`}>
+          <button
+            type="button"
+            className={styles['sidebar__section-btn']}
+            onClick={() => toggleSection('__pages__')}
+            aria-expanded={openSection === '__pages__'}
+          >
+            <span>{pagesLabel}</span>
+            <svg
+              className={`${styles['sidebar__section-arrow']}${openSection === '__pages__' ? ` ${styles['sidebar__section-arrow--open']}` : ''}`}
+              width="12"
+              height="8"
+              viewBox="0 0 12 8"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path d="M1 1.5l5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          {openSection === '__pages__' && (
+            <ul className={styles['sidebar__tool-list']}>
+              {NAV_PAGES.map((page) => (
+                <li key={page.href}>
+                  <Link
+                    href={`/${locale}${page.href}`}
+                    className={styles['sidebar__tool-link']}
+                    onClick={closeSidebar}
+                  >
+                    {page.labels[locale] || page.labels.en}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </aside>
     </>
   );

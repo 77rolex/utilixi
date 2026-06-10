@@ -2,7 +2,7 @@
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: var(--spacing-sm) var(--container-padding);
+  padding: var(--spacing-lg) var(--container-padding) var(--spacing-xs);
 
   &__link {
     display: inline-flex;

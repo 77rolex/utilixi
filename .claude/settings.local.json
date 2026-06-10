@@ -54,7 +54,10 @@
       "Bash(cp \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/chinese-zodiac/page.module.scss\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/mercury-retrograde/page.module.scss\")",
       "Bash(cp \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/chinese-zodiac/page.module.scss\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/angel-number/page.module.scss\")",
       "Bash(cp \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/zodiac-sign/page.module.scss\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/archetype-number/page.module.scss\")",
-      "Bash(cp \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/zodiac-sign/page.module.scss\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/biorhythm/page.module.scss\")"
+      "Bash(cp \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/zodiac-sign/page.module.scss\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/biorhythm/page.module.scss\")",
+      "Bash(claude --version)",
+      "Bash(npm show *)",
+      "Bash(grep -v \"\\\\.ts$\")"
     ]
   }
 }

@@ -13,6 +13,11 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // WSL2 workaround: /mnt/d/ doesn't support inotify, falls back to polling.
+  // Poll every 2s instead of default 300ms to reduce CPU load.
+  watchOptions: {
+    pollIntervalMs: 2000,
+  },
   images: {
     remotePatterns: [
       {
