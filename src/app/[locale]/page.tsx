@@ -7,6 +7,7 @@ import styles from './page.module.scss';
 
 type Props = {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ category?: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -551,8 +552,9 @@ const PAGE_TITLE: Record<string, string> = {
   lt: 'Nemokomi internetiniai įrankiai',
 };
 
-export default async function HomePage({ params }: Props) {
+export default async function HomePage({ params, searchParams }: Props) {
   const { locale } = await params;
+  const { category } = await searchParams;
 
   const tools: ToolItem[] = RAW_TOOLS.map((t) => ({
     href: t.href,
@@ -566,7 +568,7 @@ export default async function HomePage({ params }: Props) {
     <div className={styles.home}>
       <div className="container">
         <h1 className={styles.home__title}>{PAGE_TITLE[locale] || PAGE_TITLE.en}</h1>
-        <ToolGrid locale={locale} tools={tools} />
+        <ToolGrid locale={locale} tools={tools} initialCategory={category} />
         <div className={styles.home__ad}>
           <AdPlaceholder locale={locale} size="banner" />
         </div>

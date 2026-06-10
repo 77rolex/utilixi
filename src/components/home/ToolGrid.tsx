@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './ToolGrid.module.scss';
 
@@ -42,13 +43,32 @@ const NO_RESULTS: Record<string, string> = {
 
 const FILTER_ORDER: FilterCategory[] = ['all', 'finance', 'crypto', 'health', 'utility', 'legal', 'measure', 'realestate', 'esoteric'];
 
-export default function ToolGrid({ locale, tools }: { locale: string; tools: ToolItem[] }) {
-  const [active, setActive] = useState<FilterCategory>('finance');
+type Props = {
+  locale: string;
+  tools: ToolItem[];
+  initialCategory?: string;
+};
+
+export default function ToolGrid({ locale, tools, initialCategory }: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const resolveCategory = (cat?: string): FilterCategory => {
+    if (cat && FILTER_ORDER.includes(cat as FilterCategory)) return cat as FilterCategory;
+    return 'finance';
+  };
+
+  const [active, setActive] = useState<FilterCategory>(resolveCategory(initialCategory));
   const [search, setSearch] = useState('');
 
   const labels = CATEGORY_LABELS[locale] || CATEGORY_LABELS.en;
   const placeholder = SEARCH_PLACEHOLDER[locale] || SEARCH_PLACEHOLDER.en;
   const noResults = NO_RESULTS[locale] || NO_RESULTS.en;
+
+  const handleCategoryChange = (cat: FilterCategory) => {
+    setActive(cat);
+    router.replace(`${pathname}?category=${cat}`, { scroll: false });
+  };
 
   const q = search.trim().toLowerCase();
   const filtered = tools.filter((t) => {
@@ -95,7 +115,7 @@ export default function ToolGrid({ locale, tools }: { locale: string; tools: Too
             key={cat}
             type="button"
             className={`${styles['tool-filter__btn']}${active === cat ? ` ${styles['tool-filter__btn--active']}` : ''}`}
-            onClick={() => setActive(cat)}
+            onClick={() => handleCategoryChange(cat)}
           >
             {labels[cat]}
           </button>

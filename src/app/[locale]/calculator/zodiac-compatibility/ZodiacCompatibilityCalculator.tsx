@@ -6,37 +6,37 @@ import styles from './ZodiacCompatibilityCalculator.module.scss';
 type Props = { locale: string };
 
 const T: Record<string, {
-  label1: string; label2: string; btn: string; errSame: string;
+  label1: string; label2: string; btn: string; errEmpty: string;
   scoreLabel: string; levelLabel: string; descLabel: string;
   levels: [string, string, string, string];
 }> = {
   en: {
     label1: 'Your zodiac sign', label2: 'Partner\'s zodiac sign', btn: 'Check Compatibility',
-    errSame: 'Select two different signs to compare.',
+    errEmpty: 'Please select the partner\'s zodiac sign.',
     scoreLabel: 'Compatibility', levelLabel: 'Level', descLabel: 'What this means',
     levels: ['Excellent', 'Good', 'Moderate', 'Challenging'],
   },
   ru: {
     label1: 'Ваш знак зодиака', label2: 'Знак партнёра', btn: 'Проверить совместимость',
-    errSame: 'Выберите два разных знака для сравнения.',
+    errEmpty: 'Пожалуйста, выберите знак партнёра.',
     scoreLabel: 'Совместимость', levelLabel: 'Уровень', descLabel: 'Что это означает',
     levels: ['Отлично', 'Хорошо', 'Умеренно', 'Сложно'],
   },
   uk: {
     label1: 'Ваш знак зодіаку', label2: 'Знак партнера', btn: 'Перевірити сумісність',
-    errSame: 'Виберіть два різних знаки для порівняння.',
+    errEmpty: 'Будь ласка, виберіть знак партнера.',
     scoreLabel: 'Сумісність', levelLabel: 'Рівень', descLabel: 'Що це означає',
     levels: ['Відмінно', 'Добре', 'Помірно', 'Складно'],
   },
   fr: {
     label1: 'Votre signe du zodiaque', label2: 'Signe du partenaire', btn: 'Vérifier la compatibilité',
-    errSame: 'Sélectionnez deux signes différents pour comparer.',
+    errEmpty: 'Veuillez sélectionner le signe du partenaire.',
     scoreLabel: 'Compatibilité', levelLabel: 'Niveau', descLabel: 'Ce que cela signifie',
     levels: ['Excellent', 'Bien', 'Modéré', 'Difficile'],
   },
   lt: {
     label1: 'Jūsų zodiako ženklas', label2: 'Partnerio zodiako ženklas', btn: 'Tikrinti suderinamumą',
-    errSame: 'Pasirinkite du skirtingus ženklus palyginimui.',
+    errEmpty: 'Pasirinkite partnerio zodiako ženklą.',
     scoreLabel: 'Suderinamumas', levelLabel: 'Lygis', descLabel: 'Ką tai reiškia',
     levels: ['Puikus', 'Geras', 'Vidutinis', 'Sudėtingas'],
   },
@@ -124,8 +124,9 @@ const BASE_SCORES: Record<ElemPair, number> = {
   'air-air': 80, 'air-water': 52, 'water-water': 85,
 };
 
-const COMPAT_DESC: Record<string, Record<ElemPair, string>> = {
+const COMPAT_DESC: Record<string, Record<string, string>> = {
   en: {
+    'same': 'Two of the same sign share an immediate, instinctive understanding — you know each other\'s drives, fears and desires without explanation. The connection feels effortless at first, but the real challenge lies in growth: without contrast, you risk amplifying each other\'s weaknesses rather than balancing them. The key to making this work is preserving individual paths within the relationship, so each person continues to evolve independently rather than becoming a mirror of the other.',
     'fire-fire': 'Two fire signs burn bright together — passionate, competitive and never boring. You share a love of adventure, excitement and bold action. The key challenge is avoiding ego clashes; when you channel that fire in the same direction, you become an unstoppable team.',
     'fire-earth': 'Fire and Earth create friction — Fire wants spontaneity while Earth needs security and routine. This pairing requires patience and mutual respect. Earth can ground Fire\'s impulsive energy, while Fire can inspire Earth to take bold leaps.',
     'fire-air': 'Fire and Air are a natural pairing — Air feeds Fire and keeps it alive. You connect through ideas, conversation and a shared love of freedom. This is often an exciting, intellectually stimulating combination with strong romantic spark.',
@@ -138,6 +139,7 @@ const COMPAT_DESC: Record<string, Record<ElemPair, string>> = {
     'water-water': 'Two Water signs share extraordinary emotional depth, empathy and intuitive understanding. You feel profoundly seen and understood by each other. The risk is getting lost in emotions together; regular grounding in the practical world helps.',
   },
   ru: {
+    'same': 'Два одинаковых знака создают мгновенную, инстинктивную связь — вы понимаете мотивы, страхи и желания друг друга без лишних слов. Поначалу это ощущается как магия, но главный вызов — в росте: без контраста вы рискуете усиливать слабости друг друга, а не уравновешивать их. Ключ к успеху — сохранять индивидуальные пути внутри союза, чтобы каждый продолжал развиваться самостоятельно, не превращаясь в зеркало партнёра.',
     'fire-fire': 'Два знака Огня горят ярко вместе — страстные, соревновательные и никогда не скучные. Вы разделяете любовь к приключениям и смелым поступкам. Ключевой вызов — избегать столкновений эго; когда вы направляете этот огонь в одном направлении, вы становитесь непобедимой командой.',
     'fire-earth': 'Огонь и Земля создают трения — Огонь хочет спонтанности, Земля нуждается в безопасности и рутине. Эта пара требует терпения и взаимного уважения. Земля может заземлить импульсивную энергию Огня, а Огонь может вдохновить Землю на смелые шаги.',
     'fire-air': 'Огонь и Воздух — естественная пара: Воздух питает Огонь и поддерживает его горение. Вы связаны через идеи, разговоры и общую любовь к свободе. Это часто захватывающее, интеллектуально стимулирующее сочетание с сильной искрой.',
@@ -150,6 +152,7 @@ const COMPAT_DESC: Record<string, Record<ElemPair, string>> = {
     'water-water': 'Два знака Воды разделяют необыкновенную эмоциональную глубину, эмпатию и интуитивное понимание. Вы глубоко видите и понимаете друг друга. Риск — потеряться в эмоциях вместе.',
   },
   uk: {
+    'same': 'Два однакових знаки створюють миттєвий, інстинктивний зв\'язок — ви розумієте мотиви, страхи та бажання одне одного без зайвих слів. Спочатку це відчувається як магія, але головний виклик — у зростанні: без контрасту ви ризикуєте посилювати слабкості одне одного, а не врівноважувати їх. Ключ до успіху — зберігати індивідуальні шляхи всередині союзу, щоб кожен продовжував розвиватися самостійно.',
     'fire-fire': 'Два знаки Вогню горять яскраво разом — пристрасні, змагальні та ніколи нудні. Ви поділяєте любов до пригод та сміливих дій. Ключовий виклик — уникати зіткнень его; коли ви спрямовуєте цей вогонь в одному напрямку, ви стаєте непереможною командою.',
     'fire-earth': 'Вогонь та Земля створюють тертя — Вогонь хоче спонтанності, Земля потребує безпеки та рутини. Ця пара вимагає терпіння та взаємної поваги. Земля може заземлити імпульсивну енергію Вогню, а Вогонь може надихнути Землю на сміливі кроки.',
     'fire-air': 'Вогонь та Повітря — природна пара: Повітря живить Вогонь. Ви пов\'язані через ідеї, розмови та спільну любов до свободи. Це часто захоплюючи, інтелектуально стимулюючи поєднання з сильною іскрою.',
@@ -162,6 +165,7 @@ const COMPAT_DESC: Record<string, Record<ElemPair, string>> = {
     'water-water': 'Два знаки Води поділяють надзвичайну емоційну глибину, емпатію та інтуїтивне розуміння. Ви глибоко бачите та розумієте одне одного. Ризик — разом загубитися в емоціях.',
   },
   fr: {
+    'same': 'Deux signes identiques partagent une compréhension immédiate et instinctive — vous connaissez les motivations, les peurs et les désirs de l\'autre sans explication. La connexion semble magique au début, mais le vrai défi réside dans la croissance : sans contraste, vous risquez d\'amplifier mutuellement vos faiblesses plutôt que de les équilibrer. La clé est de préserver des chemins individuels au sein de la relation, pour que chacun continue d\'évoluer de façon indépendante.',
     'fire-fire': 'Deux signes de Feu brillent intensément ensemble — passionnés, compétitifs et jamais ennuyeux. Vous partagez l\'amour de l\'aventure et des actions audacieuses. Le principal défi est d\'éviter les conflits d\'ego.',
     'fire-earth': 'Le Feu et la Terre créent des frictions — le Feu veut la spontanéité tandis que la Terre a besoin de sécurité et de routine. Cette combinaison nécessite patience et respect mutuel.',
     'fire-air': 'Le Feu et l\'Air sont une paire naturelle — l\'Air nourrit le Feu et le maintient en vie. Vous vous connectez à travers les idées, la conversation et un amour partagé de la liberté.',
@@ -174,6 +178,7 @@ const COMPAT_DESC: Record<string, Record<ElemPair, string>> = {
     'water-water': 'Deux signes d\'Eau partagent une profondeur émotionnelle extraordinaire et une compréhension intuitive. Vous vous sentez profondément vus et compris l\'un par l\'autre.',
   },
   lt: {
+    'same': 'Du vienodi ženklai dalijasi momentišku, instinktyviu supratimu — jūs žinote vienas kito motyvus, baimes ir norus be paaiškinimų. Ryšys iš pradžių atrodo magiškas, tačiau tikrasis iššūkis yra augimas: be kontrasto rizikuojate stiprinti vienas kito silpnybes, o ne jas subalansuoti. Raktas — išlaikyti individualius kelius santykiuose, kad kiekvienas toliau augtų savarankiškai.',
     'fire-fire': 'Du Ugnies ženklai dega ryškiai kartu — aistringi, konkurencingi ir niekada nuobodūs. Jūs dalijatės meile nuotykiams ir drąsiems veiksmams. Pagrindinis iššūkis — vengti ego susidūrimų.',
     'fire-earth': 'Ugnis ir Žemė sukuria trintį — Ugnis nori spontaniškumo, o Žemė reikalauja saugumo ir rutinos. Šis derinys reikalauja kantrybės ir abipusės pagarbos.',
     'fire-air': 'Ugnis ir Oras yra natūrali pora — Oras maitina Ugnį ir palaiko ją gyva. Jūs susisiejate per idėjas, pokalbius ir bendrą laisvės meilę.',
@@ -222,15 +227,15 @@ export default function ZodiacCompatibilityCalculator({ locale }: Props) {
   const [error, setError] = useState('');
 
   const calculate = () => {
-    if (!sign2) { setError(t.errSame); setResult(null); return; }
+    if (!sign2) { setError(t.errEmpty); setResult(null); return; }
+    setError('');
     const i1 = parseInt(sign1, 10);
     const i2 = parseInt(sign2, 10);
-    if (i1 === i2) { setError(t.errSame); setResult(null); return; }
-    setError('');
     const s1 = signs[i1];
     const s2 = signs[i2];
-    const score = calcScore(s1, s2);
-    const key = getElementPairKey(s1.element, s2.element);
+    const isSame = i1 === i2;
+    const score = isSame ? 75 : calcScore(s1, s2);
+    const key = isSame ? 'same' : getElementPairKey(s1.element, s2.element);
     setResult({
       score,
       desc: descs[key] ?? '',
