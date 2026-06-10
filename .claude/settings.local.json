@@ -48,7 +48,13 @@
       "WebFetch(domain:www.utilixi.com)",
       "Bash(grep -c \"^      {$\\\\|^        q:\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/weather/page.tsx\")",
       "Bash(grep -c \"^      {$\\\\|^        q:\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/currency/page.tsx\")",
-      "Bash(grep -c \"^      {$\\\\|^        q:\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/currency/rates/page.tsx\")"
+      "Bash(grep -c \"^      {$\\\\|^        q:\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/currency/rates/page.tsx\")",
+      "Bash(cp \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/chinese-zodiac/page.module.scss\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/celtic-zodiac/page.module.scss\")",
+      "Bash(cp \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/chinese-zodiac/page.module.scss\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/zodiac-compatibility/page.module.scss\")",
+      "Bash(cp \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/chinese-zodiac/page.module.scss\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/mercury-retrograde/page.module.scss\")",
+      "Bash(cp \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/chinese-zodiac/page.module.scss\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/angel-number/page.module.scss\")",
+      "Bash(cp \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/zodiac-sign/page.module.scss\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/archetype-number/page.module.scss\")",
+      "Bash(cp \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/zodiac-sign/page.module.scss\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/biorhythm/page.module.scss\")"
     ]
   }
 }

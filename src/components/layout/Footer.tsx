@@ -163,6 +163,29 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
       { href: '/converter/clothing-size', labels: { en: 'Clothing Size Converter', ru: 'Конвертер размеров одежды', uk: 'Конвертер розмірів одягу', fr: 'Convertisseur de tailles', lt: 'Drabužių dydžių keitiklis' } },
     ],
   },
+  {
+    key: 'esoteric',
+    labels: { en: 'Esoteric', ru: 'Эзотерика', uk: 'Езотерика', fr: 'Ésotérique', lt: 'Ezoterika' },
+    tools: [
+      { href: '/calculator/life-path', labels: { en: 'Life Path Number', ru: 'Число жизненного пути', uk: 'Число життєвого шляху', fr: 'Chemin de Vie', lt: 'Gyvenimo kelio skaičius' } },
+      { href: '/calculator/destiny-number', labels: { en: 'Destiny Number', ru: 'Число судьбы', uk: 'Число долі', fr: 'Nombre Destin', lt: 'Likimo skaičius' } },
+      { href: '/calculator/name-number', labels: { en: 'Name Number', ru: 'Число имени', uk: 'Число імені', fr: 'Nombre du Nom', lt: 'Vardo skaičius' } },
+      { href: '/calculator/soul-number', labels: { en: 'Soul Number', ru: 'Число души', uk: 'Число душі', fr: "Nombre de l'Âme", lt: 'Sielos skaičius' } },
+      { href: '/calculator/personality-number', labels: { en: 'Personality Number', ru: 'Число личности', uk: 'Число особистості', fr: 'Nombre de Personnalité', lt: 'Asmenybės skaičius' } },
+      { href: '/calculator/personal-year', labels: { en: 'Personal Year', ru: 'Персональный год', uk: 'Персональний рік', fr: 'Année Personnelle', lt: 'Asmeniniai metai' } },
+      { href: '/calculator/numerology-compatibility', labels: { en: 'Numerology Compatibility', ru: 'Совместимость нумерология', uk: 'Сумісність нумерологія', fr: 'Compatibilité Numérologique', lt: 'Numerologinis suderinamumas' } },
+      { href: '/calculator/pythagorean-matrix', labels: { en: 'Pythagorean Matrix', ru: 'Матрица Пифагора', uk: 'Матриця Піфагора', fr: 'Matrice Pythagoricienne', lt: 'Pitagoro matrica' } },
+      { href: '/calculator/karmic-number', labels: { en: 'Karmic Numbers', ru: 'Кармические числа', uk: 'Кармічні числа', fr: 'Nombres Karmiques', lt: 'Karminiai skaičiai' } },
+      { href: '/calculator/zodiac-sign', labels: { en: 'Zodiac Sign', ru: 'Знак зодиака', uk: 'Знак зодіаку', fr: 'Signe du Zodiaque', lt: 'Zodiako ženklas' } },
+      { href: '/calculator/chinese-zodiac', labels: { en: 'Chinese Zodiac', ru: 'Китайский гороскоп', uk: 'Китайський гороскоп', fr: 'Zodiaque Chinois', lt: 'Kinų zodiako ženklas' } },
+      { href: '/calculator/celtic-zodiac', labels: { en: 'Celtic Zodiac', ru: 'Кельтский зодиак', uk: 'Кельтський зодіак', fr: 'Zodiaque Celtique', lt: 'Keltų zodiako ženklas' } },
+      { href: '/calculator/zodiac-compatibility', labels: { en: 'Zodiac Compatibility', ru: 'Совместимость знаков', uk: 'Сумісність знаків', fr: 'Compatibilité Astrologique', lt: 'Ženklų suderinamumas' } },
+      { href: '/calculator/mercury-retrograde', labels: { en: 'Mercury Retrograde', ru: 'Меркурий ретроградный', uk: 'Меркурій ретроградний', fr: 'Mercure Rétrograde', lt: 'Merkurijaus retrogradas' } },
+      { href: '/calculator/angel-number', labels: { en: 'Angel Number', ru: 'Число ангела', uk: 'Число ангела', fr: 'Nombre Angélique', lt: 'Angelo skaičius' } },
+      { href: '/calculator/archetype-number', labels: { en: 'Personality Archetype', ru: 'Архетип личности', uk: 'Архетип особистості', fr: 'Archétype de Personnalité', lt: 'Asmenybės archetipas' } },
+      { href: '/calculator/biorhythm', labels: { en: 'Biorhythm Calculator', ru: 'Биоритмы', uk: 'Біоритми', fr: 'Biorythmes', lt: 'Bioritmas' } },
+    ],
+  },
 ];
 
 export default function Footer({ locale }: Props) {

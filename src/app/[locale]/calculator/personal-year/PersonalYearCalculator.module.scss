@@ -1,0 +1,106 @@
+.calc {
+  background: var(--color-bg-widget);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-widget);
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+  }
+
+  &__label {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  &__input {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    width: 100%;
+    transition: border-color var(--transition-base);
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-light);
+    }
+
+    @media (min-width: 640px) { max-width: 360px; }
+  }
+
+  &__btn {
+    padding: var(--spacing-sm) var(--spacing-xl);
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-base);
+    margin-top: var(--spacing-sm);
+    width: 100%;
+
+    @media (min-width: 640px) { width: auto; min-width: 240px; }
+
+    &:hover { background: var(--color-primary-hover); }
+    &:active { transform: scale(0.98); }
+  }
+
+  &__error {
+    font-size: var(--font-size-sm);
+    color: #DC2626;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: #FEF2F2;
+    border-radius: var(--radius-sm);
+    border: 1px solid #FCA5A5;
+    margin-top: var(--spacing-sm);
+  }
+
+  &__result {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    background: var(--color-primary-light);
+    border-radius: var(--radius-md);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  &__year_badge {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+
+  &__number {
+    font-size: 80px;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+
+  &__name {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  &__desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 480px;
+  }
+}
