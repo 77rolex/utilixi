@@ -6,6 +6,7 @@ import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CookieBanner from '@/components/ui/CookieBanner';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -50,6 +51,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <NextIntlClientProvider messages={messages}>
         <Header locale={locale} />
         <main className="main-content">
+          <Breadcrumbs locale={locale} />
           {children}
         </main>
         <Footer locale={locale} />
