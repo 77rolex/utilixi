@@ -92,6 +92,8 @@ const NAV_CATEGORIES: NavCategory[] = [
       { href: '/calculator/angel-number', labels: { en: 'Angel Number', ru: 'Число ангела', uk: 'Число ангела', fr: 'Nombre Angélique', lt: 'Angelo skaičius' } },
       { href: '/calculator/archetype-number', labels: { en: 'Personality Archetype', ru: 'Архетип личности', uk: 'Архетип особистості', fr: 'Archétype', lt: 'Asmenybės archetipas' } },
       { href: '/calculator/biorhythm', labels: { en: 'Biorhythm', ru: 'Биоритмы', uk: 'Біоритми', fr: 'Biorythmes', lt: 'Bioritmas' } },
+      { href: '/calculator/moon-phases', labels: { en: 'Moon Phases', ru: 'Лунный календарь', uk: 'Фази місяця', fr: 'Phases de la Lune', lt: 'Mėnulio fazės' } },
+      { href: '/calculator/moon-sign', labels: { en: 'Moon Sign', ru: 'Лунный знак', uk: 'Місячний знак', fr: 'Signe Lunaire', lt: 'Mėnulio ženklas' } },
     ],
   },
   {

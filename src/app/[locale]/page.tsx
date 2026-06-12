@@ -22,11 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 
   const descriptions: Record<string, string> = {
-    en: '71 free online tools — mortgage, tax & insurance calculators, BMI, calorie counter, numerology, live currency & crypto rates, weather forecast and more.',
-    ru: '71 бесплатный онлайн-инструмент — ипотека, налоги, ИМТ, нумерология, курсы валют и криптовалют, прогноз погоды и многое другое.',
-    uk: '71 безкоштовний онлайн-інструмент — іпотека, податки, ІМТ, нумерологія, курси валют і криптовалют, прогноз погоди та інше.',
-    fr: '71 outils en ligne gratuits — prêt immobilier, impôts, IMC, numérologie, taux de change et crypto en direct, météo et plus encore.',
-    lt: '71 nemokamas internetinis įrankis — hipoteka, mokesčiai, KMI, numerologija, valiutų ir kriptovaliutų kursai, orų prognozė ir daugiau.',
+    en: '73 free online tools — mortgage, tax & insurance calculators, BMI, calorie counter, numerology, moon sign, live currency & crypto rates, weather forecast and more.',
+    ru: '73 бесплатных онлайн-инструмента — ипотека, налоги, ИМТ, нумерология, лунный знак, курсы валют и криптовалют, прогноз погоды и многое другое.',
+    uk: '73 безкоштовних онлайн-інструменти — іпотека, податки, ІМТ, нумерологія, місячний знак, курси валют і криптовалют, прогноз погоди та інше.',
+    fr: '73 outils en ligne gratuits — prêt immobilier, impôts, IMC, numérologie, signe lunaire, taux de change et crypto en direct, météo et plus encore.',
+    lt: '73 nemokami internetiniai įrankiai — hipoteka, mokesčiai, KMI, numerologija, mėnulio ženklas, valiutų ir kriptovaliutų kursai, orų prognozė ir daugiau.',
   };
 
   return buildMetadata(locale, '', {
@@ -540,6 +540,20 @@ const RAW_TOOLS: RawTool[] = [
     category: 'esoteric',
     titles: { en: 'Biorhythm Calculator', ru: 'Биоритмы', uk: 'Біоритми', fr: 'Biorythmes', lt: 'Bioritmas' },
     descs: { en: 'Calculate your physical, emotional and intellectual cycles with a 30-day chart', ru: 'Рассчитайте физический, эмоциональный и интеллектуальный циклы с графиком на 30 дней', uk: 'Розрахуйте фізичний, емоційний та інтелектуальний цикли з графіком на 30 днів', fr: "Calculez vos cycles physique, émotionnel et intellectuel avec un graphique 30 jours", lt: 'Apskaičiuokite savo fizinius, emocinius ir intelektualinius ciklus su 30 dienų grafiku' },
+  },
+  {
+    href: '/calculator/moon-phases',
+    icon: '🌕',
+    category: 'esoteric',
+    titles: { en: 'Moon Phase Calculator', ru: 'Лунный календарь', uk: 'Фази місяця', fr: 'Phases de la Lune', lt: 'Mėnulio fazės' },
+    descs: { en: 'Current lunar phase, illumination % and upcoming New Moon & Full Moon dates', ru: 'Фаза луны сегодня, освещённость и даты ближайших новолуний и полнолуний', uk: 'Фаза місяця сьогодні, освітленість і дати найближчих новолунь і повних місяців', fr: 'Phase lunaire actuelle, illumination % et prochaines Nouvelle Lune & Pleine Lune', lt: 'Dabartinė mėnulio fazė, apšvietimas % ir artimiausi jauno mėnulio bei pilnaties datos' },
+  },
+  {
+    href: '/calculator/moon-sign',
+    icon: '🌙',
+    category: 'esoteric',
+    titles: { en: 'Moon Sign Calculator', ru: 'Лунный знак', uk: 'Місячний знак', fr: 'Signe Lunaire', lt: 'Mėnulio ženklas' },
+    descs: { en: 'Find your lunar zodiac sign by date, time and timezone. Element, ruling planet and character description', ru: 'Лунный знак зодиака по дате и времени рождения. Стихия, управитель и описание характера', uk: 'Місячний знак зодіаку за датою і часом народження. Стихія, управитель і опис характеру', fr: 'Signe lunaire du zodiaque par date, heure et fuseau horaire. Élément et planète dominante', lt: 'Mėnulio zodiako ženklas pagal gimimo datą, laiką ir laiko juostą. Elementas ir valdančioji planeta' },
   },
 ];
 

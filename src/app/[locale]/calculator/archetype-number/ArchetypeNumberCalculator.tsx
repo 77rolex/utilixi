@@ -236,7 +236,7 @@ const ARCHETYPES: Record<number, Record<string, ArchetypeData>> = {
       strengths: ['Compassion universelle', 'Sagesse profonde', "Capacité à inspirer les foules", 'Service désintéressé'],
       challenges: ['Problèmes d\'attachement', 'Ressentiment quand ignoré', 'Martyre', 'Difficulté avec les limites personnelles'],
       purpose: 'Servir l\'humanité, inspirer la transformation et laisser le monde meilleur qu\'on ne l\'a trouvé.' },
-    lt: { name: 'Išminčius', symbol: '🌍', tagline: 'Išmintinga brendi siela, atėjusi tarnauti ir transformuoti pasaulį',
+    lt: { name: 'Išminčius', symbol: '🌍', tagline: 'Išmintinga subrendusi siela, atėjusi tarnauti ir transformuoti pasaulį',
       strengths: ['Visuotinis užuojautimas', 'Plati išmintis', 'Gebėjimas įkvėpti minias', 'Nesavanaudiškas tarnavimas'],
       challenges: ['Prisirišimo problemos', 'Pasipiktinimas nepripažinus', 'Kankinystė', 'Sunkumai su asmeninėmis ribomis'],
       purpose: 'Tarnauti žmonijai, įkvėpti transformaciją ir palikti pasaulį geresnį nei radai.' },

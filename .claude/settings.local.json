@@ -58,7 +58,12 @@
       "Bash(claude --version)",
       "Bash(npm show *)",
       "Bash(grep -v \"\\\\.ts$\")",
-      "Bash(grep -E \"^.*error.*$|✓ Compiled|Build completed|Failed\")"
+      "Bash(grep -E \"^.*error.*$|✓ Compiled|Build completed|Failed\")",
+      "Bash(grep -iE \"[a-ząčęėįšųūž]{2,}aas|[a-ząčęėįšųūž]{2,}ees|[a-ząčęėįšųūž]{2,}iis|[a-ząčęėįšųūž]{2,}oos|[a-ząčęėįšųūž]{2,}uus\")",
+      "Bash(grep -rPn \"lt:.*'[^']{20,}'\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/archetype-number/ArchetypeNumberCalculator.tsx\")",
+      "Bash(grep -rPn \"lt:.*'[^']{30,}'\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/archetype-number/ArchetypeNumberCalculator.tsx\")",
+      "Bash(grep -oP \"'[^']{30,}'\")",
+      "Bash(python3-c *)"
     ]
   }
 }

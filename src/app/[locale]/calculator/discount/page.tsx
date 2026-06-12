@@ -24,7 +24,7 @@ const META: Record<string, { title: string; description: string; h1: string }> =
   ru: { title: 'Калькулятор скидки — рассчитайте цену и экономию', description: 'Бесплатный калькулятор скидки. Найдите финальную цену после скидки, рассчитайте процент скидки по ценам или примените несколько скидок подряд. Мгновенный результат.', h1: 'Калькулятор скидки' },
   uk: { title: 'Калькулятор знижки — розрахуйте ціну та економію', description: 'Безкоштовний калькулятор знижки. Знайдіть фінальну ціну після знижки, розрахуйте відсоток знижки за цінами або застосуйте кілька знижок підряд. Миттєвий результат.', h1: 'Калькулятор знижки' },
   fr: { title: 'Calculatrice de remise — Calculez le prix soldé et les économies', description: 'Calculatrice de remise gratuite. Trouvez le prix final après une remise %, calculez le % de remise à partir des prix, ou appliquez plusieurs remises successives.', h1: 'Calculatrice de remise' },
-  lt: { title: 'Nuolaidu skaičiuotuvas — galutinė kaina po nuolaidos nemokamai', description: 'Nuolaidu skaičiuotuvas internetu nemokamai. Apskaičiuokite galutinę kainą po nuolaidos, nustatykite nuolaidos procentą pagal kainas arba sudėkite kelias nuolaidas iš eilės. Momentinis rezultatas.', h1: 'Nuolaidos skaičiuotuvas' },
+  lt: { title: 'Nuolaidų Skaičiuotuvas — galutinė kaina ir sutaupoma suma', description: 'Apskaičiuokite galutinę kainą po nuolaidos ir sužinokite, kiek sutaupote. Įveskite pradinę kainą ir nuolaidos % — arba kelios nuolaidos iš eilės. Nemokamai ir akimirksniu.', h1: 'Nuolaidos skaičiuotuvas' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {

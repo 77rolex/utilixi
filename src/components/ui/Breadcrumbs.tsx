@@ -96,6 +96,8 @@ const TOOL_META: Record<string, ToolMeta> = {
   '/calculator/angel-number': { category: 'esoteric' },
   '/calculator/archetype-number': { category: 'esoteric' },
   '/calculator/biorhythm': { category: 'esoteric' },
+  '/calculator/moon-phases': { category: 'esoteric' },
+  '/calculator/moon-sign': { category: 'esoteric' },
 };
 
 const LOCALES = ['en', 'ru', 'uk', 'fr', 'lt'];

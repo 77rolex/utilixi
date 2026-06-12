@@ -82,7 +82,7 @@ const SIGNS: {
     ru: { name: 'Скорпион', dates: '23 октября – 21 ноября', element: 'Вода', planet: 'Плутон', desc: 'Скорпион — знак интенсивности, глубины и трансформации. Рождённые под знаком Скорпиона целеустремлённы, проницательны и ревностно хранят личное. Они переживают жизнь на самых глубоких уровнях и способны на исключительную стойкость и полное перерождение.' },
     uk: { name: 'Скорпіон', dates: '23 жовтня – 21 листопада', element: 'Вода', planet: 'Плутон', desc: 'Скорпіон — знак інтенсивності, глибини та трансформації. Народжені під знаком Скорпіона цілеспрямовані, проникливі та ревно зберігають особисте. Вони здатні на виняткову стійкість і повне переродження.' },
     fr: { name: 'Scorpion', dates: '23 octobre – 21 novembre', element: 'Eau', planet: 'Pluton', desc: 'Le Scorpion est le signe de l\'intensité, de la profondeur et de la transformation. Déterminés, perspicaces et farouchement privés, ceux nés sous le Scorpion vivent à des niveaux profonds et sont capables d\'une résilience et d\'une transformation extraordinaires.' },
-    lt: { name: 'Skorpionas', dates: 'spalio 23 – lapkričio 21', element: 'Vanduo', planet: 'Plutonas', desc: 'Skorpionas yra intensyvumo, gilumo ir transformacijos ženklas. Gimę po Skorpionu yra ryžtingi, įžvalgūs ir griežtai privatūs. Jie gyvena giliausiais lygiais ir geba nepaprastaai atsitiesti ir visiškai persimainyti.' },
+    lt: { name: 'Skorpionas', dates: 'spalio 23 – lapkričio 21', element: 'Vanduo', planet: 'Plutonas', desc: 'Skorpionas yra intensyvumo, gilumo ir transformacijos ženklas. Gimę po Skorpionu yra ryžtingi, įžvalgūs ir griežtai privatūs. Jie gyvena giliausiais lygiais ir geba nepaprastai atsitiesti ir visiškai persimainyti.' },
   },
   {
     symbol: '♐', element: 'fire',

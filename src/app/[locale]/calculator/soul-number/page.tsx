@@ -27,8 +27,8 @@ const META: Record<string, { title: string; description: string; h1: string }> =
     h1: 'Число душі — калькулятор',
   },
   fr: {
-    title: 'Calculateur Nombre d\'Âme — Désir du Cœur Gratuit en Ligne',
-    description: 'Calculez votre Nombre d\'Âme (Désir du Cœur) gratuitement en ligne. Entrez votre nom et découvrez la motivation intérieure secrète et le désir le plus profond qui anime votre âme.',
+    title: "Nombre de l'Âme Numérologie — Calcul par les Voyelles",
+    description: "Calculez votre Nombre de l'Âme à partir des voyelles de votre nom. Découvrez votre désir profond et vos aspirations secrètes selon la numérologie pythagoricienne — gratuit en ligne.",
     h1: "Calculateur du Nombre d'Âme",
   },
   lt: {
