@@ -601,8 +601,8 @@ const RAW_TOOLS: RawTool[] = [
     href: '/calculator/macros',
     icon: '🥗',
     category: 'health',
-    titles: { en: 'Macro Calculator', ru: 'Калькулятор КБЖУ', uk: 'Калькулятор КБЖВ', fr: 'Calculatrice Macros', lt: 'Makroelementų skaičiuotuvas' },
-    descs: { en: 'Calculate daily protein, fat and carb targets based on your goal', ru: 'Рассчитайте суточные нормы белков, жиров и углеводов', uk: 'Розрахуйте добові норми білків, жирів і вуглеводів', fr: 'Calculez vos besoins journaliers en protéines, lipides, glucides', lt: 'Apskaičiuokite dienos baltymų, riebalų ir angliavandenių normas' },
+    titles: { en: 'Macro Calculator', ru: 'Калькулятор БЖУ / Macros', uk: 'Калькулятор БЖУ / Macros', fr: 'Calculatrice Macros', lt: 'Makroelementų skaičiuotuvas' },
+    descs: { en: 'Calculate daily protein, fat and carb targets based on your goal', ru: 'Суточные нормы белков, жиров и углеводов по цели: похудение, поддержание или набор массы', uk: 'Добові норми білків, жирів і вуглеводів за метою: схуднення, підтримка або набір маси', fr: 'Calculez vos besoins journaliers en protéines, lipides, glucides', lt: 'Apskaičiuokite dienos baltymų, riebalų ir angliavandenių normas' },
   },
   {
     href: '/calculator/ac-cost',
@@ -614,7 +614,7 @@ const RAW_TOOLS: RawTool[] = [
   {
     href: '/calculator/travel-budget',
     icon: '✈️',
-    category: 'finance',
+    category: 'travel',
     titles: { en: 'Travel Budget Calculator', ru: 'Калькулятор бюджета путешествия', uk: 'Калькулятор бюджету подорожі', fr: 'Calculatrice Budget Voyage', lt: 'Kelionės biudžeto skaičiuotuvas' },
     descs: { en: 'Plan your trip budget: accommodation, food, transport, activities', ru: 'Планируйте бюджет поездки: жильё, еда, транспорт, развлечения', uk: 'Плануйте бюджет поїздки: житло, їжа, транспорт, розваги', fr: 'Planifiez votre budget voyage: hébergement, nourriture, transport', lt: 'Planuokite kelionės biudžetą: nakvynė, maistas, transportas' },
   },
@@ -628,7 +628,7 @@ const RAW_TOOLS: RawTool[] = [
   {
     href: '/calculator/party-food',
     icon: '🎉',
-    category: 'utility',
+    category: 'lifestyle',
     titles: { en: 'Party Food Calculator', ru: 'Калькулятор продуктов для вечеринки', uk: 'Калькулятор продуктів для вечірки', fr: 'Calculatrice Buffet Fête', lt: 'Šventinių produktų skaičiuotuvas' },
     descs: { en: 'Calculate food and drink quantities for BBQ, buffet or cocktail parties', ru: 'Рассчитайте количество еды и напитков для барбекю или фуршета', uk: 'Розрахуйте кількість їжі та напоїв для вечірки або барбекю', fr: 'Calculez les quantités de nourriture et boissons pour votre fête', lt: 'Apskaičiuokite maisto ir gėrimų kiekius šventei ar BBQ' },
   },

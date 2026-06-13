@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Breadcrumbs.module.scss';
 
-type ToolCategory = 'finance' | 'crypto' | 'health' | 'utility' | 'legal' | 'measure' | 'realestate' | 'esoteric';
+type ToolCategory = 'finance' | 'crypto' | 'health' | 'utility' | 'travel' | 'lifestyle' | 'legal' | 'measure' | 'realestate' | 'esoteric';
 
 const BACK_LABEL: Record<string, string> = {
   en: 'Back to',
@@ -15,11 +15,11 @@ const BACK_LABEL: Record<string, string> = {
 };
 
 const CATEGORY_LABELS: Record<string, Record<ToolCategory, string>> = {
-  en: { finance: 'Finance', crypto: 'Crypto', health: 'Health', utility: 'Utilities', legal: 'Legal', measure: 'Measurements', realestate: 'Real Estate', esoteric: 'Esoteric' },
-  ru: { finance: 'Финансы', crypto: 'Криптовалюта', health: 'Здоровье', utility: 'Утилиты', legal: 'Юридические', measure: 'Измерения', realestate: 'Недвижимость', esoteric: 'Эзотерика' },
-  uk: { finance: 'Фінанси', crypto: 'Криптовалюта', health: "Здоров'я", utility: 'Утиліти', legal: 'Юридичні', measure: 'Вимірювання', realestate: 'Нерухомість', esoteric: 'Езотерика' },
-  fr: { finance: 'Finance', crypto: 'Crypto', health: 'Santé', utility: 'Utilitaires', legal: 'Juridique', measure: 'Mesures', realestate: 'Immobilier', esoteric: 'Ésotérique' },
-  lt: { finance: 'Finansai', crypto: 'Kripto', health: 'Sveikata', utility: 'Priemones', legal: 'Teisinius', measure: 'Matavimus', realestate: 'Nekilnojamąjį turtą', esoteric: 'Ezoteriką' },
+  en: { finance: 'Finance', crypto: 'Crypto', health: 'Health', utility: 'Utilities', travel: 'Travel', lifestyle: 'Lifestyle', legal: 'Legal', measure: 'Measurements', realestate: 'Real Estate', esoteric: 'Esoteric' },
+  ru: { finance: 'Финансы', crypto: 'Криптовалюта', health: 'Здоровье', utility: 'Утилиты', travel: 'Путешествия', lifestyle: 'Быт и досуг', legal: 'Юридические', measure: 'Измерения', realestate: 'Недвижимость', esoteric: 'Эзотерика' },
+  uk: { finance: 'Фінанси', crypto: 'Криптовалюта', health: "Здоров'я", utility: 'Утиліти', travel: 'Подорожі', lifestyle: 'Побут і дозвілля', legal: 'Юридичні', measure: 'Вимірювання', realestate: 'Нерухомість', esoteric: 'Езотерика' },
+  fr: { finance: 'Finance', crypto: 'Crypto', health: 'Santé', utility: 'Utilitaires', travel: 'Voyage', lifestyle: 'Lifestyle', legal: 'Juridique', measure: 'Mesures', realestate: 'Immobilier', esoteric: 'Ésotérique' },
+  lt: { finance: 'Finansai', crypto: 'Kripto', health: 'Sveikata', utility: 'Priemones', travel: 'Kelionės', lifestyle: 'Gyvenimo būdas', legal: 'Teisinius', measure: 'Matavimus', realestate: 'Nekilnojamąjį turtą', esoteric: 'Ezoteriką' },
 };
 
 type ToolMeta = { category: ToolCategory };
@@ -106,9 +106,9 @@ const TOOL_META: Record<string, ToolMeta> = {
   '/calculator/pace': { category: 'health' },
   '/calculator/macros': { category: 'health' },
   '/calculator/ac-cost': { category: 'utility' },
-  '/calculator/travel-budget': { category: 'finance' },
+  '/calculator/travel-budget': { category: 'travel' },
   '/calculator/material-cost': { category: 'utility' },
-  '/calculator/party-food': { category: 'utility' },
+  '/calculator/party-food': { category: 'lifestyle' },
   '/calculator/pool-volume': { category: 'utility' },
   '/calculator/spf': { category: 'health' },
   '/calculator/inflation': { category: 'finance' },

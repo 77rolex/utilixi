@@ -97,7 +97,6 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
       { href: '/calculator/salary', labels: { en: 'Gross to Net Salary', ru: 'Зарплата брутто-нетто', uk: 'Зарплата брутто-нетто', fr: 'Salaire Brut-Net', lt: 'Bruto-Neto atlyginimas' } },
       { href: '/calculator/savings-goal', labels: { en: 'Savings Goal Calculator', ru: 'Калькулятор накоплений', uk: 'Калькулятор накопичень', fr: 'Calculatrice Objectif Épargne', lt: 'Taupymo tikslo skaičiuotuvas' } },
       { href: '/calculator/net-worth', labels: { en: 'Net Worth Calculator', ru: 'Калькулятор чистых активов', uk: 'Калькулятор чистих активів', fr: 'Calculatrice Valeur Nette', lt: 'Grynosios vertės skaičiuotuvas' } },
-      { href: '/calculator/travel-budget', labels: { en: 'Travel Budget Calculator', ru: 'Калькулятор бюджета путешествия', uk: 'Калькулятор бюджету подорожі', fr: 'Calculatrice Budget Voyage', lt: 'Kelionės biudžeto skaičiuotuvas' } },
       { href: '/calculator/inflation', labels: { en: 'Inflation Calculator', ru: 'Калькулятор инфляции', uk: 'Калькулятор інфляції', fr: 'Calculatrice Inflation', lt: 'Infliacijos skaičiuotuvas' } },
       { href: '/calculator/loan-payoff', labels: { en: 'Loan Early Payoff Calculator', ru: 'Калькулятор досрочного погашения', uk: 'Калькулятор дострокового погашення', fr: 'Remboursement Anticipé', lt: 'Išankstinio grąžinimo skaičiuotuvas' } },
     ],
@@ -129,7 +128,7 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
       { href: '/calculator/ovulation', labels: { en: 'Ovulation Calculator', ru: 'Калькулятор овуляции', uk: 'Калькулятор овуляції', fr: 'Calculatrice d\'ovulation', lt: 'Ovuliacijos skaičiuotuvas' } },
       { href: '/calculator/calorie-deficit', labels: { en: 'Calorie Deficit Calculator', ru: 'Калькулятор дефицита калорий', uk: 'Калькулятор дефіциту калорій', fr: 'Calculatrice Déficit Calorique', lt: 'Kalorijų deficito skaičiuotuvas' } },
       { href: '/calculator/pace', labels: { en: 'Running / Cycling Pace Calculator', ru: 'Калькулятор темпа бега/велосипеда', uk: 'Калькулятор темпу бігу/велосипеда', fr: 'Calculatrice Allure Course/Vélo', lt: 'Bėgimo / dviračio tempo skaičiuotuvas' } },
-      { href: '/calculator/macros', labels: { en: 'Macro Calculator', ru: 'Калькулятор КБЖУ', uk: 'Калькулятор КБЖВ', fr: 'Calculatrice Macros', lt: 'Makroelementų skaičiuotuvas' } },
+      { href: '/calculator/macros', labels: { en: 'Macros Calculator', ru: 'Калькулятор БЖУ / Macros', uk: 'Калькулятор БЖУ / Macros', fr: 'Calculatrice Macros', lt: 'Makroelementų skaičiuotuvas' } },
       { href: '/calculator/spf', labels: { en: 'SPF Calculator', ru: 'Калькулятор SPF', uk: 'Калькулятор SPF', fr: 'Calculatrice SPF', lt: 'SPF skaičiuotuvas' } },
     ],
   },
@@ -172,8 +171,21 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
       { href: '/calculator/electricity-bill', labels: { en: 'Electricity Bill Calculator', ru: 'Калькулятор электроэнергии', uk: 'Калькулятор електроенергії', fr: 'Calculatrice Facture Électricité', lt: 'Elektros sąskaitos skaičiuotuvas' } },
       { href: '/calculator/ac-cost', labels: { en: 'AC & Heating Cost Calculator', ru: 'Калькулятор кондиционера/отопления', uk: 'Калькулятор кондиціонера/опалення', fr: 'Climatisation & Chauffage', lt: 'Kondicionieriaus / šildymo skaičiuotuvas' } },
       { href: '/calculator/material-cost', labels: { en: 'Flooring, Paint & Concrete Calculator', ru: 'Калькулятор напольных покрытий и краски', uk: 'Калькулятор покриттів і фарби', fr: 'Revêtement, Peinture & Béton', lt: 'Grindų, dažų ir betono skaičiuotuvas' } },
-      { href: '/calculator/party-food', labels: { en: 'Party Food Calculator', ru: 'Калькулятор продуктов для вечеринки', uk: 'Калькулятор продуктів для вечірки', fr: 'Calculatrice Buffet Fête', lt: 'Šventinių produktų skaičiuotuvas' } },
       { href: '/calculator/pool-volume', labels: { en: 'Pool Volume Calculator', ru: 'Калькулятор объёма бассейна', uk: 'Калькулятор об\'єму басейну', fr: 'Calculatrice Volume Piscine', lt: 'Baseino tūrio skaičiuotuvas' } },
+    ],
+  },
+  {
+    key: 'travel',
+    labels: { en: 'Travel', ru: 'Путешествия', uk: 'Подорожі', fr: 'Voyage', lt: 'Kelionės' },
+    tools: [
+      { href: '/calculator/travel-budget', labels: { en: 'Travel Budget Calculator', ru: 'Калькулятор бюджета путешествия', uk: 'Калькулятор бюджету подорожі', fr: 'Calculatrice Budget Voyage', lt: 'Kelionės biudžeto skaičiuotuvas' } },
+    ],
+  },
+  {
+    key: 'lifestyle',
+    labels: { en: 'Lifestyle', ru: 'Быт и досуг', uk: 'Побут і дозвілля', fr: 'Lifestyle', lt: 'Gyvenimo būdas' },
+    tools: [
+      { href: '/calculator/party-food', labels: { en: 'Party Food Calculator', ru: 'Калькулятор продуктов для вечеринки', uk: 'Калькулятор продуктів для вечірки', fr: 'Calculatrice Buffet Fête', lt: 'Šventinių produktų skaičiuotuvas' } },
     ],
   },
   {

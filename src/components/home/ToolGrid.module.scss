@@ -197,6 +197,38 @@
       display: block;
     }
   }
+
+  &__fav {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--color-text-muted);
+    padding: 0;
+    transition: all var(--transition-base);
+
+    &:hover {
+      color: #F59E0B;
+      border-color: #F59E0B;
+    }
+
+    &--active {
+      color: #F59E0B;
+      border-color: #F59E0B;
+    }
+  }
+}
+
+.tool-card-wrap {
+  position: relative;
 }
 
 .tool-grid__empty {

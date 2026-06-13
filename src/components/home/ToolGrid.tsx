@@ -3,10 +3,10 @@
 import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { getFavorites } from '@/lib/favorites';
+import { getFavorites, toggleFavorite } from '@/lib/favorites';
 import styles from './ToolGrid.module.scss';
 
-export type ToolCategory = 'finance' | 'crypto' | 'health' | 'utility' | 'legal' | 'measure' | 'realestate' | 'esoteric';
+export type ToolCategory = 'finance' | 'crypto' | 'health' | 'utility' | 'travel' | 'lifestyle' | 'legal' | 'measure' | 'realestate' | 'esoteric';
 
 export type ToolItem = {
   href: string;
@@ -19,11 +19,11 @@ export type ToolItem = {
 type FilterCategory = 'favorites' | 'all' | ToolCategory;
 
 const CATEGORY_LABELS: Record<string, Record<FilterCategory, string>> = {
-  en: { favorites: 'Favorites', all: 'All', finance: 'Finance', crypto: 'Crypto', health: 'Health', utility: 'Utilities', legal: 'Legal', measure: 'Measurements', realestate: 'Real Estate', esoteric: 'Esoteric' },
-  ru: { favorites: 'Избранное', all: 'Все', finance: 'Финансы', crypto: 'Криптовалюта', health: 'Здоровье', utility: 'Утилиты', legal: 'Юридические', measure: 'Измерения', realestate: 'Недвижимость', esoteric: 'Эзотерика' },
-  uk: { favorites: 'Вибране', all: 'Усі', finance: 'Фінанси', crypto: 'Криптовалюта', health: 'Здоров\'я', utility: 'Утиліти', legal: 'Юридичні', measure: 'Вимірювання', realestate: 'Нерухомість', esoteric: 'Езотерика' },
-  fr: { favorites: 'Favoris', all: 'Tout', finance: 'Finance', crypto: 'Crypto', health: 'Santé', utility: 'Utilitaires', legal: 'Juridique', measure: 'Mesures', realestate: 'Immobilier', esoteric: 'Ésotérique' },
-  lt: { favorites: 'Mėgstamiausi', all: 'Visi', finance: 'Finansai', crypto: 'Kripto', health: 'Sveikata', utility: 'Priemonės', legal: 'Teisiniai', measure: 'Matavimai', realestate: 'Nekilnojamasis turtas', esoteric: 'Ezoterika' },
+  en: { favorites: 'Favorites', all: 'All', finance: 'Finance', crypto: 'Crypto', health: 'Health', utility: 'Utilities', travel: 'Travel', lifestyle: 'Lifestyle', legal: 'Legal', measure: 'Measurements', realestate: 'Real Estate', esoteric: 'Esoteric' },
+  ru: { favorites: 'Избранное', all: 'Все', finance: 'Финансы', crypto: 'Криптовалюта', health: 'Здоровье', utility: 'Утилиты', travel: 'Путешествия', lifestyle: 'Быт и досуг', legal: 'Юридические', measure: 'Измерения', realestate: 'Недвижимость', esoteric: 'Эзотерика' },
+  uk: { favorites: 'Вибране', all: 'Усі', finance: 'Фінанси', crypto: 'Криптовалюта', health: 'Здоров\'я', utility: 'Утиліти', travel: 'Подорожі', lifestyle: 'Побут і дозвілля', legal: 'Юридичні', measure: 'Вимірювання', realestate: 'Нерухомість', esoteric: 'Езотерика' },
+  fr: { favorites: 'Favoris', all: 'Tout', finance: 'Finance', crypto: 'Crypto', health: 'Santé', utility: 'Utilitaires', travel: 'Voyage', lifestyle: 'Lifestyle', legal: 'Juridique', measure: 'Mesures', realestate: 'Immobilier', esoteric: 'Ésotérique' },
+  lt: { favorites: 'Mėgstamiausi', all: 'Visi', finance: 'Finansai', crypto: 'Kripto', health: 'Sveikata', utility: 'Priemonės', travel: 'Kelionės', lifestyle: 'Gyvenimo būdas', legal: 'Teisiniai', measure: 'Matavimai', realestate: 'Nekilnojamasis turtas', esoteric: 'Ezoterika' },
 };
 
 const SEARCH_PLACEHOLDER: Record<string, string> = {
@@ -43,11 +43,27 @@ const NO_RESULTS: Record<string, string> = {
 };
 
 const NO_FAVORITES: Record<string, string> = {
-  en: 'No favorites yet. Open any tool and press ⭐ to save it here.',
-  ru: 'Избранных пока нет. Откройте любой инструмент и нажмите ⭐, чтобы добавить его сюда.',
-  uk: 'Вибраних поки немає. Відкрийте будь-який інструмент і натисніть ⭐, щоб додати його сюди.',
-  fr: 'Aucun favori pour l\'instant. Ouvrez un outil et appuyez sur ⭐ pour l\'enregistrer ici.',
-  lt: 'Kol kas mėgstamiausių nėra. Atidarykite bet kurį įrankį ir paspauskite ⭐, kad jį čia išsaugotumėte.',
+  en: 'No favorites yet. Click ⭐ on any tool card to save it here.',
+  ru: 'Избранных пока нет. Нажмите ⭐ на любой карточке инструмента, чтобы добавить его сюда.',
+  uk: 'Вибраних поки немає. Натисніть ⭐ на будь-якій картці інструменту, щоб додати його сюди.',
+  fr: 'Aucun favori pour l\'instant. Cliquez sur ⭐ sur une carte d\'outil pour l\'enregistrer ici.',
+  lt: 'Kol kas mėgstamiausių nėra. Spustelėkite ⭐ ant bet kurios įrankio kortelės, kad ją išsaugotumėte.',
+};
+
+const FAV_ADD: Record<string, string> = {
+  en: 'Add to favorites',
+  ru: 'Добавить в избранное',
+  uk: 'Додати до вибраного',
+  fr: 'Ajouter aux favoris',
+  lt: 'Pridėti prie mėgstamiausių',
+};
+
+const FAV_REMOVE: Record<string, string> = {
+  en: 'Remove from favorites',
+  ru: 'Убрать из избранного',
+  uk: 'Видалити з вибраного',
+  fr: 'Retirer des favoris',
+  lt: 'Pašalinti iš mėgstamiausių',
 };
 
 const FAVORITES_TIP: Record<string, string> = {
@@ -58,7 +74,7 @@ const FAVORITES_TIP: Record<string, string> = {
   lt: 'Patarimas: pridėkite puslapį prie naršyklės žymių (Ctrl+D), kad „Mėgstamiausi" nedingtų po talpyklos išvalymo.',
 };
 
-const FILTER_ORDER: FilterCategory[] = ['all', 'finance', 'crypto', 'health', 'utility', 'legal', 'measure', 'realestate', 'esoteric'];
+const FILTER_ORDER: FilterCategory[] = ['all', 'finance', 'crypto', 'health', 'utility', 'travel', 'lifestyle', 'legal', 'measure', 'realestate', 'esoteric'];
 
 type Props = {
   locale: string;
@@ -173,13 +189,29 @@ export default function ToolGrid({ locale, tools, initialCategory }: Props) {
           <p className={styles['tool-grid__empty']}>{NO_FAVORITES[locale] || NO_FAVORITES.en}</p>
         ) : filtered.length === 0 ? (
           <p className={styles['tool-grid__empty']}>{noResults}</p>
-        ) : filtered.map((tool) => (
-          <Link key={tool.href} href={`/${locale}${tool.href}`} className={styles['tool-card']}>
-            <span className={styles['tool-card__icon']}>{tool.icon}</span>
-            <h2 className={styles['tool-card__title']}>{tool.title}</h2>
-            <p className={styles['tool-card__desc']}>{tool.desc}</p>
-          </Link>
-        ))}
+        ) : filtered.map((tool) => {
+          const isFav = favPaths.includes(tool.href);
+          return (
+            <div key={tool.href} className={styles['tool-card-wrap']}>
+              <Link href={`/${locale}${tool.href}`} className={styles['tool-card']}>
+                <span className={styles['tool-card__icon']}>{tool.icon}</span>
+                <h2 className={styles['tool-card__title']}>{tool.title}</h2>
+                <p className={styles['tool-card__desc']}>{tool.desc}</p>
+              </Link>
+              <button
+                type="button"
+                className={`${styles['tool-card__fav']}${isFav ? ` ${styles['tool-card__fav--active']}` : ''}`}
+                onClick={() => { toggleFavorite(tool.href); setFavPaths(getFavorites()); }}
+                aria-label={isFav ? (FAV_REMOVE[locale] || FAV_REMOVE.en) : (FAV_ADD[locale] || FAV_ADD.en)}
+                title={isFav ? (FAV_REMOVE[locale] || FAV_REMOVE.en) : (FAV_ADD[locale] || FAV_ADD.en)}
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill={isFav ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              </button>
+            </div>
+          );
+        })}
       </div>
     </>
   );
