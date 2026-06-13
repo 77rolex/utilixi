@@ -98,6 +98,21 @@ const TOOL_META: Record<string, ToolMeta> = {
   '/calculator/biorhythm': { category: 'esoteric' },
   '/calculator/moon-phases': { category: 'esoteric' },
   '/calculator/moon-sign': { category: 'esoteric' },
+  '/calculator/fuel-cost': { category: 'utility' },
+  '/calculator/electricity-bill': { category: 'utility' },
+  '/calculator/savings-goal': { category: 'finance' },
+  '/calculator/calorie-deficit': { category: 'health' },
+  '/calculator/net-worth': { category: 'finance' },
+  '/calculator/pace': { category: 'health' },
+  '/calculator/macros': { category: 'health' },
+  '/calculator/ac-cost': { category: 'utility' },
+  '/calculator/travel-budget': { category: 'finance' },
+  '/calculator/material-cost': { category: 'utility' },
+  '/calculator/party-food': { category: 'utility' },
+  '/calculator/pool-volume': { category: 'utility' },
+  '/calculator/spf': { category: 'health' },
+  '/calculator/inflation': { category: 'finance' },
+  '/calculator/loan-payoff': { category: 'finance' },
 };
 
 const LOCALES = ['en', 'ru', 'uk', 'fr', 'lt'];

@@ -22,11 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 
   const descriptions: Record<string, string> = {
-    en: '73 free online tools — mortgage, tax & insurance calculators, BMI, calorie counter, numerology, moon sign, live currency & crypto rates, weather forecast and more.',
-    ru: '73 бесплатных онлайн-инструмента — ипотека, налоги, ИМТ, нумерология, лунный знак, курсы валют и криптовалют, прогноз погоды и многое другое.',
-    uk: '73 безкоштовних онлайн-інструменти — іпотека, податки, ІМТ, нумерологія, місячний знак, курси валют і криптовалют, прогноз погоди та інше.',
-    fr: '73 outils en ligne gratuits — prêt immobilier, impôts, IMC, numérologie, signe lunaire, taux de change et crypto en direct, météo et plus encore.',
-    lt: '73 nemokami internetiniai įrankiai — hipoteka, mokesčiai, KMI, numerologija, mėnulio ženklas, valiutų ir kriptovaliutų kursai, orų prognozė ir daugiau.',
+    en: '88 free online tools — mortgage, tax & insurance calculators, BMI, calorie deficit, macros, pace, savings goal, inflation, loan payoff, pool volume, SPF, travel budget, numerology, moon sign, live currency & crypto rates, weather and more.',
+    ru: '88 бесплатных онлайн-инструментов — ипотека, налоги, ИМТ, дефицит калорий, КБЖУ, темп бега, накопления, инфляция, погашение, объём бассейна, SPF, бюджет путешествия, нумерология, лунный знак, курсы валют и криптовалют, погода.',
+    uk: '88 безкоштовних онлайн-інструментів — іпотека, податки, ІМТ, дефіцит калорій, КБЖВ, темп бігу, накопичення, інфляція, погашення, об\'єм басейну, SPF, бюджет подорожі, нумерологія, місячний знак, курси валют і криптовалют, погода.',
+    fr: '88 outils en ligne gratuits — prêt immobilier, impôts, IMC, déficit calorique, macros, allure, épargne, inflation, remboursement anticipé, piscine, SPF, budget voyage, numérologie, signe lunaire, taux de change et crypto, météo.',
+    lt: '88 nemokami internetiniai įrankiai — hipoteka, mokesčiai, KMI, kalorijų deficitas, makroelementai, tempas, taupymas, infliacija, paskolos grąžinimas, baseinas, SPF, kelionės biudžetas, numerologija, mėnulio ženklas, valiutų kursai, oras.',
   };
 
   return buildMetadata(locale, '', {
@@ -554,6 +554,111 @@ const RAW_TOOLS: RawTool[] = [
     category: 'esoteric',
     titles: { en: 'Moon Sign Calculator', ru: 'Лунный знак', uk: 'Місячний знак', fr: 'Signe Lunaire', lt: 'Mėnulio ženklas' },
     descs: { en: 'Find your lunar zodiac sign by date, time and timezone. Element, ruling planet and character description', ru: 'Лунный знак зодиака по дате и времени рождения. Стихия, управитель и описание характера', uk: 'Місячний знак зодіаку за датою і часом народження. Стихія, управитель і опис характеру', fr: 'Signe lunaire du zodiaque par date, heure et fuseau horaire. Élément et planète dominante', lt: 'Mėnulio zodiako ženklas pagal gimimo datą, laiką ir laiko juostą. Elementas ir valdančioji planeta' },
+  },
+  {
+    href: '/calculator/fuel-cost',
+    icon: '⛽',
+    category: 'utility',
+    titles: { en: 'Fuel Cost Calculator', ru: 'Калькулятор расхода топлива', uk: 'Калькулятор витрат на пальне', fr: 'Calculatrice Coût Carburant', lt: 'Degalų kainos skaičiuotuvas' },
+    descs: { en: 'Calculate petrol & diesel cost for any trip', ru: 'Рассчитайте стоимость топлива для поездки', uk: 'Розрахуйте вартість пального для поїздки', fr: 'Estimez le coût carburant pour tout trajet', lt: 'Apskaičiuokite degalų kainą bet kuriai kelionei' },
+  },
+  {
+    href: '/calculator/electricity-bill',
+    icon: '💡',
+    category: 'utility',
+    titles: { en: 'Electricity Bill Calculator', ru: 'Калькулятор электроэнергии', uk: 'Калькулятор електроенергії', fr: 'Calculatrice Facture Électricité', lt: 'Elektros sąskaitos skaičiuotuvas' },
+    descs: { en: 'Calculate monthly electricity cost for any appliance', ru: 'Рассчитайте расход электроэнергии для любого прибора', uk: 'Розрахуйте споживання електроенергії будь-якого приладу', fr: 'Calculez la facture d\'électricité de vos appareils', lt: 'Apskaičiuokite elektros sąskaitą bet kuriam prietaisui' },
+  },
+  {
+    href: '/calculator/savings-goal',
+    icon: '🎯',
+    category: 'finance',
+    titles: { en: 'Savings Goal Calculator', ru: 'Калькулятор накоплений', uk: 'Калькулятор накопичень', fr: 'Calculatrice Objectif Épargne', lt: 'Taupymo tikslo skaičiuotuvas' },
+    descs: { en: 'Find out when you\'ll reach your savings goal', ru: 'Узнайте, когда достигнете цели по накоплениям', uk: 'Дізнайтеся, коли досягнете цілі по заощадженнях', fr: 'Découvrez quand vous atteindrez votre objectif', lt: 'Sužinokite, kada pasieksite taupymo tikslą' },
+  },
+  {
+    href: '/calculator/calorie-deficit',
+    icon: '🔥',
+    category: 'health',
+    titles: { en: 'Calorie Deficit Calculator', ru: 'Калькулятор дефицита калорий', uk: 'Калькулятор дефіциту калорій', fr: 'Calculatrice Déficit Calorique', lt: 'Kalorijų deficito skaičiuotuvas' },
+    descs: { en: 'Calculate daily calorie deficit to reach your weight goal', ru: 'Рассчитайте ежедневный дефицит калорий для похудения', uk: 'Розрахуйте щоденний дефіцит калорій для схуднення', fr: 'Calculez votre déficit calorique quotidien', lt: 'Apskaičiuokite dienos kalorijų deficitą svoriui numesti' },
+  },
+  {
+    href: '/calculator/net-worth',
+    icon: '💎',
+    category: 'finance',
+    titles: { en: 'Net Worth Calculator', ru: 'Калькулятор чистых активов', uk: 'Калькулятор чистих активів', fr: 'Calculatrice Valeur Nette', lt: 'Grynosios vertės skaičiuotuvas' },
+    descs: { en: 'Calculate your net worth from assets and liabilities', ru: 'Рассчитайте чистые активы из активов и обязательств', uk: 'Розрахуйте чисті активи з активів та зобов\'язань', fr: 'Calculez votre valeur nette selon actifs et passifs', lt: 'Apskaičiuokite grynąją vertę iš turto ir įsipareigojimų' },
+  },
+  {
+    href: '/calculator/pace',
+    icon: '🏃',
+    category: 'health',
+    titles: { en: 'Running / Cycling Pace Calculator', ru: 'Калькулятор темпа бега/велосипеда', uk: 'Калькулятор темпу бігу/велосипеда', fr: 'Calculatrice Allure Course/Vélo', lt: 'Bėgimo / dviračio tempo skaičiuotuvas' },
+    descs: { en: 'Calculate pace, time or distance for running and cycling', ru: 'Рассчитайте темп, время или дистанцию для бега и велосипеда', uk: 'Розрахуйте темп, час або дистанцію для бігу та велосипеда', fr: 'Calculez allure, temps ou distance pour course et vélo', lt: 'Apskaičiuokite tempą, laiką ar atstumą bėgimui ir dviračiui' },
+  },
+  {
+    href: '/calculator/macros',
+    icon: '🥗',
+    category: 'health',
+    titles: { en: 'Macro Calculator', ru: 'Калькулятор КБЖУ', uk: 'Калькулятор КБЖВ', fr: 'Calculatrice Macros', lt: 'Makroelementų skaičiuotuvas' },
+    descs: { en: 'Calculate daily protein, fat and carb targets based on your goal', ru: 'Рассчитайте суточные нормы белков, жиров и углеводов', uk: 'Розрахуйте добові норми білків, жирів і вуглеводів', fr: 'Calculez vos besoins journaliers en protéines, lipides, glucides', lt: 'Apskaičiuokite dienos baltymų, riebalų ir angliavandenių normas' },
+  },
+  {
+    href: '/calculator/ac-cost',
+    icon: '❄️',
+    category: 'utility',
+    titles: { en: 'AC & Heating Cost Calculator', ru: 'Калькулятор кондиционера и отопления', uk: 'Калькулятор кондиціонера та опалення', fr: 'Calculatrice Climatisation & Chauffage', lt: 'Kondicionieriaus ir šildymo išlaidų skaičiuotuvas' },
+    descs: { en: 'Estimate monthly electricity cost for air conditioning or heating', ru: 'Оцените ежемесячные расходы на электроэнергию для кондиционера', uk: 'Оцініть щомісячні витрати на електроенергію для кондиціонера', fr: 'Estimez le coût mensuel d\'électricité pour climatisation ou chauffage', lt: 'Įvertinkite mėnesines elektros išlaidas kondicionavimui ar šildymui' },
+  },
+  {
+    href: '/calculator/travel-budget',
+    icon: '✈️',
+    category: 'finance',
+    titles: { en: 'Travel Budget Calculator', ru: 'Калькулятор бюджета путешествия', uk: 'Калькулятор бюджету подорожі', fr: 'Calculatrice Budget Voyage', lt: 'Kelionės biudžeto skaičiuotuvas' },
+    descs: { en: 'Plan your trip budget: accommodation, food, transport, activities', ru: 'Планируйте бюджет поездки: жильё, еда, транспорт, развлечения', uk: 'Плануйте бюджет поїздки: житло, їжа, транспорт, розваги', fr: 'Planifiez votre budget voyage: hébergement, nourriture, transport', lt: 'Planuokite kelionės biudžetą: nakvynė, maistas, transportas' },
+  },
+  {
+    href: '/calculator/material-cost',
+    icon: '🧱',
+    category: 'utility',
+    titles: { en: 'Flooring, Paint & Concrete Calculator', ru: 'Калькулятор покрытий, краски и бетона', uk: 'Калькулятор покриттів, фарби та бетону', fr: 'Calculatrice Revêtement, Peinture & Béton', lt: 'Grindų, dažų ir betono skaičiuotuvas' },
+    descs: { en: 'Calculate flooring, paint or concrete quantity and cost for any room', ru: 'Рассчитайте количество и стоимость покрытий, краски или бетона', uk: 'Розрахуйте кількість і вартість покриттів, фарби або бетону', fr: 'Calculez la quantité et le coût de revêtement, peinture ou béton', lt: 'Apskaičiuokite grindų, dažų ar betono kiekį ir kainą' },
+  },
+  {
+    href: '/calculator/party-food',
+    icon: '🎉',
+    category: 'utility',
+    titles: { en: 'Party Food Calculator', ru: 'Калькулятор продуктов для вечеринки', uk: 'Калькулятор продуктів для вечірки', fr: 'Calculatrice Buffet Fête', lt: 'Šventinių produktų skaičiuotuvas' },
+    descs: { en: 'Calculate food and drink quantities for BBQ, buffet or cocktail parties', ru: 'Рассчитайте количество еды и напитков для барбекю или фуршета', uk: 'Розрахуйте кількість їжі та напоїв для вечірки або барбекю', fr: 'Calculez les quantités de nourriture et boissons pour votre fête', lt: 'Apskaičiuokite maisto ir gėrimų kiekius šventei ar BBQ' },
+  },
+  {
+    href: '/calculator/pool-volume',
+    icon: '🏊',
+    category: 'utility',
+    titles: { en: 'Pool Volume Calculator', ru: 'Калькулятор объёма бассейна', uk: 'Калькулятор об\'єму басейну', fr: 'Calculatrice Volume Piscine', lt: 'Baseino tūrio skaičiuotuvas' },
+    descs: { en: 'Calculate swimming pool volume in litres and gallons with chemical estimates', ru: 'Рассчитайте объём бассейна в литрах и галлонах с дозировками химии', uk: 'Розрахуйте об\'єм басейну в літрах і галонах з дозуваннями хімії', fr: 'Calculez le volume de piscine en litres et gallons avec dosages chimiques', lt: 'Apskaičiuokite baseino tūrį litrais ir galonais su cheminių medžiagų kiekiais' },
+  },
+  {
+    href: '/calculator/spf',
+    icon: '☀️',
+    category: 'health',
+    titles: { en: 'SPF Calculator', ru: 'Калькулятор SPF', uk: 'Калькулятор SPF', fr: 'Calculatrice SPF', lt: 'SPF skaičiuotuvas' },
+    descs: { en: 'Calculate sun protection time by skin type, SPF value and UV index', ru: 'Рассчитайте время защиты от солнца по типу кожи, SPF и УФ-индексу', uk: 'Розрахуйте час сонцезахисту за типом шкіри, SPF та УФ-індексом', fr: 'Calculez le temps de protection solaire par type de peau, SPF et indice UV', lt: 'Apskaičiuokite apsaugos nuo saulės laiką pagal odos tipą, SPF ir UV indeksą' },
+  },
+  {
+    href: '/calculator/inflation',
+    icon: '📈',
+    category: 'finance',
+    titles: { en: 'Inflation Calculator', ru: 'Калькулятор инфляции', uk: 'Калькулятор інфляції', fr: 'Calculatrice Inflation', lt: 'Infliacijos skaičiuotuvas' },
+    descs: { en: 'Calculate the future or past purchasing power of money', ru: 'Рассчитайте будущую или прошлую покупательную способность денег', uk: 'Розрахуйте майбутню або минулу купівельну спроможність грошей', fr: 'Calculez la valeur future ou passée de votre argent', lt: 'Apskaičiuokite pinigų būsimąją arba praeities perkamąją galią' },
+  },
+  {
+    href: '/calculator/loan-payoff',
+    icon: '💳',
+    category: 'finance',
+    titles: { en: 'Loan Early Payoff Calculator', ru: 'Калькулятор досрочного погашения', uk: 'Калькулятор дострокового погашення', fr: 'Calculatrice Remboursement Anticipé', lt: 'Išankstinio paskolos grąžinimo skaičiuotuvas' },
+    descs: { en: 'See how much interest you save by making extra loan payments', ru: 'Узнайте, сколько экономите на процентах при досрочных платежах', uk: 'Дізнайтеся, скільки економите на відсотках при додаткових платежах', fr: 'Calculez les intérêts économisés grâce aux paiements supplémentaires', lt: 'Sužinokite, kiek palūkanų sutaupysite mokant papildomai' },
   },
 ];
 
