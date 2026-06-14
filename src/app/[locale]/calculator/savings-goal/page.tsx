@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Savings Goal Calculator — How Long to Save?',
     description: 'Free savings goal calculator. Find out how many months it will take to reach your savings target. Enter your goal, current savings, monthly contribution, and interest rate.',
     h1: 'Savings Goal Calculator',
+    subtitle: 'Find out how long it takes to reach your savings target with regular monthly contributions.',
   },
   ru: {
     title: 'Калькулятор накоплений — когда достигну цели?',
     description: 'Бесплатный калькулятор накоплений. Узнайте, сколько месяцев нужно, чтобы достичь финансовой цели. Введите цель, текущие сбережения, ежемесячный взнос и процентную ставку.',
     h1: 'Калькулятор накоплений',
+    subtitle: 'Узнайте, сколько времени нужно для достижения цели накоплений при регулярных взносах.',
   },
   uk: {
     title: 'Калькулятор накопичень — коли досягну цілі?',
     description: 'Безкоштовний калькулятор накопичень. Дізнайтеся, скільки місяців потрібно для досягнення фінансової цілі. Введіть ціль, поточні заощадження, щомісячний внесок і процентну ставку.',
     h1: 'Калькулятор накопичень',
+    subtitle: 'Дізнайтеся, скільки часу потрібно для досягнення мети накопичень при регулярних внесках.',
   },
   fr: {
     title: 'Calculatrice Objectif Épargne — Combien de temps ?',
     description: 'Calculatrice d\'objectif d\'épargne gratuite. Découvrez en combien de mois vous atteindrez votre objectif financier. Entrez votre objectif, épargne actuelle, versement mensuel et taux d\'intérêt.',
     h1: 'Calculatrice Objectif Épargne',
+    subtitle: 'Découvrez en combien de mois vous atteindrez votre objectif d\'épargne avec des versements réguliers.',
   },
   lt: {
     title: 'Taupymo Tikslo Skaičiuotuvas — Kada Pasieksite?',
     description: 'Nemokamas taupymo tikslo skaičiuotuvas. Sužinokite, per kiek mėnesių pasieksite savo finansinį tikslą. Įveskite tikslą, dabartines santaupas, mėnesinį įnašą ir palūkanų normą.',
     h1: 'Taupymo Tikslo Skaičiuotuvas',
+    subtitle: 'Sužinokite, per kiek mėnesių pasieksite taupymo tikslą su reguliariomis mėnesinėmis įmokomis.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function SavingsGoalPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <SavingsGoalCalculator locale={locale} />
         <AdInline locale={locale} />

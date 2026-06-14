@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/crypto', label: 'Kriptovaliutų kursai' }, { href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' }, { href: '/crypto/converter', label: 'Kriptovaliutų keitiklis' }, { href: '/currency', label: 'Valiutų keitiklis' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Crypto Tax Calculator — Capital Gains by Country 2024',
     description: 'Free cryptocurrency tax calculator. Calculate capital gains tax on Bitcoin, Ethereum and other crypto for 8 countries. Supports short-term and long-term holdings.',
     h1: 'Crypto Tax Calculator',
+    subtitle: 'Calculate capital gains tax on your crypto trades and estimate what you owe.',
   },
   ru: {
     title: 'Калькулятор налога на криптовалюту — по странам 2024',
     description: 'Бесплатный калькулятор налога на доход от криптовалют. Рассчитайте налог на прибыль от Bitcoin, Ethereum и других монет для 8 стран.',
     h1: 'Калькулятор налога на доход от крипты',
+    subtitle: 'Рассчитайте налог на прибыль от торговли криптовалютой и узнайте сумму к уплате.',
   },
   uk: {
     title: 'Калькулятор податку на криптовалюту — за країнами 2024',
     description: 'Безкоштовний калькулятор податку на дохід від криптовалют. Розрахуйте податок на прибуток від Bitcoin, Ethereum та інших монет для 8 країн.',
     h1: 'Калькулятор податку на дохід від крипти',
+    subtitle: 'Розрахуйте податок на прибуток від торгівлі криптовалютою та суму до сплати.',
   },
   fr: {
     title: 'Calculatrice d\'impôt crypto — Plus-values par pays 2024',
     description: 'Calculatrice d\'impôt sur les cryptomonnaies gratuite. Calculez l\'impôt sur les plus-values de Bitcoin, Ethereum et autres cryptos pour 8 pays.',
     h1: 'Calculatrice d\'impôt sur les cryptomonnaies',
+    subtitle: 'Calculez l\'impôt sur les plus-values crypto et estimez votre montant à payer.',
   },
   lt: {
     title: 'Kriptovaliutų mokesčių skaičiuotuvas — pagal šalis 2024',
     description: 'Nemokamas kriptovaliutų mokesčių skaičiuotuvas. Apskaičiuokite kapitalo prieaugio mokestį nuo Bitcoin, Ethereum ir kitų kriptovaliutų 8 šalims.',
     h1: 'Kriptovaliutų mokesčių skaičiuotuvas',
+    subtitle: 'Apskaičiuokite kapitalo prieaugių mokestį nuo kriptovaliutų sandorių.',
   },
 };
 
@@ -173,6 +178,7 @@ export default async function CryptoTaxPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <CryptoTaxCalculator locale={locale} />
 

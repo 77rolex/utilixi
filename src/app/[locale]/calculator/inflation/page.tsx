@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Inflation Calculator — Future & Past Value of Money',
     description: 'Free inflation calculator. Find out what your money will be worth in the future or what past prices equal today. Calculate purchasing power loss using custom inflation rates.',
     h1: 'Inflation Calculator',
+    subtitle: 'See how inflation erodes purchasing power and compare the value of money across years.',
   },
   ru: {
     title: 'Калькулятор инфляции — будущая и прошлая стоимость денег',
     description: 'Бесплатный калькулятор инфляции. Узнайте, сколько будут стоить ваши деньги в будущем или чему равны прошлые цены сегодня. Рассчитайте потерю покупательной способности.',
     h1: 'Калькулятор инфляции',
+    subtitle: 'Узнайте, как инфляция снижает покупательную способность и сравните стоимость денег в разные годы.',
   },
   uk: {
     title: 'Калькулятор інфляції — майбутня та минула вартість грошей',
     description: 'Безкоштовний калькулятор інфляції. Дізнайтеся, скільки будуть коштувати ваші гроші в майбутньому або чому рівні минулі ціни сьогодні. Розрахуйте втрату купівельної спроможності.',
     h1: 'Калькулятор інфляції',
+    subtitle: 'Дізнайтеся, як інфляція знижує купівельну спроможність і порівняйте вартість грошей у різні роки.',
   },
   fr: {
     title: 'Calculatrice d\'Inflation — Valeur Actuelle et Future de l\'Argent',
     description: 'Calculatrice d\'inflation gratuite. Découvrez ce que votre argent vaudra dans le futur ou ce que les prix passés représentent aujourd\'hui. Calculez la perte de pouvoir d\'achat.',
     h1: 'Calculatrice d\'Inflation',
+    subtitle: 'Voyez comment l\'inflation érode le pouvoir d\'achat et comparez la valeur de l\'argent selon les années.',
   },
   lt: {
     title: 'Infliacijos Skaičiuotuvas — Pinigų Būsimoji ir Praeities Vertė',
     description: 'Nemokamas infliacijos skaičiuotuvas. Sužinokite, kiek bus verti jūsų pinigai ateityje arba ką reiškia praeities kainos šiandien. Apskaičiuokite perkamosios galios praradimą.',
     h1: 'Infliacijos Skaičiuotuvas',
+    subtitle: 'Sužinokite, kaip infliacija mažina perkamąją galią, ir palyginkite pinigų vertę skirtingais metais.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function InflationPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <InflationCalculator locale={locale} />
         <AdInline locale={locale} />

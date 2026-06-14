@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/freelance-rate', label: 'Laisvai samdomų tarifas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/calculator/margin', label: 'Maržos skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Income Tax Calculator — Tax by Country 2024',
     description: 'Free income tax calculator for 8 countries. Calculate your income tax, effective rate, and net salary based on tax brackets for USA, UK, Germany, France, Poland, Lithuania, Ukraine, and Russia.',
     h1: 'Income Tax Calculator',
+    subtitle: 'Estimate your income tax for 8 countries based on real 2024 tax brackets.',
   },
   ru: {
     title: 'Калькулятор подоходного налога — НДФЛ по странам 2024',
     description: 'Бесплатный калькулятор подоходного налога для 8 стран. Рассчитайте НДФЛ, эффективную ставку и чистый доход на основе налоговых ставок США, Великобритании, Германии, Франции, Польши, Литвы, Украины, России.',
     h1: 'Калькулятор подоходного налога',
+    subtitle: 'Рассчитайте подоходный налог для 8 стран по актуальным ставкам 2024 года.',
   },
   uk: {
     title: 'Калькулятор прибуткового податку — ПДФО за країнами 2024',
     description: 'Безкоштовний калькулятор прибуткового податку для 8 країн. Розрахуйте ПДФО, ефективну ставку та чистий дохід для США, Великобританії, Німеччини, Франції, Польщі, Литви, України, Росії.',
     h1: 'Калькулятор прибуткового податку',
+    subtitle: 'Розрахуйте прибутковий податок для 8 країн за актуальними ставками 2024 року.',
   },
   fr: {
     title: 'Calculatrice d\'impôt sur le revenu — par pays 2024',
     description: 'Calculatrice d\'impôt gratuite pour 8 pays. Calculez votre impôt, taux effectif et salaire net selon les tranches fiscales des États-Unis, Royaume-Uni, Allemagne, France, Pologne, Lituanie, Ukraine et Russie.',
     h1: 'Calculatrice d\'impôt sur le revenu',
+    subtitle: 'Estimez votre impôt sur le revenu pour 8 pays selon les barèmes fiscaux 2024.',
   },
   lt: {
     title: 'Pajamų mokesčio skaičiuotuvas — pagal šalis 2024',
     description: 'Nemokamas pajamų mokesčio skaičiuotuvas 8 šalims. Apskaičiuokite mokestį, efektyvią normą ir grynąsias pajamas pagal JAV, JK, Vokietijos, Prancūzijos, Lenkijos, Lietuvos, Ukrainos ir Rusijos tarifus.',
     h1: 'Pajamų mokesčio skaičiuotuvas',
+    subtitle: 'Apskaičiuokite pajamų mokestį 8 šalims pagal 2024 m. mokesčių tarifus.',
   },
 };
 
@@ -174,6 +179,7 @@ export default async function IncomeTaxPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <IncomeTaxCalculator locale={locale} />
 

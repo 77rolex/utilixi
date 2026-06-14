@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/margin', label: 'Maržos skaičiuotuvas' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Discount Calculator — Calculate Sale Price & Savings', description: 'Free discount calculator. Find the final price after a discount %, calculate what % discount you got, or apply multiple sequential discounts. Instant results.', h1: 'Discount Calculator' },
-  ru: { title: 'Калькулятор скидки — рассчитайте цену и экономию', description: 'Бесплатный калькулятор скидки. Найдите финальную цену после скидки, рассчитайте процент скидки по ценам или примените несколько скидок подряд. Мгновенный результат.', h1: 'Калькулятор скидки' },
-  uk: { title: 'Калькулятор знижки — розрахуйте ціну та економію', description: 'Безкоштовний калькулятор знижки. Знайдіть фінальну ціну після знижки, розрахуйте відсоток знижки за цінами або застосуйте кілька знижок підряд. Миттєвий результат.', h1: 'Калькулятор знижки' },
-  fr: { title: 'Calculatrice de remise — Calculez le prix soldé et les économies', description: 'Calculatrice de remise gratuite. Trouvez le prix final après une remise %, calculez le % de remise à partir des prix, ou appliquez plusieurs remises successives.', h1: 'Calculatrice de remise' },
-  lt: { title: 'Nuolaidų Skaičiuotuvas — galutinė kaina ir sutaupoma suma', description: 'Apskaičiuokite galutinę kainą po nuolaidos ir sužinokite, kiek sutaupote. Įveskite pradinę kainą ir nuolaidos % — arba kelios nuolaidos iš eilės. Nemokamai ir akimirksniu.', h1: 'Nuolaidos skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Discount Calculator — Calculate Sale Price & Savings', description: 'Free discount calculator. Find the final price after a discount %, calculate what % discount you got, or apply multiple sequential discounts. Instant results.', h1: 'Discount Calculator', subtitle: 'Find the final price after a discount, or calculate what percentage off you\'re getting.' },
+  ru: { title: 'Калькулятор скидки — рассчитайте цену и экономию', description: 'Бесплатный калькулятор скидки. Найдите финальную цену после скидки, рассчитайте процент скидки по ценам или примените несколько скидок подряд. Мгновенный результат.', h1: 'Калькулятор скидки', subtitle: 'Узнайте финальную цену после скидки или рассчитайте, какой процент скидки вы получаете.' },
+  uk: { title: 'Калькулятор знижки — розрахуйте ціну та економію', description: 'Безкоштовний калькулятор знижки. Знайдіть фінальну ціну після знижки, розрахуйте відсоток знижки за цінами або застосуйте кілька знижок підряд. Миттєвий результат.', h1: 'Калькулятор знижки', subtitle: 'Дізнайтеся фінальну ціну після знижки або розрахуйте відсоток знижки, який ви отримуєте.' },
+  fr: { title: 'Calculatrice de remise — Calculez le prix soldé et les économies', description: 'Calculatrice de remise gratuite. Trouvez le prix final après une remise %, calculez le % de remise à partir des prix, ou appliquez plusieurs remises successives.', h1: 'Calculatrice de remise', subtitle: 'Trouvez le prix final après une remise ou calculez le pourcentage de réduction appliqué.' },
+  lt: { title: 'Nuolaidų Skaičiuotuvas — galutinė kaina ir sutaupoma suma', description: 'Apskaičiuokite galutinę kainą po nuolaidos ir sužinokite, kiek sutaupote. Įveskite pradinę kainą ir nuolaidos % — arba kelios nuolaidos iš eilės. Nemokamai ir akimirksniu.', h1: 'Nuolaidos skaičiuotuvas', subtitle: 'Raskite galutinę kainą po nuolaidos arba apskaičiuokite, koks nuolaidos procentas taikomas.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -153,6 +153,7 @@ export default async function DiscountPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{m.h1}</h1>
+        {m.subtitle && <p className={styles.page__subtitle}>{m.subtitle}</p>}
         <ToolActions />
         <DiscountCalculator locale={locale} />
         <AdInline locale={locale} />

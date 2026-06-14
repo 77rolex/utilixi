@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/discount', label: 'Nuolaidos skaičiuotuvas' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/margin', label: 'Maržos skaičiuotuvas' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Percentage Calculator — X% of Y, Percent Change & More', description: 'Free online percentage calculator. Calculate X% of Y, find what percent X is of Y, compute percentage change, add or subtract percentages. Instant results with formula shown.', h1: 'Percentage Calculator' },
-  ru: { title: 'Калькулятор процентов — X% от Y, изменение в % и другое', description: 'Бесплатный онлайн-калькулятор процентов. Рассчитайте X% от Y, найдите какой % составляет X от Y, вычислите изменение в процентах, прибавьте или вычтите проценты.', h1: 'Калькулятор процентов' },
-  uk: { title: 'Калькулятор відсотків — X% від Y, зміна у % та інше', description: 'Безкоштовний онлайн-калькулятор відсотків. Розрахуйте X% від Y, знайдіть яким % є X від Y, обчисліть зміну у відсотках, додайте або відніміть відсотки.', h1: 'Калькулятор відсотків' },
-  fr: { title: 'Calculatrice de pourcentage — X% de Y, variation en % et plus', description: 'Calculatrice de pourcentage gratuite. Calculez X% de Y, trouvez quel % X représente de Y, calculez la variation en %, ajoutez ou soustrayez des pourcentages. Résultats instantanés.', h1: 'Calculatrice de pourcentage' },
-  lt: { title: 'Procentų skaičiuotuvas — X% iš Y, pokytis % ir daugiau', description: 'Nemokamas internetinis procentų skaičiuotuvas. Apskaičiuokite X% iš Y, raskite koks % yra X nuo Y, apskaičiuokite procentinį pokytį, pridėkite ar atimkite procentus.', h1: 'Procentų skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Percentage Calculator — X% of Y, Percent Change & More', description: 'Free online percentage calculator. Calculate X% of Y, find what percent X is of Y, compute percentage change, add or subtract percentages. Instant results with formula shown.', h1: 'Percentage Calculator', subtitle: 'Calculate percentages, percentage change, and what percent one number is of another.' },
+  ru: { title: 'Калькулятор процентов — X% от Y, изменение в % и другое', description: 'Бесплатный онлайн-калькулятор процентов. Рассчитайте X% от Y, найдите какой % составляет X от Y, вычислите изменение в процентах, прибавьте или вычтите проценты.', h1: 'Калькулятор процентов', subtitle: 'Рассчитайте проценты, изменение в процентах и долю одного числа от другого.' },
+  uk: { title: 'Калькулятор відсотків — X% від Y, зміна у % та інше', description: 'Безкоштовний онлайн-калькулятор відсотків. Розрахуйте X% від Y, знайдіть яким % є X від Y, обчисліть зміну у відсотках, додайте або відніміть відсотки.', h1: 'Калькулятор відсотків', subtitle: 'Розрахуйте відсотки, зміну у відсотках та частку одного числа від іншого.' },
+  fr: { title: 'Calculatrice de pourcentage — X% de Y, variation en % et plus', description: 'Calculatrice de pourcentage gratuite. Calculez X% de Y, trouvez quel % X représente de Y, calculez la variation en %, ajoutez ou soustrayez des pourcentages. Résultats instantanés.', h1: 'Calculatrice de pourcentage', subtitle: 'Calculez des pourcentages, des variations en % et quelle part un nombre représente d\'un autre.' },
+  lt: { title: 'Procentų skaičiuotuvas — X% iš Y, pokytis % ir daugiau', description: 'Nemokamas internetinis procentų skaičiuotuvas. Apskaičiuokite X% iš Y, raskite koks % yra X nuo Y, apskaičiuokite procentinį pokytį, pridėkite ar atimkite procentus.', h1: 'Procentų skaičiuotuvas', subtitle: 'Apskaičiuokite procentus, procentinį pokytį ir kiek vienas skaičius sudaro nuo kito.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -153,6 +153,7 @@ export default async function PercentagePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{m.h1}</h1>
+        {m.subtitle && <p className={styles.page__subtitle}>{m.subtitle}</p>}
         <ToolActions />
         <PercentageCalculator locale={locale} />
         <AdInline locale={locale} />

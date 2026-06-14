@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' }, { href: '/calculator/roi', label: 'RI skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Freelance Rate Calculator — Hourly & Day Rate for UK & US',
     description: 'Free freelance rate calculator for UK and US. Calculate your minimum hourly rate, day rate, and monthly freelance income based on target earnings, expenses, tax rate, and billable hours. Instant results.',
     h1: 'Freelance Rate Calculator',
+    subtitle: 'Find the ideal hourly or daily rate to cover your expenses and reach your income goal.',
   },
   ru: {
     title: 'Калькулятор ставки фрилансера — минимальная почасовая ставка',
     description: 'Бесплатный калькулятор ставки фрилансера онлайн. Рассчитайте минимальную почасовую, дневную и месячную ставку на основе желаемого дохода, расходов и налоговой нагрузки.',
     h1: 'Калькулятор ставки фрилансера',
+    subtitle: 'Определите оптимальную почасовую или дневную ставку для покрытия расходов и достижения дохода.',
   },
   uk: {
     title: 'Калькулятор ставки фрилансера — мінімальна погодинна ставка',
     description: 'Безкоштовний калькулятор ставки фрилансера онлайн. Розрахуйте мінімальну погодинну, денну та місячну ставку на основі бажаного доходу, витрат і податкового навантаження.',
     h1: 'Калькулятор ставки фрилансера',
+    subtitle: 'Визначте оптимальну погодинну або денну ставку для покриття витрат та досягнення доходу.',
   },
   fr: {
     title: 'Calculatrice Taux Freelance — Tarif Horaire et Journalier',
     description: 'Calculatrice de taux freelance gratuite. Calculez votre tarif horaire minimum, tarif journalier et revenu mensuel selon votre objectif de revenu, vos dépenses et votre taux d\'imposition.',
     h1: 'Calculatrice de taux freelance',
+    subtitle: 'Trouvez le tarif horaire ou journalier idéal pour couvrir vos charges et atteindre vos revenus.',
   },
   lt: {
     title: 'Laisvai Samdomų Tarifų Skaičiuotuvas — Valandinis ir Dienos Tarifas',
     description: 'Nemokamas laisvai samdomų darbuotojų tarifų skaičiuotuvas. Apskaičiuokite minimalų valandinį, dienos ir mėnesinį tarifą pagal pajamų tikslą, išlaidas ir mokesčių normą.',
     h1: 'Laisvai samdomų tarifų skaičiuotuvas',
+    subtitle: 'Raskite idealų valandinį ar dienos tarifą, kad padengtumėte išlaidas ir pasiektumėte pajamų tikslą.',
   },
 };
 
@@ -172,6 +177,7 @@ export default async function FreelanceRatePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <FreelanceRateCalculator locale={locale} />
         <AdInline locale={locale} />

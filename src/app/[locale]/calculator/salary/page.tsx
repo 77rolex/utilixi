@@ -11,31 +11,36 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Gross to Net Salary Calculator — Tax by Country',
     description: 'Calculate your net salary from gross pay. Accurate income tax and social contribution breakdown for 24 countries: Ukraine, Russia, Belarus, Kazakhstan, Germany, France, Belgium, Switzerland, UK, USA, Canada, Australia, Ireland, New Zealand and more.',
     h1: 'Gross to Net Salary Calculator',
+    subtitle: 'Convert your gross salary to net take-home pay after taxes and social contributions.',
   },
   ru: {
     title: 'Калькулятор зарплаты брутто-нетто — налоги по странам',
     description: 'Рассчитайте нетто-зарплату из брутто. Точный расчёт налогов и социальных взносов для 24 стран: Украина, Россия, Беларусь, Казахстан, Азербайджан, Грузия, Армения, Молдова, Узбекистан, Кыргызстан, Германия, Франция, Бельгия, Швейцария, Нидерланды, Польша, Чехия, Литва, Великобритания, США, Канада, Австралия, Ирландия, Новая Зеландия.',
     h1: 'Калькулятор зарплаты брутто — нетто',
+    subtitle: 'Переведите зарплату брутто в нетто с учётом налогов и социальных отчислений.',
   },
   uk: {
     title: 'Калькулятор зарплати брутто-нетто — податки по країнах',
     description: 'Розрахуйте нетто-зарплату з брутто. Точний розрахунок податків і соціальних внесків для 24 країн: Україна, Росія, Білорусь, Казахстан, Азербайджан, Грузія, Вірменія, Молдова, Узбекистан, Киргизстан, Німеччина, Франція, Бельгія, Швейцарія, Нідерланди, Польща, Чехія, Литва, Велика Британія, США, Канада, Австралія, Ірландія, Нова Зеландія.',
     h1: 'Калькулятор зарплати брутто — нетто',
+    subtitle: 'Переведіть зарплату брутто в нетто з урахуванням податків та соціальних відрахувань.',
   },
   fr: {
     title: 'Calculateur Salaire Brut Net — Impôts par pays',
     description: 'Calculez votre salaire net à partir du brut. Détail précis des impôts et cotisations sociales pour 24 pays : Ukraine, Russie, Biélorussie, Kazakhstan, Géorgie, Arménie, Moldavie, Ouzbékistan, Allemagne, France, Belgique, Suisse, Pays-Bas, Pologne, Tchéquie, Lituanie, Royaume-Uni, États-Unis, Canada, Australie, Irlande, Nouvelle-Zélande et plus.',
     h1: 'Calculateur Salaire Brut — Net',
+    subtitle: 'Convertissez votre salaire brut en salaire net après impôts et cotisations sociales.',
   },
   lt: {
     title: 'Bruto į Neto Skaičiuotuvas — Convert Bruto to Neto | Lietuva',
     description: 'Apskaičiuokite neto atlyginimą iš bruto (convert bruto to neto) nemokamai. Tikslus pajamų mokesčio ir socialinio draudimo skaičiavimas Lietuvai ir 23 kitoms šalims: JK, JAV, Vokietijai, Prancūzijai ir kt.',
     h1: 'Bruto į Neto Atlyginimo Skaičiuotuvas',
+    subtitle: 'Konvertuokite bruto atlyginimą į neto, atskaičius mokesčius ir socialines įmokas.',
   },
 };
 
@@ -177,6 +182,7 @@ export default async function SalaryPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <SalaryCalculator locale={locale} />
 

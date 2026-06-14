@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Net Worth Calculator — Assets Minus Liabilities',
     description: 'Free net worth calculator. Calculate your total assets minus total liabilities to find your net worth. Enter cash, investments, real estate, loans, and debts for an instant financial snapshot.',
     h1: 'Net Worth Calculator',
+    subtitle: 'Add up your assets and subtract your liabilities to calculate your total net worth.',
   },
   ru: {
     title: 'Калькулятор чистых активов — активы минус долги',
     description: 'Бесплатный калькулятор чистых активов. Рассчитайте свой капитал: активы минус обязательства. Введите наличные, инвестиции, недвижимость, кредиты и долги для мгновенного финансового снэпшота.',
     h1: 'Калькулятор чистых активов',
+    subtitle: 'Сложите активы и вычтите обязательства, чтобы узнать своё чистое состояние.',
   },
   uk: {
     title: 'Калькулятор чистих активів — активи мінус борги',
     description: 'Безкоштовний калькулятор чистих активів. Розрахуйте свій капітал: активи мінус зобов\'язання. Введіть готівку, інвестиції, нерухомість, кредити та борги для миттєвого фінансового знімка.',
     h1: 'Калькулятор чистих активів',
+    subtitle: 'Складіть активи та відніміть зобов\'язання, щоб дізнатися своє чисте майно.',
   },
   fr: {
     title: 'Calculatrice Valeur Nette — Actifs Moins Passifs',
     description: 'Calculatrice de valeur nette gratuite. Calculez votre patrimoine net : actifs moins passifs. Entrez liquidités, investissements, immobilier, prêts et dettes pour un bilan financier instantané.',
     h1: 'Calculatrice Valeur Nette',
+    subtitle: 'Additionnez vos actifs et soustrayez vos dettes pour connaître votre patrimoine net total.',
   },
   lt: {
     title: 'Grynosios Vertės Skaičiuotuvas — Turtas Minus Skolos',
     description: 'Nemokamas grynosios vertės skaičiuotuvas. Apskaičiuokite savo grynąją finansinę vertę: turtas atėmus įsipareigojimus. Įveskite grynuosius, investicijas, nekilnojamąjį turtą, paskolas ir skolas.',
     h1: 'Grynosios Vertės Skaičiuotuvas',
+    subtitle: 'Sudėkite turtą ir atimkite įsipareigojimus, kad sužinotumėte savo grynąją vertę.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function NetWorthPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <NetWorthCalculator locale={locale} />
         <AdInline locale={locale} />

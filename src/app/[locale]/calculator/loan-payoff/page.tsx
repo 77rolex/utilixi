@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Loan Early Payoff Calculator — Interest Saved with Extra Payments',
     description: 'Free loan payoff calculator. See how much interest you save and how many months sooner you pay off a loan by making extra monthly payments. Compare standard vs early payoff.',
     h1: 'Loan Early Payoff Calculator',
+    subtitle: 'See how extra payments reduce your loan term and save on total interest paid.',
   },
   ru: {
     title: 'Калькулятор досрочного погашения кредита — экономия на процентах',
     description: 'Бесплатный калькулятор досрочного погашения. Узнайте, сколько сэкономите на процентах и на сколько месяцев раньше закроете кредит при дополнительных выплатах.',
     h1: 'Калькулятор досрочного погашения',
+    subtitle: 'Узнайте, как досрочные платежи сокращают срок кредита и уменьшают итоговую переплату.',
   },
   uk: {
     title: 'Калькулятор дострокового погашення кредиту — економія на відсотках',
     description: 'Безкоштовний калькулятор дострокового погашення. Дізнайтеся, скільки зекономите на відсотках і на скільки місяців раніше закриєте кредит при додаткових платежах.',
     h1: 'Калькулятор дострокового погашення',
+    subtitle: 'Дізнайтеся, як дострокові платежі скорочують термін кредиту та зменшують загальну переплату.',
   },
   fr: {
     title: 'Calculatrice Remboursement Anticipé — Intérêts Économisés',
     description: 'Calculatrice de remboursement anticipé gratuite. Calculez combien d\'intérêts vous économisez et combien de mois plus tôt vous remboursez un prêt en faisant des paiements supplémentaires.',
     h1: 'Calculatrice Remboursement Anticipé',
+    subtitle: 'Découvrez comment des paiements supplémentaires réduisent la durée du prêt et les intérêts totaux.',
   },
   lt: {
     title: 'Išankstinio Paskolos Grąžinimo Skaičiuotuvas — Sutaupytos Palūkanos',
     description: 'Nemokamas išankstinio paskolos grąžinimo skaičiuotuvas. Sužinokite, kiek palūkanų sutaupysite ir kiek mėnesių anksčiau grąžinsite paskolą mokėdami papildomus mokėjimus.',
     h1: 'Išankstinio Paskolos Grąžinimo Skaičiuotuvas',
+    subtitle: 'Sužinokite, kaip papildomos įmokos sutrumpina paskolos terminą ir sumažina bendrą palūkanų sumą.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function LoanPayoffPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <LoanPayoffCalculator locale={locale} />
         <AdInline locale={locale} />

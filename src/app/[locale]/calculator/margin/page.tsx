@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/roi', label: 'RI skaičiuotuvas' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/discount', label: 'Nuolaidos skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Margin & Markup Calculator — Calculate Profit Margin',
     description: 'Free margin and markup calculator. Calculate gross profit margin, markup percentage, and selling price from cost. Supports two modes: calculate from prices or find selling price by target margin.',
     h1: 'Margin & Markup Calculator',
+    subtitle: 'Calculate profit margin, markup percentage, and revenue for your products or services.',
   },
   ru: {
     title: 'Калькулятор маржи и наценки — расчёт прибыльности',
     description: 'Бесплатный калькулятор маржи и наценки. Рассчитайте валовую маржу, процент наценки и цену продажи по себестоимости. Два режима: расчёт по ценам или по целевой марже.',
     h1: 'Калькулятор маржи и наценки',
+    subtitle: 'Рассчитайте маржу прибыли, процент наценки и выручку для ваших товаров или услуг.',
   },
   uk: {
     title: 'Калькулятор маржі і націнки — розрахунок прибутковості',
     description: 'Безкоштовний калькулятор маржі та націнки. Розрахуйте валову маржу, відсоток націнки та ціну продажу за собівартістю. Два режими: розрахунок за цінами або за цільовою маржею.',
     h1: 'Калькулятор маржі і націнки',
+    subtitle: 'Розрахуйте маржу прибутку, відсоток націнки та виручку для ваших товарів або послуг.',
   },
   fr: {
     title: 'Calculatrice marge et majoration — calcul de rentabilité',
     description: 'Calculatrice de marge et majoration gratuite. Calculez la marge brute, le taux de majoration et le prix de vente à partir du coût. Deux modes : calcul depuis les prix ou par marge cible.',
     h1: 'Calculatrice marge et majoration',
+    subtitle: 'Calculez la marge bénéficiaire, le pourcentage de majoration et le chiffre d\'affaires.',
   },
   lt: {
     title: 'Maržos ir antkainių skaičiuotuvas — pelno skaičiavimas',
     description: 'Nemokamas maržos ir antkainių skaičiuotuvas. Apskaičiuokite bendrąją maržą, antkainių procentą ir pardavimo kainą pagal savikainą. Du režimai: skaičiavimas iš kainų arba pagal tikslinę maržą.',
     h1: 'Maržos ir antkainių skaičiuotuvas',
+    subtitle: 'Apskaičiuokite pelno maržą, antkainių procentą ir pajamas savo produktams ar paslaugoms.',
   },
 };
 
@@ -173,6 +178,7 @@ export default async function MarginPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <MarginCalculator locale={locale} />
 

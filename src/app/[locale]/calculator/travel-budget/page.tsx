@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Travel Budget Calculator — Plan Trip Costs',
     description: 'Free travel budget calculator. Estimate total trip cost, cost per person, and daily budget for any number of travelers and days. Includes accommodation, food, transport, and activities.',
     h1: 'Travel Budget Calculator',
+    subtitle: 'Plan your trip expenses and estimate the total cost of your journey in any currency.',
   },
   ru: {
     title: 'Калькулятор бюджета путешествия — план расходов',
     description: 'Бесплатный калькулятор бюджета путешествия. Оцените общую стоимость поездки, расходы на человека и дневной бюджет для любого количества путешественников и дней.',
     h1: 'Калькулятор бюджета путешествия',
+    subtitle: 'Спланируйте расходы на поездку и рассчитайте общую стоимость путешествия.',
   },
   uk: {
     title: 'Калькулятор бюджету подорожі — план витрат',
     description: 'Безкоштовний калькулятор бюджету подорожі. Оцініть загальну вартість поїздки, витрати на людину та добовий бюджет для будь-якої кількості мандрівників і днів.',
     h1: 'Калькулятор бюджету подорожі',
+    subtitle: 'Сплануйте витрати на поїздку та розрахуйте загальну вартість подорожі.',
   },
   fr: {
     title: 'Calculatrice Budget Voyage — Planifier Ses Dépenses',
     description: 'Calculatrice de budget voyage gratuite. Estimez le coût total du voyage, le coût par personne et le budget journalier pour n\'importe quel nombre de voyageurs et de jours.',
     h1: 'Calculatrice Budget Voyage',
+    subtitle: 'Planifiez vos dépenses de voyage et estimez le coût total de votre trip en toute devise.',
   },
   lt: {
     title: 'Kelionės Biudžeto Skaičiuotuvas — Planuokite Išlaidas',
     description: 'Nemokamas kelionės biudžeto skaičiuotuvas. Įvertinkite bendrą kelionės kainą, išlaidas vienam asmeniui ir dienos biudžetą bet kuriam keliautojų ir dienų skaičiui.',
     h1: 'Kelionės Biudžeto Skaičiuotuvas',
+    subtitle: 'Suplanuokite kelionės išlaidas ir įvertinkite bendrą kelionės kainą bet kuria valiuta.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function TravelBudgetPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <TravelBudgetCalculator locale={locale} />
         <AdInline locale={locale} />
