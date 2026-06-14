@@ -151,6 +151,12 @@
   flex-direction: row;
   align-items: center;
   gap: var(--spacing-sm);
+  flex: 1;
+  box-sizing: border-box;
+
+  @media (max-width: 859px) {
+    padding: 10px 8px 36px 10px;
+  }
 
   @media (min-width: 860px) {
     flex-direction: column;
@@ -215,6 +221,16 @@
     padding: 0;
     transition: all var(--transition-base);
 
+    @media (max-width: 859px) {
+      top: auto;
+      bottom: 4px;
+      right: 2px;
+      background: transparent;
+      border: none;
+      width: 32px;
+      height: 32px;
+    }
+
     &:hover {
       color: #F59E0B;
       border-color: #F59E0B;
@@ -229,6 +245,8 @@
 
 .tool-card-wrap {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .tool-grid__empty {
