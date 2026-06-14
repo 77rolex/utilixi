@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { getFavorites, toggleFavorite } from '@/lib/favorites';
 import styles from './ToolGrid.module.scss';
 
-export type ToolCategory = 'finance' | 'crypto' | 'health' | 'utility' | 'travel' | 'lifestyle' | 'legal' | 'measure' | 'realestate' | 'esoteric';
+export type ToolCategory = 'finance' | 'crypto' | 'health' | 'utility' | 'budget' | 'travel' | 'lifestyle' | 'legal' | 'measure' | 'realestate' | 'renovation' | 'esoteric';
 
 export type ToolItem = {
   href: string;
@@ -19,11 +19,11 @@ export type ToolItem = {
 type FilterCategory = 'favorites' | 'all' | ToolCategory;
 
 const CATEGORY_LABELS: Record<string, Record<FilterCategory, string>> = {
-  en: { favorites: 'Favorites', all: 'All', finance: 'Finance', crypto: 'Crypto', health: 'Health', utility: 'Utilities', travel: 'Travel', lifestyle: 'Lifestyle', legal: 'Legal', measure: 'Measurements', realestate: 'Real Estate', esoteric: 'Esoteric' },
-  ru: { favorites: 'Избранное', all: 'Все', finance: 'Финансы', crypto: 'Криптовалюта', health: 'Здоровье', utility: 'Утилиты', travel: 'Путешествия', lifestyle: 'Быт и досуг', legal: 'Юридические', measure: 'Измерения', realestate: 'Недвижимость', esoteric: 'Эзотерика' },
-  uk: { favorites: 'Вибране', all: 'Усі', finance: 'Фінанси', crypto: 'Криптовалюта', health: 'Здоров\'я', utility: 'Утиліти', travel: 'Подорожі', lifestyle: 'Побут і дозвілля', legal: 'Юридичні', measure: 'Вимірювання', realestate: 'Нерухомість', esoteric: 'Езотерика' },
-  fr: { favorites: 'Favoris', all: 'Tout', finance: 'Finance', crypto: 'Crypto', health: 'Santé', utility: 'Utilitaires', travel: 'Voyage', lifestyle: 'Lifestyle', legal: 'Juridique', measure: 'Mesures', realestate: 'Immobilier', esoteric: 'Ésotérique' },
-  lt: { favorites: 'Mėgstamiausi', all: 'Visi', finance: 'Finansai', crypto: 'Kripto', health: 'Sveikata', utility: 'Priemonės', travel: 'Kelionės', lifestyle: 'Gyvenimo būdas', legal: 'Teisiniai', measure: 'Matavimai', realestate: 'Nekilnojamasis turtas', esoteric: 'Ezoterika' },
+  en: { favorites: 'Favorites', all: 'All', finance: 'Finance', crypto: 'Crypto', health: 'Health', utility: 'Utilities', budget: 'Budget', travel: 'Travel', lifestyle: 'Lifestyle', legal: 'Legal', measure: 'Measurements', realestate: 'Real Estate', renovation: 'Renovation', esoteric: 'Esoteric' },
+  ru: { favorites: 'Избранное', all: 'Все', finance: 'Финансы', crypto: 'Криптовалюта', health: 'Здоровье', utility: 'Утилиты', budget: 'Бюджет', travel: 'Путешествия', lifestyle: 'Быт и досуг', legal: 'Юридические', measure: 'Измерения', realestate: 'Недвижимость', renovation: 'Ремонт', esoteric: 'Эзотерика' },
+  uk: { favorites: 'Вибране', all: 'Усі', finance: 'Фінанси', crypto: 'Криптовалюта', health: 'Здоров\'я', utility: 'Утиліти', budget: 'Бюджет', travel: 'Подорожі', lifestyle: 'Побут і дозвілля', legal: 'Юридичні', measure: 'Вимірювання', realestate: 'Нерухомість', renovation: 'Ремонт', esoteric: 'Езотерика' },
+  fr: { favorites: 'Favoris', all: 'Tout', finance: 'Finance', crypto: 'Crypto', health: 'Santé', utility: 'Utilitaires', budget: 'Budget', travel: 'Voyage', lifestyle: 'Lifestyle', legal: 'Juridique', measure: 'Mesures', realestate: 'Immobilier', renovation: 'Rénovation', esoteric: 'Ésotérique' },
+  lt: { favorites: 'Mėgstamiausi', all: 'Visi', finance: 'Finansai', crypto: 'Kripto', health: 'Sveikata', utility: 'Priemonės', budget: 'Biudžetas', travel: 'Kelionės', lifestyle: 'Gyvenimo būdas', legal: 'Teisiniai', measure: 'Matavimai', realestate: 'Nekilnojamasis turtas', renovation: 'Renovacija', esoteric: 'Ezoterika' },
 };
 
 const SEARCH_PLACEHOLDER: Record<string, string> = {
@@ -74,7 +74,7 @@ const FAVORITES_TIP: Record<string, string> = {
   lt: 'Patarimas: pridėkite puslapį prie naršyklės žymių (Ctrl+D), kad „Mėgstamiausi" nedingtų po talpyklos išvalymo.',
 };
 
-const FILTER_ORDER: FilterCategory[] = ['all', 'finance', 'crypto', 'health', 'utility', 'travel', 'lifestyle', 'legal', 'measure', 'realestate', 'esoteric'];
+const FILTER_ORDER: FilterCategory[] = ['all', 'finance', 'crypto', 'health', 'utility', 'budget', 'travel', 'lifestyle', 'legal', 'measure', 'realestate', 'renovation', 'esoteric'];
 
 type Props = {
   locale: string;
@@ -95,6 +95,10 @@ export default function ToolGrid({ locale, tools, initialCategory }: Props) {
   const [active, setActive] = useState<FilterCategory>(resolveCategory(initialCategory));
   const [search, setSearch] = useState('');
   const [favPaths, setFavPaths] = useState<string[]>([]);
+
+  useEffect(() => {
+    setActive(resolveCategory(initialCategory));
+  }, [initialCategory]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     setFavPaths(getFavorites());

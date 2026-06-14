@@ -37,31 +37,36 @@ async function getRates(): Promise<{ rates: Record<string, number>; updatedAt: s
   }
 }
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Currency Converter — Live Exchange Rates',
     description: 'Free online currency converter with live exchange rates. Convert USD, EUR, GBP, RUB, UAH and 150+ currencies instantly. Rates updated every 6 hours.',
     h1: 'Currency Converter',
+    subtitle: 'Convert any currency at live exchange rates',
   },
   ru: {
     title: 'Конвертер валют — Курсы валют онлайн',
     description: 'Бесплатный конвертер валют онлайн с актуальными курсами. Конвертируйте USD, EUR, RUB, UAH, GBP и более 150 валют. Курсы обновляются каждые 6 часов.',
     h1: 'Конвертер валют',
+    subtitle: 'Конвертируйте любую валюту по актуальному курсу',
   },
   uk: {
     title: 'Конвертер валют — Курси валют онлайн',
     description: 'Безкоштовний конвертер валют онлайн з актуальними курсами. Конвертуйте USD, EUR, UAH, RUB, GBP та понад 150 валют. Курси оновлюються кожні 6 годин.',
     h1: 'Конвертер валют',
+    subtitle: 'Конвертируйте любую валюту по актуальному курсу',
   },
   fr: {
     title: 'Convertisseur de Devises — Taux de Change en Direct',
     description: 'Convertisseur de devises gratuit avec taux de change en temps réel. Convertissez USD, EUR, GBP et plus de 150 devises instantanément. Taux mis à jour toutes les 6 heures.',
     h1: 'Convertisseur de Devises',
+    subtitle: 'Convertissez n\'importe quelle devise au taux du jour',
   },
   lt: {
     title: 'Valiutų Keitiklis — Valiutų Kursai Internete',
     description: 'Nemokamas valiutų keitiklis su naujausiais kursais. Konvertuokite USD, EUR, GBP ir daugiau nei 150 valiutų akimirksniu. Kursai atnaujinami kas 6 valandas.',
     h1: 'Valiutų Keitiklis',
+    subtitle: 'Konvertuokite bet kurią valiutą pagal realaus laiko kursą',
   },
 };
 
@@ -350,6 +355,7 @@ export default async function CurrencyPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <CurrencyConverter locale={locale} rates={rates} updatedAt={updatedAt} />
 

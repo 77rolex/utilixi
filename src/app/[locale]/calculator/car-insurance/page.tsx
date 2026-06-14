@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }, { href: '/calculator/roi', label: 'RI skaičiuotuvas' }, { href: '/calculator/life-insurance', label: 'Gyvybės draudimo skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Car Insurance Calculator — Estimate Your Premium',
     description: 'Free car insurance calculator. Estimate your annual and monthly auto insurance premium based on vehicle value, driver age, experience and country.',
     h1: 'Car Insurance Calculator',
+    subtitle: 'Estimate your car insurance cost before you buy',
   },
   ru: {
     title: 'Калькулятор страховки автомобиля — расчёт стоимости ОСАГО и КАСКО',
     description: 'Бесплатный калькулятор страховки автомобиля. Рассчитайте стоимость ОСАГО и КАСКО по стоимости авто, возрасту водителя и стажу.',
     h1: 'Калькулятор страховки автомобиля',
+    subtitle: 'Рассчитайте стоимость страховки автомобиля онлайн',
   },
   uk: {
     title: 'Калькулятор страховки автомобіля — розрахунок ОСЦПВ і КАСКО',
     description: 'Безкоштовний калькулятор страховки автомобіля. Розрахуйте вартість ОСЦПВ і КАСКО за вартістю авто, віком водія та стажем.',
     h1: 'Калькулятор страховки автомобіля',
+    subtitle: 'Розрахуйте вартість страховки авто онлайн',
   },
   fr: {
     title: 'Calculatrice d\'assurance auto — Estimez votre prime',
     description: 'Calculatrice d\'assurance auto gratuite. Estimez votre prime annuelle et mensuelle selon la valeur du véhicule, l\'âge du conducteur et le pays.',
     h1: 'Calculatrice d\'assurance auto',
+    subtitle: 'Estimez le coût de votre assurance auto en ligne',
   },
   lt: {
     title: 'Automobilio draudimo skaičiuotuvas — įmokos įvertinimas',
     description: 'Nemokamas automobilio draudimo skaičiuotuvas. Įvertinkite metinę ir mėnesinę draudimo įmoką pagal automobilio vertę, vairuotojo amžių ir patirtį.',
     h1: 'Automobilio draudimo skaičiuotuvas',
+    subtitle: 'Apskaičiuokite automobilio draudimo kainą internetu',
   },
 };
 
@@ -173,6 +178,7 @@ export default async function CarInsurancePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <CarInsuranceCalculator locale={locale} />
 

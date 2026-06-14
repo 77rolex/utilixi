@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }, { href: '/calculator/property-tax', label: 'Nekilnojamojo turto mokestis' }, { href: '/calculator/roi', label: 'ROI skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Rent vs Buy Calculator — Is It Better to Rent or Buy?', description: 'Compare the total cost of renting vs buying a home over any period. Calculates net costs, home equity, break-even point and investment returns.', h1: 'Rent vs Buy Calculator' },
-  ru: { title: 'Аренда или покупка — что выгоднее: калькулятор онлайн', description: 'Сравните полную стоимость аренды и покупки жилья за любой период. Расчёт чистых расходов, собственного капитала и точки окупаемости.', h1: 'Аренда vs Покупка' },
-  uk: { title: 'Оренда або купівля — що вигідніше: калькулятор онлайн', description: 'Порівняйте повну вартість оренди та купівлі житла за будь-який період. Розрахунок чистих витрат, власного капіталу та точки беззбитковості.', h1: 'Оренда vs Купівля' },
-  fr: { title: 'Louer ou Acheter — Calculatrice de comparaison', description: 'Comparez le coût total de la location et de l\'achat immobilier sur n\'importe quelle période. Calcule les coûts nets, les capitaux propres et le seuil de rentabilité.', h1: 'Louer ou Acheter' },
-  lt: { title: 'Nuoma ar Pirkimas — Kas Naudingiau: Skaičiuotuvas', description: 'Palyginkite nuomos ir pirkimo bendras išlaidas bet kuriam laikotarpiui. Skaičiuoja grynas išlaidas, nuosavybės kapitalą ir atsipirkimo tašką.', h1: 'Nuoma ar Pirkimas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Rent vs Buy Calculator — Is It Better to Rent or Buy?', description: 'Compare the total cost of renting vs buying a home over any period. Calculates net costs, home equity, break-even point and investment returns.', h1: 'Rent vs Buy Calculator', subtitle: 'Compare renting vs buying a home financially' },
+  ru: { title: 'Аренда или покупка — что выгоднее: калькулятор онлайн', description: 'Сравните полную стоимость аренды и покупки жилья за любой период. Расчёт чистых расходов, собственного капитала и точки окупаемости.', h1: 'Аренда vs Покупка', subtitle: 'Сравните аренду и покупку жилья — что выгоднее' },
+  uk: { title: 'Оренда або купівля — що вигідніше: калькулятор онлайн', description: 'Порівняйте повну вартість оренди та купівлі житла за будь-який період. Розрахунок чистих витрат, власного капіталу та точки беззбитковості.', h1: 'Оренда vs Купівля', subtitle: 'Порівняйте оренду та купівлю житла фінансово' },
+  fr: { title: 'Louer ou Acheter — Calculatrice de comparaison', description: 'Comparez le coût total de la location et de l\'achat immobilier sur n\'importe quelle période. Calcule les coûts nets, les capitaux propres et le seuil de rentabilité.', h1: 'Louer ou Acheter', subtitle: 'Comparez financièrement louer ou acheter un logement' },
+  lt: { title: 'Nuoma ar Pirkimas — Kas Naudingiau: Skaičiuotuvas', description: 'Palyginkite nuomos ir pirkimo bendras išlaidas bet kuriam laikotarpiui. Skaičiuoja grynas išlaidas, nuosavybės kapitalą ir atsipirkimo tašką.', h1: 'Nuoma ar Pirkimas', subtitle: 'Palyginkite nuomos ir pirkimo išlaidas finansiškai' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -150,6 +150,7 @@ export default async function RentVsBuyPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <RentVsBuyCalculator locale={locale} />
         <AdInline locale={locale} />

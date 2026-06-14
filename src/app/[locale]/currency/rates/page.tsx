@@ -11,31 +11,36 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Exchange Rates Today — Live Currency Rates Table',
     description: 'Live exchange rates for 160+ currencies. Sortable table with base currency selector. Powered by ExchangeRate-API, updated every 6 hours.',
     h1: 'Exchange Rates',
+    subtitle: 'View live currency exchange rates online',
   },
   ru: {
     title: 'Курс валют сегодня — таблица всех валют онлайн',
     description: 'Актуальные курсы 160+ валют. Таблица с сортировкой и выбором базовой валюты. Данные от ExchangeRate-API, обновляются каждые 6 часов.',
     h1: 'Курс валют',
+    subtitle: 'Смотрите актуальные курсы валют онлайн',
   },
   uk: {
     title: 'Курс валют сьогодні — таблиця всіх валют онлайн',
     description: 'Актуальні курси 160+ валют. Таблиця з сортуванням та вибором базової валюти. Дані від ExchangeRate-API, оновлюються кожні 6 годин.',
     h1: 'Курс валют',
+    subtitle: 'Смотрите актуальные курсы валют онлайн',
   },
   fr: {
     title: 'Taux de Change Aujourd\'hui — Tableau des Devises en Direct',
     description: 'Taux de change en direct pour 160+ devises. Tableau triable avec sélecteur de devise de base. Données ExchangeRate-API, mises à jour toutes les 6 heures.',
     h1: 'Taux de Change',
+    subtitle: 'Consultez les taux de change en temps réel',
   },
   lt: {
     title: 'Valiutų Kursai Šiandien — Visų Valiutų Lentelė',
     description: 'Realaus laiko 160+ valiutų kursai. Rūšiuojama lentelė su bazinės valiutos pasirinkimu. Duomenys iš ExchangeRate-API, atnaujinami kas 6 valandas.',
     h1: 'Valiutų Kursai',
+    subtitle: 'Žiūrėkite valiutų kursus internetu realiuoju laiku',
   },
 };
 
@@ -202,6 +207,7 @@ export default async function CurrencyRatesPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <ExchangeRatesTable locale={locale} rates={rates} updatedAt={updatedAt} />
 

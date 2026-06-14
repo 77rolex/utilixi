@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/compound-interest', label: 'Sudėtinių palūkanų skaičiuotuvas' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'ROI Calculator — Calculate Return on Investment Online', description: 'Free ROI calculator. Calculate return on investment, net profit, annualized ROI and investment multiplier in seconds.', h1: 'ROI Calculator' },
-  ru: { title: 'Калькулятор ROI — рассчитать доходность инвестиций онлайн', description: 'Бесплатный калькулятор ROI. Рассчитайте доходность инвестиций, чистую прибыль, годовой ROI и мультипликатор за несколько секунд.', h1: 'Калькулятор ROI' },
-  uk: { title: 'Калькулятор ROI — розрахувати дохідність інвестицій онлайн', description: 'Безкоштовний калькулятор ROI. Розрахуйте дохідність інвестицій, чистий прибуток та річний ROI за кілька секунд.', h1: 'Калькулятор ROI' },
-  fr: { title: 'Calculatrice ROI — Calculer le retour sur investissement', description: 'Calculez votre retour sur investissement (ROI), le gain net, le ROI annualisé et le multiplicateur d\'investissement en quelques secondes.', h1: 'Calculatrice ROI' },
-  lt: { title: 'RI Skaičiuotuvas — Apskaičiuoti Investicijų Grąžą', description: 'Nemokamas investicijų grąžos skaičiuotuvas. Apskaičiuokite RI, grynąjį pelną, metinę grąžą ir daugiklį per kelias sekundes.', h1: 'Investicijų grąžos skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'ROI Calculator — Calculate Return on Investment Online', description: 'Free ROI calculator. Calculate return on investment, net profit, annualized ROI and investment multiplier in seconds.', h1: 'ROI Calculator', subtitle: 'Calculate return on investment for any project or asset' },
+  ru: { title: 'Калькулятор ROI — рассчитать доходность инвестиций онлайн', description: 'Бесплатный калькулятор ROI. Рассчитайте доходность инвестиций, чистую прибыль, годовой ROI и мультипликатор за несколько секунд.', h1: 'Калькулятор ROI', subtitle: 'Рассчитайте ROI — рентабельность инвестиций' },
+  uk: { title: 'Калькулятор ROI — розрахувати дохідність інвестицій онлайн', description: 'Безкоштовний калькулятор ROI. Розрахуйте дохідність інвестицій, чистий прибуток та річний ROI за кілька секунд.', h1: 'Калькулятор ROI', subtitle: 'Рассчитайте ROI — рентабельность инвестиций' },
+  fr: { title: 'Calculatrice ROI — Calculer le retour sur investissement', description: 'Calculez votre retour sur investissement (ROI), le gain net, le ROI annualisé et le multiplicateur d\'investissement en quelques secondes.', h1: 'Calculatrice ROI', subtitle: 'Calculez le retour sur investissement de votre projet' },
+  lt: { title: 'RI Skaičiuotuvas — Apskaičiuoti Investicijų Grąžą', description: 'Nemokamas investicijų grąžos skaičiuotuvas. Apskaičiuokite RI, grynąjį pelną, metinę grąžą ir daugiklį per kelias sekundes.', h1: 'Investicijų grąžos skaičiuotuvas', subtitle: 'Apskaičiuokite investicijų grąžą (ROI)' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -150,6 +150,7 @@ export default async function RoiPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <RoiCalculator locale={locale} />
         <AdInline locale={locale} />

@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/calculator/margin', label: 'Maržos skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/discount', label: 'Nuolaidos skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'VAT Calculator — Add or Remove VAT Online Free',
     description: 'Free VAT calculator online. Add VAT to a net price or extract VAT from a gross amount in seconds. Supports 20+ countries with preset rates — UK, France, Germany, Belgium and more. Enter a custom rate for reduced VAT.',
     h1: 'VAT Calculator',
+    subtitle: 'Add or remove VAT from any price instantly',
   },
   ru: {
     title: 'Калькулятор НДС онлайн — начислить и выделить НДС бесплатно',
     description: 'Бесплатный калькулятор НДС онлайн. Начислите НДС на сумму без НДС или выделите НДС из суммы с НДС. Ставки 20+ стран, включая Россию (20%), Украину (20%), Беларусь (20%) и Казахстан (12%).',
     h1: 'Калькулятор НДС',
+    subtitle: 'Рассчитайте НДС онлайн — прибавить или вычесть',
   },
   uk: {
     title: 'Калькулятор ПДВ — Нарахувати або Виділити ПДВ онлайн',
     description: 'Розрахуйте ПДВ миттєво: нарахуйте 20% до суми без ПДВ або виділіть ПДВ із суми з ПДВ. Ставки України, Польщі, Литви та 20+ країн. Формула і результат одразу.',
     h1: 'Калькулятор ПДВ',
+    subtitle: 'Розрахуйте ПДВ онлайн — додати або відняти',
   },
   fr: {
     title: 'Calculatrice TVA Gratuite — Calcul TVA France & Belgique en ligne',
     description: 'Calculatrice TVA gratuite en ligne. Calcul TVA instantané : ajoutez la TVA à un prix HT ou extrayez la TVA d\'un montant TTC. Taux France (20%), Belgique (21%), Suisse (8.1%) et 20+ pays. Simulateur TVA avec taux personnalisé.',
     h1: 'Calculatrice TVA',
+    subtitle: 'Calculez la TVA en ligne — ajouter ou déduire',
   },
   lt: {
     title: 'PVM Skaičiuotuvas — Skaičiuoti PVM internetu nemokamai',
     description: 'Nemokamas PVM skaičiuotuvas internetu. Pridėkite PVM prie sumos arba išskirkite PVM iš bendros sumos. Lietuvos PVM 21%, taip pat 20+ šalių tarifo parinktys ir galimybė įvesti savo tarifą.',
     h1: 'PVM skaičiuotuvas',
+    subtitle: 'Pridėkite arba atimkite PVM iš bet kurios kainos',
   },
 };
 
@@ -170,6 +175,7 @@ export default async function VatPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <VatCalculator locale={locale} />
         <AdInline locale={locale} />

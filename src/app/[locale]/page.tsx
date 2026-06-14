@@ -194,7 +194,7 @@ const RAW_TOOLS: RawTool[] = [
   {
     href: '/calculator/tip',
     icon: '🍽️',
-    category: 'utility',
+    category: 'lifestyle',
     titles: { en: 'Tip Calculator', ru: 'Калькулятор чаевых', uk: 'Калькулятор чайових', fr: 'Calculatrice de pourboire', lt: 'Arbatpinigių skaičiuotuvas' },
     descs: { en: 'Calculate tip and split the bill', ru: 'Рассчитайте чаевые и разделите счёт', uk: 'Розрахуйте чайові та розділіть рахунок', fr: 'Calculez le pourboire et partagez l\'addition', lt: 'Apskaičiuokite arbatpinigius ir padalinkite sąskaitą' },
   },
@@ -243,7 +243,7 @@ const RAW_TOOLS: RawTool[] = [
   {
     href: '/calculator/flight-delay',
     icon: '✈️',
-    category: 'legal',
+    category: 'travel',
     titles: { en: 'Flight Delay Compensation', ru: 'Компенсация за задержку рейса', uk: 'Компенсація за затримку рейсу', fr: 'Indemnisation retard de vol', lt: 'Kompensacija už skrydžio vėlavimą' },
     descs: { en: 'Check EU261 compensation amount', ru: 'Проверьте компенсацию по EU261', uk: 'Перевірте компенсацію за EU261', fr: 'Vérifiez l\'indemnisation EU261', lt: 'Patikrinkite EU261 kompensaciją' },
   },
@@ -257,7 +257,7 @@ const RAW_TOOLS: RawTool[] = [
   {
     href: '/calculator/renovation',
     icon: '🔨',
-    category: 'realestate',
+    category: 'renovation',
     titles: { en: 'Renovation Cost Calculator', ru: 'Калькулятор ремонта', uk: 'Калькулятор ремонту', fr: 'Coût de rénovation', lt: 'Remonto kainos skaičiuotuvas' },
     descs: { en: 'Estimate renovation costs per m² by country', ru: 'Стоимость ремонта за м² по стране', uk: 'Вартість ремонту за м² за країною', fr: 'Estimez le coût de rénovation au m²', lt: 'Įvertinkite remonto kainą m² pagal šalį' },
   },
@@ -411,7 +411,7 @@ const RAW_TOOLS: RawTool[] = [
   {
     href: '/converter/timezone',
     icon: '🕐',
-    category: 'utility',
+    category: 'travel',
     titles: { en: 'Timezone Converter', ru: 'Конвертер часовых поясов', uk: 'Конвертер часових поясів', fr: 'Convertisseur de fuseaux horaires', lt: 'Laiko juostų keitiklis' },
     descs: { en: 'World clock — convert time across 25 cities', ru: 'Мировые часы — время в 25 городах мира', uk: 'Світовий годинник — час у 25 містах світу', fr: 'Horloge mondiale — heure dans 25 villes', lt: 'Pasaulio laikrodis — laikas 25 miestuose' },
   },
@@ -558,14 +558,14 @@ const RAW_TOOLS: RawTool[] = [
   {
     href: '/calculator/fuel-cost',
     icon: '⛽',
-    category: 'utility',
+    category: 'budget',
     titles: { en: 'Fuel Cost Calculator', ru: 'Калькулятор расхода топлива', uk: 'Калькулятор витрат на пальне', fr: 'Calculatrice Coût Carburant', lt: 'Degalų kainos skaičiuotuvas' },
     descs: { en: 'Calculate petrol & diesel cost for any trip', ru: 'Рассчитайте стоимость топлива для поездки', uk: 'Розрахуйте вартість пального для поїздки', fr: 'Estimez le coût carburant pour tout trajet', lt: 'Apskaičiuokite degalų kainą bet kuriai kelionei' },
   },
   {
     href: '/calculator/electricity-bill',
     icon: '💡',
-    category: 'utility',
+    category: 'budget',
     titles: { en: 'Electricity Bill Calculator', ru: 'Калькулятор электроэнергии', uk: 'Калькулятор електроенергії', fr: 'Calculatrice Facture Électricité', lt: 'Elektros sąskaitos skaičiuotuvas' },
     descs: { en: 'Calculate monthly electricity cost for any appliance', ru: 'Рассчитайте расход электроэнергии для любого прибора', uk: 'Розрахуйте споживання електроенергії будь-якого приладу', fr: 'Calculez la facture d\'électricité de vos appareils', lt: 'Apskaičiuokite elektros sąskaitą bet kuriam prietaisui' },
   },
@@ -607,7 +607,7 @@ const RAW_TOOLS: RawTool[] = [
   {
     href: '/calculator/ac-cost',
     icon: '❄️',
-    category: 'utility',
+    category: 'budget',
     titles: { en: 'AC & Heating Cost Calculator', ru: 'Калькулятор кондиционера и отопления', uk: 'Калькулятор кондиціонера та опалення', fr: 'Calculatrice Climatisation & Chauffage', lt: 'Kondicionieriaus ir šildymo išlaidų skaičiuotuvas' },
     descs: { en: 'Estimate monthly electricity cost for air conditioning or heating', ru: 'Оцените ежемесячные расходы на электроэнергию для кондиционера', uk: 'Оцініть щомісячні витрати на електроенергію для кондиціонера', fr: 'Estimez le coût mensuel d\'électricité pour climatisation ou chauffage', lt: 'Įvertinkite mėnesines elektros išlaidas kondicionavimui ar šildymui' },
   },
@@ -621,7 +621,7 @@ const RAW_TOOLS: RawTool[] = [
   {
     href: '/calculator/material-cost',
     icon: '🧱',
-    category: 'utility',
+    category: 'renovation',
     titles: { en: 'Flooring, Paint & Concrete Calculator', ru: 'Калькулятор покрытий, краски и бетона', uk: 'Калькулятор покриттів, фарби та бетону', fr: 'Calculatrice Revêtement, Peinture & Béton', lt: 'Grindų, dažų ir betono skaičiuotuvas' },
     descs: { en: 'Calculate flooring, paint or concrete quantity and cost for any room', ru: 'Рассчитайте количество и стоимость покрытий, краски или бетона', uk: 'Розрахуйте кількість і вартість покриттів, фарби або бетону', fr: 'Calculez la quantité et le coût de revêtement, peinture ou béton', lt: 'Apskaičiuokite grindų, dažų ar betono kiekį ir kainą' },
   },
@@ -635,7 +635,7 @@ const RAW_TOOLS: RawTool[] = [
   {
     href: '/calculator/pool-volume',
     icon: '🏊',
-    category: 'utility',
+    category: 'lifestyle',
     titles: { en: 'Pool Volume Calculator', ru: 'Калькулятор объёма бассейна', uk: 'Калькулятор об\'єму басейну', fr: 'Calculatrice Volume Piscine', lt: 'Baseino tūrio skaičiuotuvas' },
     descs: { en: 'Calculate swimming pool volume in litres and gallons with chemical estimates', ru: 'Рассчитайте объём бассейна в литрах и галлонах с дозировками химии', uk: 'Розрахуйте об\'єм басейну в літрах і галонах з дозуваннями хімії', fr: 'Calculez le volume de piscine en litres et gallons avec dosages chimiques', lt: 'Apskaičiuokite baseino tūrį litrais ir galonais su cheminių medžiagų kiekiais' },
   },

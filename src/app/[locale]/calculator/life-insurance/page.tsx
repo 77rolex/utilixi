@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/pension', label: 'Pensijų skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/car-insurance', label: 'Automobilio draudimas' }, { href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Term Life Insurance Calculator — Free Estimate for UK & US',
     description: 'Free term life insurance calculator online. Estimate your monthly and annual premium by age, gender, coverage amount, policy term, health and smoking status. Instant results for UK, US and EU — no registration required.',
     h1: 'Life Insurance Calculator',
+    subtitle: 'Estimate life insurance premium cost online',
   },
   ru: {
     title: 'Калькулятор страхования жизни — расчёт стоимости полиса онлайн',
     description: 'Бесплатный калькулятор страхования жизни онлайн. Рассчитайте ежемесячную и годовую стоимость полиса по возрасту, полу, сумме покрытия, сроку и состоянию здоровья.',
     h1: 'Калькулятор страхования жизни',
+    subtitle: 'Рассчитайте стоимость страхования жизни онлайн',
   },
   uk: {
     title: 'Калькулятор страхування життя — розрахунок вартості поліса онлайн',
     description: 'Безкоштовний калькулятор страхування життя онлайн. Розрахуйте щомісячну і річну вартість поліса за віком, статтю, сумою покриття, терміном та станом здоров\'я.',
     h1: 'Калькулятор страхування життя',
+    subtitle: 'Розрахуйте вартість страхування життя онлайн',
   },
   fr: {
     title: 'Calculatrice Assurance Vie Gratuite — Estimez votre prime en ligne',
     description: 'Calculatrice d\'assurance vie gratuite en ligne. Estimez votre prime mensuelle et annuelle selon l\'âge, le sexe, le montant assuré, la durée et l\'état de santé. Marché FR, BE, CH.',
     h1: 'Calculatrice d\'assurance vie',
+    subtitle: 'Estimez le coût d\'une assurance vie en ligne',
   },
   lt: {
     title: 'Gyvybės draudimo skaičiuotuvas — įmokos skaičiavimas internetu',
     description: 'Nemokamas gyvybės draudimo skaičiuotuvas internetu. Apskaičiuokite mėnesinę ir metinę įmoką pagal amžių, lytį, draudimo sumą, terminą ir sveikatos būklę.',
     h1: 'Gyvybės draudimo skaičiuotuvas',
+    subtitle: 'Apskaičiuokite gyvybės draudimo įmokų kainą',
   },
 };
 
@@ -174,6 +179,7 @@ export default async function LifeInsurancePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <LifeInsuranceCalculator locale={locale} />
 

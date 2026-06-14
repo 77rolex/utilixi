@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/roi', label: 'ROI skaičiuotuvas' }, { href: '/calculator/pension', label: 'Pensijų skaičiuotuvas' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Compound Interest Calculator — Investment Growth & Savings',
     description: 'Free compound interest calculator. See how investments grow with annual, monthly or daily compounding. Includes year-by-year breakdown, optional monthly contributions, and the Rule of 72.',
     h1: 'Compound Interest Calculator',
+    subtitle: 'Calculate compound interest growth over time',
   },
   ru: {
     title: 'Калькулятор сложных процентов — рассчитать доход онлайн',
     description: 'Бесплатный калькулятор сложных процентов онлайн. Рассчитайте рост вложений с ежегодным, ежемесячным или ежедневным начислением. Таблица по годам и ежемесячные пополнения.',
     h1: 'Калькулятор сложных процентов',
+    subtitle: 'Рассчитайте рост вклада с учётом сложного процента',
   },
   uk: {
     title: 'Калькулятор складних відсотків — розрахувати дохід онлайн',
     description: 'Безкоштовний калькулятор складних відсотків онлайн. Розрахуйте зростання вкладень із щорічним, щомісячним або щоденним нарахуванням. Таблиця по роках і щомісячні поповнення.',
     h1: 'Калькулятор складних відсотків',
+    subtitle: 'Розрахуйте зростання вкладу з урахуванням складного відсотка',
   },
   fr: {
     title: 'Calculatrice Intérêts Composés — Calculer la Croissance d\'un Investissement',
     description: 'Calculatrice d\'intérêts composés gratuite. Calculez la croissance de votre capital avec capitalisation annuelle, mensuelle ou quotidienne. Tableau annuel inclus, avec versements mensuels optionnels.',
     h1: 'Calculatrice d\'intérêts composés',
+    subtitle: 'Calculez la croissance de votre épargne avec intérêts composés',
   },
   lt: {
     title: 'Sudėtinių Palūkanų Skaičiuotuvas — Investicijų Augimas',
     description: 'Nemokamas sudėtinių palūkanų skaičiuotuvas. Apskaičiuokite investicijų augimą su kasmetiniu, mėnesiniu ar kasdieninniu kapitalizavimu. Metų suvestinė su neprivalomais mėnesiniais įnašais.',
     h1: 'Sudėtinių palūkanų skaičiuotuvas',
+    subtitle: 'Apskaičiuokite sudėtinių palūkanų augimą laikui bėgant',
   },
 };
 
@@ -173,6 +178,7 @@ export default async function CompoundInterestPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <CompoundInterestCalculator locale={locale} />
         <AdInline locale={locale} />

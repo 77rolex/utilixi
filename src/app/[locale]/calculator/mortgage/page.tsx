@@ -21,31 +21,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }, { href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/rent-vs-buy', label: 'Nuoma vs Pirkimas' }, { href: '/calculator/property-tax', label: 'Nekilnojamojo turto mokestis' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Mortgage Calculator — Monthly Payment & Total Cost',
     description: 'Free mortgage calculator online. Calculate your monthly payment, total cost, and interest for any loan amount, rate, and term.',
     h1: 'Mortgage Calculator',
+    subtitle: 'Calculate monthly mortgage payments and total cost',
   },
   ru: {
     title: 'Ипотечный калькулятор — ежемесячный платёж онлайн',
     description: 'Бесплатный ипотечный калькулятор онлайн. Рассчитайте ежемесячный платёж, переплату и полную стоимость кредита.',
     h1: 'Ипотечный калькулятор',
+    subtitle: 'Рассчитайте ежемесячный платёж по ипотеке онлайн',
   },
   uk: {
     title: 'Іпотечний калькулятор — щомісячний платіж онлайн',
     description: 'Безкоштовний іпотечний калькулятор онлайн. Розрахуйте щомісячний платіж, переплату та повну вартість кредиту.',
     h1: 'Іпотечний калькулятор',
+    subtitle: 'Розрахуйте щомісячний платіж по іпотеці онлайн',
   },
   fr: {
     title: 'Calculatrice de Prêt Immobilier — Mensualité en ligne',
     description: 'Calculatrice de prêt immobilier gratuite. Calculez vos mensualités, le coût total et les intérêts pour votre crédit immobilier.',
     h1: 'Calculatrice de Prêt Immobilier',
+    subtitle: 'Calculez votre mensualité d\'emprunt immobilier en ligne',
   },
   lt: {
     title: 'Hipotekos Skaičiuotuvas — mėnesio įmoka internetu',
     description: 'Nemokamas hipotekos skaičiuotuvas internetu. Apskaičiuokite mėnesio įmoką, palūkanas ir bendrą paskolos sumą.',
     h1: 'Hipotekos Skaičiuotuvas',
+    subtitle: 'Apskaičiuokite mėnesinę hipotekos įmoką internetu',
   },
 };
 
@@ -180,6 +185,7 @@ export default async function MortgagePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <MortgageCalculator locale={locale} />
 

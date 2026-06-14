@@ -34,6 +34,7 @@ const NAV_CATEGORIES: NavCategory[] = [
     tools: [
       { href: '/crypto', labels: { en: 'Crypto Rates', ru: 'Курс криптовалют', uk: 'Курс криптовалют', fr: 'Cours des cryptos', lt: 'Kriptovaliutų kursai' } },
       { href: '/crypto/converter', labels: { en: 'Crypto Converter', ru: 'Конвертер криптовалют', uk: 'Конвертер криптовалют', fr: 'Convertisseur crypto', lt: 'Kriptovaliutų keitiklis' } },
+      { href: '/calculator/crypto-tax', labels: { en: 'Crypto Tax Calculator', ru: 'Налог на доход от крипты', uk: 'Податок на дохід від крипти', fr: 'Impôt sur les cryptos', lt: 'Kriptovaliutų mokesčių skaičiuotuvas' } },
     ],
   },
   {
@@ -42,7 +43,6 @@ const NAV_CATEGORIES: NavCategory[] = [
     tools: [
       { href: '/calculator/alimony', labels: { en: 'Alimony Calculator', ru: 'Калькулятор алиментов', uk: 'Калькулятор аліментів', fr: 'Calculatrice de pension alimentaire', lt: 'Alimentų skaičiuotuvas' } },
       { href: '/calculator/traffic-fine', labels: { en: 'Traffic Fine Calculator', ru: 'Штрафы ПДД', uk: 'Штрафи ПДР', fr: 'Amendes routières', lt: 'Eismo baudos' } },
-      { href: '/calculator/flight-delay', labels: { en: 'Flight Delay Compensation', ru: 'Компенсация за задержку рейса', uk: 'Компенсація за затримку рейсу', fr: 'Indemnisation retard de vol', lt: 'Kompensacija už skrydžio vėlavimą' } },
       { href: '/calculator/limitation', labels: { en: 'Statute of Limitations', ru: 'Срок исковой давности', uk: 'Строк позовної давності', fr: 'Délai de prescription', lt: 'Ieškinio senaties terminas' } },
     ],
   },
@@ -50,8 +50,24 @@ const NAV_CATEGORIES: NavCategory[] = [
     key: 'realestate',
     labelsByLocale: { en: 'Real Estate', ru: 'Недвижимость', uk: 'Нерухомість', fr: 'Immobilier', lt: 'Nekilnojamasis turtas' },
     tools: [
-      { href: '/calculator/renovation', labels: { en: 'Renovation Cost Calculator', ru: 'Калькулятор ремонта', uk: 'Калькулятор ремонту', fr: 'Coût de rénovation', lt: 'Remonto kainos skaičiuotuvas' } },
       { href: '/calculator/property-tax', labels: { en: 'Property Tax Calculator', ru: 'Налог на недвижимость', uk: 'Податок на нерухомість', fr: 'Taxe foncière', lt: 'Nekilnojamojo turto mokestis' } },
+    ],
+  },
+  {
+    key: 'renovation',
+    labelsByLocale: { en: 'Renovation', ru: 'Ремонт', uk: 'Ремонт', fr: 'Rénovation', lt: 'Renovacija' },
+    tools: [
+      { href: '/calculator/renovation', labels: { en: 'Renovation Cost Calculator', ru: 'Калькулятор стоимости ремонта', uk: 'Калькулятор вартості ремонту', fr: 'Calculatrice de coût de rénovation', lt: 'Remonto kainos skaičiuotuvas' } },
+      { href: '/calculator/material-cost', labels: { en: 'Flooring, Paint & Concrete', ru: 'Полы, краска и бетон', uk: 'Підлога, фарба і бетон', fr: 'Revêtement, Peinture & Béton', lt: 'Grindys, dažai ir betonas' } },
+    ],
+  },
+  {
+    key: 'budget',
+    labelsByLocale: { en: 'Budget', ru: 'Бюджет', uk: 'Бюджет', fr: 'Budget', lt: 'Biudžetas' },
+    tools: [
+      { href: '/calculator/electricity-bill', labels: { en: 'Electricity Bill Calculator', ru: 'Калькулятор электроэнергии', uk: 'Калькулятор електроенергії', fr: 'Calculatrice Facture Électricité', lt: 'Elektros sąskaitos skaičiuotuvas' } },
+      { href: '/calculator/ac-cost', labels: { en: 'AC & Heating Cost', ru: 'Кондиционер / отопление', uk: 'Кондиціонер / опалення', fr: 'Clim & Chauffage', lt: 'Kondicionierius / šildymas' } },
+      { href: '/calculator/fuel-cost', labels: { en: 'Fuel Cost Calculator', ru: 'Калькулятор расхода топлива', uk: 'Калькулятор витрат на пальне', fr: 'Calculatrice Coût Carburant', lt: 'Degalų kainos skaičiuotuvas' } },
     ],
   },
   {
@@ -60,16 +76,15 @@ const NAV_CATEGORIES: NavCategory[] = [
     tools: [
       { href: '/weather', labels: { en: 'Weather Forecast', ru: 'Прогноз погоды', uk: 'Прогноз погоди', fr: 'Météo', lt: 'Oro prognozė' } },
       { href: '/tools/password-generator', labels: { en: 'Password Generator', ru: 'Генератор паролей', uk: 'Генератор паролів', fr: 'Générateur de mot de passe', lt: 'Slaptažodžių generatorius' } },
-      { href: '/converter/units', labels: { en: 'Unit Converter', ru: 'Конвертер единиц', uk: 'Конвертер одиниць', fr: "Convertisseur d'unités", lt: 'Vienetų keitiklis' } },
-      { href: '/calculator/tip', labels: { en: 'Tip Calculator', ru: 'Калькулятор чаевых', uk: 'Калькулятор чайових', fr: 'Calculatrice de pourboire', lt: 'Arbatpinigių skaičiuotuvas' } },
       { href: '/calculator/age', labels: { en: 'Age Calculator', ru: 'Калькулятор возраста', uk: 'Калькулятор віку', fr: "Calculatrice d'âge", lt: 'Amžiaus skaičiuotuvas' } },
       { href: '/calculator/date-diff', labels: { en: 'Date Difference', ru: 'Разница дат', uk: 'Різниця дат', fr: 'Différence de dates', lt: 'Datų skirtumas' } },
       { href: '/tools/countdown', labels: { en: 'Countdown Timer', ru: 'Таймер обратного отсчёта', uk: 'Таймер зворотного відліку', fr: 'Compte à rebours', lt: 'Atgalinio skaičiavimo laikmatis' } },
-      { href: '/calculator/fuel-cost', labels: { en: 'Fuel Cost Calculator', ru: 'Калькулятор расхода топлива', uk: 'Калькулятор витрат на пальне', fr: 'Calculatrice Coût Carburant', lt: 'Degalų kainos skaičiuotuvas' } },
-      { href: '/calculator/electricity-bill', labels: { en: 'Electricity Bill Calculator', ru: 'Калькулятор электроэнергии', uk: 'Калькулятор електроенергії', fr: 'Calculatrice Facture Électricité', lt: 'Elektros sąskaitos skaičiuotuvas' } },
-      { href: '/calculator/ac-cost', labels: { en: 'AC & Heating Cost', ru: 'Кондиционер / отопление', uk: 'Кондиціонер / опалення', fr: 'Clim & Chauffage', lt: 'Kondicionierius / šildymas' } },
-      { href: '/calculator/material-cost', labels: { en: 'Flooring, Paint & Concrete', ru: 'Полы, краска и бетон', uk: 'Підлога, фарба і бетон', fr: 'Revêtement, Peinture & Béton', lt: 'Grindys, dažai ir betonas' } },
-      { href: '/calculator/pool-volume', labels: { en: 'Pool Volume Calculator', ru: 'Объём бассейна', uk: 'Об\'єм басейну', fr: 'Volume Piscine', lt: 'Baseino tūris' } },
+      { href: '/calculator/percentage', labels: { en: 'Percentage Calculator', ru: 'Калькулятор процентов', uk: 'Калькулятор відсотків', fr: 'Calculatrice de pourcentage', lt: 'Procentų skaičiuotuvas' } },
+      { href: '/calculator/basic', labels: { en: 'Basic Calculator', ru: 'Простой калькулятор', uk: 'Простий калькулятор', fr: 'Calculatrice basique', lt: 'Paprastas skaičiuotuvas' } },
+      { href: '/calculator/engineering', labels: { en: 'Scientific Calculator', ru: 'Инженерный калькулятор', uk: 'Інженерний калькулятор', fr: 'Calculatrice scientifique', lt: 'Inžinerinis skaičiuotuvas' } },
+      { href: '/tools/word-counter', labels: { en: 'Word Counter', ru: 'Счётчик слов', uk: 'Лічильник слів', fr: 'Compteur de mots', lt: 'Žodžių skaičiuotuvas' } },
+      { href: '/calculator/gpa', labels: { en: 'GPA Calculator', ru: 'Калькулятор GPA', uk: 'Калькулятор GPA', fr: 'Calculatrice GPA', lt: 'GPA skaičiuotuvas' } },
+      { href: '/converter/grade-system', labels: { en: 'Grade System Converter', ru: 'Конвертер систем оценок', uk: 'Конвертер систем оцінок', fr: 'Convertisseur de notes', lt: 'Pažymių sistemų konverteris' } },
     ],
   },
   {
@@ -77,19 +92,24 @@ const NAV_CATEGORIES: NavCategory[] = [
     labelsByLocale: { en: 'Travel', ru: 'Путешествия', uk: 'Подорожі', fr: 'Voyage', lt: 'Kelionės' },
     tools: [
       { href: '/calculator/travel-budget', labels: { en: 'Travel Budget Calculator', ru: 'Калькулятор бюджета путешествия', uk: 'Калькулятор бюджету подорожі', fr: 'Calculatrice Budget Voyage', lt: 'Kelionės biudžeto skaičiuotuvas' } },
+      { href: '/calculator/flight-delay', labels: { en: 'Flight Delay Compensation', ru: 'Компенсация за задержку рейса', uk: 'Компенсація за затримку рейсу', fr: 'Indemnisation retard de vol', lt: 'Kompensacija už skrydžio vėlavimą' } },
+      { href: '/converter/timezone', labels: { en: 'Timezone Converter', ru: 'Конвертер часовых поясов', uk: 'Конвертер часових поясів', fr: 'Convertisseur de fuseaux horaires', lt: 'Laiko juostų keitiklis' } },
     ],
   },
   {
     key: 'lifestyle',
     labelsByLocale: { en: 'Lifestyle', ru: 'Быт и досуг', uk: 'Побут і дозвілля', fr: 'Lifestyle', lt: 'Gyvenimo būdas' },
     tools: [
+      { href: '/calculator/tip', labels: { en: 'Tip Calculator', ru: 'Калькулятор чаевых', uk: 'Калькулятор чайових', fr: 'Calculatrice de pourboire', lt: 'Arbatpinigių skaičiuotuvas' } },
       { href: '/calculator/party-food', labels: { en: 'Party Food Calculator', ru: 'Продукты для вечеринки', uk: 'Продукти для вечірки', fr: 'Buffet Fête', lt: 'Šventiniai produktai' } },
+      { href: '/calculator/pool-volume', labels: { en: 'Pool Volume Calculator', ru: 'Объём бассейна', uk: 'Об\'єм басейну', fr: 'Volume Piscine', lt: 'Baseino tūris' } },
     ],
   },
   {
     key: 'measure',
     labelsByLocale: { en: 'Measurements', ru: 'Измерения', uk: 'Вимірювання', fr: 'Mesures', lt: 'Matavimai' },
     tools: [
+      { href: '/converter/units', labels: { en: 'Unit Converter', ru: 'Конвертер единиц', uk: 'Конвертер одиниць', fr: "Convertisseur d'unités", lt: 'Vienetų keitiklis' } },
       { href: '/converter/color', labels: { en: 'Color Converter', ru: 'Конвертер цветов', uk: 'Конвертер кольорів', fr: 'Convertisseur de couleurs', lt: 'Spalvų keitiklis' } },
       { href: '/converter/clothing-size', labels: { en: 'Clothing Size Converter', ru: 'Конвертер размеров одежды', uk: 'Конвертер розмірів одягу', fr: 'Convertisseur de tailles', lt: 'Drabužių dydžių keitiklis' } },
     ],
@@ -174,6 +194,9 @@ export default function NavMenu({ locale }: { locale: string }) {
   const [activeCat, setActiveCat] = useState<string | null>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pagesTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const catListRef = useRef<HTMLUListElement>(null);
+  const [catCanPrev, setCatCanPrev] = useState(false);
+  const [catCanNext, setCatCanNext] = useState(true);
 
   const openDesktop = () => {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
@@ -207,6 +230,26 @@ export default function NavMenu({ locale }: { locale: string }) {
     document.body.style.overflow = sidebarOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [sidebarOpen]);
+
+  useEffect(() => {
+    if (desktopOpen) {
+      setTimeout(updateScrollButtons, 50);
+    }
+  }, [desktopOpen]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const updateScrollButtons = () => {
+    const el = catListRef.current;
+    if (!el) return;
+    setCatCanPrev(el.scrollLeft > 0);
+    setCatCanNext(el.scrollLeft < el.scrollWidth - el.clientWidth - 1);
+  };
+
+  const scrollCats = (dir: 'prev' | 'next') => {
+    const el = catListRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.6;
+    el.scrollBy({ left: dir === 'next' ? amount : -amount, behavior: 'smooth' });
+  };
 
   const closeSidebar = () => {
     setSidebarOpen(false);
@@ -255,37 +298,63 @@ export default function NavMenu({ locale }: { locale: string }) {
           onMouseLeave={scheduleClose}
         >
           <div className={styles['nav__dropdown-inner']}>
-            {/* Top row: category tabs — now as links */}
-            <ul className={styles['nav__cat-list']}>
-              <li className={styles['nav__cat-item']} role="none">
-                <Link
-                  href={`/${locale}?category=favorites`}
-                  className={`${styles['nav__cat-link']} ${styles['nav__cat-link--fav']}`}
-                  onClick={closeDesktop}
-                >
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                  </svg>
-                  {FAV_LABEL[locale] || FAV_LABEL.en}
-                </Link>
-              </li>
-              {NAV_CATEGORIES.map((cat) => (
-                <li
-                  key={cat.key}
-                  className={`${styles['nav__cat-item']}${effectiveCat === cat.key ? ` ${styles['nav__cat-item--active']}` : ''}`}
-                  onMouseEnter={() => setActiveCat(cat.key)}
-                  role="none"
-                >
+            {/* Top row: category tabs carousel */}
+            <div className={styles['nav__cat-wrap']}>
+              <button
+                type="button"
+                className={styles['nav__cat-arrow']}
+                onClick={() => scrollCats('prev')}
+                disabled={!catCanPrev}
+                aria-label="Previous categories"
+                tabIndex={-1}
+              >
+                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true">
+                  <path d="M7 1L1 7l6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <ul ref={catListRef} className={styles['nav__cat-list']} onScroll={updateScrollButtons}>
+                <li className={styles['nav__cat-item']} role="none">
                   <Link
-                    href={`/${locale}?category=${cat.key}`}
-                    className={styles['nav__cat-link']}
+                    href={`/${locale}?category=favorites`}
+                    className={`${styles['nav__cat-link']} ${styles['nav__cat-link--fav']}`}
                     onClick={closeDesktop}
                   >
-                    {cat.labelsByLocale[locale] || cat.labelsByLocale.en}
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    {FAV_LABEL[locale] || FAV_LABEL.en}
                   </Link>
                 </li>
-              ))}
-            </ul>
+                {NAV_CATEGORIES.map((cat) => (
+                  <li
+                    key={cat.key}
+                    className={`${styles['nav__cat-item']}${effectiveCat === cat.key ? ` ${styles['nav__cat-item--active']}` : ''}`}
+                    onMouseEnter={() => setActiveCat(cat.key)}
+                    role="none"
+                  >
+                    <Link
+                      href={`/${locale}?category=${cat.key}`}
+                      className={styles['nav__cat-link']}
+                      onClick={closeDesktop}
+                    >
+                      {cat.labelsByLocale[locale] || cat.labelsByLocale.en}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <button
+                type="button"
+                className={styles['nav__cat-arrow']}
+                onClick={() => scrollCats('next')}
+                disabled={!catCanNext}
+                aria-label="Next categories"
+                tabIndex={-1}
+              >
+                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true">
+                  <path d="M1 1l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
 
             {/* Bottom panel: tools for active/default category */}
             <div className={styles['nav__tools-panel']}>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Breadcrumbs.module.scss';
 
-type ToolCategory = 'finance' | 'crypto' | 'health' | 'utility' | 'travel' | 'lifestyle' | 'legal' | 'measure' | 'realestate' | 'esoteric';
+type ToolCategory = 'finance' | 'crypto' | 'health' | 'utility' | 'budget' | 'travel' | 'lifestyle' | 'legal' | 'measure' | 'realestate' | 'renovation' | 'esoteric';
 
 const BACK_LABEL: Record<string, string> = {
   en: 'Back to',
@@ -15,11 +15,11 @@ const BACK_LABEL: Record<string, string> = {
 };
 
 const CATEGORY_LABELS: Record<string, Record<ToolCategory, string>> = {
-  en: { finance: 'Finance', crypto: 'Crypto', health: 'Health', utility: 'Utilities', travel: 'Travel', lifestyle: 'Lifestyle', legal: 'Legal', measure: 'Measurements', realestate: 'Real Estate', esoteric: 'Esoteric' },
-  ru: { finance: 'Финансы', crypto: 'Криптовалюта', health: 'Здоровье', utility: 'Утилиты', travel: 'Путешествия', lifestyle: 'Быт и досуг', legal: 'Юридические', measure: 'Измерения', realestate: 'Недвижимость', esoteric: 'Эзотерика' },
-  uk: { finance: 'Фінанси', crypto: 'Криптовалюта', health: "Здоров'я", utility: 'Утиліти', travel: 'Подорожі', lifestyle: 'Побут і дозвілля', legal: 'Юридичні', measure: 'Вимірювання', realestate: 'Нерухомість', esoteric: 'Езотерика' },
-  fr: { finance: 'Finance', crypto: 'Crypto', health: 'Santé', utility: 'Utilitaires', travel: 'Voyage', lifestyle: 'Lifestyle', legal: 'Juridique', measure: 'Mesures', realestate: 'Immobilier', esoteric: 'Ésotérique' },
-  lt: { finance: 'Finansai', crypto: 'Kripto', health: 'Sveikata', utility: 'Priemones', travel: 'Kelionės', lifestyle: 'Gyvenimo būdas', legal: 'Teisinius', measure: 'Matavimus', realestate: 'Nekilnojamąjį turtą', esoteric: 'Ezoteriką' },
+  en: { finance: 'Finance', crypto: 'Crypto', health: 'Health', utility: 'Utilities', budget: 'Budget', travel: 'Travel', lifestyle: 'Lifestyle', legal: 'Legal', measure: 'Measurements', realestate: 'Real Estate', renovation: 'Renovation', esoteric: 'Esoteric' },
+  ru: { finance: 'Финансы', crypto: 'Криптовалюта', health: 'Здоровье', utility: 'Утилиты', budget: 'Бюджет', travel: 'Путешествия', lifestyle: 'Быт и досуг', legal: 'Юридические', measure: 'Измерения', realestate: 'Недвижимость', renovation: 'Ремонт', esoteric: 'Эзотерика' },
+  uk: { finance: 'Фінанси', crypto: 'Криптовалюта', health: "Здоров'я", utility: 'Утиліти', budget: 'Бюджет', travel: 'Подорожі', lifestyle: 'Побут і дозвілля', legal: 'Юридичні', measure: 'Вимірювання', realestate: 'Нерухомість', renovation: 'Ремонт', esoteric: 'Езотерика' },
+  fr: { finance: 'Finance', crypto: 'Crypto', health: 'Santé', utility: 'Utilitaires', budget: 'Budget', travel: 'Voyage', lifestyle: 'Lifestyle', legal: 'Juridique', measure: 'Mesures', realestate: 'Immobilier', renovation: 'Rénovation', esoteric: 'Ésotérique' },
+  lt: { finance: 'Finansai', crypto: 'Kripto', health: 'Sveikata', utility: 'Priemones', budget: 'Biudžetas', travel: 'Kelionės', lifestyle: 'Gyvenimo būdas', legal: 'Teisinius', measure: 'Matavimus', realestate: 'Nekilnojamąjį turtą', renovation: 'Renovacija', esoteric: 'Ezoteriką' },
 };
 
 type ToolMeta = { category: ToolCategory };
@@ -46,16 +46,16 @@ const TOOL_META: Record<string, ToolMeta> = {
   '/calculator/compound-interest': { category: 'finance' },
   '/converter/units': { category: 'measure' },
   '/calculator/heart-rate': { category: 'health' },
-  '/calculator/tip': { category: 'utility' },
+  '/calculator/tip': { category: 'lifestyle' },
   '/calculator/age': { category: 'utility' },
   '/calculator/date-diff': { category: 'utility' },
   '/converter/color': { category: 'measure' },
   '/converter/clothing-size': { category: 'measure' },
   '/tools/countdown': { category: 'utility' },
   '/calculator/traffic-fine': { category: 'legal' },
-  '/calculator/flight-delay': { category: 'legal' },
+  '/calculator/flight-delay': { category: 'travel' },
   '/calculator/limitation': { category: 'legal' },
-  '/calculator/renovation': { category: 'realestate' },
+  '/calculator/renovation': { category: 'renovation' },
   '/calculator/property-tax': { category: 'realestate' },
   '/calculator/car-insurance': { category: 'finance' },
   '/calculator/life-insurance': { category: 'finance' },
@@ -77,7 +77,7 @@ const TOOL_META: Record<string, ToolMeta> = {
   '/calculator/body-fat': { category: 'health' },
   '/calculator/water-intake': { category: 'health' },
   '/calculator/ovulation': { category: 'health' },
-  '/converter/timezone': { category: 'utility' },
+  '/converter/timezone': { category: 'travel' },
   '/calculator/salary': { category: 'finance' },
   '/calculator/life-path': { category: 'esoteric' },
   '/calculator/destiny-number': { category: 'esoteric' },
@@ -98,18 +98,18 @@ const TOOL_META: Record<string, ToolMeta> = {
   '/calculator/biorhythm': { category: 'esoteric' },
   '/calculator/moon-phases': { category: 'esoteric' },
   '/calculator/moon-sign': { category: 'esoteric' },
-  '/calculator/fuel-cost': { category: 'utility' },
-  '/calculator/electricity-bill': { category: 'utility' },
+  '/calculator/fuel-cost': { category: 'budget' },
+  '/calculator/electricity-bill': { category: 'budget' },
   '/calculator/savings-goal': { category: 'finance' },
   '/calculator/calorie-deficit': { category: 'health' },
   '/calculator/net-worth': { category: 'finance' },
   '/calculator/pace': { category: 'health' },
   '/calculator/macros': { category: 'health' },
-  '/calculator/ac-cost': { category: 'utility' },
+  '/calculator/ac-cost': { category: 'budget' },
   '/calculator/travel-budget': { category: 'travel' },
-  '/calculator/material-cost': { category: 'utility' },
+  '/calculator/material-cost': { category: 'renovation' },
   '/calculator/party-food': { category: 'lifestyle' },
-  '/calculator/pool-volume': { category: 'utility' },
+  '/calculator/pool-volume': { category: 'lifestyle' },
   '/calculator/spf': { category: 'health' },
   '/calculator/inflation': { category: 'finance' },
   '/calculator/loan-payoff': { category: 'finance' },

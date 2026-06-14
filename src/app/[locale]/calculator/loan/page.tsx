@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/rent-vs-buy', label: 'Nuoma vs Pirkimas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Loan Calculator — Monthly Payment & Total Cost',
     description: 'Free online loan calculator. Calculate your monthly payment, total repayment, and interest for any personal loan.',
     h1: 'Loan Calculator',
+    subtitle: 'Calculate monthly loan payments and total interest',
   },
   ru: {
     title: 'Калькулятор кредита — ежемесячный платёж онлайн',
     description: 'Бесплатный калькулятор кредита онлайн. Рассчитайте ежемесячный платёж, общую сумму выплат и переплату по потребительскому кредиту.',
     h1: 'Калькулятор кредита',
+    subtitle: 'Рассчитайте ежемесячный платёж по кредиту и переплату',
   },
   uk: {
     title: 'Калькулятор кредиту — щомісячний платіж онлайн',
     description: 'Безкоштовний калькулятор кредиту онлайн. Розрахуйте щомісячний платіж та переплату за споживчим кредитом.',
     h1: 'Калькулятор кредиту',
+    subtitle: 'Розрахуйте щомісячний платіж за кредитом і переплату',
   },
   fr: {
     title: 'Calculatrice de Prêt — Calcul Mensualité Gratuit en ligne',
     description: 'Calculatrice de prêt gratuite. Calcul mensualité instantané : saisissez le montant, le TAEG et la durée. Simulateur de prêt personnel — coût total et intérêts en quelques secondes.',
     h1: 'Calculatrice de prêt personnel',
+    subtitle: 'Calculez la mensualité de votre prêt et le coût total',
   },
   lt: {
     title: 'Paskolos Skaičiuotuvas — mėnesio įmoka internetu',
     description: 'Nemokamas paskolos skaičiuotuvas. Apskaičiuokite mėnesio įmoką, bendrą sumą ir palūkanas bet kuriai paskolai.',
     h1: 'Paskolos Skaičiuotuvas',
+    subtitle: 'Apskaičiuokite mėnesinę paskolos įmoką ir palūkanas',
   },
 };
 
@@ -328,6 +333,7 @@ export default async function LoanPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <LoanCalculator locale={locale} />
 

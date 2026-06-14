@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/compound-interest', label: 'Sudėtinių palūkanų skaičiuotuvas' }, { href: '/calculator/roi', label: 'ROI skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Deposit Calculator — Calculate Savings & Interest Online',
     description: 'Free deposit calculator. Calculate the final amount of your bank deposit with compound interest. Choose compounding frequency, currency and term.',
     h1: 'Deposit Calculator',
+    subtitle: 'Calculate deposit interest and returns online',
   },
   ru: {
     title: 'Калькулятор вклада — доход в месяц и % годовых онлайн',
     description: 'Рассчитайте вклад по ставке % годовых: ежемесячный доход, итоговая сумма с капитализацией. Выберите частоту начисления — ежемесячно, ежеквартально или раз в год. Бесплатно.',
     h1: 'Калькулятор депозита',
+    subtitle: 'Рассчитайте проценты по вкладу онлайн — любая ставка и срок',
   },
   uk: {
     title: 'Калькулятор вкладу з капіталізацією — розрахунок депозиту онлайн',
     description: 'Безкоштовний калькулятор вкладу онлайн. Розрахуйте підсумкову суму депозиту з капіталізацією відсотків: щомісячною, щоквартальною або щорічною. Порівняйте дохід із простими відсотками.',
     h1: 'Калькулятор депозиту',
+    subtitle: 'Розрахуйте відсотки по депозиту онлайн',
   },
   fr: {
     title: 'Simulateur de Dépôt Bancaire Gratuit — Calcul des Intérêts Composés',
     description: 'Simulateur de dépôt bancaire gratuit. Calculez le montant final de votre épargne avec capitalisation des intérêts. Comparez intérêts simples et composés, choisissez la fréquence et la durée.',
     h1: 'Simulateur de Dépôt Bancaire',
+    subtitle: 'Calculez les intérêts sur votre dépôt bancaire en ligne',
   },
   lt: {
     title: 'Indėlio Skaičiuotuvas — Palūkanų Skaičiavimas Internete',
     description: 'Nemokamas indėlio skaičiuotuvas. Apskaičiuokite galutinę banko indėlio sumą su sudėtinėmis palūkanomis. Pasirinkite valiutą, normą ir terminą.',
     h1: 'Indėlio Skaičiuotuvas',
+    subtitle: 'Apskaičiuokite indėlio palūkanas ir grąžą internetu',
   },
 };
 
@@ -332,6 +337,7 @@ export default async function DepositPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <DepositCalculator locale={locale} />
 

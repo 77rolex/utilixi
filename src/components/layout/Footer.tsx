@@ -93,7 +93,6 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
       { href: '/calculator/freelance-rate', labels: { en: 'Freelance Rate Calculator', ru: 'Калькулятор ставки фрилансера', uk: 'Калькулятор ставки фрилансера', fr: 'Taux freelance', lt: 'Laisvai samdomų tarifas' } },
       { href: '/calculator/margin', labels: { en: 'Margin & Markup Calculator', ru: 'Калькулятор маржи и наценки', uk: 'Калькулятор маржі і націнки', fr: 'Marge et majoration', lt: 'Maržos skaičiuotuvas' } },
       { href: '/calculator/discount', labels: { en: 'Discount Calculator', ru: 'Калькулятор скидки', uk: 'Калькулятор знижки', fr: 'Calculatrice de remise', lt: 'Nuolaidos skaičiuotuvas' } },
-      { href: '/calculator/percentage', labels: { en: 'Percentage Calculator', ru: 'Калькулятор процентов', uk: 'Калькулятор відсотків', fr: 'Calculatrice de pourcentage', lt: 'Procentų skaičiuotuvas' } },
       { href: '/calculator/salary', labels: { en: 'Gross to Net Salary', ru: 'Зарплата брутто-нетто', uk: 'Зарплата брутто-нетто', fr: 'Salaire Brut-Net', lt: 'Bruto-Neto atlyginimas' } },
       { href: '/calculator/savings-goal', labels: { en: 'Savings Goal Calculator', ru: 'Калькулятор накоплений', uk: 'Калькулятор накопичень', fr: 'Calculatrice Objectif Épargne', lt: 'Taupymo tikslo skaičiuotuvas' } },
       { href: '/calculator/net-worth', labels: { en: 'Net Worth Calculator', ru: 'Калькулятор чистых активов', uk: 'Калькулятор чистих активів', fr: 'Calculatrice Valeur Nette', lt: 'Grynosios vertės skaičiuotuvas' } },
@@ -138,7 +137,6 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
     tools: [
       { href: '/calculator/alimony', labels: { en: 'Alimony Calculator', ru: 'Калькулятор алиментов', uk: 'Калькулятор аліментів', fr: 'Calculatrice de pension alimentaire', lt: 'Alimentų skaičiuotuvas' } },
       { href: '/calculator/traffic-fine', labels: { en: 'Traffic Fine Calculator', ru: 'Штрафы ПДД', uk: 'Штрафи ПДР', fr: 'Amendes routières', lt: 'Eismo baudos' } },
-      { href: '/calculator/flight-delay', labels: { en: 'Flight Delay Compensation', ru: 'Компенсация за задержку рейса', uk: 'Компенсація за затримку рейсу', fr: 'Indemnisation retard de vol', lt: 'Kompensacija už skrydžio vėlavimą' } },
       { href: '/calculator/limitation', labels: { en: 'Statute of Limitations', ru: 'Срок исковой давности', uk: 'Строк позовної давності', fr: 'Délai de prescription', lt: 'Ieškinio senaties terminas' } },
     ],
   },
@@ -146,8 +144,24 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
     key: 'realestate',
     labels: { en: 'Real Estate', ru: 'Недвижимость', uk: 'Нерухомість', fr: 'Immobilier', lt: 'Nekilnojamasis turtas' },
     tools: [
-      { href: '/calculator/renovation', labels: { en: 'Renovation Cost', ru: 'Калькулятор ремонта', uk: 'Калькулятор ремонту', fr: 'Coût de rénovation', lt: 'Remonto kainos' } },
       { href: '/calculator/property-tax', labels: { en: 'Property Tax', ru: 'Налог на недвижимость', uk: 'Податок на нерухомість', fr: 'Taxe foncière', lt: 'Turto mokestis' } },
+    ],
+  },
+  {
+    key: 'renovation',
+    labels: { en: 'Renovation', ru: 'Ремонт', uk: 'Ремонт', fr: 'Rénovation', lt: 'Renovacija' },
+    tools: [
+      { href: '/calculator/renovation', labels: { en: 'Renovation Cost Calculator', ru: 'Калькулятор стоимости ремонта', uk: 'Калькулятор вартості ремонту', fr: 'Calculatrice de coût de rénovation', lt: 'Remonto kainos skaičiuotuvas' } },
+      { href: '/calculator/material-cost', labels: { en: 'Flooring, Paint & Concrete', ru: 'Полы, краска и бетон', uk: 'Підлога, фарба і бетон', fr: 'Revêtement, Peinture & Béton', lt: 'Grindys, dažai ir betonas' } },
+    ],
+  },
+  {
+    key: 'budget',
+    labels: { en: 'Budget', ru: 'Бюджет', uk: 'Бюджет', fr: 'Budget', lt: 'Biudžetas' },
+    tools: [
+      { href: '/calculator/electricity-bill', labels: { en: 'Electricity Bill Calculator', ru: 'Калькулятор электроэнергии', uk: 'Калькулятор електроенергії', fr: 'Calculatrice Facture Électricité', lt: 'Elektros sąskaitos skaičiuotuvas' } },
+      { href: '/calculator/ac-cost', labels: { en: 'AC & Heating Cost Calculator', ru: 'Калькулятор кондиционера/отопления', uk: 'Калькулятор кондиціонера/опалення', fr: 'Climatisation & Chauffage', lt: 'Kondicionieriaus / šildymo skaičiuotuvas' } },
+      { href: '/calculator/fuel-cost', labels: { en: 'Fuel Cost Calculator', ru: 'Калькулятор расхода топлива', uk: 'Калькулятор витрат на пальне', fr: 'Calculatrice Coût Carburant', lt: 'Degalų kainos skaičiuotuvas' } },
     ],
   },
   {
@@ -156,22 +170,15 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
     tools: [
       { href: '/weather', labels: { en: 'Weather Forecast', ru: 'Прогноз погоды', uk: 'Прогноз погоди', fr: 'Météo', lt: 'Oro prognozė' } },
       { href: '/tools/password-generator', labels: { en: 'Password Generator', ru: 'Генератор паролей', uk: 'Генератор паролів', fr: 'Générateur de mot de passe', lt: 'Slaptažodžių generatorius' } },
-      { href: '/converter/units', labels: { en: 'Unit Converter', ru: 'Конвертер единиц', uk: 'Конвертер одиниць', fr: 'Convertisseur d\'unités', lt: 'Vienetų keitiklis' } },
-      { href: '/calculator/tip', labels: { en: 'Tip Calculator', ru: 'Калькулятор чаевых', uk: 'Калькулятор чайових', fr: 'Calculatrice de pourboire', lt: 'Arbatpinigių skaičiuotuvas' } },
       { href: '/calculator/age', labels: { en: 'Age Calculator', ru: 'Калькулятор возраста', uk: 'Калькулятор віку', fr: 'Calculatrice d\'âge', lt: 'Amžiaus skaičiuotuvas' } },
       { href: '/calculator/date-diff', labels: { en: 'Date Difference', ru: 'Разница дат', uk: 'Різниця дат', fr: 'Différence de dates', lt: 'Datų skirtumas' } },
       { href: '/tools/countdown', labels: { en: 'Countdown Timer', ru: 'Таймер обратного отсчёта', uk: 'Таймер зворотного відліку', fr: 'Compte à rebours', lt: 'Atgalinio skaičiavimo laikmatis' } },
-      { href: '/calculator/gpa', labels: { en: 'GPA Calculator', ru: 'Калькулятор GPA', uk: 'Калькулятор GPA', fr: 'Calculatrice GPA', lt: 'GPA skaičiuotuvas' } },
-      { href: '/converter/grade-system', labels: { en: 'Grade System Converter', ru: 'Конвертер систем оценок', uk: 'Конвертер систем оцінок', fr: 'Convertisseur de notes', lt: 'Pažymių konverteris' } },
-      { href: '/tools/word-counter', labels: { en: 'Word Counter', ru: 'Счётчик слов', uk: 'Лічильник слів', fr: 'Compteur de mots', lt: 'Žodžių skaičiuotuvas' } },
+      { href: '/calculator/percentage', labels: { en: 'Percentage Calculator', ru: 'Калькулятор процентов', uk: 'Калькулятор відсотків', fr: 'Calculatrice de pourcentage', lt: 'Procentų skaičiuotuvas' } },
       { href: '/calculator/basic', labels: { en: 'Basic Calculator', ru: 'Простой калькулятор', uk: 'Простий калькулятор', fr: 'Calculatrice basique', lt: 'Paprastas skaičiuotuvas' } },
       { href: '/calculator/engineering', labels: { en: 'Scientific Calculator', ru: 'Инженерный калькулятор', uk: 'Інженерний калькулятор', fr: 'Calculatrice scientifique', lt: 'Inžinerinis skaičiuotuvas' } },
-      { href: '/converter/timezone', labels: { en: 'Timezone Converter', ru: 'Конвертер часовых поясов', uk: 'Конвертер часових поясів', fr: 'Fuseaux horaires', lt: 'Laiko juostų keitiklis' } },
-      { href: '/calculator/fuel-cost', labels: { en: 'Fuel Cost Calculator', ru: 'Калькулятор расхода топлива', uk: 'Калькулятор витрат на пальне', fr: 'Calculatrice Coût Carburant', lt: 'Degalų kainos skaičiuotuvas' } },
-      { href: '/calculator/electricity-bill', labels: { en: 'Electricity Bill Calculator', ru: 'Калькулятор электроэнергии', uk: 'Калькулятор електроенергії', fr: 'Calculatrice Facture Électricité', lt: 'Elektros sąskaitos skaičiuotuvas' } },
-      { href: '/calculator/ac-cost', labels: { en: 'AC & Heating Cost Calculator', ru: 'Калькулятор кондиционера/отопления', uk: 'Калькулятор кондиціонера/опалення', fr: 'Climatisation & Chauffage', lt: 'Kondicionieriaus / šildymo skaičiuotuvas' } },
-      { href: '/calculator/material-cost', labels: { en: 'Flooring, Paint & Concrete Calculator', ru: 'Калькулятор напольных покрытий и краски', uk: 'Калькулятор покриттів і фарби', fr: 'Revêtement, Peinture & Béton', lt: 'Grindų, dažų ir betono skaičiuotuvas' } },
-      { href: '/calculator/pool-volume', labels: { en: 'Pool Volume Calculator', ru: 'Калькулятор объёма бассейна', uk: 'Калькулятор об\'єму басейну', fr: 'Calculatrice Volume Piscine', lt: 'Baseino tūrio skaičiuotuvas' } },
+      { href: '/tools/word-counter', labels: { en: 'Word Counter', ru: 'Счётчик слов', uk: 'Лічильник слів', fr: 'Compteur de mots', lt: 'Žodžių skaičiuotuvas' } },
+      { href: '/calculator/gpa', labels: { en: 'GPA Calculator', ru: 'Калькулятор GPA', uk: 'Калькулятор GPA', fr: 'Calculatrice GPA', lt: 'GPA skaičiuotuvas' } },
+      { href: '/converter/grade-system', labels: { en: 'Grade System Converter', ru: 'Конвертер систем оценок', uk: 'Конвертер систем оцінок', fr: 'Convertisseur de notes', lt: 'Pažymių konverteris' } },
     ],
   },
   {
@@ -179,19 +186,24 @@ const FOOTER_CATEGORIES: FooterCategory[] = [
     labels: { en: 'Travel', ru: 'Путешествия', uk: 'Подорожі', fr: 'Voyage', lt: 'Kelionės' },
     tools: [
       { href: '/calculator/travel-budget', labels: { en: 'Travel Budget Calculator', ru: 'Калькулятор бюджета путешествия', uk: 'Калькулятор бюджету подорожі', fr: 'Calculatrice Budget Voyage', lt: 'Kelionės biudžeto skaičiuotuvas' } },
+      { href: '/calculator/flight-delay', labels: { en: 'Flight Delay Compensation', ru: 'Компенсация за задержку рейса', uk: 'Компенсація за затримку рейсу', fr: 'Indemnisation retard de vol', lt: 'Kompensacija už skrydžio vėlavimą' } },
+      { href: '/converter/timezone', labels: { en: 'Timezone Converter', ru: 'Конвертер часовых поясов', uk: 'Конвертер часових поясів', fr: 'Convertisseur de fuseaux horaires', lt: 'Laiko juostų keitiklis' } },
     ],
   },
   {
     key: 'lifestyle',
     labels: { en: 'Lifestyle', ru: 'Быт и досуг', uk: 'Побут і дозвілля', fr: 'Lifestyle', lt: 'Gyvenimo būdas' },
     tools: [
+      { href: '/calculator/tip', labels: { en: 'Tip Calculator', ru: 'Калькулятор чаевых', uk: 'Калькулятор чайових', fr: 'Calculatrice de pourboire', lt: 'Arbatpinigių skaičiuotuvas' } },
       { href: '/calculator/party-food', labels: { en: 'Party Food Calculator', ru: 'Калькулятор продуктов для вечеринки', uk: 'Калькулятор продуктів для вечірки', fr: 'Calculatrice Buffet Fête', lt: 'Šventinių produktų skaičiuotuvas' } },
+      { href: '/calculator/pool-volume', labels: { en: 'Pool Volume Calculator', ru: 'Калькулятор объёма бассейна', uk: 'Калькулятор об\'єму басейну', fr: 'Calculatrice Volume Piscine', lt: 'Baseino tūrio skaičiuotuvas' } },
     ],
   },
   {
     key: 'measure',
     labels: { en: 'Measurements', ru: 'Измерения', uk: 'Вимірювання', fr: 'Mesures', lt: 'Matavimai' },
     tools: [
+      { href: '/converter/units', labels: { en: 'Unit Converter', ru: 'Конвертер единиц', uk: 'Конвертер одиниць', fr: 'Convertisseur d\'unités', lt: 'Vienetų keitiklis' } },
       { href: '/converter/color', labels: { en: 'Color Converter', ru: 'Конвертер цветов', uk: 'Конвертер кольорів', fr: 'Convertisseur de couleurs', lt: 'Spalvų keitiklis' } },
       { href: '/converter/clothing-size', labels: { en: 'Clothing Size Converter', ru: 'Конвертер размеров одежды', uk: 'Конвертер розмірів одягу', fr: 'Convertisseur de tailles', lt: 'Drabužių dydžių keitiklis' } },
     ],

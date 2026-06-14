@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/deposit', label: 'Indėlio skaičiuotuvas' }, { href: '/calculator/compound-interest', label: 'Sudėtinių palūkanų skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokesčio skaičiuotuvas' }, { href: '/calculator/roi', label: 'ROI skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Pension Calculator UK — Free Retirement Savings Planner',
     description: 'Free pension calculator for UK and EU. Calculate how much to save monthly for retirement or model your pension fund drawdown. Covers pension pot growth, monthly payout, and retirement savings planning — instant results.',
     h1: 'Pension Calculator',
+    subtitle: 'Estimate your pension savings and retirement income',
   },
   ru: {
     title: 'Пенсионный калькулятор — рассчитать накопления на пенсию онлайн',
     description: 'Бесплатный пенсионный калькулятор онлайн. Рассчитайте, сколько нужно откладывать ежемесячно, чтобы накопить нужный капитал к пенсии, или сколько можно снимать в месяц с уже накопленной суммы.',
     h1: 'Пенсионный калькулятор',
+    subtitle: 'Рассчитайте накопления и доход на пенсии',
   },
   uk: {
     title: 'Пенсійний калькулятор — розрахувати накопичення на пенсію онлайн',
     description: 'Безкоштовний пенсійний калькулятор онлайн. Розрахуйте, скільки потрібно відкладати щомісяця, щоб накопичити потрібний капітал до пенсії, або скільки можна знімати на місяць з накопиченої суми.',
     h1: 'Пенсійний калькулятор',
+    subtitle: 'Розрахуйте накопичення та дохід на пенсії',
   },
   fr: {
     title: 'Simulateur Retraite Gratuit — Calculatrice Épargne Retraite en ligne',
     description: 'Simulateur retraite gratuit en ligne. Calculez combien épargner chaque mois pour atteindre votre objectif retraite, ou combien retirer mensuellement de votre capital. Résultats instantanés pour la France, la Belgique et la Suisse.',
     h1: 'Calculatrice Retraite',
+    subtitle: 'Estimez vos économies retraite et revenus à la retraite',
   },
   lt: {
     title: 'Pensijų Skaičiuotuvas — Nemokamas Pensijų Planavimo Įrankis',
     description: 'Nemokamas pensijų skaičiuotuvas internetu. Apskaičiuokite, kiek kaupti pensijai kas mėnesį tikslui pasiekti, arba kiek galite išsiimti kas mėnesį iš sukauptos sumos. Akimirksniu gauti rezultatai.',
     h1: 'Pensijų skaičiuotuvas',
+    subtitle: 'Apskaičiuokite pensijų santaupas ir pajamas išėjus į pensiją',
   },
 };
 
@@ -173,6 +178,7 @@ export default async function PensionPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <PensionCalculator locale={locale} />
         <AdInline locale={locale} />
