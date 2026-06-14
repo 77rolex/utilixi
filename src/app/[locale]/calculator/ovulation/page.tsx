@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/pregnancy', label: 'Nėštumo skaičiuotuvas' }, { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas' }, { href: '/calculator/water-intake', label: 'Vandens normos skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Ovulation Calculator — Fertile Window & Due Date',
     description: 'Free ovulation calculator. Enter your last period date and cycle length to find your ovulation date, fertile window, next period, and estimated due date.',
     h1: 'Ovulation Calculator',
+    subtitle: 'Calculate your ovulation date and 6-day fertile window from your last period and cycle length.',
   },
   ru: {
     title: 'Калькулятор овуляции — фертильное окно и ПДР',
     description: 'Бесплатный калькулятор овуляции. Введите дату последней менструации и длину цикла, чтобы узнать дату овуляции, фертильное окно и предполагаемую дату родов.',
     h1: 'Калькулятор овуляции',
+    subtitle: 'Рассчитайте дату овуляции и 6-дневное фертильное окно по дате менструации и длине цикла.',
   },
   uk: {
     title: 'Калькулятор овуляції — фертильне вікно та ПДП',
     description: 'Безкоштовний калькулятор овуляції. Введіть дату останньої менструації та тривалість циклу, щоб дізнатися дату овуляції, фертильне вікно та передбачувану дату пологів.',
     h1: 'Калькулятор овуляції',
+    subtitle: 'Розрахуйте дату овуляції та 6-денне фертильне вікно за датою менструації та тривалістю циклу.',
   },
   fr: {
     title: 'Calculateur d\'ovulation — Calculatrice Ovulation Gratuite',
     description: 'Calculateur d\'ovulation gratuit. Entrez la date de vos dernières règles et la durée du cycle pour trouver votre date d\'ovulation, fenêtre fertile de 6 jours et date prévue d\'accouchement.',
     h1: 'Calculateur d\'ovulation',
+    subtitle: 'Calculez votre date d\'ovulation et la fenêtre fertile de 6 jours selon vos dernières règles.',
   },
   lt: {
     title: 'Ovuliacijos skaičiuotuvas — vaisingas langas ir gimdymo data',
     description: 'Nemokamas ovuliacijos skaičiuotuvas. Įveskite paskutinių mėnesinių datą ir ciklo trukmę, kad sužinotumėte ovuliacijos datą, vaisingą langą ir numatomą gimdymo datą.',
     h1: 'Ovuliacijos skaičiuotuvas',
+    subtitle: 'Apskaičiuokite ovuliacijos datą ir 6 dienų vaisingą langą pagal mėnesinių datą ir ciklo trukmę.',
   },
 };
 
@@ -351,6 +356,7 @@ export default async function OvulationPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <OvulationCalculator locale={locale} />
 

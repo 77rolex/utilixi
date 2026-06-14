@@ -10,12 +10,12 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Zodiac Compatibility Calculator — Check Your Star Sign Match', description: 'Check zodiac sign compatibility between two star signs. Get a compatibility score, element analysis and relationship description for any pair of signs. Free astrology compatibility tool.', h1: 'Zodiac Compatibility Calculator' },
-  ru: { title: 'Совместимость знаков зодиака — проверить пару бесплатно', description: 'Проверьте совместимость двух знаков зодиака. Получите оценку совместимости, анализ элементов и описание отношений для любой пары. Бесплатный астрологический инструмент.', h1: 'Совместимость знаков зодиака' },
-  uk: { title: 'Сумісність знаків зодіаку — перевірити пару безкоштовно', description: 'Перевірте сумісність двох знаків зодіаку. Отримайте оцінку сумісності, аналіз елементів та опис стосунків для будь-якої пари. Безкоштовний астрологічний інструмент.', h1: 'Сумісність знаків зодіаку' },
-  fr: { title: 'Compatibilité Astrologique — Vérifiez votre couple de signes', description: 'Vérifiez la compatibilité entre deux signes du zodiaque. Obtenez un score de compatibilité, une analyse des éléments et une description de la relation. Outil astrologique gratuit.', h1: 'Compatibilité des Signes du Zodiaque' },
-  lt: { title: 'Zodiako ženklų suderinamumo skaičiuotuvas — patikrinkite porą', description: 'Patikrinkite dviejų zodiako ženklų suderinamumą. Gaukite suderinamumo balą, elementų analizę ir santykių aprašymą bet kuriai porai. Nemokamas astrologijos įrankis.', h1: 'Zodiako ženklų suderinamumo skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Zodiac Compatibility Calculator — Check Your Star Sign Match', description: 'Check zodiac sign compatibility between two star signs. Get a compatibility score, element analysis and relationship description for any pair of signs. Free astrology compatibility tool.', h1: 'Zodiac Compatibility Calculator', subtitle: 'Check the compatibility between any two Western zodiac signs — get a compatibility score and element analysis.' },
+  ru: { title: 'Совместимость знаков зодиака — проверить пару бесплатно', description: 'Проверьте совместимость двух знаков зодиака. Получите оценку совместимости, анализ элементов и описание отношений для любой пары. Бесплатный астрологический инструмент.', h1: 'Совместимость знаков зодиака', subtitle: 'Проверьте совместимость двух знаков западного зодиака — получите оценку совместимости и анализ элементов.' },
+  uk: { title: 'Сумісність знаків зодіаку — перевірити пару безкоштовно', description: 'Перевірте сумісність двох знаків зодіаку. Отримайте оцінку сумісності, аналіз елементів та опис стосунків для будь-якої пари. Безкоштовний астрологічний інструмент.', h1: 'Сумісність знаків зодіаку', subtitle: 'Перевірте сумісність двох знаків західного зодіаку — отримайте оцінку сумісності та аналіз елементів.' },
+  fr: { title: 'Compatibilité Astrologique — Vérifiez votre couple de signes', description: 'Vérifiez la compatibilité entre deux signes du zodiaque. Obtenez un score de compatibilité, une analyse des éléments et une description de la relation. Outil astrologique gratuit.', h1: 'Compatibilité des Signes du Zodiaque', subtitle: 'Vérifiez la compatibilité entre deux signes du zodiaque occidental — obtenez un score et une analyse des éléments.' },
+  lt: { title: 'Zodiako ženklų suderinamumo skaičiuotuvas — patikrinkite porą', description: 'Patikrinkite dviejų zodiako ženklų suderinamumą. Gaukite suderinamumo balą, elementų analizę ir santykių aprašymą bet kuriai porai. Nemokamas astrologijos įrankis.', h1: 'Zodiako ženklų suderinamumo skaičiuotuvas', subtitle: 'Patikrinkite dviejų Vakarų zodiako ženklų suderinamumą — gaukite suderinamumo balą ir elementų analizę.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -184,6 +184,7 @@ export default async function ZodiacCompatibilityPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <ZodiacCompatibilityCalculator locale={locale} />
         <AdInline locale={locale} />

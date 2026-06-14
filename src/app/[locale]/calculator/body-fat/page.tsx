@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' }, { href: '/calculator/water-intake', label: 'Vandens normos skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Body Fat Calculator — US Navy Method Online',
     description: 'Free body fat percentage calculator using the US Navy method. Enter your measurements to find your body fat % and fitness category for men and women.',
     h1: 'Body Fat Calculator',
+    subtitle: 'Measure your body fat percentage using the US Navy method — just neck, waist, and hip measurements.',
   },
   ru: {
     title: 'Калькулятор жира в теле — метод ВМФ США онлайн',
     description: 'Бесплатный калькулятор процента жира в теле по методу ВМФ США. Введите замеры и узнайте % жира и категорию физической формы для мужчин и женщин.',
     h1: 'Калькулятор % жира в теле',
+    subtitle: 'Рассчитайте процент жира в теле методом ВМФ США по замерам шеи, талии и бёдер.',
   },
   uk: {
     title: 'Калькулятор жиру в тілі — метод ВМС США онлайн',
     description: 'Безкоштовний калькулятор відсотка жиру в тілі за методом ВМС США. Введіть виміри та дізнайтеся % жиру та категорію фізичної форми.',
     h1: 'Калькулятор % жиру в тілі',
+    subtitle: 'Розрахуйте відсоток жиру в тілі методом ВМС США за вимірами шиї, талії та стегон.',
   },
   fr: {
     title: 'Calculatrice de graisse corporelle — méthode US Navy',
     description: 'Calculatrice gratuite du pourcentage de graisse corporelle selon la méthode US Navy. Entrez vos mensurations pour connaître votre % de graisse.',
     h1: 'Calculatrice de graisse corporelle',
+    subtitle: 'Mesurez votre pourcentage de graisse corporelle selon la méthode US Navy avec vos mensurations.',
   },
   lt: {
     title: 'Kūno riebalų skaičiuotuvas — JAV karinio jūrų laivyno metodas',
     description: 'Nemokamas kūno riebalų procentų skaičiuotuvas pagal JAV karinio jūrų laivyno metodą. Įveskite matmenis ir sužinokite riebalų % ir fizinę kategoriją.',
     h1: 'Kūno riebalų skaičiuotuvas',
+    subtitle: 'Išmatuokite kūno riebalų procentą JAV karinio jūrų laivyno metodu pagal kaklo, juosmens matmenis.',
   },
 };
 
@@ -331,6 +336,7 @@ export default async function BodyFatPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <BodyFatCalculator locale={locale} />
 

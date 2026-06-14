@@ -10,12 +10,12 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Mercury Retrograde 2025–2029 — Dates & What to Avoid', description: 'Check if Mercury is in retrograde right now and see all upcoming Mercury retrograde dates from 2025 to 2029. Learn what to avoid and how to navigate this astrological period. Free tool.', h1: 'Mercury Retrograde Calculator' },
-  ru: { title: 'Меркурий ретроградный 2025–2029 — даты и что избегать', description: 'Проверьте, ретроградный ли Меркурий сейчас, и посмотрите все предстоящие даты с 2025 по 2029. Узнайте, что нужно избегать в это время. Бесплатно.', h1: 'Меркурий ретроградный' },
-  uk: { title: 'Меркурій ретроградний 2025–2029 — дати та що уникати', description: 'Перевірте, чи є Меркурій ретроградним зараз, і подивіться всі майбутні дати з 2025 по 2029. Дізнайтеся, що потрібно уникати в цей час. Безкоштовно.', h1: 'Меркурій ретроградний' },
-  fr: { title: 'Mercure Rétrograde 2025–2029 — Dates et conseils', description: 'Vérifiez si Mercure est actuellement rétrograde et consultez toutes les dates à venir de 2025 à 2029. Découvrez ce qu\'il faut éviter pendant cette période astrologique. Gratuit.', h1: 'Mercure Rétrograde' },
-  lt: { title: 'Merkurijus retrogradas 2025–2029 — datos ir ką vengti', description: 'Patikrinkite, ar Merkurijus šiuo metu yra retrogradinis, ir peržiūrėkite visas artėjančias datas nuo 2025 iki 2029. Sužinokite, ko vengti šiuo astrologiniu laikotarpiu. Nemokama.', h1: 'Merkurijaus retrogrodo skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Mercury Retrograde 2025–2029 — Dates & What to Avoid', description: 'Check if Mercury is in retrograde right now and see all upcoming Mercury retrograde dates from 2025 to 2029. Learn what to avoid and how to navigate this astrological period. Free tool.', h1: 'Mercury Retrograde Calculator', subtitle: 'Check if Mercury is retrograde today and see all upcoming retrograde periods from 2025 to 2029.' },
+  ru: { title: 'Меркурий ретроградный 2025–2029 — даты и что избегать', description: 'Проверьте, ретроградный ли Меркурий сейчас, и посмотрите все предстоящие даты с 2025 по 2029. Узнайте, что нужно избегать в это время. Бесплатно.', h1: 'Меркурий ретроградный', subtitle: 'Проверьте, ретроградный ли Меркурий сегодня, и узнайте все предстоящие ретроградные периоды с 2025 по 2029 год.' },
+  uk: { title: 'Меркурій ретроградний 2025–2029 — дати та що уникати', description: 'Перевірте, чи є Меркурій ретроградним зараз, і подивіться всі майбутні дати з 2025 по 2029. Дізнайтеся, що потрібно уникати в цей час. Безкоштовно.', h1: 'Меркурій ретроградний', subtitle: 'Перевірте, чи є Меркурій ретроградним сьогодні, та дізнайтеся всі майбутні ретроградні періоди з 2025 по 2029 рік.' },
+  fr: { title: 'Mercure Rétrograde 2025–2029 — Dates et conseils', description: 'Vérifiez si Mercure est actuellement rétrograde et consultez toutes les dates à venir de 2025 à 2029. Découvrez ce qu\'il faut éviter pendant cette période astrologique. Gratuit.', h1: 'Mercure Rétrograde', subtitle: 'Vérifiez si Mercure est rétrograde aujourd\'hui et consultez toutes les périodes à venir de 2025 à 2029.' },
+  lt: { title: 'Merkurijus retrogradas 2025–2029 — datos ir ką vengti', description: 'Patikrinkite, ar Merkurijus šiuo metu yra retrogradinis, ir peržiūrėkite visas artėjančias datas nuo 2025 iki 2029. Sužinokite, ko vengti šiuo astrologiniu laikotarpiu. Nemokama.', h1: 'Merkurijaus retrogrodo skaičiuotuvas', subtitle: 'Patikrinkite, ar šiandien Merkurijus yra retrogradinis, ir peržiūrėkite visus artėjančius retrogradinius laikotarpius iki 2029 m.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -182,6 +182,7 @@ export default async function MercuryRetrogradePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <MercuryRetrogradeCalculator locale={locale} />
         <AdInline locale={locale} />

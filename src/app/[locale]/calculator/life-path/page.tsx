@@ -10,31 +10,36 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Life Path Number Calculator — Free Numerology Calculator',
     description: 'Calculate your Life Path Number free online. Enter your date of birth and discover your core numerology number, personality traits and destiny insights.',
     h1: 'Life Path Number Calculator',
+    subtitle: 'Calculate your Life Path Number from your date of birth and discover your core numerology number and life purpose.',
   },
   ru: {
     title: 'Число жизненного пути — Онлайн нумерология бесплатно',
     description: 'Рассчитайте число жизненного пути онлайн бесплатно. Введите дату рождения и узнайте своё ключевое число нумерологии, черты личности и предназначение.',
     h1: 'Число жизненного пути — калькулятор',
+    subtitle: 'Рассчитайте число жизненного пути по дате рождения и узнайте ключевое нумерологическое число и жизненное предназначение.',
   },
   uk: {
     title: 'Число Життєвого Шляху — Нумерологія Онлайн Безкоштовно',
     description: 'Розрахуйте число життєвого шляху онлайн безкоштовно. Введіть дату народження і дізнайтеся своє ключове число нумерології та призначення.',
     h1: 'Число життєвого шляху — калькулятор',
+    subtitle: 'Розрахуйте число життєвого шляху за датою народження і дізнайтеся ключове нумерологічне число та призначення.',
   },
   fr: {
     title: 'Calculateur Chemin de Vie — Numérologie Gratuite en Ligne',
     description: 'Calculez votre nombre chemin de vie gratuitement en ligne. Entrez votre date de naissance et découvrez votre nombre numérologique clé et vos traits de personnalité.',
     h1: 'Calculateur du Chemin de Vie',
+    subtitle: 'Calculez votre Nombre Chemin de Vie à partir de votre date de naissance et découvrez votre mission de vie en numérologie.',
   },
   lt: {
     title: 'Gyvenimo Kelio Skaičiaus Skaičiuotuvas — Nemokama Numerologija',
     description: 'Apskaičiuokite savo gyvenimo kelio skaičių nemokamai internete. Įveskite gimimo datą ir sužinokite savo pagrindinį numerologinį skaičių ir asmenybės bruožus.',
     h1: 'Gyvenimo kelio skaičiaus skaičiuotuvas',
+    subtitle: 'Apskaičiuokite savo gyvenimo kelio skaičių pagal gimimo datą ir sužinokite pagrindinį numerologinį skaičių ir gyvenimo tikslą.',
   },
 };
 
@@ -203,6 +208,7 @@ export default async function LifePathPage({ params }: Props) {
 
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <LifePathCalculator locale={locale} />
         <AdInline locale={locale} />

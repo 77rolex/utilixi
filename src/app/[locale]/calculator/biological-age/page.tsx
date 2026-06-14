@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Širdies ritmo zonos' }, { href: '/calculator/stress-level', label: 'Streso lygio testas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas' }, { href: '/calculator/sleep', label: 'Miego skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Biological Age Calculator Online — Free Bio Age Test',
     description: 'Free biological age calculator online. Find out your real body age based on lifestyle factors: BMI, exercise frequency, sleep quality, diet, stress, smoking and alcohol. Discover how to reduce your biological age.',
     h1: 'Biological Age Calculator',
+    subtitle: 'Estimate your real body age based on lifestyle habits: exercise, sleep, diet, stress, and more.',
   },
   ru: {
     title: 'Калькулятор биологического возраста онлайн — бесплатный тест',
     description: 'Бесплатный калькулятор биологического возраста онлайн. Узнайте реальный возраст вашего тела по образу жизни: ИМТ, физическая активность, сон, питание, стресс, курение и алкоголь.',
     h1: 'Калькулятор биологического возраста',
+    subtitle: 'Оцените реальный биологический возраст тела на основе образа жизни: активность, сон, питание, стресс.',
   },
   uk: {
     title: 'Калькулятор біологічного віку онлайн — безкоштовний тест',
     description: 'Безкоштовний калькулятор біологічного віку онлайн. Дізнайтесь реальний вік вашого тіла за способом життя: ІМТ, фізична активність, сон, харчування, стрес, куріння та алкоголь.',
     h1: 'Калькулятор біологічного віку',
+    subtitle: 'Оцініть реальний біологічний вік тіла на основі способу життя: активність, сон, харчування, стрес.',
   },
   fr: {
     title: 'Test Âge Biologique Gratuit — Calculez votre âge réel en ligne',
     description: 'Test d\'âge biologique gratuit en ligne. Découvrez l\'âge réel de votre corps selon votre style de vie : IMC, exercice, sommeil, alimentation, stress, tabac et alcool. Calcul âge biologique instantané — sans inscription.',
     h1: 'Calculateur d\'âge biologique',
+    subtitle: 'Estimez votre âge corporel réel selon votre mode de vie : exercice, sommeil, alimentation, stress.',
   },
   lt: {
     title: 'Biologinio Amžiaus Skaičiuotuvas — Nemokamas testas internetu',
     description: 'Nemokamas biologinio amžiaus skaičiuotuvas internetu. Sužinokite tikrąjį kūno amžių pagal gyvenimo būdą: KMI, fizinis aktyvumas, miegas, mityba, stresas, rūkymas ir alkoholis.',
     h1: 'Biologinio amžiaus skaičiuotuvas',
+    subtitle: 'Įvertinkite tikrąjį kūno amžių pagal gyvenimo būdą: aktyvumas, miegas, mityba, stresas.',
   },
 };
 
@@ -174,6 +179,7 @@ export default async function BiologicalAgePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <BiologicalAgeCalculator locale={locale} />
         <AdInline locale={locale} />

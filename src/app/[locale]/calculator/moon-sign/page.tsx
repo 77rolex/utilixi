@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Moon Sign Calculator — What is My Lunar Zodiac Sign?',
     description: 'Find your Moon sign by date, time and timezone. The Moon changes sign every 2–3 days — enter your exact birth time for an accurate result. Discover your lunar zodiac sign, element and ruling planet.',
     h1: 'Moon Sign Calculator',
+    subtitle: 'Find your Moon sign by entering your date of birth, time and timezone — the Moon changes sign every 2–3 days.',
   },
   ru: {
     title: 'Лунный знак — Калькулятор знака луны по дате рождения',
     description: 'Узнайте свой лунный знак по дате и времени рождения. Луна меняет знак каждые 2–3 дня — введите точное время и часовой пояс. Стихия, управитель и описание лунного знака.',
     h1: 'Лунный знак — калькулятор',
+    subtitle: 'Узнайте свой лунный знак, введя дату рождения, время и часовой пояс — Луна меняет знак каждые 2–3 дня.',
   },
   uk: {
     title: 'Місячний знак — Калькулятор знаку місяця за датою народження',
     description: 'Дізнайтеся свій місячний знак за датою і часом народження. Місяць змінює знак кожні 2–3 дні — введіть точний час і часовий пояс для точного результату.',
     h1: 'Місячний знак — калькулятор',
+    subtitle: 'Дізнайтеся свій місячний знак, ввівши дату народження, час і часовий пояс — Місяць змінює знак кожні 2–3 дні.',
   },
   fr: {
     title: 'Signe Lunaire — Calculateur du Signe de la Lune par date de naissance',
     description: 'Trouvez votre signe lunaire par date, heure et fuseau horaire. La Lune change de signe tous les 2–3 jours — entrez l\'heure exacte pour un résultat précis. Élément et planète dominante inclus.',
     h1: 'Calculateur de Signe Lunaire',
+    subtitle: 'Trouvez votre signe lunaire en entrant date, heure et fuseau horaire de naissance — la Lune change de signe tous les 2–3 jours.',
   },
   lt: {
     title: 'Mėnulio ženklas — Skaičiuotuvas pagal gimimo datą ir laiką',
     description: 'Sužinokite savo Mėnulio ženklą pagal gimimo datą, laiką ir laiko juostą. Mėnulis keičia ženklą kas 2–3 dienas — įveskite tikslų laiką. Elementas ir valdančioji planeta.',
     h1: 'Mėnulio ženklo skaičiuotuvas',
+    subtitle: 'Raskite savo Mėnulio ženklą įvesdami gimimo datą, laiką ir laiko juostą — Mėnulis keičia ženklą kas 2–3 dienas.',
   },
 };
 
@@ -203,6 +208,7 @@ export default async function MoonSignPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <MoonSignCalculator locale={locale} />
         <AdInline locale={locale} />

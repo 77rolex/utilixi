@@ -10,12 +10,12 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Biorhythm Calculator — Physical, Emotional & Intellectual Cycles', description: 'Calculate your biorhythm cycles for any date. See your physical (23-day), emotional (28-day) and intellectual (33-day) cycles on a 30-day chart with critical days highlighted. Free online tool.', h1: 'Biorhythm Calculator' },
-  ru: { title: 'Калькулятор биоритмов — физический, эмоциональный, интеллектуальный', description: 'Рассчитайте биоритмы на любую дату. Физический (23 дня), эмоциональный (28 дней) и интеллектуальный (33 дня) циклы на 30-дневном графике с выделением критических дней. Бесплатно онлайн.', h1: 'Калькулятор биоритмов' },
-  uk: { title: 'Калькулятор біоритмів — фізичний, емоційний, інтелектуальний', description: 'Розрахуйте біоритми на будь-яку дату. Фізичний (23 дні), емоційний (28 днів) та інтелектуальний (33 дні) цикли на 30-денному графіку з виділенням критичних днів. Безкоштовно онлайн.', h1: 'Калькулятор біоритмів' },
-  fr: { title: 'Calculateur de Biorythmes — Cycles Physique, Émotionnel et Intellectuel', description: 'Calculez vos biorythmes pour n\'importe quelle date. Cycles physique (23 jours), émotionnel (28 jours) et intellectuel (33 jours) sur un graphique de 30 jours avec jours critiques mis en évidence. Gratuit.', h1: 'Calculateur de Biorythmes' },
-  lt: { title: 'Bioritmo skaičiuotuvas — fizinis, emocinis ir intelektualinis ciklas', description: 'Apskaičiuokite savo bioritmus bet kuriai datai. Fizinis (23 dienų), emocinis (28 dienų) ir intelektualinis (33 dienų) ciklai 30 dienų grafike su pažymėtomis kritinėmis dienomis. Nemokama.', h1: 'Bioritmo skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Biorhythm Calculator — Physical, Emotional & Intellectual Cycles', description: 'Calculate your biorhythm cycles for any date. See your physical (23-day), emotional (28-day) and intellectual (33-day) cycles on a 30-day chart with critical days highlighted. Free online tool.', h1: 'Biorhythm Calculator', subtitle: 'Calculate your physical, emotional and intellectual cycles for any date and plan your days around your energy rhythms.' },
+  ru: { title: 'Калькулятор биоритмов — физический, эмоциональный, интеллектуальный', description: 'Рассчитайте биоритмы на любую дату. Физический (23 дня), эмоциональный (28 дней) и интеллектуальный (33 дня) циклы на 30-дневном графике с выделением критических дней. Бесплатно онлайн.', h1: 'Калькулятор биоритмов', subtitle: 'Рассчитайте физический, эмоциональный и интеллектуальный циклы на любую дату и планируйте дни с учётом ритмов энергии.' },
+  uk: { title: 'Калькулятор біоритмів — фізичний, емоційний, інтелектуальний', description: 'Розрахуйте біоритми на будь-яку дату. Фізичний (23 дні), емоційний (28 днів) та інтелектуальний (33 дні) цикли на 30-денному графіку з виділенням критичних днів. Безкоштовно онлайн.', h1: 'Калькулятор біоритмів', subtitle: 'Розрахуйте фізичний, емоційний та інтелектуальний цикли на будь-яку дату та плануйте дні відповідно до ритмів енергії.' },
+  fr: { title: 'Calculateur de Biorythmes — Cycles Physique, Émotionnel et Intellectuel', description: 'Calculez vos biorythmes pour n\'importe quelle date. Cycles physique (23 jours), émotionnel (28 jours) et intellectuel (33 jours) sur un graphique de 30 jours avec jours critiques mis en évidence. Gratuit.', h1: 'Calculateur de Biorythmes', subtitle: 'Calculez vos cycles physique, émotionnel et intellectuel pour n\'importe quelle date et planifiez vos journées selon vos rythmes d\'énergie.' },
+  lt: { title: 'Bioritmo skaičiuotuvas — fizinis, emocinis ir intelektualinis ciklas', description: 'Apskaičiuokite savo bioritmus bet kuriai datai. Fizinis (23 dienų), emocinis (28 dienų) ir intelektualinis (33 dienų) ciklai 30 dienų grafike su pažymėtomis kritinėmis dienomis. Nemokama.', h1: 'Bioritmo skaičiuotuvas', subtitle: 'Apskaičiuokite savo fizinius, emocinius ir intelektualinius ciklus bet kuriai datai ir planuokite dienas pagal energijos ritmus.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -182,6 +182,7 @@ export default async function BiorhythmPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <BiorhythmCalculator locale={locale} />
         <AdInline locale={locale} />

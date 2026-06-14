@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/ovulation', label: 'Ovuliacijos skaičiuotuvas' }, { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Pregnancy Due Date Calculator — EDD & Gestational Age Online',
     description: 'Free pregnancy calculator. Find your estimated due date (EDD) by last menstrual period or conception date. Track gestational age, trimesters and key milestone dates online.',
     h1: 'Pregnancy Due Date Calculator',
+    subtitle: 'Find your estimated due date and track pregnancy week by week from your last period or conception date.',
   },
   ru: {
     title: 'Калькулятор беременности онлайн — рассчитать ПДР и срок бесплатно',
     description: 'Бесплатный калькулятор беременности онлайн. Рассчитайте предполагаемую дату родов (ПДР) по дате последней менструации или зачатия. Акушерский срок, триместры и ключевые даты.',
     h1: 'Калькулятор беременности',
+    subtitle: 'Рассчитайте предполагаемую дату родов и следите за беременностью по неделям.',
   },
   uk: {
     title: 'Калькулятор вагітності онлайн — розрахувати дату пологів і термін',
     description: 'Безкоштовний калькулятор вагітності онлайн. Розрахуйте очікувану дату пологів за датою останньої менструації або зачаття. Акушерський термін, триместри і ключові дати.',
     h1: 'Калькулятор вагітності',
+    subtitle: 'Розрахуйте очікувану дату пологів і стежте за вагітністю по тижнях.',
   },
   fr: {
     title: 'Calculatrice de Grossesse Gratuite — Date d\'Accouchement (DPA)',
     description: 'Calculatrice de grossesse gratuite. Calculez votre date prévue d\'accouchement (DPA) à partir de vos dernières règles ou de la date de conception. Âge gestationnel, trimestres et dates clés.',
     h1: 'Calculatrice de Grossesse',
+    subtitle: 'Calculez votre date d\'accouchement prévue et suivez votre grossesse semaine par semaine.',
   },
   lt: {
     title: 'Nėštumo Skaičiuotuvas Online — Gimdymo Data ir Trukmė',
     description: 'Nemokamas nėštumo skaičiuotuvas. Apskaičiuokite numatomą gimdymo datą pagal paskutinių mėnesinių datą arba pastojimo datą. Gestacinis amžius, trimestrai ir svarbios datos.',
     h1: 'Nėštumo Skaičiuotuvas',
+    subtitle: 'Apskaičiuokite numatomą gimdymo datą ir stebėkite nėštumą kas savaitę.',
   },
 };
 
@@ -373,6 +378,7 @@ export default async function PregnancyPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <PregnancyCalculator locale={locale} />
 

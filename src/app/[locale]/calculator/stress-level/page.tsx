@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/biological-age', label: 'Biologinio amžiaus skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }, { href: '/calculator/sleep', label: 'Miego skaičiuotuvas' }, { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Stress Level Calculator — PSS-10 Perceived Stress Test', description: 'Free online stress level test based on the Perceived Stress Scale (PSS-10). Answer 10 questions to find out if your stress is low, moderate, or high.', h1: 'Stress Level Calculator' },
-  ru: { title: 'Калькулятор уровня стресса — тест PSS-10', description: 'Бесплатный тест на уровень стресса по шкале PSS-10. Ответьте на 10 вопросов и узнайте, низкий, умеренный или высокий у вас уровень стресса.', h1: 'Калькулятор уровня стресса' },
-  uk: { title: 'Калькулятор рівня стресу — тест PSS-10', description: 'Безкоштовний тест на рівень стресу за шкалою PSS-10. Дайте відповідь на 10 запитань і дізнайтеся свій рівень стресу.', h1: 'Калькулятор рівня стресу' },
-  fr: { title: 'Calculatrice du niveau de stress — Test PSS-10', description: 'Test de stress gratuit basé sur l\'échelle PSS-10. Répondez à 10 questions pour savoir si votre stress est faible, modéré ou élevé.', h1: 'Calculatrice du niveau de stress' },
-  lt: { title: 'Streso lygio skaičiuotuvas — PSS-10 testas', description: 'Nemokamas streso lygio testas pagal PSS-10 skalę. Atsakykite į 10 klausimų ir sužinokite, ar jūsų stresas žemas, vidutinis ar aukštas.', h1: 'Streso lygio skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Stress Level Calculator — PSS-10 Perceived Stress Test', description: 'Free online stress level test based on the Perceived Stress Scale (PSS-10). Answer 10 questions to find out if your stress is low, moderate, or high.', h1: 'Stress Level Calculator', subtitle: 'Take the PSS-10 test to find out if your stress level is low, moderate, or high.' },
+  ru: { title: 'Калькулятор уровня стресса — тест PSS-10', description: 'Бесплатный тест на уровень стресса по шкале PSS-10. Ответьте на 10 вопросов и узнайте, низкий, умеренный или высокий у вас уровень стресса.', h1: 'Калькулятор уровня стресса', subtitle: 'Пройдите тест PSS-10 и узнайте свой уровень стресса: низкий, умеренный или высокий.' },
+  uk: { title: 'Калькулятор рівня стресу — тест PSS-10', description: 'Безкоштовний тест на рівень стресу за шкалою PSS-10. Дайте відповідь на 10 запитань і дізнайтеся свій рівень стресу.', h1: 'Калькулятор рівня стресу', subtitle: 'Пройдіть тест PSS-10 і дізнайтеся свій рівень стресу: низький, помірний чи високий.' },
+  fr: { title: 'Calculatrice du niveau de stress — Test PSS-10', description: 'Test de stress gratuit basé sur l\'échelle PSS-10. Répondez à 10 questions pour savoir si votre stress est faible, modéré ou élevé.', h1: 'Calculatrice du niveau de stress', subtitle: 'Passez le test PSS-10 pour savoir si votre niveau de stress est faible, modéré ou élevé.' },
+  lt: { title: 'Streso lygio skaičiuotuvas — PSS-10 testas', description: 'Nemokamas streso lygio testas pagal PSS-10 skalę. Atsakykite į 10 klausimų ir sužinokite, ar jūsų stresas žemas, vidutinis ar aukštas.', h1: 'Streso lygio skaičiuotuvas', subtitle: 'Atlikite PSS-10 testą ir sužinokite, ar jūsų stresas yra žemas, vidutinis ar aukštas.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -158,6 +158,7 @@ export default async function StressLevelPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{m.h1}</h1>
+        {m.subtitle && <p className={styles.page__subtitle}>{m.subtitle}</p>}
         <ToolActions />
         <StressLevelCalculator locale={locale} />
         <AdInline locale={locale} />

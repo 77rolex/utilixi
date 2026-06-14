@@ -10,31 +10,36 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Name Number Calculator — Pythagorean Numerology Free Online',
     description: 'Calculate your Name Number free online using Pythagorean numerology. Enter your full name and discover the vibration it carries — works with Latin and Cyrillic letters.',
     h1: 'Name Number Calculator',
+    subtitle: 'Calculate your Name Number from any name using Pythagorean numerology — works with Latin and Cyrillic letters.',
   },
   ru: {
     title: 'Число имени — Пифагорейская нумерология онлайн бесплатно',
     description: 'Рассчитайте число имени онлайн бесплатно по пифагорейской нумерологии. Введите полное имя и узнайте его вибрацию — поддерживается латиница и кириллица.',
     h1: 'Число имени — калькулятор',
+    subtitle: 'Рассчитайте число имени по любому имени с помощью пифагорейской нумерологии — поддерживается латиница и кириллица.',
   },
   uk: {
     title: 'Число Імені — Піфагорійська Нумерологія Онлайн Безкоштовно',
     description: 'Розрахуйте число імені онлайн безкоштовно за піфагорійською нумерологією. Введіть повне ім\'я і дізнайтеся його вібрацію — підтримується латиниця і кирилиця.',
     h1: 'Число імені — калькулятор',
+    subtitle: 'Розрахуйте число імені за будь-яким іменем за допомогою піфагорійської нумерології — підтримується латиниця і кирилиця.',
   },
   fr: {
     title: 'Calculateur Nombre du Nom — Numérologie Pythagoricienne Gratuite',
     description: 'Calculez votre Nombre du Nom gratuitement en ligne avec la numérologie pythagoricienne. Entrez votre nom complet et découvrez sa vibration — compatible Latin et cyrillique.',
     h1: 'Calculateur du Nombre du Nom',
+    subtitle: 'Calculez votre Nombre du Nom à partir de n\'importe quel prénom en numérologie pythagoricienne — Latin et cyrillique supportés.',
   },
   lt: {
     title: 'Vardo Skaičiaus Skaičiuotuvas — Nemokama Pitagoro Numerologija',
     description: 'Apskaičiuokite savo vardo skaičių nemokamai internete naudodami Pitagoro numerologiją. Įveskite pilną vardą ir sužinokite jo vibraciją — veikia su lotyniška ir kirilica.',
     h1: 'Vardo skaičiaus skaičiuotuvas',
+    subtitle: 'Apskaičiuokite savo vardo skaičių bet kuriam vardui naudodami Pitagoro numerologiją — veikia su lotyniška ir kirilica.',
   },
 };
 
@@ -203,6 +208,7 @@ export default async function NameNumberPage({ params }: Props) {
 
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <NameNumberCalculator locale={locale} />
         <AdInline locale={locale} />

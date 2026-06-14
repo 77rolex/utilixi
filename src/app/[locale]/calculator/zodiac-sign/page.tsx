@@ -10,12 +10,12 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Zodiac Sign Calculator — Find Your Star Sign by Birth Date', description: 'Find your zodiac sign by birth date instantly. Get your star sign symbol, element, ruling planet and personality description. Free astrology tool for all 12 signs.', h1: 'Zodiac Sign Calculator' },
-  ru: { title: 'Калькулятор знака зодиака — определить по дате рождения', description: 'Определите знак зодиака по дате рождения бесплатно. Узнайте символ, элемент, планету-покровитель и описание своего знака. Бесплатный астрологический инструмент.', h1: 'Калькулятор знака зодиака' },
-  uk: { title: 'Калькулятор знаку зодіаку — визначити за датою народження', description: 'Визначте знак зодіаку за датою народження безкоштовно. Дізнайтеся символ, елемент, планету-покровительку та опис свого знаку. Безкоштовний астрологічний інструмент.', h1: 'Калькулятор знаку зодіаку' },
-  fr: { title: 'Calculateur de Signe du Zodiaque — Trouvez votre signe', description: 'Trouvez votre signe du zodiaque par date de naissance. Obtenez votre symbole, élément, planète maîtresse et description de personnalité. Outil astrologique gratuit pour les 12 signes.', h1: 'Calculateur de Signe du Zodiaque' },
-  lt: { title: 'Zodiako ženklo skaičiuotuvas — raskite savo ženklą', description: 'Raskite savo zodiako ženklą pagal gimimo datą. Gaukite savo simbolį, elementą, valdančią planetą ir asmenybės aprašymą. Nemokamas astrologijos įrankis visiems 12 ženklų.', h1: 'Zodiako ženklo skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Zodiac Sign Calculator — Find Your Star Sign by Birth Date', description: 'Find your zodiac sign by birth date instantly. Get your star sign symbol, element, ruling planet and personality description. Free astrology tool for all 12 signs.', h1: 'Zodiac Sign Calculator', subtitle: 'Find your Western zodiac sign, element, and ruling planet by entering your date of birth.' },
+  ru: { title: 'Калькулятор знака зодиака — определить по дате рождения', description: 'Определите знак зодиака по дате рождения бесплатно. Узнайте символ, элемент, планету-покровитель и описание своего знака. Бесплатный астрологический инструмент.', h1: 'Калькулятор знака зодиака', subtitle: 'Узнайте свой знак зодиака, стихию и планету-покровителя по дате рождения.' },
+  uk: { title: 'Калькулятор знаку зодіаку — визначити за датою народження', description: 'Визначте знак зодіаку за датою народження безкоштовно. Дізнайтеся символ, елемент, планету-покровительку та опис свого знаку. Безкоштовний астрологічний інструмент.', h1: 'Калькулятор знаку зодіаку', subtitle: 'Дізнайтеся свій знак зодіаку, стихію та планету-покровительку за датою народження.' },
+  fr: { title: 'Calculateur de Signe du Zodiaque — Trouvez votre signe', description: 'Trouvez votre signe du zodiaque par date de naissance. Obtenez votre symbole, élément, planète maîtresse et description de personnalité. Outil astrologique gratuit pour les 12 signes.', h1: 'Calculateur de Signe du Zodiaque', subtitle: 'Trouvez votre signe du zodiaque occidental, votre élément et votre planète maîtresse selon votre date de naissance.' },
+  lt: { title: 'Zodiako ženklo skaičiuotuvas — raskite savo ženklą', description: 'Raskite savo zodiako ženklą pagal gimimo datą. Gaukite savo simbolį, elementą, valdančią planetą ir asmenybės aprašymą. Nemokamas astrologijos įrankis visiems 12 ženklų.', h1: 'Zodiako ženklo skaičiuotuvas', subtitle: 'Raskite savo Vakarų zodiako ženklą, elementą ir valdančiąją planetą pagal gimimo datą.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -183,6 +183,7 @@ export default async function ZodiacSignPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <ZodiacSignCalculator locale={locale} />
         <AdInline locale={locale} />

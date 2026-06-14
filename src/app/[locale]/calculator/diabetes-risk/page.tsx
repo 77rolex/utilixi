@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/biological-age', label: 'Biologinio amžiaus skaičiuotuvas' }, { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' }, { href: '/calculator/body-fat', label: 'Kūno riebalų skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Diabetes Risk Calculator — FINDRISC Score Test', description: 'Free diabetes risk calculator based on the validated FINDRISC questionnaire. Assess your 10-year risk of developing type 2 diabetes in under 2 minutes.', h1: 'Diabetes Risk Calculator' },
-  ru: { title: 'Калькулятор риска диабета — тест FINDRISC', description: 'Бесплатный калькулятор риска диабета на основе валидированного опросника FINDRISC. Оцените риск развития диабета 2 типа за 10 лет менее чем за 2 минуты.', h1: 'Калькулятор риска диабета' },
-  uk: { title: 'Калькулятор ризику діабету — тест FINDRISC', description: 'Безкоштовний калькулятор ризику діабету на основі валідованого опитувальника FINDRISC. Оцініть ризик розвитку діабету 2 типу за 10 років менш ніж за 2 хвилини.', h1: 'Калькулятор ризику діабету' },
-  fr: { title: 'Calculatrice de risque de diabète — Score FINDRISC', description: 'Calculatrice de risque de diabète gratuite basée sur le questionnaire FINDRISC validé. Évaluez votre risque de développer un diabète de type 2 sur 10 ans en moins de 2 minutes.', h1: 'Calculatrice de risque de diabète' },
-  lt: { title: 'Diabeto rizikos skaičiuotuvas — FINDRISC testas', description: 'Nemokamas diabeto rizikos skaičiuotuvas, pagrįstas patvirtintu FINDRISC klausimynu. Įvertinkite 10 metų 2 tipo diabeto išsivystymo riziką per mažiau nei 2 minutes.', h1: 'Diabeto rizikos skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Diabetes Risk Calculator — FINDRISC Score Test', description: 'Free diabetes risk calculator based on the validated FINDRISC questionnaire. Assess your 10-year risk of developing type 2 diabetes in under 2 minutes.', h1: 'Diabetes Risk Calculator', subtitle: 'Assess your 10-year risk of type 2 diabetes using the validated FINDRISC questionnaire in under 2 minutes.' },
+  ru: { title: 'Калькулятор риска диабета — тест FINDRISC', description: 'Бесплатный калькулятор риска диабета на основе валидированного опросника FINDRISC. Оцените риск развития диабета 2 типа за 10 лет менее чем за 2 минуты.', h1: 'Калькулятор риска диабета', subtitle: 'Оцените 10-летний риск диабета 2 типа по опроснику FINDRISC менее чем за 2 минуты.' },
+  uk: { title: 'Калькулятор ризику діабету — тест FINDRISC', description: 'Безкоштовний калькулятор ризику діабету на основі валідованого опитувальника FINDRISC. Оцініть ризик розвитку діабету 2 типу за 10 років менш ніж за 2 хвилини.', h1: 'Калькулятор ризику діабету', subtitle: 'Оцініть 10-річний ризик діабету 2 типу за опитувальником FINDRISC менш ніж за 2 хвилини.' },
+  fr: { title: 'Calculatrice de risque de diabète — Score FINDRISC', description: 'Calculatrice de risque de diabète gratuite basée sur le questionnaire FINDRISC validé. Évaluez votre risque de développer un diabète de type 2 sur 10 ans en moins de 2 minutes.', h1: 'Calculatrice de risque de diabète', subtitle: 'Évaluez votre risque de diabète de type 2 sur 10 ans avec le questionnaire FINDRISC validé en 2 minutes.' },
+  lt: { title: 'Diabeto rizikos skaičiuotuvas — FINDRISC testas', description: 'Nemokamas diabeto rizikos skaičiuotuvas, pagrįstas patvirtintu FINDRISC klausimynu. Įvertinkite 10 metų 2 tipo diabeto išsivystymo riziką per mažiau nei 2 minutes.', h1: 'Diabeto rizikos skaičiuotuvas', subtitle: 'Įvertinkite 10 metų 2 tipo diabeto riziką pagal FINDRISC klausimyną per mažiau nei 2 minutes.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -143,6 +143,7 @@ export default async function DiabetesRiskPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <DiabetesRiskCalculator locale={locale} />
         <AdInline locale={locale} />

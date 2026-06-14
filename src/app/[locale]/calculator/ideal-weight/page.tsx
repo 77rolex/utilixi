@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' }, { href: '/calculator/body-fat', label: 'Kūno riebalų skaičiuotuvas' }, { href: '/calculator/water-intake', label: 'Vandens normos skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Ideal Weight Calculator — Find Your Healthy Weight',
     description: 'Free ideal weight calculator. Find your healthy weight range by height and gender using 4 medical formulas (Devine, Hamwi, Robinson, Miller) and BMI guidelines.',
     h1: 'Ideal Weight Calculator',
+    subtitle: 'Find your healthy weight range by height and gender using four medical formulas.',
   },
   ru: {
     title: 'Калькулятор идеального веса — норма по росту и полу',
     description: 'Бесплатный калькулятор идеального веса онлайн. Рассчитайте нормальный вес по росту и полу по 4 медицинским формулам (Девайн, Хамви, Робинсон, Миллер).',
     h1: 'Калькулятор идеального веса',
+    subtitle: 'Узнайте нормальный диапазон веса по росту и полу по четырём медицинским формулам.',
   },
   uk: {
     title: 'Калькулятор ідеальної ваги — норма за зростом і статтю',
     description: 'Безкоштовний калькулятор ідеальної ваги онлайн. Розрахуйте нормальну вагу за зростом і статтю за 4 медичними формулами (Девайн, Хамві, Робінсон, Міллер).',
     h1: 'Калькулятор ідеальної ваги',
+    subtitle: 'Дізнайтеся нормальний діапазон ваги за зростом і статтю за чотирма медичними формулами.',
   },
   fr: {
     title: 'Calculatrice du Poids Idéal — Poids Santé par Taille',
     description: 'Calculatrice du poids idéal gratuite. Trouvez votre poids santé selon votre taille et votre sexe grâce à 4 formules médicales (Devine, Hamwi, Robinson, Miller).',
     h1: 'Calculatrice du Poids Idéal',
+    subtitle: 'Trouvez votre plage de poids santé selon votre taille et votre sexe via quatre formules médicales.',
   },
   lt: {
     title: 'Idealaus Svorio Skaičiuotuvas — Sveikas Svoris pagal Ūgį',
     description: 'Nemokamas idealaus svorio skaičiuotuvas. Raskite sveiko svorio intervalą pagal ūgį ir lytį naudodami 4 medicinines formules (Devine, Hamwi, Robinson, Miller).',
     h1: 'Idealaus Svorio Skaičiuotuvas',
+    subtitle: 'Raskite sveiko svorio intervalą pagal ūgį ir lytį naudodami keturias medicinines formules.',
   },
 };
 
@@ -331,6 +336,7 @@ export default async function IdealWeightPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <IdealWeightCalculator locale={locale} />
 

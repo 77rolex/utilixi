@@ -10,31 +10,36 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Personality Number Calculator — Free Numerology Online',
     description: 'Calculate your Personality Number free online. Enter your name and discover what energy you project to the world — the outer image others perceive before they know you.',
     h1: 'Personality Number Calculator',
+    subtitle: 'Find out how the world perceives you through your Personality Number, derived from the consonants of your name.',
   },
   ru: {
     title: 'Число личности — Нумерология онлайн бесплатно',
     description: 'Рассчитайте число личности онлайн бесплатно. Введите имя и узнайте, какую энергию вы транслируете миру — внешний образ, который другие воспринимают до того, как узнают вас.',
     h1: 'Число личности — калькулятор',
+    subtitle: 'Узнайте, как мир воспринимает вас, через число личности, вычисленное по согласным вашего имени.',
   },
   uk: {
     title: 'Число Особистості — Нумерологія Онлайн Безкоштовно',
     description: 'Розрахуйте число особистості онлайн безкоштовно. Введіть ім\'я і дізнайтеся, яку енергію ви транслюєте світу — зовнішній образ, який інші сприймають до того, як пізнають вас.',
     h1: 'Число особистості — калькулятор',
+    subtitle: 'Дізнайтеся, як світ сприймає вас, через число особистості, обчислене за приголосними вашого імені.',
   },
   fr: {
     title: 'Calculateur Nombre de Personnalité — Numérologie Gratuite',
     description: 'Calculez votre Nombre de Personnalité gratuitement en ligne. Entrez votre nom et découvrez l\'énergie que vous projetez — l\'image extérieure que les autres perçoivent avant de vous connaître.',
     h1: 'Calculateur du Nombre de Personnalité',
+    subtitle: 'Découvrez comment le monde vous perçoit grâce à votre Nombre de Personnalité, calculé à partir des consonnes de votre nom.',
   },
   lt: {
     title: 'Asmenybės Skaičiaus Skaičiuotuvas — Nemokama Numerologija',
     description: 'Apskaičiuokite savo asmenybės skaičių nemokamai internete. Įveskite vardą ir sužinokite, kokią energiją projektuojate — išorinį įvaizdį, kurį kiti suvokia prieš jus pažindami.',
     h1: 'Asmenybės skaičiaus skaičiuotuvas',
+    subtitle: 'Sužinokite, kaip pasaulis jus mato per asmenybės skaičių, apskaičiuotą iš jūsų vardo priebalsių.',
   },
 };
 
@@ -203,6 +208,7 @@ export default async function PersonalityNumberPage({ params }: Props) {
 
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <PersonalityNumberCalculator locale={locale} />
         <AdInline locale={locale} />

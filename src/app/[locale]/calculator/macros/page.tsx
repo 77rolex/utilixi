@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Macro Calculator — Protein, Fat & Carbs by Goal',
     description: 'Free macro calculator. Get your daily protein, fat, and carbohydrate targets based on your calorie intake and goal: cut, maintain, or bulk. Instant results with gram amounts.',
     h1: 'Macro Calculator',
+    subtitle: 'Calculate your daily protein, fat, and carbohydrate targets based on your calorie goal and diet type.',
   },
   ru: {
     title: 'Калькулятор БЖУ — белки, жиры и углеводы по цели',
     description: 'Бесплатный калькулятор БЖУ (белки, жиры, углеводы). Получите суточные нормы исходя из калорийности и цели: похудение, поддержание веса или набор мышечной массы.',
     h1: 'Калькулятор БЖУ / Macros',
+    subtitle: 'Рассчитайте суточные нормы белков, жиров и углеводов по калорийной цели и типу диеты.',
   },
   uk: {
     title: 'Калькулятор БЖУ — білки, жири і вуглеводи за метою',
     description: 'Безкоштовний калькулятор БЖУ (білки, жири, вуглеводи). Отримайте добові норми виходячи з калорійності та мети: схуднення, підтримка ваги або набір м\'язової маси.',
     h1: 'Калькулятор БЖУ / Macros',
+    subtitle: 'Розрахуйте добові норми білків, жирів і вуглеводів за калорійною метою та типом дієти.',
   },
   fr: {
     title: 'Calculatrice Macros — Protéines, Lipides & Glucides',
     description: 'Calculatrice de macronutriments gratuite. Obtenez vos objectifs quotidiens en protéines, lipides et glucides selon votre apport calorique et votre objectif : sèche, maintien ou prise de masse.',
     h1: 'Calculatrice Macronutriments',
+    subtitle: 'Calculez vos apports quotidiens en protéines, lipides et glucides selon votre objectif calorique.',
   },
   lt: {
     title: 'Makroelementų Skaičiuotuvas — Baltymai, Riebalai ir Angliavandeniai',
     description: 'Nemokamas makroelementų skaičiuotuvas. Gaukite dieninius baltymų, riebalų ir angliavandenių tikslus pagal kalorijų kiekį ir tikslą: lieknėjimas, palaikymas ar masės didinimas.',
     h1: 'Makroelementų Skaičiuotuvas',
+    subtitle: 'Apskaičiuokite dienos baltymų, riebalų ir angliavandenių normas pagal kalorijų tikslą ir dietos tipą.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function MacrosPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <MacrosCalculator locale={locale} />
         <AdInline locale={locale} />

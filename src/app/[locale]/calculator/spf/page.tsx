@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'SPF Calculator — Sun Protection Time by Skin Type',
     description: 'Free SPF calculator. Calculate how long your sunscreen protects you based on your skin type (Fitzpatrick scale), SPF value, UV index, and activity. With sun safety tips.',
     h1: 'SPF Calculator',
+    subtitle: 'Find the right SPF level for your skin type and UV index to stay protected from sunburn.',
   },
   ru: {
     title: 'Калькулятор SPF — время защиты по типу кожи',
     description: 'Бесплатный калькулятор SPF. Рассчитайте, сколько времени вас защищает солнцезащитный крем по типу кожи (шкала Фицпатрика), SPF, индексу УФ и активности.',
     h1: 'Калькулятор SPF',
+    subtitle: 'Подберите нужный SPF-фактор для вашего типа кожи и индекса УФ-излучения.',
   },
   uk: {
     title: 'Калькулятор SPF — час захисту за типом шкіри',
     description: 'Безкоштовний калькулятор SPF. Розрахуйте, скільки часу захищає сонцезахисний крем за типом шкіри (шкала Фіцпатріка), SPF, індексом УФ та активністю.',
     h1: 'Калькулятор SPF',
+    subtitle: 'Підберіть потрібний SPF-фактор для вашого типу шкіри та індексу УФ-випромінювання.',
   },
   fr: {
     title: 'Calculatrice SPF — Durée de Protection par Type de Peau',
     description: 'Calculatrice SPF gratuite. Calculez la durée de protection de votre crème solaire selon votre type de peau (Échelle de Fitzpatrick), l\'indice SPF, l\'indice UV et l\'activité.',
     h1: 'Calculatrice SPF',
+    subtitle: 'Trouvez l\'indice SPF adapté à votre type de peau et à l\'indice UV pour vous protéger des coups de soleil.',
   },
   lt: {
     title: 'SPF Skaičiuotuvas — Apsaugos Laikas pagal Odos Tipą',
     description: 'Nemokamas SPF skaičiuotuvas. Apskaičiuokite, kiek laiko apsaugos jūsų saulės kremas pagal odos tipą (Fitzpatrick skalė), SPF vertę, UV indeksą ir veiklą.',
     h1: 'SPF Skaičiuotuvas',
+    subtitle: 'Raskite tinkamą SPF lygį pagal odos tipą ir UV indeksą, kad apsisaugotumėte nuo saulės nudegimo.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function SpfPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <SpfCalculator locale={locale} />
         <AdInline locale={locale} />

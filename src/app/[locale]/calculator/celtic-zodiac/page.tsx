@@ -10,12 +10,12 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Celtic Zodiac Calculator — Find Your Tree Sign by Birthday', description: 'Discover your Celtic zodiac tree sign by birth date. Based on the ancient Ogham tree alphabet, get your druidic symbol, qualities and personality description. Free Celtic astrology tool.', h1: 'Celtic Zodiac Calculator' },
-  ru: { title: 'Кельтский зодиак по дате рождения — дерево-символ', description: 'Определите своё дерево-символ по кельтскому зодиаку по дате рождения. Основано на древнем алфавите Огам — получите свои черты характера и описание. Бесплатно.', h1: 'Кельтский зодиак' },
-  uk: { title: 'Кельтський зодіак за датою народження — дерево-символ', description: 'Визначте своє дерево-символ за кельтським зодіаком за датою народження. Засноване на давньому алфавіті Огам — отримайте риси характеру та опис. Безкоштовно.', h1: 'Кельтський зодіак' },
-  fr: { title: 'Zodiaque Celtique — Trouvez votre Arbre par date de naissance', description: 'Découvrez votre signe arbre du zodiaque celtique par date de naissance. Basé sur l\'alphabet oghamique des druides — obtenez votre symbole, qualités et description. Gratuit.', h1: 'Zodiaque Celtique' },
-  lt: { title: 'Keltų zodiako skaičiuotuvas — raskite savo medžio ženklą', description: 'Sužinokite savo keltų zodiako medžio ženklą pagal gimimo datą. Pagrįstas senoviniu Ogham medžių alfabetu — gaukite savo simbolį, savybes ir aprašymą. Nemokama.', h1: 'Keltų zodiako skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Celtic Zodiac Calculator — Find Your Tree Sign by Birthday', description: 'Discover your Celtic zodiac tree sign by birth date. Based on the ancient Ogham tree alphabet, get your druidic symbol, qualities and personality description. Free Celtic astrology tool.', h1: 'Celtic Zodiac Calculator', subtitle: 'Discover your Celtic tree sign from the ancient Druidic Ogham calendar based on your birth date.' },
+  ru: { title: 'Кельтский зодиак по дате рождения — дерево-символ', description: 'Определите своё дерево-символ по кельтскому зодиаку по дате рождения. Основано на древнем алфавите Огам — получите свои черты характера и описание. Бесплатно.', h1: 'Кельтский зодиак', subtitle: 'Узнайте своё дерево-символ по кельтскому зодиаку на основе древнего друидического алфавита Огам по дате рождения.' },
+  uk: { title: 'Кельтський зодіак за датою народження — дерево-символ', description: 'Визначте своє дерево-символ за кельтським зодіаком за датою народження. Засноване на давньому алфавіті Огам — отримайте риси характеру та опис. Безкоштовно.', h1: 'Кельтський зодіак', subtitle: 'Дізнайтеся своє дерево-символ за кельтським зодіаком на основі давнього друїдичного алфавіту Огам за датою народження.' },
+  fr: { title: 'Zodiaque Celtique — Trouvez votre Arbre par date de naissance', description: 'Découvrez votre signe arbre du zodiaque celtique par date de naissance. Basé sur l\'alphabet oghamique des druides — obtenez votre symbole, qualités et description. Gratuit.', h1: 'Zodiaque Celtique', subtitle: 'Découvrez votre signe arbre celtique tiré du calendrier druidique oghamique selon votre date de naissance.' },
+  lt: { title: 'Keltų zodiako skaičiuotuvas — raskite savo medžio ženklą', description: 'Sužinokite savo keltų zodiako medžio ženklą pagal gimimo datą. Pagrįstas senoviniu Ogham medžių alfabetu — gaukite savo simbolį, savybes ir aprašymą. Nemokama.', h1: 'Keltų zodiako skaičiuotuvas', subtitle: 'Sužinokite savo keltų medžio ženklą iš senovinio druidų Ogham kalendoriaus pagal jūsų gimimo datą.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -182,6 +182,7 @@ export default async function CelticZodiacPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <CelticZodiacCalculator locale={locale} />
         <AdInline locale={locale} />

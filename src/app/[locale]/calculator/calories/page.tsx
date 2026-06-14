@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/body-fat', label: 'Kūno riebalų skaičiuotuvas' }, { href: '/calculator/water-intake', label: 'Vandens normos skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Calorie Calculator — Daily Calorie Needs (TDEE)',
     description: 'Free TDEE calorie calculator. Calculate your daily calorie needs based on your age, gender, height, weight, and activity level using the Mifflin-St Jeor formula.',
     h1: 'Calorie Calculator',
+    subtitle: 'Calculate your daily calorie needs (TDEE) and set targets for weight loss, maintenance, or gain.',
   },
   ru: {
     title: 'Калькулятор калорий — суточная норма TDEE онлайн',
     description: 'Бесплатный калькулятор калорий онлайн. Рассчитайте суточную норму калорий по формуле Миффлина-Сан Жеора с учётом пола, возраста, роста, веса и активности.',
     h1: 'Калькулятор калорий',
+    subtitle: 'Рассчитайте суточную норму калорий (TDEE) для похудения, поддержания веса или набора массы.',
   },
   uk: {
     title: 'Калькулятор калорій — добова норма TDEE онлайн',
     description: 'Безкоштовний калькулятор калорій онлайн. Розрахуйте добову норму калорій за формулою Міффліна-Сан Жеора з урахуванням статі, віку, зросту, ваги та активності.',
     h1: 'Калькулятор калорій',
+    subtitle: 'Розрахуйте добову норму калорій (TDEE) для схуднення, підтримки або набору ваги.',
   },
   fr: {
     title: 'Calculatrice de Calories — Besoins caloriques TDEE',
     description: 'Calculatrice de calories TDEE gratuite. Calculez vos besoins caloriques journaliers selon votre âge, sexe, taille, poids et niveau d\'activité (formule Mifflin-St Jeor).',
     h1: 'Calculatrice de Calories',
+    subtitle: 'Calculez vos besoins caloriques quotidiens (TDEE) pour perdre, maintenir ou prendre du poids.',
   },
   lt: {
     title: 'Kalorijų Skaičiuotuvas — Dienos kalorijų poreikis TDEE',
     description: 'Nemokamas kalorijų skaičiuotuvas. Apskaičiuokite dienos kalorijų poreikį pagal amžių, lytį, ūgį, svorį ir aktyvumo lygį (Mifflin-St Jeor formulė).',
     h1: 'Kalorijų Skaičiuotuvas',
+    subtitle: 'Apskaičiuokite dienos kalorijų poreikį (TDEE) svoriui mesti, palaikyti arba didinti.',
   },
 };
 
@@ -331,6 +336,7 @@ export default async function CaloriesPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <CaloriesCalculator locale={locale} />
 

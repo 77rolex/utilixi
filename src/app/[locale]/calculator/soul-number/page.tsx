@@ -10,31 +10,36 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Soul Number Calculator — Heart\'s Desire Number Free Online',
     description: 'Calculate your Soul Number (Heart\'s Desire Number) free online. Enter your name and discover the secret inner motivation and deepest desire that drives your soul.',
     h1: 'Soul Number Calculator',
+    subtitle: 'Discover your Soul Urge Number from the vowels of your name — the hidden desires and deepest motivations behind your personality.',
   },
   ru: {
     title: 'Число души — Число сердечного желания онлайн бесплатно',
     description: 'Рассчитайте число души (число сердечного желания) онлайн бесплатно. Введите имя и узнайте тайную внутреннюю мотивацию и глубинное желание, движущее вашей душой.',
     h1: 'Число души — калькулятор',
+    subtitle: 'Узнайте число души по гласным вашего имени — скрытые желания и глубинные мотивации, стоящие за вашей личностью.',
   },
   uk: {
     title: 'Число Душі — Число Серцевого Бажання Онлайн Безкоштовно',
     description: 'Розрахуйте число душі (число серцевого бажання) онлайн безкоштовно. Введіть ім\'я і дізнайтеся таємну внутрішню мотивацію та найглибше бажання, що рухає вашою душею.',
     h1: 'Число душі — калькулятор',
+    subtitle: 'Дізнайтеся число душі за голосними вашого імені — приховані бажання та глибинні мотивації, що стоять за вашою особистістю.',
   },
   fr: {
     title: "Nombre de l'Âme Numérologie — Calcul par les Voyelles",
     description: "Calculez votre Nombre de l'Âme à partir des voyelles de votre nom. Découvrez votre désir profond et vos aspirations secrètes selon la numérologie pythagoricienne — gratuit en ligne.",
     h1: "Calculateur du Nombre d'Âme",
+    subtitle: "Découvrez votre Nombre d'Âme à partir des voyelles de votre nom — les désirs cachés et motivations profondes de votre personnalité.",
   },
   lt: {
     title: 'Sielos Skaičiaus Skaičiuotuvas — Širdies Troškimas Nemokamai',
     description: 'Apskaičiuokite savo sielos skaičių (širdies troškimo skaičių) nemokamai internete. Įveskite vardą ir sužinokite slaptą vidinę motyvaciją ir giliausią troškimą, kuris varo jūsų sielą.',
     h1: 'Sielos skaičiaus skaičiuotuvas',
+    subtitle: 'Atraskite savo sielos skaičių iš jūsų vardo balsių — paslėptus norus ir giliausius motyvus, slypinčius už jūsų asmenybės.',
   },
 };
 
@@ -203,6 +208,7 @@ export default async function SoulNumberPage({ params }: Props) {
 
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <SoulNumberCalculator locale={locale} />
         <AdInline locale={locale} />

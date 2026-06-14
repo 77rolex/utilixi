@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Calorie Deficit Calculator — Weight Loss Plan',
     description: 'Free calorie deficit calculator. Find out how many calories per day you need to cut to lose weight in your target timeframe. Supports kg and lbs. Includes safety indicator.',
     h1: 'Calorie Deficit Calculator',
+    subtitle: 'Find out how many calories to cut per day to reach your weight goal safely and sustainably.',
   },
   ru: {
     title: 'Калькулятор дефицита калорий — план похудения',
     description: 'Бесплатный калькулятор дефицита калорий. Узнайте, сколько калорий в день нужно сократить, чтобы похудеть в нужные сроки. Поддерживает кг и фунты. Индикатор безопасности.',
     h1: 'Калькулятор дефицита калорий',
+    subtitle: 'Узнайте, сколько калорий сократить в день, чтобы безопасно достичь целевого веса.',
   },
   uk: {
     title: 'Калькулятор дефіциту калорій — план схуднення',
     description: 'Безкоштовний калькулятор дефіциту калорій. Дізнайтеся, скільки калорій на день потрібно скорочувати, щоб схуднути за потрібний час. Підтримує кг і фунти. Індикатор безпеки.',
     h1: 'Калькулятор дефіциту калорій',
+    subtitle: 'Дізнайтеся, скільки калорій скоротити на день, щоб безпечно досягти цільової ваги.',
   },
   fr: {
     title: 'Calculatrice Déficit Calorique — Plan Perte de Poids',
     description: 'Calculatrice de déficit calorique gratuite. Trouvez combien de calories par jour vous devez réduire pour perdre du poids dans les délais souhaités. Supporte kg et lbs. Indicateur de sécurité.',
     h1: 'Calculatrice Déficit Calorique',
+    subtitle: 'Calculez combien de calories réduire par jour pour atteindre votre objectif de poids en toute sécurité.',
   },
   lt: {
     title: 'Kalorijų Deficito Skaičiuotuvas — Svorio Metimo Planas',
     description: 'Nemokamas kalorijų deficito skaičiuotuvas. Sužinokite, kiek kalorijų per dieną reikia sumažinti, kad pasiektumėte norimą svorį per nustatytą laiką. Palaikomi kg ir svarai. Saugos indikatorius.',
     h1: 'Kalorijų Deficito Skaičiuotuvas',
+    subtitle: 'Sužinokite, kiek kalorijų mažinti per dieną, kad saugiai pasiektumėte svorio tikslą.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function CalorieDeficitPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <CalorieDeficitCalculator locale={locale} />
         <AdInline locale={locale} />

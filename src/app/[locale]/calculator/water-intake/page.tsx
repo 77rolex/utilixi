@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' }, { href: '/calculator/body-fat', label: 'Kūno riebalų skaičiuotuvas' }, { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Water Intake Calculator — Daily Hydration Guide',
     description: 'Free daily water intake calculator. Find out how many liters and glasses of water you should drink per day based on your weight, activity level, and climate.',
     h1: 'Water Intake Calculator',
+    subtitle: 'Find out how much water you should drink per day based on your weight, activity level, and climate.',
   },
   ru: {
     title: 'Калькулятор нормы воды в день — суточная гидратация',
     description: 'Бесплатный калькулятор нормы воды в день. Узнайте, сколько литров и стаканов воды нужно пить в сутки с учётом веса, активности и климата.',
     h1: 'Норма воды в день',
+    subtitle: 'Узнайте, сколько воды нужно пить в день с учётом веса, физической активности и климата.',
   },
   uk: {
     title: 'Калькулятор норми води на день — щоденна гідратація',
     description: 'Безкоштовний калькулятор норми води на день. Дізнайтеся, скільки літрів і склянок води потрібно пити на добу з урахуванням ваги, активності та клімату.',
     h1: 'Норма води на день',
+    subtitle: 'Дізнайтеся, скільки води потрібно пити на день з урахуванням ваги, активності та клімату.',
   },
   fr: {
     title: 'Calculatrice d\'apport en eau — hydratation quotidienne',
     description: 'Calculatrice gratuite de l\'apport quotidien en eau. Découvrez combien de litres et de verres d\'eau vous devez boire par jour selon votre poids, activité et climat.',
     h1: 'Calculatrice d\'apport en eau',
+    subtitle: 'Découvrez combien d\'eau boire par jour selon votre poids, votre activité et votre climat.',
   },
   lt: {
     title: 'Vandens normos skaičiuotuvas — dienos hidratacija',
     description: 'Nemokamas dienos vandens normos skaičiuotuvas. Sužinokite, kiek litrų ir stiklinių vandens reikia gerti per dieną pagal svorį, aktyvumą ir klimatą.',
     h1: 'Vandens normos skaičiuotuvas',
+    subtitle: 'Sužinokite, kiek vandens reikia gerti per dieną pagal svorį, aktyvumą ir klimatą.',
   },
 };
 
@@ -331,6 +336,7 @@ export default async function WaterIntakePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <WaterIntakeCalculator locale={locale} />
 

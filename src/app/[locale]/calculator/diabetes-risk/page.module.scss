@@ -7,6 +7,12 @@
     margin-bottom: var(--spacing-lg);
     @media (min-width: 640px) { font-size: 36px; }
   }
+  &__subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin: calc(-1 * var(--spacing-sm)) 0 var(--spacing-lg);
+    line-height: 1.5;
+  }
   &__content { margin-top: var(--spacing-2xl); }
   &__description {
     font-size: var(--font-size-base);

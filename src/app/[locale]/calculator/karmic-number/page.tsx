@@ -10,12 +10,12 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Karmic Number Calculator — Find Your Karmic Debts Free', description: 'Discover your karmic debts by finding the digits missing from your birth date. Free numerology tool that reveals your soul\'s lessons and areas for growth in this lifetime.', h1: 'Karmic Number Calculator' },
-  ru: { title: 'Калькулятор кармических чисел — кармические долги по дате рождения', description: 'Найдите кармические числа по дате рождения, определив отсутствующие цифры. Бесплатный нумерологический инструмент для изучения уроков вашей души и областей роста.', h1: 'Калькулятор кармических чисел' },
-  uk: { title: 'Калькулятор кармічних чисел — кармічні борги за датою народження', description: 'Знайдіть кармічні числа за датою народження, визначивши відсутні цифри. Безкоштовний нумерологічний інструмент для вивчення уроків вашої душі та областей зростання.', h1: 'Калькулятор кармічних чисел' },
-  fr: { title: 'Calculateur de Nombres Karmiques — Dettes karmiques gratuites', description: 'Découvrez vos dettes karmiques en trouvant les chiffres manquants dans votre date de naissance. Outil de numérologie gratuit révélant les leçons de votre âme.', h1: 'Calculateur de Nombres Karmiques' },
-  lt: { title: 'Karminių skaičių skaičiuotuvas — karminės skolos pagal gimimo datą', description: 'Atraskite savo karmines skolas, randant trūkstamus skaitmenis gimimo datoje. Nemokamas numerologijos įrankis, atskleidžiantis jūsų sielos pamokas ir augimo sritis.', h1: 'Karminių skaičių skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Karmic Number Calculator — Find Your Karmic Debts Free', description: 'Discover your karmic debts by finding the digits missing from your birth date. Free numerology tool that reveals your soul\'s lessons and areas for growth in this lifetime.', h1: 'Karmic Number Calculator', subtitle: 'Find the digits missing from your birth date to reveal your Karmic Numbers — the soul lessons you are here to learn.' },
+  ru: { title: 'Калькулятор кармических чисел — кармические долги по дате рождения', description: 'Найдите кармические числа по дате рождения, определив отсутствующие цифры. Бесплатный нумерологический инструмент для изучения уроков вашей души и областей роста.', h1: 'Калькулятор кармических чисел', subtitle: 'Найдите цифры, отсутствующие в вашей дате рождения, чтобы узнать кармические числа — уроки души в этой жизни.' },
+  uk: { title: 'Калькулятор кармічних чисел — кармічні борги за датою народження', description: 'Знайдіть кармічні числа за датою народження, визначивши відсутні цифри. Безкоштовний нумерологічний інструмент для вивчення уроків вашої душі та областей зростання.', h1: 'Калькулятор кармічних чисел', subtitle: 'Знайдіть цифри, відсутні у вашій даті народження, щоб дізнатися кармічні числа — уроки душі в цьому житті.' },
+  fr: { title: 'Calculateur de Nombres Karmiques — Dettes karmiques gratuites', description: 'Découvrez vos dettes karmiques en trouvant les chiffres manquants dans votre date de naissance. Outil de numérologie gratuit révélant les leçons de votre âme.', h1: 'Calculateur de Nombres Karmiques', subtitle: 'Trouvez les chiffres absents de votre date de naissance pour révéler vos Nombres Karmiques — les leçons de votre âme.' },
+  lt: { title: 'Karminių skaičių skaičiuotuvas — karminės skolos pagal gimimo datą', description: 'Atraskite savo karmines skolas, randant trūkstamus skaitmenis gimimo datoje. Nemokamas numerologijos įrankis, atskleidžiantis jūsų sielos pamokas ir augimo sritis.', h1: 'Karminių skaičių skaičiuotuvas', subtitle: 'Raskite skaitmenis, kurių trūksta jūsų gimimo datoje, kad atskleistumėte karmines skolas — sielos pamokas šiame gyvenime.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -182,6 +182,7 @@ export default async function KarmicNumberPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <KarmicNumberCalculator locale={locale} />
         <AdInline locale={locale} />

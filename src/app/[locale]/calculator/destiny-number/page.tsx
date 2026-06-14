@@ -10,31 +10,36 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Destiny Number Calculator — Free Numerology Calculator',
     description: 'Calculate your Destiny Number free online. Enter your date of birth and discover the unique numerology number that reveals your life\'s purpose and potential path.',
     h1: 'Destiny Number Calculator',
+    subtitle: 'Find your Destiny Number from your date of birth — a numerology figure that reveals your life\'s potential and inner mission.',
   },
   ru: {
     title: 'Число судьбы — Онлайн нумерология бесплатно',
     description: 'Рассчитайте число судьбы онлайн бесплатно. Введите дату рождения и узнайте нумерологическое число, которое раскрывает жизненное предназначение и потенциал.',
     h1: 'Число судьбы — калькулятор',
+    subtitle: 'Найдите число судьбы по дате рождения — нумерологическое число, раскрывающее потенциал и жизненное предназначение.',
   },
   uk: {
     title: 'Число Долі — Нумерологія Онлайн Безкоштовно',
     description: 'Розрахуйте число долі онлайн безкоштовно. Введіть дату народження і дізнайтеся нумерологічне число, яке розкриває призначення та потенціал вашого життя.',
     h1: 'Число долі — калькулятор',
+    subtitle: 'Знайдіть число долі за датою народження — нумерологічне число, що розкриває потенціал і внутрішнє призначення.',
   },
   fr: {
     title: 'Calculateur Nombre Destin — Numérologie Gratuite en Ligne',
     description: 'Calculez votre Nombre Destin gratuitement en ligne. Entrez votre date de naissance et découvrez le nombre numérologique qui révèle la mission et le potentiel de votre vie.',
     h1: 'Calculateur du Nombre Destin',
+    subtitle: 'Trouvez votre Nombre Destin à partir de votre date de naissance — le chiffre révélant votre potentiel et mission de vie.',
   },
   lt: {
     title: 'Likimo Skaičiaus Skaičiuotuvas — Nemokama Numerologija',
     description: 'Apskaičiuokite savo likimo skaičių nemokamai internete. Įveskite gimimo datą ir sužinokite numerologinį skaičių, atskleidžiantį jūsų gyvenimo misiją ir potencialą.',
     h1: 'Likimo skaičiaus skaičiuotuvas',
+    subtitle: 'Raskite savo likimo skaičių pagal gimimo datą — numerologinę reikšmę, atskleidžiančią jūsų potencialą ir vidinę misiją.',
   },
 };
 
@@ -203,6 +208,7 @@ export default async function DestinyNumberPage({ params }: Props) {
 
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <DestinyNumberCalculator locale={locale} />
         <AdInline locale={locale} />

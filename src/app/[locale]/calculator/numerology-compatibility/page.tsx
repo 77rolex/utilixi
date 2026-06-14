@@ -10,12 +10,12 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Numerology Compatibility Calculator — Life Path Match', description: 'Calculate numerology compatibility between two people using Life Path numbers. Discover your match score, relationship theme and compatibility insights. Free numerology tool.', h1: 'Numerology Compatibility Calculator' },
-  ru: { title: 'Калькулятор совместимости по нумерологии — числа жизненного пути', description: 'Рассчитайте нумерологическую совместимость двух людей по числам жизненного пути. Узнайте оценку совместимости, тему отношений и анализ пары. Бесплатный инструмент.', h1: 'Калькулятор совместимости по нумерологии' },
-  uk: { title: 'Калькулятор сумісності за нумерологією — числа шляху життя', description: 'Розрахуйте нумерологічну сумісність двох людей за числами шляху життя. Дізнайтеся оцінку сумісності, тему стосунків та аналіз пари. Безкоштовний інструмент.', h1: 'Калькулятор сумісності за нумерологією' },
-  fr: { title: 'Calculateur de Compatibilité Numérologique — Chemin de Vie', description: 'Calculez la compatibilité numérologique entre deux personnes en utilisant les Chemins de Vie. Découvrez votre score de compatibilité et les insights relationnels. Outil gratuit.', h1: 'Calculateur de Compatibilité Numérologique' },
-  lt: { title: 'Numerologinio suderinamumo skaičiuotuvas — Gyvenimo kelio skaičiai', description: 'Apskaičiuokite dviejų žmonių numerologinį suderinamumą naudojant Gyvenimo kelio skaičius. Sužinokite suderinamumo balą ir santykių įžvalgas. Nemokamas įrankis.', h1: 'Numerologinio suderinamumo skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Numerology Compatibility Calculator — Life Path Match', description: 'Calculate numerology compatibility between two people using Life Path numbers. Discover your match score, relationship theme and compatibility insights. Free numerology tool.', h1: 'Numerology Compatibility Calculator', subtitle: 'Check the numerological compatibility between two people by comparing their Life Path Numbers and relationship dynamics.' },
+  ru: { title: 'Калькулятор совместимости по нумерологии — числа жизненного пути', description: 'Рассчитайте нумерологическую совместимость двух людей по числам жизненного пути. Узнайте оценку совместимости, тему отношений и анализ пары. Бесплатный инструмент.', h1: 'Калькулятор совместимости по нумерологии', subtitle: 'Проверьте нумерологическую совместимость двух людей, сравнив их числа жизненного пути и динамику отношений.' },
+  uk: { title: 'Калькулятор сумісності за нумерологією — числа шляху життя', description: 'Розрахуйте нумерологічну сумісність двох людей за числами шляху життя. Дізнайтеся оцінку сумісності, тему стосунків та аналіз пари. Безкоштовний інструмент.', h1: 'Калькулятор сумісності за нумерологією', subtitle: 'Перевірте нумерологічну сумісність двох людей, порівнявши їхні числа шляху життя та динаміку стосунків.' },
+  fr: { title: 'Calculateur de Compatibilité Numérologique — Chemin de Vie', description: 'Calculez la compatibilité numérologique entre deux personnes en utilisant les Chemins de Vie. Découvrez votre score de compatibilité et les insights relationnels. Outil gratuit.', h1: 'Calculateur de Compatibilité Numérologique', subtitle: 'Vérifiez la compatibilité numérologique entre deux personnes en comparant leurs Nombres Chemin de Vie et dynamiques relationnelles.' },
+  lt: { title: 'Numerologinio suderinamumo skaičiuotuvas — Gyvenimo kelio skaičiai', description: 'Apskaičiuokite dviejų žmonių numerologinį suderinamumą naudojant Gyvenimo kelio skaičius. Sužinokite suderinamumo balą ir santykių įžvalgas. Nemokamas įrankis.', h1: 'Numerologinio suderinamumo skaičiuotuvas', subtitle: 'Patikrinkite dviejų žmonių numerologinį suderinamumą lygindami jų gyvenimo kelio skaičius ir santykių dinamiką.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -182,6 +182,7 @@ export default async function NumerologyCompatibilityPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <NumerologyCompatibilityCalculator locale={locale} />
         <AdInline locale={locale} />

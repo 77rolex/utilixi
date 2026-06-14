@@ -10,12 +10,12 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Pythagorean Matrix Calculator — Psychomatrix by Birth Date', description: 'Build your Pythagorean Matrix (Psychomatrix) from your birth date. Discover the strengths and gaps in your 3×3 numerology grid — Character, Energy, Health, Logic and more.', h1: 'Pythagorean Matrix Calculator' },
-  ru: { title: 'Матрица Пифагора — психоматрица по дате рождения онлайн', description: 'Составьте матрицу Пифагора (психоматрицу) по дате рождения. Узнайте сильные и слабые стороны своей нумерологической сетки 3×3: характер, энергия, здоровье, логика и другое.', h1: 'Матрица Пифагора по дате рождения' },
-  uk: { title: 'Матриця Піфагора — психоматриця за датою народження онлайн', description: 'Складіть матрицю Піфагора (психоматрицю) за датою народження. Дізнайтеся сильні та слабкі сторони своєї нумерологічної сітки 3×3.', h1: 'Матриця Піфагора за датою народження' },
-  fr: { title: 'Matrice Pythagoricienne — Psychomatrice par date de naissance', description: 'Construisez votre Matrice Pythagoricienne (Psychomatrice) à partir de votre date de naissance. Découvrez vos forces et lacunes dans la grille numérologique 3×3.', h1: 'Calculateur de Matrice Pythagoricienne' },
-  lt: { title: 'Pitagoro matrica — psichomatrica pagal gimimo datą', description: 'Sukurkite Pitagoro matricą (psichomatricą) pagal gimimo datą. Atraskite savo 3×3 numerologinės gardelės stipriąsias ir silpnąsias vietas.', h1: 'Pitagoro matricos skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Pythagorean Matrix Calculator — Psychomatrix by Birth Date', description: 'Build your Pythagorean Matrix (Psychomatrix) from your birth date. Discover the strengths and gaps in your 3×3 numerology grid — Character, Energy, Health, Logic and more.', h1: 'Pythagorean Matrix Calculator', subtitle: 'Build your Pythagorean Matrix (Pythagoras square) from your date of birth and decode the 9-cell character grid.' },
+  ru: { title: 'Матрица Пифагора — психоматрица по дате рождения онлайн', description: 'Составьте матрицу Пифагора (психоматрицу) по дате рождения. Узнайте сильные и слабые стороны своей нумерологической сетки 3×3: характер, энергия, здоровье, логика и другое.', h1: 'Матрица Пифагора по дате рождения', subtitle: 'Постройте матрицу Пифагора (квадрат Пифагора) по дате рождения и расшифруйте девятиклеточную сетку характера.' },
+  uk: { title: 'Матриця Піфагора — психоматриця за датою народження онлайн', description: 'Складіть матрицю Піфагора (психоматрицю) за датою народження. Дізнайтеся сильні та слабкі сторони своєї нумерологічної сітки 3×3.', h1: 'Матриця Піфагора за датою народження', subtitle: 'Побудуйте матрицю Піфагора (квадрат Піфагора) за датою народження та розшифруйте дев\'ятиклітинну сітку характеру.' },
+  fr: { title: 'Matrice Pythagoricienne — Psychomatrice par date de naissance', description: 'Construisez votre Matrice Pythagoricienne (Psychomatrice) à partir de votre date de naissance. Découvrez vos forces et lacunes dans la grille numérologique 3×3.', h1: 'Calculateur de Matrice Pythagoricienne', subtitle: 'Construisez votre Matrice Pythagoricienne (carré de Pythagore) à partir de votre date de naissance et décodez la grille des 9 cases.' },
+  lt: { title: 'Pitagoro matrica — psichomatrica pagal gimimo datą', description: 'Sukurkite Pitagoro matricą (psichomatricą) pagal gimimo datą. Atraskite savo 3×3 numerologinės gardelės stipriąsias ir silpnąsias vietas.', h1: 'Pitagoro matricos skaičiuotuvas', subtitle: 'Sukurkite Pitagoro matricą pagal gimimo datą ir iššifruokite 9 langelių charakterio gardelę.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -182,6 +182,7 @@ export default async function PythagoreanMatrixPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <PythagoreanMatrixCalculator locale={locale} />
         <AdInline locale={locale} />

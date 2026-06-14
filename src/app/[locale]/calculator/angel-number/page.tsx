@@ -10,12 +10,12 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Angel Number Meaning — 111, 222, 333, 444 and More', description: 'Look up the meaning of any angel number from 111 to 9999. Discover what 111, 222, 333, 444, 555, 666, 777, 888, 999 and other repeating numbers mean spiritually. Free angel number guide.', h1: 'Angel Number Meaning Calculator' },
-  ru: { title: 'Числа ангелов — значение 111, 222, 333, 444 и других', description: 'Узнайте значение любого числа ангела от 111 до 9999. Что означает 111, 222, 333, 444, 555, 666, 777, 888, 999 и другие повторяющиеся числа. Бесплатно.', h1: 'Числа ангелов — расшифровка' },
-  uk: { title: 'Числа ангелів — значення 111, 222, 333, 444 та інших', description: 'Дізнайтеся значення будь-якого числа ангела від 111 до 9999. Що означає 111, 222, 333, 444, 555, 666, 777, 888, 999 та інші числа. Безкоштовно.', h1: 'Числа ангелів — розшифрування' },
-  fr: { title: 'Nombre Angélique — Signification du 111, 222, 333, 444…', description: 'Découvrez la signification de tout nombre angélique de 111 à 9999. Que signifient 111, 222, 333, 444, 555, 777, 888, 999 et autres nombres répétitifs. Outil gratuit.', h1: 'Signification des Nombres Angéliques' },
-  lt: { title: 'Angelo skaičiai — 111, 222, 333, 444 ir kitų reikšmė', description: 'Sužinokite bet kurio angelo skaičiaus reikšmę nuo 111 iki 9999. Ką reiškia 111, 222, 333, 444, 555, 666, 777, 888, 999 ir kiti besikartojantys skaičiai. Nemokama.', h1: 'Angelo skaičiaus reikšmė' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Angel Number Meaning — 111, 222, 333, 444 and More', description: 'Look up the meaning of any angel number from 111 to 9999. Discover what 111, 222, 333, 444, 555, 666, 777, 888, 999 and other repeating numbers mean spiritually. Free angel number guide.', h1: 'Angel Number Meaning Calculator', subtitle: 'Look up the spiritual meaning of any repeating number sequence — from 111 and 222 to 9999.' },
+  ru: { title: 'Числа ангелов — значение 111, 222, 333, 444 и других', description: 'Узнайте значение любого числа ангела от 111 до 9999. Что означает 111, 222, 333, 444, 555, 666, 777, 888, 999 и другие повторяющиеся числа. Бесплатно.', h1: 'Числа ангелов — расшифровка', subtitle: 'Узнайте духовное значение любой повторяющейся числовой последовательности — от 111 и 222 до 9999.' },
+  uk: { title: 'Числа ангелів — значення 111, 222, 333, 444 та інших', description: 'Дізнайтеся значення будь-якого числа ангела від 111 до 9999. Що означає 111, 222, 333, 444, 555, 666, 777, 888, 999 та інші числа. Безкоштовно.', h1: 'Числа ангелів — розшифрування', subtitle: 'Дізнайтеся духовне значення будь-якої числової послідовності, що повторюється, — від 111 і 222 до 9999.' },
+  fr: { title: 'Nombre Angélique — Signification du 111, 222, 333, 444…', description: 'Découvrez la signification de tout nombre angélique de 111 à 9999. Que signifient 111, 222, 333, 444, 555, 777, 888, 999 et autres nombres répétitifs. Outil gratuit.', h1: 'Signification des Nombres Angéliques', subtitle: 'Découvrez la signification spirituelle de toute séquence de nombres répétitifs — de 111 et 222 jusqu\'à 9999.' },
+  lt: { title: 'Angelo skaičiai — 111, 222, 333, 444 ir kitų reikšmė', description: 'Sužinokite bet kurio angelo skaičiaus reikšmę nuo 111 iki 9999. Ką reiškia 111, 222, 333, 444, 555, 666, 777, 888, 999 ir kiti besikartojantys skaičiai. Nemokama.', h1: 'Angelo skaičiaus reikšmė', subtitle: 'Sužinokite bet kurios besikartojančios skaičių sekos dvasinę reikšmę — nuo 111 ir 222 iki 9999.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -182,6 +182,7 @@ export default async function AngelNumberPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <AngelNumberCalculator locale={locale} />
         <AdInline locale={locale} />

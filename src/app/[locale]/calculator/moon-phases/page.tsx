@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Moon Phase Calculator — Current Phase & Upcoming Dates 2025–2026',
     description: 'Free moon phase calculator. See the current lunar phase, illumination %, next New Moon and Full Moon dates, and a 6-month calendar of upcoming lunar phases.',
     h1: 'Moon Phase Calculator',
+    subtitle: 'See the current lunar phase, illumination percentage and upcoming New Moon and Full Moon dates.',
   },
   ru: {
     title: 'Лунный календарь — фаза луны сегодня, новолуния и полнолуния 2025–2026',
     description: 'Бесплатный лунный календарь онлайн. Узнайте фазу луны на сегодня, процент освещённости, дату ближайшего новолуния и полнолуния. Таблица на 6 месяцев вперёд.',
     h1: 'Лунный календарь — фаза луны',
+    subtitle: 'Узнайте текущую фазу луны, процент освещённости и ближайшие даты новолуния и полнолуния.',
   },
   uk: {
     title: 'Місячний календар — фаза місяця сьогодні, новолуніє та повний місяць 2025–2026',
     description: 'Безкоштовний місячний календар онлайн. Дізнайтесь фазу місяця на сьогодні, відсоток освітленості, дату найближчого новолуніє та повного місяця.',
     h1: 'Місячний календар — фаза місяця',
+    subtitle: 'Дізнайтеся поточну фазу місяця, відсоток освітленості та найближчі дати новолуніє і повного місяця.',
   },
   fr: {
     title: 'Phases de la Lune — Phase actuelle, Nouvelle Lune & Pleine Lune 2025–2026',
     description: 'Calculateur de phases lunaires gratuit. Connaissez la phase actuelle de la Lune, le taux d\'illumination, les prochaines Nouvelle Lune et Pleine Lune, et le calendrier lunaire sur 6 mois.',
     h1: 'Phases de la Lune',
+    subtitle: 'Consultez la phase lunaire actuelle, le taux d\'illumination et les prochaines dates de Nouvelle Lune et Pleine Lune.',
   },
   lt: {
     title: 'Mėnulio fazės — dabartinė fazė, Jaunatis ir Pilnatis 2025–2026',
     description: 'Nemokamas mėnulio fazių skaičiuotuvas. Sužinokite dabartinę mėnulio fazę, apšvietimo procentą, artimiausio jauno mėnulio ir pilnaties datas bei 6 mėnesių kalendorių.',
     h1: 'Mėnulio fazės',
+    subtitle: 'Peržiūrėkite dabartinę Mėnulio fazę, apšvietimo procentą ir artėjančias Jaunaties ir Pilnaties datas.',
   },
 };
 
@@ -203,6 +208,7 @@ export default async function MoonPhasesPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <MoonPhasesCalculator locale={locale} />
         <AdInline locale={locale} />

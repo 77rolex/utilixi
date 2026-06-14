@@ -10,12 +10,12 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Chinese Zodiac Calculator — Find Your Animal Sign & Element', description: 'Find your Chinese zodiac animal sign, element and yin/yang polarity by birth year. Discover personality traits, lucky numbers and compatibility. Free Chinese astrology tool.', h1: 'Chinese Zodiac Calculator' },
-  ru: { title: 'Китайский гороскоп по году рождения — животное и стихия', description: 'Определите своё животное по китайскому гороскопу, стихию и полярность инь/ян. Узнайте характеристику, счастливые числа и совместимость. Бесплатно.', h1: 'Китайский гороскоп' },
-  uk: { title: 'Китайський гороскоп за роком народження — тварина і стихія', description: 'Визначте своє тварини за китайським гороскопом, стихію та полярність інь/ян. Дізнайтеся характеристику, щасливі числа та сумісність. Безкоштовно.', h1: 'Китайський гороскоп' },
-  fr: { title: 'Zodiaque Chinois — Trouvez votre Animal et Élément par année', description: 'Trouvez votre signe animal du zodiaque chinois, votre élément et votre polarité yin/yang par année de naissance. Découvrez vos traits de personnalité et votre compatibilité. Gratuit.', h1: 'Zodiaque Chinois' },
-  lt: { title: 'Kinų zodiako skaičiuotuvas — raskite savo gyvūną ir elementą', description: 'Raskite savo kinų zodiako gyvūno ženklą, elementą ir yin/yang poliarumą pagal gimimo metus. Sužinokite asmenybės bruožus ir suderinamumą. Nemokama.', h1: 'Kinų zodiako skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Chinese Zodiac Calculator — Find Your Animal Sign & Element', description: 'Find your Chinese zodiac animal sign, element and yin/yang polarity by birth year. Discover personality traits, lucky numbers and compatibility. Free Chinese astrology tool.', h1: 'Chinese Zodiac Calculator', subtitle: 'Find your Chinese zodiac animal, element and yin/yang polarity by birth year and explore your personality traits.' },
+  ru: { title: 'Китайский гороскоп по году рождения — животное и стихия', description: 'Определите своё животное по китайскому гороскопу, стихию и полярность инь/ян. Узнайте характеристику, счастливые числа и совместимость. Бесплатно.', h1: 'Китайский гороскоп', subtitle: 'Найдите своё животное по китайскому гороскопу, стихию и полярность инь/ян по году рождения.' },
+  uk: { title: 'Китайський гороскоп за роком народження — тварина і стихія', description: 'Визначте своє тварини за китайським гороскопом, стихію та полярність інь/ян. Дізнайтеся характеристику, щасливі числа та сумісність. Безкоштовно.', h1: 'Китайський гороскоп', subtitle: 'Знайдіть своє тварину за китайським гороскопом, стихію та полярність інь/ян за роком народження.' },
+  fr: { title: 'Zodiaque Chinois — Trouvez votre Animal et Élément par année', description: 'Trouvez votre signe animal du zodiaque chinois, votre élément et votre polarité yin/yang par année de naissance. Découvrez vos traits de personnalité et votre compatibilité. Gratuit.', h1: 'Zodiaque Chinois', subtitle: 'Trouvez votre animal du zodiaque chinois, votre élément et votre polarité yin/yang par année de naissance.' },
+  lt: { title: 'Kinų zodiako skaičiuotuvas — raskite savo gyvūną ir elementą', description: 'Raskite savo kinų zodiako gyvūno ženklą, elementą ir yin/yang poliarumą pagal gimimo metus. Sužinokite asmenybės bruožus ir suderinamumą. Nemokama.', h1: 'Kinų zodiako skaičiuotuvas', subtitle: 'Raskite savo kinų zodiako gyvūną, elementą ir yin/yang poliarumą pagal gimimo metus ir sužinokite charakterio bruožus.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -182,6 +182,7 @@ export default async function ChineseZodiacPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <ChineseZodiacCalculator locale={locale} />
         <AdInline locale={locale} />

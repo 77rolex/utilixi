@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/stress-level', label: 'Streso lygio skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }, { href: '/calculator/biological-age', label: 'Biologinio amžiaus skaičiuotuvas' }, { href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Sleep Calculator — Best Bedtimes Based on Sleep Cycles', description: 'Free sleep calculator based on 90-minute sleep cycles. Find the best time to wake up or go to bed to feel refreshed. Supports wake-up time, bedtime, and sleep-now modes.', h1: 'Sleep Calculator' },
-  ru: { title: 'Калькулятор сна — лучшее время для подъёма по циклам сна', description: 'Бесплатный калькулятор сна на основе 90-минутных циклов. Найдите лучшее время для пробуждения или отхода ко сну, чтобы проснуться бодрым.', h1: 'Калькулятор сна' },
-  uk: { title: 'Калькулятор сну — найкращий час для підйому за циклами сну', description: 'Безкоштовний калькулятор сну на основі 90-хвилинних циклів. Знайдіть найкращий час для пробудження або відходу до сну, щоб прокинутися бадьорим.', h1: 'Калькулятор сну' },
-  fr: { title: 'Calculatrice du sommeil — Meilleurs horaires selon les cycles de sommeil', description: 'Calculatrice du sommeil gratuite basée sur les cycles de 90 minutes. Trouvez le meilleur moment pour vous réveiller ou vous coucher afin de vous sentir reposé(e).', h1: 'Calculatrice du sommeil' },
-  lt: { title: 'Miego skaičiuotuvas — geriausias miego laikas pagal miego ciklus', description: 'Nemokamas miego skaičiuotuvas, pagrįstas 90 minučių miego ciklais. Raskite geriausią laiką pabusti arba eiti miegoti, kad pabustumėte žvalūs.', h1: 'Miego skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Sleep Calculator — Best Bedtimes Based on Sleep Cycles', description: 'Free sleep calculator based on 90-minute sleep cycles. Find the best time to wake up or go to bed to feel refreshed. Supports wake-up time, bedtime, and sleep-now modes.', h1: 'Sleep Calculator', subtitle: 'Find the best bedtime or wake-up time aligned with your 90-minute sleep cycles.' },
+  ru: { title: 'Калькулятор сна — лучшее время для подъёма по циклам сна', description: 'Бесплатный калькулятор сна на основе 90-минутных циклов. Найдите лучшее время для пробуждения или отхода ко сну, чтобы проснуться бодрым.', h1: 'Калькулятор сна', subtitle: 'Найдите оптимальное время для сна или пробуждения по 90-минутным циклам сна.' },
+  uk: { title: 'Калькулятор сну — найкращий час для підйому за циклами сну', description: 'Безкоштовний калькулятор сну на основі 90-хвилинних циклів. Знайдіть найкращий час для пробудження або відходу до сну, щоб прокинутися бадьорим.', h1: 'Калькулятор сну', subtitle: 'Знайдіть оптимальний час для сну або пробудження за 90-хвилинними циклами сну.' },
+  fr: { title: 'Calculatrice du sommeil — Meilleurs horaires selon les cycles de sommeil', description: 'Calculatrice du sommeil gratuite basée sur les cycles de 90 minutes. Trouvez le meilleur moment pour vous réveiller ou vous coucher afin de vous sentir reposé(e).', h1: 'Calculatrice du sommeil', subtitle: 'Trouvez le meilleur moment pour vous coucher ou vous réveiller selon vos cycles de sommeil.' },
+  lt: { title: 'Miego skaičiuotuvas — geriausias miego laikas pagal miego ciklus', description: 'Nemokamas miego skaičiuotuvas, pagrįstas 90 minučių miego ciklais. Raskite geriausią laiką pabusti arba eiti miegoti, kad pabustumėte žvalūs.', h1: 'Miego skaičiuotuvas', subtitle: 'Raskite geriausią miego ar pabudimo laiką pagal 90 minučių miego ciklus.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -158,6 +158,7 @@ export default async function SleepPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{m.h1}</h1>
+        {m.subtitle && <p className={styles.page__subtitle}>{m.subtitle}</p>}
         <ToolActions />
         <SleepCalculator locale={locale} />
         <AdInline locale={locale} />

@@ -10,12 +10,12 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Personality Archetype Calculator — Find Your Numerology Type', description: 'Discover your personality archetype from your birth date using numerology. Get your life path number mapped to one of 12 archetypes with strengths, challenges and life purpose. Free tool.', h1: 'Personality Archetype Calculator' },
-  ru: { title: 'Калькулятор архетипа личности — нумерология по дате рождения', description: 'Узнайте свой архетип личности по дате рождения через нумерологию. Получите число жизненного пути и сопоставьте с одним из 12 архетипов с описанием сильных сторон и предназначения.', h1: 'Калькулятор архетипа личности' },
-  uk: { title: 'Калькулятор архетипу особистості — нумерологія за датою народження', description: 'Дізнайтеся свій архетип особистості за датою народження через нумерологію. Зіставте число шляху життя з одним із 12 архетипів з описом сильних сторін і призначення.', h1: 'Калькулятор архетипу особистості' },
-  fr: { title: 'Archétype de Personnalité — Calculateur Numérologique', description: 'Découvrez votre archétype de personnalité à partir de votre date de naissance par la numérologie. Chemin de vie mappé à l\'un des 12 archétypes avec forces, défis et but de vie. Gratuit.', h1: 'Calculateur d\'Archétype de Personnalité' },
-  lt: { title: 'Asmenybės archetipo skaičiuotuvas — numerologinis tipas', description: 'Sužinokite savo asmenybės archetipą iš gimimo datos per numerologiją. Gyvenimo kelio numeris susietas su vienu iš 12 archetipų su stiprybėmis, iššūkiais ir gyvenimo tikslu. Nemokama.', h1: 'Asmenybės archetipo skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Personality Archetype Calculator — Find Your Numerology Type', description: 'Discover your personality archetype from your birth date using numerology. Get your life path number mapped to one of 12 archetypes with strengths, challenges and life purpose. Free tool.', h1: 'Personality Archetype Calculator', subtitle: 'Discover your numerological personality archetype from your birth date — one of 12 types based on your Life Path Number.' },
+  ru: { title: 'Калькулятор архетипа личности — нумерология по дате рождения', description: 'Узнайте свой архетип личности по дате рождения через нумерологию. Получите число жизненного пути и сопоставьте с одним из 12 архетипов с описанием сильных сторон и предназначения.', h1: 'Калькулятор архетипа личности', subtitle: 'Узнайте нумерологический архетип личности по дате рождения — один из 12 типов на основе числа жизненного пути.' },
+  uk: { title: 'Калькулятор архетипу особистості — нумерологія за датою народження', description: 'Дізнайтеся свій архетип особистості за датою народження через нумерологію. Зіставте число шляху життя з одним із 12 архетипів з описом сильних сторін і призначення.', h1: 'Калькулятор архетипу особистості', subtitle: 'Дізнайтеся нумерологічний архетип особистості за датою народження — один із 12 типів на основі числа шляху життя.' },
+  fr: { title: 'Archétype de Personnalité — Calculateur Numérologique', description: 'Découvrez votre archétype de personnalité à partir de votre date de naissance par la numérologie. Chemin de vie mappé à l\'un des 12 archétypes avec forces, défis et but de vie. Gratuit.', h1: 'Calculateur d\'Archétype de Personnalité', subtitle: 'Découvrez votre archétype de personnalité numérologique par date de naissance — l\'un des 12 types selon votre Chemin de Vie.' },
+  lt: { title: 'Asmenybės archetipo skaičiuotuvas — numerologinis tipas', description: 'Sužinokite savo asmenybės archetipą iš gimimo datos per numerologiją. Gyvenimo kelio numeris susietas su vienu iš 12 archetipų su stiprybėmis, iššūkiais ir gyvenimo tikslu. Nemokama.', h1: 'Asmenybės archetipo skaičiuotuvas', subtitle: 'Sužinokite savo numerologinį asmenybės archetipą pagal gimimo datą — vieną iš 12 tipų pagal jūsų gyvenimo kelio skaičių.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -182,6 +182,7 @@ export default async function ArchetypeNumberPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <ArchetypeNumberCalculator locale={locale} />
         <AdInline locale={locale} />

@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/bmi', label: 'KMI skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas' }, { href: '/calculator/biological-age', label: 'Biologinio amžiaus skaičiuotuvas' }, { href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/body-fat', label: 'Kūno riebalų skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Heart Rate Zones Calculator — Zone 2, MAF & 5 Training Zones by Age',
     description: 'Free heart rate zones calculator. Calculate your Zone 2, MAF heart rate, and all 5 training zones by age using the 220−age and Karvonen formulas. Instant results — no registration required.',
     h1: 'Heart Rate Zones Calculator',
+    subtitle: 'Calculate your 5 training heart rate zones, Zone 2, and MAF heart rate by age and resting heart rate.',
   },
   ru: {
     title: 'Калькулятор пульсовых зон — Зона 2 и 5 тренировочных зон по возрасту',
     description: 'Бесплатный калькулятор пульсовых зон онлайн. Рассчитайте зону 2, МАФ-пульс и все 5 зон тренировки по возрасту и пульсу покоя по формуле 220−возраст и методу Карвонена.',
     h1: 'Калькулятор пульсовых зон',
+    subtitle: 'Рассчитайте 5 пульсовых зон, зону 2 и МАФ-пульс по возрасту и пульсу покоя.',
   },
   uk: {
     title: 'Калькулятор пульсових зон — Зона 2 і 5 тренувальних зон за віком',
     description: 'Безкоштовний калькулятор пульсових зон онлайн. Розрахуйте зону 2, МАФ-пульс і всі 5 зон тренування за віком і пульсом спокою за формулою 220−вік і методом Карвонена.',
     h1: 'Калькулятор пульсових зон',
+    subtitle: 'Розрахуйте 5 пульсових зон, зону 2 та МАФ-пульс за віком та пульсом спокою.',
   },
   fr: {
     title: 'Calculatrice Zones Fréquence Cardiaque — Zone 2, MAF & 5 Zones',
     description: 'Calculatrice gratuite des zones de fréquence cardiaque. Calculez votre Zone 2, fréquence MAF et les 5 zones d\'entraînement selon votre âge, avec les formules 220−âge et Karvonen.',
     h1: 'Calculatrice des zones de fréquence cardiaque',
+    subtitle: 'Calculez vos 5 zones de fréquence cardiaque, Zone 2 et MAF selon votre âge et pouls de repos.',
   },
   lt: {
     title: 'Pulso Zonų Skaičiuotuvas — 2 zona, MAF ir 5 Treniruočių zonos',
     description: 'Nemokamas pulso zonų skaičiuotuvas. Apskaičiuokite 2 zoną, MAF pulsą ir visas 5 treniruočių zonas pagal amžių, naudodami 220−amžius ir Karvonenų formules.',
     h1: 'Pulso zonų skaičiuotuvas',
+    subtitle: 'Apskaičiuokite 5 pulso zonas, 2 zoną ir MAF pulsą pagal amžių ir ramybės pulsą.',
   },
 };
 
@@ -173,6 +178,7 @@ export default async function HeartRatePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <HeartRateCalculator locale={locale} />
         <AdInline locale={locale} />

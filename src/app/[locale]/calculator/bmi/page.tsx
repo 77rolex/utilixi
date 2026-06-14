@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/ideal-weight', label: 'Idealaus svorio skaičiuotuvas' }, { href: '/calculator/calories', label: 'Kalorijų skaičiuotuvas (TDEE)' }, { href: '/calculator/body-fat', label: 'Kūno riebalų skaičiuotuvas' }, { href: '/calculator/water-intake', label: 'Vandens normos skaičiuotuvas' }, { href: '/calculator/heart-rate', label: 'Pulso zonos' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'BMI Calculator — Body Mass Index Online',
     description: 'Free BMI calculator. Calculate your Body Mass Index instantly using metric (cm/kg) or imperial (ft/lbs) units and find out your weight category.',
     h1: 'BMI Calculator',
+    subtitle: 'Find out if your weight is healthy based on your height and body mass.',
   },
   ru: {
     title: 'Калькулятор ИМТ — индекс массы тела онлайн',
     description: 'Бесплатный калькулятор ИМТ онлайн. Рассчитайте индекс массы тела в метрической или имперской системе и узнайте свою весовую категорию.',
     h1: 'Калькулятор ИМТ',
+    subtitle: 'Узнайте, соответствует ли ваш вес норме по росту и индексу массы тела.',
   },
   uk: {
     title: 'Калькулятор ІМТ — індекс маси тіла онлайн',
     description: 'Безкоштовний калькулятор ІМТ онлайн. Розрахуйте індекс маси тіла в метричній або імперській системі та дізнайтеся свою вагову категорію.',
     h1: 'Калькулятор ІМТ',
+    subtitle: 'Дізнайтеся, чи відповідає ваша вага нормі за зростом та індексом маси тіла.',
   },
   fr: {
     title: 'Calculatrice IMC — Indice de Masse Corporelle',
     description: 'Calculatrice IMC gratuite. Calculez votre indice de masse corporelle en unités métriques ou impériales et découvrez votre catégorie de poids.',
     h1: 'Calculatrice IMC',
+    subtitle: 'Découvrez si votre poids est sain selon votre taille et votre masse corporelle.',
   },
   lt: {
     title: 'KMI Skaičiuotuvas — Kūno Masės Indeksas',
     description: 'Nemokamas KMI skaičiuotuvas. Apskaičiuokite kūno masės indeksą metrinėje arba imperinėje sistemoje ir sužinokite savo svorio kategoriją.',
     h1: 'KMI Skaičiuotuvas',
+    subtitle: 'Sužinokite, ar jūsų svoris yra sveikas pagal ūgį ir kūno masę.',
   },
 };
 
@@ -331,6 +336,7 @@ export default async function BmiPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <BmiCalculator locale={locale} />
 

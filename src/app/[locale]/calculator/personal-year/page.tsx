@@ -10,12 +10,12 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Personal Year Number Calculator — Free Numerology', description: 'Calculate your Personal Year number for 2025 and discover the theme, opportunities and challenges that define your year. Free numerology tool based on your birth date.', h1: 'Personal Year Number Calculator' },
-  ru: { title: 'Калькулятор персонального года — нумерология онлайн', description: 'Рассчитайте ваш персональный год по дате рождения и узнайте тему, возможности и вызовы текущего года. Бесплатный нумерологический инструмент.', h1: 'Калькулятор персонального года' },
-  uk: { title: 'Калькулятор персонального року — нумерологія онлайн', description: 'Розрахуйте ваш персональний рік за датою народження та дізнайтеся тему, можливості та виклики поточного року. Безкоштовний нумерологічний інструмент.', h1: 'Калькулятор персонального року' },
-  fr: { title: 'Calculateur d\'Année Personnelle — Numérologie Gratuite', description: 'Calculez votre Année Personnelle en numérologie et découvrez le thème, les opportunités et les défis qui définissent votre année. Outil basé sur votre date de naissance.', h1: 'Calculateur d\'Année Personnelle' },
-  lt: { title: 'Asmeninių metų skaičiuotuvas — nemokama numerologija', description: 'Apskaičiuokite savo asmeninius metus pagal gimimo datą ir sužinokite šių metų temą, galimybes bei iššūkius. Nemokamas numerologijos įrankis.', h1: 'Asmeninių metų skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Personal Year Number Calculator — Free Numerology', description: 'Calculate your Personal Year number for 2025 and discover the theme, opportunities and challenges that define your year. Free numerology tool based on your birth date.', h1: 'Personal Year Number Calculator', subtitle: 'Calculate your Personal Year Number to understand the numerological theme and energy defining your current year.' },
+  ru: { title: 'Калькулятор персонального года — нумерология онлайн', description: 'Рассчитайте ваш персональный год по дате рождения и узнайте тему, возможности и вызовы текущего года. Бесплатный нумерологический инструмент.', h1: 'Калькулятор персонального года', subtitle: 'Рассчитайте число персонального года, чтобы понять нумерологическую тему и энергию текущего года.' },
+  uk: { title: 'Калькулятор персонального року — нумерологія онлайн', description: 'Розрахуйте ваш персональний рік за датою народження та дізнайтеся тему, можливості та виклики поточного року. Безкоштовний нумерологічний інструмент.', h1: 'Калькулятор персонального року', subtitle: 'Розрахуйте число особистого року, щоб зрозуміти нумерологічну тему та енергію поточного року.' },
+  fr: { title: 'Calculateur d\'Année Personnelle — Numérologie Gratuite', description: 'Calculez votre Année Personnelle en numérologie et découvrez le thème, les opportunités et les défis qui définissent votre année. Outil basé sur votre date de naissance.', h1: 'Calculateur d\'Année Personnelle', subtitle: 'Calculez votre Nombre d\'Année Personnelle pour comprendre le thème et l\'énergie numérologique de votre année en cours.' },
+  lt: { title: 'Asmeninių metų skaičiuotuvas — nemokama numerologija', description: 'Apskaičiuokite savo asmeninius metus pagal gimimo datą ir sužinokite šių metų temą, galimybes bei iššūkius. Nemokamas numerologijos įrankis.', h1: 'Asmeninių metų skaičiuotuvas', subtitle: 'Apskaičiuokite asmeninių metų skaičių, kad suprastumėte numerologinę temą ir energiją, apibrėžiančią jūsų dabartinius metus.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -182,6 +182,7 @@ export default async function PersonalYearPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <PersonalYearCalculator locale={locale} />
         <AdInline locale={locale} />

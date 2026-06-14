@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Running Pace Calculator — Pace, Time & Speed',
     description: 'Free running and cycling pace calculator. Calculate your pace per km or mile, total finish time, or average speed. Supports kilometers and miles.',
     h1: 'Running Pace Calculator',
+    subtitle: 'Calculate your running or cycling pace, speed, and finish time for any distance.',
   },
   ru: {
     title: 'Калькулятор темпа бега — темп, время и скорость',
     description: 'Бесплатный калькулятор темпа бега и езды на велосипеде. Рассчитайте темп на км или милю, время финиша или среднюю скорость. Поддержка км и миль.',
     h1: 'Калькулятор темпа бега',
+    subtitle: 'Рассчитайте темп, скорость и время финиша для бега или велосипеда на любую дистанцию.',
   },
   uk: {
     title: 'Калькулятор темпу бігу — темп, час і швидкість',
     description: 'Безкоштовний калькулятор темпу бігу та їзди на велосипеді. Розрахуйте темп на км або милю, час фінішу або середню швидкість. Підтримка км та миль.',
     h1: 'Калькулятор темпу бігу',
+    subtitle: 'Розрахуйте темп, швидкість і час фінішу для бігу або велосипеду на будь-яку дистанцію.',
   },
   fr: {
     title: 'Calculatrice Allure Course — Allure, Temps & Vitesse',
     description: 'Calculatrice d\'allure de course gratuite. Calculez votre allure au km ou au mile, le temps total de course ou la vitesse moyenne. Supporte km et miles.',
     h1: 'Calculatrice Allure Course',
+    subtitle: 'Calculez votre allure, vitesse et temps d\'arrivée en course à pied ou vélo pour toute distance.',
   },
   lt: {
     title: 'Bėgimo Tempo Skaičiuotuvas — Tempas, Laikas ir Greitis',
     description: 'Nemokamas bėgimo ir dviračio tempo skaičiuotuvas. Apskaičiuokite tempą km arba myliai, finišo laiką ar vidutinį greitį. Palaikomos km ir mylios.',
     h1: 'Bėgimo Tempo Skaičiuotuvas',
+    subtitle: 'Apskaičiuokite bėgimo ar dviračio tempą, greitį ir finišo laiką bet kokiam atstumui.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function PacePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <PaceCalculator locale={locale} />
         <AdInline locale={locale} />
