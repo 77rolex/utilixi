@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/gpa', label: 'GPA skaičiuotuvas' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/calculator/date-diff', label: 'Datų skirtumas' }, { href: '/converter/units', label: 'Vienetų keitiklis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Grade System Converter — German GPA to US GPA, ECTS, UK & More',
     description: 'Free grade system converter. Convert German GPA to US GPA, UK percentage to GPA, ECTS to 4.0 scale, and more. Covers US GPA (4.0), UK percentage, European ECTS (A–F), Russian 5-point, and German 1–6 systems.',
     h1: 'Grade System Converter',
+    subtitle: 'Convert your grade between US GPA, UK percentage, European ECTS, German and Russian systems instantly.',
   },
   ru: {
     title: 'Конвертер систем оценок — GPA, ECTS, российская, немецкая',
     description: 'Бесплатный конвертер систем оценок. Переводите оценки между американской GPA (4.0), британской %, европейской ECTS (A–F), российской пятибалльной и немецкой системами. Мгновенный результат.',
     h1: 'Конвертер систем оценок',
+    subtitle: 'Переводите оценки между американской GPA, британской %, европейской ECTS, немецкой и российской системами.',
   },
   uk: {
     title: 'Конвертер систем оцінок — GPA, ECTS, українська, німецька',
     description: 'Безкоштовний конвертер систем оцінок. Переводьте оцінки між американською GPA (4.0), британською %, європейською ECTS (A–F), українською п\'ятибальною та німецькою системами.',
     h1: 'Конвертер систем оцінок',
+    subtitle: 'Переводьте оцінки між американською GPA, британською %, ECTS, німецькою та українською системами.',
   },
   fr: {
     title: 'Convertisseur de systèmes de notation — GPA, ECTS, allemand, UK',
     description: 'Convertisseur de notes gratuit. Convertissez le GPA américain (4,0), les pourcentages UK, l\'ECTS européen (A–F), la note russe sur 5 et le système allemand 1–6 instantanément.',
     h1: 'Convertisseur de systèmes de notation',
+    subtitle: 'Convertissez vos notes entre GPA américain, pourcentage UK, ECTS européen et systèmes allemand ou russe.',
   },
   lt: {
     title: 'Pažymių Sistemų Konverteris — GPA, ECTS, vokiška, britų',
     description: 'Nemokamas pažymių sistemų konverteris. Konvertuokite JAV GPA (4,0), JK procentus, Europos ECTS (A–F), Rusijos 5 balų ir Vokietijos 1–6 sistemas akimirksniu.',
     h1: 'Pažymių sistemų konverteris',
+    subtitle: 'Konvertuokite pažymius tarp JAV GPA, JK procentų, Europos ECTS, Vokietijos ir Rusijos sistemų akimirksniu.',
   },
 };
 
@@ -173,6 +178,7 @@ export default async function GradeSystemPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <GradeSystemConverter locale={locale} />
         <AdInline locale={locale} />

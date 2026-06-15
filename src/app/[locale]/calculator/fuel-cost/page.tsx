@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Fuel Cost Calculator — Petrol & Trip Cost Estimator',
     description: 'Free fuel cost calculator. Estimate petrol or diesel expenses for any trip. Supports metric (L/100km) and imperial (MPG) units. Calculate fuel needed and total trip cost instantly.',
     h1: 'Fuel Cost Calculator',
+    subtitle: 'Estimate petrol or diesel expenses for any trip based on distance, fuel consumption, and price.',
   },
   ru: {
     title: 'Калькулятор расхода топлива — стоимость поездки',
     description: 'Бесплатный калькулятор стоимости топлива. Рассчитайте расход бензина или дизеля для любой поездки. Метрическая (л/100 км) и имперская (MPG) системы.',
     h1: 'Калькулятор расхода топлива',
+    subtitle: 'Рассчитайте расходы на бензин или дизель для любой поездки по расстоянию, потреблению и цене топлива.',
   },
   uk: {
     title: 'Калькулятор витрат на пальне — вартість поїздки',
     description: 'Безкоштовний калькулятор вартості пального. Розрахуйте витрати на бензин або дизель для будь-якої поїздки. Метрична (л/100 км) та імперська (MPG) системи.',
     h1: 'Калькулятор витрат на пальне',
+    subtitle: 'Розрахуйте витрати на бензин або дизель для будь-якої поїздки за відстанню, витратою та ціною пального.',
   },
   fr: {
     title: 'Calculatrice Coût Carburant — Estimation Trajet',
     description: 'Calculatrice de coût carburant gratuite. Estimez les dépenses en essence ou diesel pour tout trajet. Unités métriques (L/100 km) et impériales (MPG) disponibles.',
     h1: 'Calculatrice Coût Carburant',
+    subtitle: 'Estimez les frais de carburant pour tout trajet selon la distance, la consommation et le prix à la pompe.',
   },
   lt: {
     title: 'Degalų Kainos Skaičiuotuvas — Kelionės Išlaidos',
     description: 'Nemokamas degalų kainos skaičiuotuvas. Įvertinkite benzino ar dyzelino išlaidas bet kuriai kelionei. Metriniai (l/100 km) ir imperiniai (MPG) vienetai.',
     h1: 'Degalų Kainos Skaičiuotuvas',
+    subtitle: 'Įvertinkite benzino ar dyzelino išlaidas bet kuriai kelionei pagal atstumą, sąnaudas ir degalų kainą.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function FuelCostPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <FuelCostCalculator locale={locale} />
         <AdInline locale={locale} />

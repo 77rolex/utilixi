@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }, { href: '/calculator/date-diff', label: 'Datų skirtumo skaičiuotuvas' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/converter/timezone', label: 'Laiko juostų keitiklis' }, { href: '/converter/units', label: 'Vienetų keitiklis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Weather Forecast — Current Weather & 7-Day Outlook',
     description: 'Free weather forecast for any city. Check current temperature, humidity, wind speed and a 7-day daily forecast. Powered by Open-Meteo — no registration required.',
     h1: 'Weather Forecast',
+    subtitle: 'Get current conditions and a 7-day forecast for any city worldwide — temperature, humidity, and wind.',
   },
   ru: {
     title: 'Погода — Прогноз погоды на сегодня и 7 дней',
     description: 'Бесплатный прогноз погоды для любого города. Текущая температура, влажность, скорость ветра и прогноз на 7 дней. На основе Open-Meteo, без регистрации.',
     h1: 'Прогноз погоды',
+    subtitle: 'Текущая погода и прогноз на 7 дней для любого города мира — температура, влажность и ветер.',
   },
   uk: {
     title: 'Погода — Прогноз погоди на сьогодні та 7 днів',
     description: 'Безкоштовний прогноз погоди для будь-якого міста. Поточна температура, вологість, швидкість вітру та прогноз на 7 днів. На основі Open-Meteo, без реєстрації.',
     h1: 'Прогноз погоди',
+    subtitle: 'Поточна погода та прогноз на 7 днів для будь-якого міста світу — температура, вологість і вітер.',
   },
   fr: {
     title: 'Météo — Prévisions Actuelles et sur 7 Jours',
     description: "Prévisions météo gratuites pour n'importe quelle ville. Température actuelle, humidité, vent et prévisions sur 7 jours. Propulsé par Open-Meteo, sans inscription.",
     h1: 'Prévisions Météo',
+    subtitle: 'Conditions actuelles et prévisions sur 7 jours pour n\'importe quelle ville — température, humidité et vent.',
   },
   lt: {
     title: 'Orai — Dabartiniai Orai ir 7 Dienų Prognozė',
     description: 'Nemokama oro prognozė bet kuriam miestui. Dabartinė temperatūra, drėgnumas, vėjo greitis ir 7 dienų prognozė. Naudojamas Open-Meteo, registracija nereikalinga.',
     h1: 'Oro Prognozė',
+    subtitle: 'Dabartiniai orai ir 7 dienų prognozė bet kuriam pasaulio miestui — temperatūra, drėgnumas ir vėjas.',
   },
 };
 
@@ -331,6 +336,7 @@ export default async function WeatherPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <WeatherWidget locale={locale} />
 

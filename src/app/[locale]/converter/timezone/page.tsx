@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/date-diff', label: 'Datų skirtumo skaičiuotuvas' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }, { href: '/converter/units', label: 'Vienetų keitiklis' }, { href: '/tools/word-counter', label: 'Žodžių skaitiklis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Timezone Converter — World Clock Online',
     description: 'Free timezone converter. Select a date, time, and source timezone to instantly see the same moment across 50+ major world cities and time zones.',
     h1: 'Timezone Converter',
+    subtitle: 'See any moment in time across 50+ world cities — useful for scheduling international calls and meetings.',
   },
   ru: {
     title: 'Конвертер часовых поясов — мировые часы онлайн',
     description: 'Бесплатный конвертер часовых поясов. Выберите дату, время и исходный часовой пояс, чтобы мгновенно увидеть тот же момент в 50+ городахх мира.',
     h1: 'Конвертер часовых поясов',
+    subtitle: 'Посмотрите любой момент времени в 50+ городах мира — удобно для планирования звонков и встреч.',
   },
   uk: {
     title: 'Конвертер часових поясів — світовий годинник онлайн',
     description: 'Безкоштовний конвертер часових поясів. Виберіть дату, час та вихідний часовий пояс, щоб миттєво побачити той самий момент у 50+ містах світу.',
     h1: 'Конвертер часових поясів',
+    subtitle: 'Переглядайте будь-який момент часу в 50+ містах світу — зручно для планування дзвінків і зустрічей.',
   },
   fr: {
     title: 'Convertisseur de fuseaux horaires — horloge mondiale',
     description: 'Convertisseur de fuseaux horaires gratuit. Sélectionnez une date, une heure et un fuseau source pour voir instantanément le même moment dans 50+ grandes villes du monde.',
     h1: 'Convertisseur de fuseaux horaires',
+    subtitle: 'Visualisez n\'importe quel moment dans 50+ villes du monde — idéal pour planifier des appels et réunions internationaux.',
   },
   lt: {
     title: 'Laiko juostų skaičiuoklė — laiko juostos pasaulyje internetu',
     description: 'Laiko juostų skaičiuoklė nemokamai. Lietuvos laiko juosta GMT, pasaulio laiko juostos — pamatykite tą patį momentą 50+ miestuose. Pasirinkite datą, laiką ir šaltinio laiko juostą.',
     h1: 'Laiko juostų keitiklis',
+    subtitle: 'Peržiūrėkite bet kurį momentą 50+ pasaulio miestuose — patogu planuojant tarptautinius skambučius ir susitikimus.',
   },
 };
 
@@ -328,6 +333,7 @@ export default async function TimezonePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <TimezoneConverter locale={locale} />
 

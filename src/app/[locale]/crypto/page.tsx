@@ -20,31 +20,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/crypto/converter', label: 'Kriptovaliutų keitiklis' }, { href: '/currency', label: 'Valiutų keitiklis' }, { href: '/calculator/crypto-tax', label: 'Kriptovaliutų mokesčiai' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Cryptocurrency Prices — Live Bitcoin & Ethereum Rates',
     description: 'Live cryptocurrency prices for top 50 coins: Bitcoin (BTC), Ethereum (ETH), Solana (SOL) and more. Sortable table with 24h change and market cap. Updated every 5 minutes.',
     h1: 'Cryptocurrency Prices',
+    subtitle: 'Live prices for top 50 coins — sortable by price, 24h change, and market cap. Updated every 5 minutes.',
   },
   ru: {
     title: 'Курс криптовалют онлайн — Bitcoin, Ethereum и топ-50 монет',
     description: 'Актуальные курсы топ-50 криптовалют: Bitcoin (BTC), Ethereum (ETH), Solana (SOL) и другие. Таблица с сортировкой по цене, изменению и капитализации. Обновляется каждые 5 минут.',
     h1: 'Курс криптовалют',
+    subtitle: 'Актуальные курсы топ-50 криптовалют — сортировка по цене, изменению за 24 ч и капитализации.',
   },
   uk: {
     title: 'Курс криптовалют онлайн — Bitcoin, Ethereum та обмін крипти',
     description: 'Актуальні курси топ-50 криптовалют: Bitcoin (BTC), Ethereum (ETH), Solana (SOL) та інші. Обмін крипти — конвертер доступний на окремій сторінці. Таблиця оновлюється кожні 5 хвилин.',
     h1: 'Курс криптовалют',
+    subtitle: 'Актуальні курси топ-50 криптовалют — сортування за ціною, зміною за 24 г та капіталізацією.',
   },
   fr: {
     title: 'Prix des Cryptomonnaies — Bitcoin, Ethereum en direct',
     description: 'Prix en direct du top 50 des cryptomonnaies : Bitcoin (BTC), Ethereum (ETH), Solana (SOL) et plus. Tableau triable par prix, variation 24h et capitalisation. Mis à jour toutes les 5 minutes.',
     h1: 'Prix des Cryptomonnaies',
+    subtitle: 'Prix en direct du top 50 — triable par prix, variation 24h et capitalisation boursière.',
   },
   lt: {
     title: 'Kriptovaliutų Kursai — Bitcoin, Ethereum ir Top 50 Realiu Laiku',
     description: 'Realaus laiko top 50 kriptovaliutų kainų lentelė: Bitcoin, Ethereum, Solana ir kitos. Rūšiuojama pagal kainą, 24h pokytį ir kapitalizaciją. Atnaujinama kas 5 minutes.',
     h1: 'Kriptovaliutų Kursai',
+    subtitle: 'Top 50 kriptovaliutų kainos realiuoju laiku — rūšiuojamos pagal kainą, 24h pokytį ir kapitalizaciją.',
   },
 };
 
@@ -175,6 +180,7 @@ export default async function CryptoPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <CryptoTable locale={locale} coins={coins} />
         <AdInline locale={locale} />

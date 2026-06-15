@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Material Cost Calculator — Flooring, Paint & Concrete',
     description: 'Free material cost calculator for flooring, paint, and concrete. Calculate how much material you need and total cost for any room or area. Enter dimensions and price per unit.',
     h1: 'Material Cost Calculator',
+    subtitle: 'Calculate how much flooring, paint, or concrete you need and the total cost for any room or area.',
   },
   ru: {
     title: 'Калькулятор стоимости материалов — пол, краска, бетон',
     description: 'Бесплатный калькулятор материалов для пола, краски и бетона. Рассчитайте необходимое количество материала и общую стоимость для любого помещения.',
     h1: 'Калькулятор стоимости материалов',
+    subtitle: 'Рассчитайте количество и стоимость напольного покрытия, краски или бетона для любой комнаты.',
   },
   uk: {
     title: 'Калькулятор вартості матеріалів — підлога, фарба, бетон',
     description: 'Безкоштовний калькулятор матеріалів для підлоги, фарби та бетону. Розрахуйте необхідну кількість матеріалу та загальну вартість для будь-якого приміщення.',
     h1: 'Калькулятор вартості матеріалів',
+    subtitle: 'Розрахуйте кількість і вартість підлогового покриття, фарби або бетону для будь-якого приміщення.',
   },
   fr: {
     title: 'Calculatrice Coût Matériaux — Sol, Peinture & Béton',
     description: 'Calculatrice de coût de matériaux gratuite pour revêtements de sol, peinture et béton. Calculez la quantité nécessaire et le coût total pour n\'importe quelle pièce.',
     h1: 'Calculatrice Coût Matériaux',
+    subtitle: 'Calculez la quantité et le coût du revêtement de sol, de la peinture ou du béton pour n\'importe quelle pièce.',
   },
   lt: {
     title: 'Medžiagų Kainos Skaičiuotuvas — Grindys, Dažai ir Betonas',
     description: 'Nemokamas medžiagų kainos skaičiuotuvas grindims, dažams ir betonui. Apskaičiuokite reikalingą medžiagų kiekį ir bendrą kainą bet kuriam kambariui.',
     h1: 'Medžiagų Kainos Skaičiuotuvas',
+    subtitle: 'Apskaičiuokite grindų dangos, dažų ar betono kiekį ir bendrą kainą bet kuriam kambariui.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function MaterialCostPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <MaterialCostCalculator locale={locale} />
         <AdInline locale={locale} />

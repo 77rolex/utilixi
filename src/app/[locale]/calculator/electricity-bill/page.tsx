@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Electricity Bill Calculator — Monthly & Annual Cost',
     description: 'Free electricity bill calculator. Calculate monthly and annual electricity costs for any appliance. Enter power (W), usage hours per day, days per month, and electricity rate per kWh.',
     h1: 'Electricity Bill Calculator',
+    subtitle: 'Calculate the monthly and annual cost of running any electrical appliance based on wattage, usage, and energy rate.',
   },
   ru: {
     title: 'Калькулятор электроэнергии — расчёт счёта за свет',
     description: 'Бесплатный калькулятор расходов на электроэнергию. Рассчитайте месячный и годовой счёт для любого прибора. Введите мощность (Вт), часы работы в день и тариф за кВт·ч.',
     h1: 'Калькулятор электроэнергии',
+    subtitle: 'Рассчитайте ежемесячные и годовые расходы на работу любого электроприбора по мощности, времени работы и тарифу.',
   },
   uk: {
     title: 'Калькулятор електроенергії — рахунок за світло',
     description: 'Безкоштовний калькулятор витрат на електроенергію. Розрахуйте місячний і річний рахунок для будь-якого приладу. Введіть потужність (Вт), години роботи на день і тариф за кВт·год.',
     h1: 'Калькулятор електроенергії',
+    subtitle: 'Розрахуйте щомісячні та річні витрати на роботу будь-якого електроприладу за потужністю, часом роботи та тарифом.',
   },
   fr: {
     title: 'Calculatrice Facture Électricité — Coût Mensuel & Annuel',
     description: 'Calculatrice de facture d\'électricité gratuite. Calculez le coût mensuel et annuel de n\'importe quel appareil électrique. Entrez la puissance (W), les heures d\'utilisation et le tarif par kWh.',
     h1: 'Calculatrice Facture Électricité',
+    subtitle: 'Calculez le coût mensuel et annuel de fonctionnement de n\'importe quel appareil électrique selon la puissance et le tarif.',
   },
   lt: {
     title: 'Elektros Sąskaitos Skaičiuotuvas — Mėnesio Išlaidos',
     description: 'Nemokamas elektros sąskaitos skaičiuotuvas. Apskaičiuokite mėnesio ir metines elektros išlaidas bet kuriam prietaisui. Įveskite galią (W), naudojimo valandas per dieną ir tarifą už kWh.',
     h1: 'Elektros Sąskaitos Skaičiuotuvas',
+    subtitle: 'Apskaičiuokite bet kurio elektrinio prietaiso mėnesines ir metines veikimo išlaidas pagal galią, naudojimą ir tarifą.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function ElectricityBillPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <ElectricityBillCalculator locale={locale} />
         <AdInline locale={locale} />

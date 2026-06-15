@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/converter/units', label: 'Vienetų keitiklis' }, { href: '/converter/color', label: 'Spalvų keitiklis' }, { href: '/converter/timezone', label: 'Laiko juostų keitiklis' }, { href: '/converter/grade-system', label: 'Pažymių sistemų konverteris' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Clothing Size Converter — EU, US, UK, IT Sizes', description: 'Free clothing size converter. Convert men\'s and women\'s clothing sizes between EU, US, UK, and Italian standards for tops, pants, and shoes.', h1: 'Clothing Size Converter' },
-  ru: { title: 'Конвертер размеров одежды — EU, US, UK, IT', description: 'Бесплатный конвертер размеров одежды. Переводите мужские и женские размеры между стандартами EU, US, UK и итальянским для верха, брюк и обуви.', h1: 'Конвертер размеров одежды' },
-  uk: { title: 'Конвертер розмірів одягу — EU, US, UK, IT', description: 'Безкоштовний конвертер розмірів одягу. Переводьте чоловічі та жіночі розміри між стандартами EU, US, UK та італійським для верху, штанів і взуття.', h1: 'Конвертер розмірів одягу' },
-  fr: { title: 'Convertisseur de tailles — EU, US, UK, IT', description: 'Convertisseur de tailles gratuit. Convertissez les tailles hommes et femmes entre les normes européennes, américaines, britanniques et italiennes.', h1: 'Convertisseur de tailles vêtements' },
-  lt: { title: 'Drabužių dydžių keitiklis — EU, US, UK, IT', description: 'Nemokamas drabužių dydžių keitiklis. Konvertuokite vyrų ir moterų dydžius tarp ES, JAV, JK ir Italijos standartų viršutinei aprangai, kelnėms ir avalynei.', h1: 'Drabužių dydžių keitiklis' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Clothing Size Converter — EU, US, UK, IT Sizes', description: 'Free clothing size converter. Convert men\'s and women\'s clothing sizes between EU, US, UK, and Italian standards for tops, pants, and shoes.', h1: 'Clothing Size Converter', subtitle: 'Convert men\'s and women\'s clothing and shoe sizes between EU, US, UK, and Italian standards.' },
+  ru: { title: 'Конвертер размеров одежды — EU, US, UK, IT', description: 'Бесплатный конвертер размеров одежды. Переводите мужские и женские размеры между стандартами EU, US, UK и итальянским для верха, брюк и обуви.', h1: 'Конвертер размеров одежды', subtitle: 'Переводите мужские и женские размеры одежды и обуви между стандартами EU, US, UK и итальянским.' },
+  uk: { title: 'Конвертер розмірів одягу — EU, US, UK, IT', description: 'Безкоштовний конвертер розмірів одягу. Переводьте чоловічі та жіночі розміри між стандартами EU, US, UK та італійським для верху, штанів і взуття.', h1: 'Конвертер розмірів одягу', subtitle: 'Переводьте чоловічі та жіночі розміри одягу й взуття між стандартами EU, US, UK та італійським.' },
+  fr: { title: 'Convertisseur de tailles — EU, US, UK, IT', description: 'Convertisseur de tailles gratuit. Convertissez les tailles hommes et femmes entre les normes européennes, américaines, britanniques et italiennes.', h1: 'Convertisseur de tailles vêtements', subtitle: 'Convertissez les tailles hommes et femmes entre les normes européenne, américaine, britannique et italienne.' },
+  lt: { title: 'Drabužių dydžių keitiklis — EU, US, UK, IT', description: 'Nemokamas drabužių dydžių keitiklis. Konvertuokite vyrų ir moterų dydžius tarp ES, JAV, JK ir Italijos standartų viršutinei aprangai, kelnėms ir avalynei.', h1: 'Drabužių dydžių keitiklis', subtitle: 'Konvertuokite vyrų ir moterų drabužių bei avalynės dydžius tarp ES, JAV, JK ir Italijos standartų.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -150,6 +150,7 @@ export default async function ClothingSizePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <ClothingSizeConverter locale={locale} />
         <AdInline locale={locale} />

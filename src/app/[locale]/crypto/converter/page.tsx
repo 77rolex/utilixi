@@ -12,31 +12,36 @@ import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Crypto to Fiat Converter — Bitcoin & Ethereum to USD, EUR & More',
     description: 'Free crypto to fiat converter. Convert Bitcoin, Ethereum, Solana and top 50 coins to USD, EUR, GBP, RUB, UAH and 10 other currencies. Live prices from CoinGecko, updated every 5 minutes.',
     h1: 'Crypto Converter',
+    subtitle: 'Convert Bitcoin, Ethereum, and top 50 coins to USD, EUR, and 12 other currencies at live rates.',
   },
   ru: {
     title: 'Конвертер криптовалют в рубли — Bitcoin, Ethereum и топ-50 монет',
     description: 'Бесплатный конвертер криптовалют онлайн. Переводите Bitcoin (BTC), Ethereum (ETH), Solana и топ-50 монет в USD, EUR, RUB, UAH и другие валюты. Актуальные курсы каждые 5 минут.',
     h1: 'Конвертер криптовалют',
+    subtitle: 'Конвертируйте Bitcoin, Ethereum и топ-50 монет в USD, EUR, RUB и другие валюты по актуальному курсу.',
   },
   uk: {
     title: 'Конвертер криптовалют в гривні — Bitcoin, Ethereum та топ-50',
     description: 'Безкоштовний конвертер криптовалют онлайн. Переводьте Bitcoin (BTC), Ethereum (ETH), Solana та топ-50 монет у USD, EUR, UAH, RUB та інші валюти. Актуальні курси кожні 5 хвилин.',
     h1: 'Конвертер криптовалют',
+    subtitle: 'Конвертуйте Bitcoin, Ethereum та топ-50 монет у USD, EUR, UAH та інші валюти за актуальним курсом.',
   },
   fr: {
     title: 'Convertisseur Crypto en Euros — Bitcoin, Ethereum et Top 50',
     description: 'Convertisseur crypto gratuit. Convertissez Bitcoin, Ethereum, Solana et le top 50 en USD, EUR, GBP et autres devises. Prix en direct mis à jour toutes les 5 minutes.',
     h1: 'Convertisseur de Cryptomonnaies',
+    subtitle: 'Convertissez Bitcoin, Ethereum et le top 50 en USD, EUR et 12 autres devises aux prix du marché en direct.',
   },
   lt: {
     title: 'Kriptovaliutų Keitiklis į Eurus — Bitcoin, Ethereum ir Top 50',
     description: 'Nemokamas kriptovaliutų keitiklis. Konvertuokite Bitcoin, Ethereum, Solana ir top 50 monetų į USD, EUR, GBP ir kitas valiutas. Kainos atnaujinamos kas 5 minutes.',
     h1: 'Kriptovaliutų Keitiklis',
+    subtitle: 'Konvertuokite Bitcoin, Ethereum ir top 50 monetų į USD, EUR ir 12 kitų valiutų realiomis kainomis.',
   },
 };
 
@@ -176,6 +181,7 @@ export default async function CryptoConverterPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <CryptoConverter locale={locale} coins={coins} fiatRates={fiatRates} />
         <AdInline locale={locale} />

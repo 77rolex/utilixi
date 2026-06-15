@@ -64,7 +64,8 @@
       "Bash(grep -rPn \"lt:.*'[^']{30,}'\" \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi/src/app/[locale]/calculator/archetype-number/ArchetypeNumberCalculator.tsx\")",
       "Bash(grep -oP \"'[^']{30,}'\")",
       "Bash(python3-c *)",
-      "Bash(grep -v \"^\\\\-\\\\-$\")"
+      "Bash(grep -v \"^\\\\-\\\\-$\")",
+      "Bash(npm uninstall *)"
     ]
   }
 }

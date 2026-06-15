@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Party Food Calculator — BBQ & Buffet Shopping List',
     description: 'Free party food calculator for BBQ, buffet, and cocktail parties. Get a complete shopping list with quantities for meat, sides, drinks, and desserts based on guest count and duration.',
     h1: 'Party Food Calculator',
+    subtitle: 'Get a complete shopping list with quantities for meat, drinks, sides, and desserts based on guest count.',
   },
   ru: {
     title: 'Калькулятор еды на вечеринку — барбекю, фуршет, банкет',
     description: 'Бесплатный калькулятор продуктов для вечеринки. Получите список покупок с количествами для мяса, гарниров, напитков и десертов на барбекю, фуршет или банкет.',
     h1: 'Калькулятор еды на вечеринку',
+    subtitle: 'Получите готовый список покупок с количеством мяса, напитков, гарниров и десертов по числу гостей.',
   },
   uk: {
     title: 'Калькулятор їжі для вечірки — барбекю, фуршет, банкет',
     description: 'Безкоштовний калькулятор продуктів для вечірки. Отримайте список покупок з кількостями для м\'яса, гарнірів, напоїв і десертів на барбекю, фуршет або банкет.',
     h1: 'Калькулятор їжі для вечірки',
+    subtitle: 'Отримайте готовий список покупок із кількістю м\'яса, напоїв, гарнірів і десертів за кількістю гостей.',
   },
   fr: {
     title: 'Calculatrice Buffet & Barbecue — Liste de Courses',
     description: 'Calculatrice de nourriture pour fêtes gratuite. Obtenez une liste de courses complète avec les quantités pour viandes, accompagnements, boissons et desserts selon le nombre d\'invités.',
     h1: 'Calculatrice Buffet & Barbecue',
+    subtitle: 'Obtenez une liste de courses complète avec les quantités de viandes, boissons et desserts selon vos invités.',
   },
   lt: {
     title: 'Vakarėlio Maisto Skaičiuotuvas — Kepsninė ir Bufetas',
     description: 'Nemokamas vakarėlio maisto skaičiuotuvas kepsninei, bufetui ir kokteilių vakarėliui. Gaukite visą apsipirkimo sąrašą su mėsos, garnyro, gėrimų ir desertų kiekiais pagal svečių skaičių.',
     h1: 'Vakarėlio Maisto Skaičiuotuvas',
+    subtitle: 'Gaukite pilną pirkinių sąrašą su mėsos, gėrimų, garnyrų ir desertų kiekiais pagal svečių skaičių.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function PartyFoodPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <PartyFoodCalculator locale={locale} />
         <AdInline locale={locale} />

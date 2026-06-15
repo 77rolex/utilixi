@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'AC & Heating Cost Calculator — Monthly Running Costs',
     description: 'Free air conditioning and heating cost calculator. Estimate your monthly electricity bill for any AC unit or electric heater. Enter wattage, hours of use, and energy rate.',
     h1: 'AC & Heating Cost Calculator',
+    subtitle: 'Find out how much your air conditioning or electric heater costs to run per day, month, or year.',
   },
   ru: {
     title: 'Калькулятор расходов на кондиционер и отопление',
     description: 'Бесплатный калькулятор стоимости работы кондиционера или электрообогревателя. Рассчитайте ежемесячные расходы на электричество по мощности, часам работы и тарифу.',
     h1: 'Калькулятор расходов на кондиционер и отопление',
+    subtitle: 'Узнайте, сколько стоит ежедневная работа вашего кондиционера или электрообогревателя.',
   },
   uk: {
     title: 'Калькулятор витрат на кондиціонер та опалення',
     description: 'Безкоштовний калькулятор вартості роботи кондиціонера або електрообігрівача. Розрахуйте щомісячні витрати на електроенергію за потужністю, годинами роботи та тарифом.',
     h1: 'Калькулятор витрат на кондиціонер та опалення',
+    subtitle: 'Дізнайтеся, скільки коштує щоденна робота вашого кондиціонера або електрообігрівача.',
   },
   fr: {
     title: 'Calculatrice Coût Climatiseur & Chauffage — Mensuel',
     description: 'Calculatrice gratuite du coût de fonctionnement d\'un climatiseur ou d\'un radiateur électrique. Estimez votre facture mensuelle selon la puissance, les heures d\'utilisation et le tarif électrique.',
     h1: 'Calculatrice Coût Climatiseur & Chauffage',
+    subtitle: 'Découvrez combien coûte le fonctionnement quotidien de votre climatiseur ou chauffage électrique.',
   },
   lt: {
     title: 'Kondicionieriaus ir Šildymo Išlaidų Skaičiuotuvas',
     description: 'Nemokamas kondicionieriaus ir elektrinio šildytuvo veikimo išlaidų skaičiuotuvas. Įvertinkite mėnesines elektros išlaidas pagal galią, naudojimo valandas ir tarifą.',
     h1: 'Kondicionieriaus ir Šildymo Išlaidų Skaičiuotuvas',
+    subtitle: 'Sužinokite, kiek kainuoja jūsų kondicionieriaus ar elektrinio šildytuvo kasdienė veikla.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function AcCostPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <AcCostCalculator locale={locale} />
         <AdInline locale={locale} />

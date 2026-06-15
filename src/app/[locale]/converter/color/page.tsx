@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/converter/units', label: 'Vienetų keitiklis' }, { href: '/converter/clothing-size', label: 'Drabužių dydžių keitiklis' }, { href: '/calculator/engineering', label: 'Inžinerinis skaičiuotuvas' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/converter/grade-system', label: 'Pažymių sistemų konverteris' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Color Converter — HEX to RGB, HSL Online Tool',
     description: 'Free online color converter. Convert HEX to RGB, RGB to HEX, and HSL instantly. Visual color picker included. Copy any format with one click — perfect for web developers and designers.',
     h1: 'Color Converter HEX ↔ RGB ↔ HSL',
+    subtitle: 'Convert colors between HEX, RGB, and HSL formats instantly — with a visual color picker.',
   },
   ru: {
     title: 'Конвертер цветов — HEX в RGB, HSL онлайн',
     description: 'Бесплатный онлайн-конвертер цветов. Мгновенно переводите цвета между форматами HEX, RGB и HSL. Визуальный выбор цвета. Копируйте любой формат одним кликом.',
     h1: 'Конвертер цветов HEX ↔ RGB ↔ HSL',
+    subtitle: 'Мгновенно переводите цвета между форматами HEX, RGB и HSL с визуальным выбором цвета.',
   },
   uk: {
     title: 'Конвертер кольорів — HEX у RGB, HSL онлайн',
     description: 'Безкоштовний онлайн-конвертер кольорів. Миттєво конвертуйте кольори між форматами HEX, RGB та HSL. Візуальний вибір кольору. Копіюйте будь-який формат одним кліком.',
     h1: 'Конвертер кольорів HEX ↔ RGB ↔ HSL',
+    subtitle: 'Миттєво конвертуйте кольори між форматами HEX, RGB і HSL з візуальним вибором кольору.',
   },
   fr: {
     title: 'Convertisseur Couleur HEX RVB HSL — Outil gratuit en ligne',
     description: 'Convertisseur de couleurs gratuit. Convertissez instantanément HEX en RVB, RVB en HEX, et HSL. Sélecteur de couleur visuel inclus. Copiez n\'importe quel format en un clic — pour développeurs web et designers.',
     h1: 'Convertisseur de couleurs HEX ↔ RVB ↔ HSL',
+    subtitle: 'Convertissez les couleurs entre les formats HEX, RVB et HSL instantanément — avec sélecteur visuel inclus.',
   },
   lt: {
     title: 'Spalvų Keitiklis — HEX į RGB, HSL internete',
     description: 'Nemokamas spalvų keitiklis internete. Akimirksniu konvertuokite HEX į RGB, RGB į HEX ir HSL. Vizualinis spalvų parinkiklis. Nukopijuokite bet kurį formatą vienu paspaudimu.',
     h1: 'Spalvų keitiklis HEX ↔ RGB ↔ HSL',
+    subtitle: 'Akimirksniu konvertuokite spalvas tarp HEX, RGB ir HSL formatų — su vizualiniu spalvų parinkikliu.',
   },
 };
 
@@ -173,6 +178,7 @@ export default async function ColorConverterPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <ColorConverter locale={locale} />
         <AdInline locale={locale} />

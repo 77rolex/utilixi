@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/date-diff', label: 'Datų skirtumo skaičiuotuvas' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/tools/word-counter', label: 'Žodžių skaitiklis' }, { href: '/converter/timezone', label: 'Laiko juostų keitiklis' }, { href: '/tools/password-generator', label: 'Slaptažodžių generatorius' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Countdown Timer — Count Down to Any Date', description: 'Free online countdown timer. Count down to any date and time — New Year, birthday, holiday, or custom event. Shows days, hours, minutes and seconds.', h1: 'Countdown Timer' },
-  ru: { title: 'Таймер обратного отсчёта — отсчёт до любой даты', description: 'Бесплатный онлайн-таймер обратного отсчёта. Отсчитывайте время до любой даты: Нового года, дня рождения, праздника или своего события. Показывает дни, часы, минуты и секунды.', h1: 'Таймер обратного отсчёта' },
-  uk: { title: 'Таймер зворотного відліку — відлік до будь-якої дати', description: 'Безкоштовний онлайн-таймер зворотного відліку. Відлічуйте час до будь-якої дати: Нового року, дня народження, свята або власної події. Показує дні, години, хвилини та секунди.', h1: 'Таймер зворотного відліку' },
-  fr: { title: 'Minuteur de compte à rebours — décompte jusqu\'à n\'importe quelle date', description: 'Minuteur de compte à rebours gratuit en ligne. Comptez à rebours jusqu\'à n\'importe quelle date — Nouvel An, anniversaire, fête ou événement personnalisé. Affiche jours, heures, minutes et secondes.', h1: 'Minuteur de compte à rebours' },
-  lt: { title: 'Atgalinio skaičiavimo laikmatis — skaičiuokite iki bet kokios datos', description: 'Nemokamas atgalinio skaičiavimo laikmatis internete. Skaičiuokite atgal iki bet kokios datos — Naujųjų metų, gimtadienio, šventės ar renginio. Rodo dienas, valandas, minutes ir sekundes.', h1: 'Atgalinio skaičiavimo laikmatis' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Countdown Timer — Count Down to Any Date', description: 'Free online countdown timer. Count down to any date and time — New Year, birthday, holiday, or custom event. Shows days, hours, minutes and seconds.', h1: 'Countdown Timer', subtitle: 'Set a target date and watch the real-time countdown — perfect for events, deadlines, and holidays.' },
+  ru: { title: 'Таймер обратного отсчёта — отсчёт до любой даты', description: 'Бесплатный онлайн-таймер обратного отсчёта. Отсчитывайте время до любой даты: Нового года, дня рождения, праздника или своего события. Показывает дни, часы, минуты и секунды.', h1: 'Таймер обратного отсчёта', subtitle: 'Укажите целевую дату и наблюдайте отсчёт в реальном времени — для событий, дедлайнов и праздников.' },
+  uk: { title: 'Таймер зворотного відліку — відлік до будь-якої дати', description: 'Безкоштовний онлайн-таймер зворотного відліку. Відлічуйте час до будь-якої дати: Нового року, дня народження, свята або власної події. Показує дні, години, хвилини та секунди.', h1: 'Таймер зворотного відліку', subtitle: 'Вкажіть цільову дату і спостерігайте відлік у реальному часі — для подій, дедлайнів і свят.' },
+  fr: { title: 'Minuteur de compte à rebours — décompte jusqu\'à n\'importe quelle date', description: 'Minuteur de compte à rebours gratuit en ligne. Comptez à rebours jusqu\'à n\'importe quelle date — Nouvel An, anniversaire, fête ou événement personnalisé. Affiche jours, heures, minutes et secondes.', h1: 'Minuteur de compte à rebours', subtitle: 'Définissez une date cible et regardez le décompte en temps réel — parfait pour les événements, délais et fêtes.' },
+  lt: { title: 'Atgalinio skaičiavimo laikmatis — skaičiuokite iki bet kokios datos', description: 'Nemokamas atgalinio skaičiavimo laikmatis internete. Skaičiuokite atgal iki bet kokios datos — Naujųjų metų, gimtadienio, šventės ar renginio. Rodo dienas, valandas, minutes ir sekundes.', h1: 'Atgalinio skaičiavimo laikmatis', subtitle: 'Nustatykite tikslinę datą ir stebėkite atgalinį skaičiavimą realiuoju laiku — puikiai tinka renginiams, terminams ir šventėms.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -150,6 +150,7 @@ export default async function CountdownPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <CountdownTimer locale={locale} />
         <AdInline locale={locale} />

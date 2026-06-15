@@ -49,31 +49,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   ],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Pool Volume Calculator — Litres, Gallons & Chemicals',
     description: 'Free swimming pool volume calculator. Calculate pool volume in m³, litres, and gallons for rectangular, round, oval, and freeform pools. Includes weekly chemical estimates.',
     h1: 'Pool Volume Calculator',
+    subtitle: 'Calculate your pool water volume in m³, litres, and gallons for any shape — with weekly chemical estimates.',
   },
   ru: {
     title: 'Калькулятор объёма бассейна — литры, галлоны и химия',
     description: 'Бесплатный калькулятор объёма бассейна. Рассчитайте объём в м³, литрах и галлонах для прямоугольного, круглого, овального и произвольного бассейна. Включая дозировки химии.',
     h1: 'Калькулятор объёма бассейна',
+    subtitle: 'Рассчитайте объём воды в бассейне в м³, литрах и галлонах для любой формы, с дозировками химии.',
   },
   uk: {
     title: 'Калькулятор об\'єму басейну — літри, галони та хімія',
     description: 'Безкоштовний калькулятор об\'єму басейну. Розрахуйте об\'єм у м³, літрах і галонах для прямокутного, круглого, овального та довільного басейну. Включаючи дозування хімії.',
     h1: 'Калькулятор об\'єму басейну',
+    subtitle: 'Розрахуйте об\'єм води в басейні в м³, літрах і галонах для будь-якої форми, з дозуванням хімікатів.',
   },
   fr: {
     title: 'Calculatrice Volume Piscine — Litres, Gallons & Chimie',
     description: 'Calculatrice de volume de piscine gratuite. Calculez le volume en m³, litres et gallons pour les piscines rectangulaires, rondes, ovales et à forme libre. Inclut les estimations chimiques.',
     h1: 'Calculatrice Volume Piscine',
+    subtitle: 'Calculez le volume d\'eau de votre piscine en m³, litres et gallons pour toute forme — avec estimations chimiques.',
   },
   lt: {
     title: 'Baseino Tūrio Skaičiuotuvas — Litrai, Galonai ir Chemija',
     description: 'Nemokamas baseino tūrio skaičiuotuvas. Apskaičiuokite baseino tūrį m³, litrais ir galonais stačiakampiems, apvaliems, ovaliems ir laisvos formos baseinams. Įskaitant cheminių medžiagų įvertinimus.',
     h1: 'Baseino Tūrio Skaičiuotuvas',
+    subtitle: 'Apskaičiuokite baseino vandens tūrį m³, litrais ir galonais bet kokiai formai — su savaitinėmis cheminių medžiagų dozėmis.',
   },
 };
 
@@ -208,6 +213,7 @@ export default async function PoolVolumePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <PoolVolumeCalculator locale={locale} />
         <AdInline locale={locale} />

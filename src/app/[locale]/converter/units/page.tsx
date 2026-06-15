@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/converter/color', label: 'Spalvų keitiklis' }, { href: '/converter/clothing-size', label: 'Drabužių dydžių keitiklis' }, { href: '/converter/timezone', label: 'Laiko juostų keitiklis' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/converter/grade-system', label: 'Pažymių sistemų konverteris' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Unit Converter — Length, Weight, Temperature & More', description: 'Free online unit converter. Convert length, weight, temperature, volume, area, speed, and digital storage units instantly. No ads, no sign-up.', h1: 'Unit Converter' },
-  ru: { title: 'Конвертер единиц — длина, вес, температура и другое', description: 'Бесплатный онлайн конвертер единиц измерения. Конвертируйте длину, массу, температуру, объём, площадь, скорость и данные мгновенно.', h1: 'Конвертер единиц' },
-  uk: { title: 'Конвертер одиниць — довжина, вага, температура та інше', description: 'Безкоштовний онлайн конвертер одиниць виміру. Конвертуйте довжину, масу, температуру, об\'єм, площу, швидкість і дані миттєво.', h1: 'Конвертер одиниць' },
-  fr: { title: 'Convertisseur d\'unités — Longueur, Poids, Température et plus', description: 'Convertisseur d\'unités gratuit en ligne. Convertissez longueur, masse, température, volume, superficie, vitesse et données numériques instantanément.', h1: 'Convertisseur d\'unités' },
-  lt: { title: 'Vienetų Keitiklis — Ilgis, Svoris, Temperatūra ir daugiau', description: 'Nemokamas vienetų keitiklis internete. Akimirksniu konvertuokite ilgį, masę, temperatūrą, tūrį, plotą, greitį ir skaitmeninius vienetus.', h1: 'Vienetų keitiklis' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Unit Converter — Length, Weight, Temperature & More', description: 'Free online unit converter. Convert length, weight, temperature, volume, area, speed, and digital storage units instantly. No ads, no sign-up.', h1: 'Unit Converter', subtitle: 'Convert length, weight, temperature, volume, area, speed, and data units instantly.' },
+  ru: { title: 'Конвертер единиц — длина, вес, температура и другое', description: 'Бесплатный онлайн конвертер единиц измерения. Конвертируйте длину, массу, температуру, объём, площадь, скорость и данные мгновенно.', h1: 'Конвертер единиц', subtitle: 'Мгновенно конвертируйте единицы длины, массы, температуры, объёма, площади, скорости и данных.' },
+  uk: { title: 'Конвертер одиниць — довжина, вага, температура та інше', description: 'Безкоштовний онлайн конвертер одиниць виміру. Конвертуйте довжину, масу, температуру, об\'єм, площу, швидкість і дані миттєво.', h1: 'Конвертер одиниць', subtitle: 'Миттєво конвертуйте одиниці довжини, маси, температури, об\'єму, площі, швидкості та даних.' },
+  fr: { title: 'Convertisseur d\'unités — Longueur, Poids, Température et plus', description: 'Convertisseur d\'unités gratuit en ligne. Convertissez longueur, masse, température, volume, superficie, vitesse et données numériques instantanément.', h1: 'Convertisseur d\'unités', subtitle: 'Convertissez instantanément les unités de longueur, masse, température, volume, superficie, vitesse et données.' },
+  lt: { title: 'Vienetų Keitiklis — Ilgis, Svoris, Temperatūra ir daugiau', description: 'Nemokamas vienetų keitiklis internete. Akimirksniu konvertuokite ilgį, masę, temperatūrą, tūrį, plotą, greitį ir skaitmeninius vienetus.', h1: 'Vienetų keitiklis', subtitle: 'Akimirksniu konvertuokite ilgio, masės, temperatūros, tūrio, ploto, greičio ir duomenų vienetus.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -150,6 +150,7 @@ export default async function UnitsPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <UnitConverter locale={locale} />
         <AdInline locale={locale} />
