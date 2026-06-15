@@ -186,8 +186,8 @@ export default async function ZodiacCompatibilityPage({ params }: Props) {
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
-        <ToolActions />
         <RelatedTools locale={locale} tools={related} />
+        <ToolActions />
         <ZodiacCompatibilityCalculator locale={locale} />
         <AdInline locale={locale} />
         <div className={styles.page__content}>

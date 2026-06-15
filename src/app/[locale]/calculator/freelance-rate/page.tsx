@@ -181,8 +181,8 @@ export default async function FreelanceRatePage({ params, searchParams }: Props)
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
-        <ToolActions />
         <RelatedTools locale={locale} tools={related} />
+        <ToolActions />
         <FreelanceRateCalculator locale={locale} initialCurrency={sp.currency} initialIncome={sp.income} initialExpenses={sp.expenses} initialTax={sp.tax} initialWeeks={sp.weeks} initialHours={sp.hours} />
         <AdInline locale={locale} />
         <DisclaimerNote locale={locale} />

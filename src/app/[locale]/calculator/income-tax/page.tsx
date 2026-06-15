@@ -183,8 +183,8 @@ export default async function IncomeTaxPage({ params, searchParams }: Props) {
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
-        <ToolActions />
         <RelatedTools locale={locale} tools={related} />
+        <ToolActions />
         <IncomeTaxCalculator locale={locale} initialCountry={sp.country} initialIncome={sp.income} />
 
         <AdInline locale={locale} />

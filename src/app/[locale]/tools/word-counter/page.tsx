@@ -155,8 +155,8 @@ export default async function WordCounterPage({ params }: Props) {
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{m.h1}</h1>
         {m.subtitle && <p className={styles.page__subtitle}>{m.subtitle}</p>}
-        <ToolActions />
         <RelatedTools locale={locale} tools={related} />
+        <ToolActions />
         <WordCounter locale={locale} />
         <AdInline locale={locale} />
         <div className={styles.page__content}>

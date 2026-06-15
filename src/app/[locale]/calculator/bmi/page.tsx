@@ -339,8 +339,8 @@ export default async function BmiPage({ params, searchParams }: Props) {
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
         {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
-        <ToolActions />
         <RelatedTools locale={locale} tools={related} />
+        <ToolActions />
         <BmiCalculator locale={locale} initialUnit={sp.unit} initialHeightCm={sp.heightCm} initialHeightFt={sp.heightFt} initialHeightIn={sp.heightIn} initialWeight={sp.weight} />
 
         <AdInline locale={locale} />
