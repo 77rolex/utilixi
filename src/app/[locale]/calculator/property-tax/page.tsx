@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/renovation', label: 'Remonto kainos skaičiuotuvas' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }, { href: '/calculator/rent-vs-buy', label: 'Nuoma vs Pirkimas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Property Tax Calculator — By Country', description: 'Estimate annual property tax for Germany, France, Poland, Lithuania, Ukraine, USA, and the UK. Covers residential, commercial, and agricultural properties.', h1: 'Property Tax Calculator' },
-  ru: { title: 'Калькулятор налога на недвижимость — по стране', description: 'Рассчитайте годовой налог на недвижимость для Германии, Франции, Польши, Литвы, Украины, США и Великобритании. Жилая, коммерческая и сельскохозяйственная недвижимость.', h1: 'Калькулятор налога на недвижимость' },
-  uk: { title: 'Калькулятор податку на нерухомість — за країною', description: 'Розрахуйте річний податок на нерухомість для Німеччини, Франції, Польщі, Литви, України, США та Великої Британії. Житлова, комерційна та сільськогосподарська нерухомість.', h1: 'Калькулятор податку на нерухомість' },
-  fr: { title: 'Calculateur de taxe foncière — par pays', description: 'Estimez la taxe foncière annuelle pour l\'Allemagne, la France, la Pologne, la Lituanie, l\'Ukraine, les États-Unis et le Royaume-Uni. Résidentiel, commercial et agricole.', h1: 'Calculateur de taxe foncière' },
-  lt: { title: 'Nekilnojamojo turto mokesčio skaičiuotuvas — pagal šalį', description: 'Apskaičiuokite metinį nekilnojamojo turto mokestį Vokietijoje, Prancūzijoje, Lenkijoje, Lietuvoje, Ukrainoje, JAV ir Jungtinėje Karalystėje. Gyvenamasis, komercinis ir žemės ūkio turtas.', h1: 'Nekilnojamojo turto mokesčio skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Property Tax Calculator — By Country', description: 'Estimate annual property tax for Germany, France, Poland, Lithuania, Ukraine, USA, and the UK. Covers residential, commercial, and agricultural properties.', h1: 'Property Tax Calculator', subtitle: 'Estimate your annual property tax based on property value and your country\'s tax rates.' },
+  ru: { title: 'Калькулятор налога на недвижимость — по стране', description: 'Рассчитайте годовой налог на недвижимость для Германии, Франции, Польши, Литвы, Украины, США и Великобритании. Жилая, коммерческая и сельскохозяйственная недвижимость.', h1: 'Калькулятор налога на недвижимость', subtitle: 'Рассчитайте ежегодный налог на недвижимость по стоимости и ставкам вашей страны.' },
+  uk: { title: 'Калькулятор податку на нерухомість — за країною', description: 'Розрахуйте річний податок на нерухомість для Німеччини, Франції, Польщі, Литви, України, США та Великої Британії. Житлова, комерційна та сільськогосподарська нерухомість.', h1: 'Калькулятор податку на нерухомість', subtitle: 'Розрахуйте річний податок на нерухомість за вартістю та ставками вашої країни.' },
+  fr: { title: 'Calculateur de taxe foncière — par pays', description: 'Estimez la taxe foncière annuelle pour l\'Allemagne, la France, la Pologne, la Lituanie, l\'Ukraine, les États-Unis et le Royaume-Uni. Résidentiel, commercial et agricole.', h1: 'Calculateur de taxe foncière', subtitle: 'Estimez votre taxe foncière annuelle selon la valeur du bien et les taux de votre pays.' },
+  lt: { title: 'Nekilnojamojo turto mokesčio skaičiuotuvas — pagal šalį', description: 'Apskaičiuokite metinį nekilnojamojo turto mokestį Vokietijoje, Prancūzijoje, Lenkijoje, Lietuvoje, Ukrainoje, JAV ir Jungtinėje Karalystėje. Gyvenamasis, komercinis ir žemės ūkio turtas.', h1: 'Nekilnojamojo turto mokesčio skaičiuotuvas', subtitle: 'Apskaičiuokite metinį nekilnojamojo turto mokestį pagal vertę ir jūsų šalies normas.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -130,6 +130,7 @@ export default async function PropertyTaxPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <PropertyTaxCalculator locale={locale} />
         <AdInline locale={locale} />

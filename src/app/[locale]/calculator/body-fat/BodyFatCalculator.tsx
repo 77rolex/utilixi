@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import styles from './BodyFatCalculator.module.scss';
 
 type Unit = 'metric' | 'imperial';
@@ -200,6 +200,27 @@ export default function BodyFatCalculator({ locale }: { locale: string }) {
   const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState('');
 
+  useEffect(() => {
+    const savedUnit = localStorage.getItem('utilixi_bodyfat_unit') as Unit | null;
+    const savedGender = localStorage.getItem('utilixi_bodyfat_gender') as Gender | null;
+    if (savedUnit === 'metric' || savedUnit === 'imperial') setUnit(savedUnit);
+    if (savedGender === 'male' || savedGender === 'female') setGender(savedGender);
+  }, []);
+
+  function handleUnit(u: Unit) {
+    setUnit(u);
+    setResult(null);
+    setError('');
+    localStorage.setItem('utilixi_bodyfat_unit', u);
+  }
+
+  function handleGender(g: Gender) {
+    setGender(g);
+    setResult(null);
+    setError('');
+    localStorage.setItem('utilixi_bodyfat_gender', g);
+  }
+
   const toInches = (v: string) => parseFloat(v.replace(',', '.')) * 2.54;
   const parse = (v: string) => parseFloat(v.replace(',', '.'));
 
@@ -266,7 +287,7 @@ export default function BodyFatCalculator({ locale }: { locale: string }) {
               key={u}
               type="button"
               className={`${styles['bf-widget__toggle-btn']} ${unit === u ? styles['bf-widget__toggle-btn--active'] : ''}`}
-              onClick={() => { setUnit(u); setResult(null); setError(''); }}
+              onClick={() => handleUnit(u)}
             >
               {u === 'metric' ? t.metric : t.imperial}
             </button>
@@ -282,7 +303,7 @@ export default function BodyFatCalculator({ locale }: { locale: string }) {
                 key={g}
                 type="button"
                 className={`${styles['bf-widget__toggle-btn']} ${gender === g ? styles['bf-widget__toggle-btn--active'] : ''}`}
-                onClick={() => { setGender(g); setResult(null); setError(''); }}
+                onClick={() => handleGender(g)}
               >
                 {g === 'male' ? t.male : t.female}
               </button>

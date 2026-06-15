@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import styles from './BmiCalculator.module.scss';
 
@@ -125,11 +125,19 @@ export default function BmiCalculator({ locale, initialUnit, initialHeightCm = '
   const [bmi, setBmi] = useState<number | null>(initCalc?.bmi ?? null);
   const [heightM, setHeightM] = useState<number | null>(initCalc?.heightM ?? null);
 
+  useEffect(() => {
+    if (!initialUnit) {
+      const saved = localStorage.getItem('utilixi_bmi_unit') as Unit | null;
+      if (saved === 'metric' || saved === 'imperial') setUnit(saved);
+    }
+  }, []);
+
   const handleUnit = (u: Unit) => {
     setUnit(u);
     setBmi(null);
     setHeightM(null);
     setError('');
+    localStorage.setItem('utilixi_bmi_unit', u);
   };
 
   const handleCalculate = useCallback(() => {

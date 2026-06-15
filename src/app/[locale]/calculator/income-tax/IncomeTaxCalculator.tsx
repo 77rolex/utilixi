@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import styles from './IncomeTaxCalculator.module.scss';
 
@@ -162,6 +162,19 @@ export default function IncomeTaxCalculator({ locale, initialCountry, initialInc
   const [income, setIncome] = useState(initialIncome || '60000');
   const [copied, setCopied] = useState(false);
 
+  useEffect(() => {
+    if (!initialCountry) {
+      const saved = localStorage.getItem('utilixi_incometax_country');
+      if (saved && COUNTRIES[saved]) setCountry(saved);
+    }
+  }, []);
+
+  function handleCountry(code: string) {
+    setCountry(code);
+    setResult(null);
+    localStorage.setItem('utilixi_incometax_country', code);
+  }
+
   const [result, setResult] = useState<Result | null>(() =>
     initialCountry && initialIncome ? computeResult(initialCountry, initialIncome) : null
   );
@@ -197,7 +210,7 @@ export default function IncomeTaxCalculator({ locale, initialCountry, initialInc
         <div className={styles['income-tax-widget__row']}>
           <div className={styles['income-tax-widget__field']}>
             <label className={styles['income-tax-widget__label']}>{t('country', locale)}</label>
-            <select className={styles['income-tax-widget__select']} value={country} onChange={e => { setCountry(e.target.value); setResult(null); }}>
+            <select className={styles['income-tax-widget__select']} value={country} onChange={e => handleCountry(e.target.value)}>
               {Object.entries(COUNTRIES).map(([code, data]) => (
                 <option key={code} value={code}>{data[locale as 'en'|'ru'|'uk'|'fr'|'lt'] || data.en}</option>
               ))}

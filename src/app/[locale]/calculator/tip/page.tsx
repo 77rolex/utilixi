@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/calculator/vat', label: 'PVM skaičiuotuvas' }, { href: '/calculator/discount', label: 'Nuolaidos skaičiuotuvas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Tip Calculator — Calculate Tip and Split the Bill', description: 'Free tip calculator. Calculate the tip amount for any bill, choose a percentage, and split the total between any number of people instantly.', h1: 'Tip Calculator' },
-  ru: { title: 'Калькулятор чаевых — рассчитать чаевые и разделить счёт', description: 'Бесплатный калькулятор чаевых. Рассчитайте сумму чаевых для любого счёта, выберите процент и разделите итог между нужным количеством людей.', h1: 'Калькулятор чаевых' },
-  uk: { title: 'Калькулятор чайових — розрахувати чайові та розділити рахунок', description: 'Безкоштовний калькулятор чайових. Розрахуйте суму чайових для будь-якого рахунку та розділіть підсумок між потрібною кількістю людей.', h1: 'Калькулятор чайових' },
-  fr: { title: 'Calculatrice de pourboire — Calculer le pourboire et partager l\'addition', description: 'Calculatrice de pourboire gratuite. Calculez le montant du pourboire pour n\'importe quelle addition et répartissez le total entre plusieurs personnes.', h1: 'Calculatrice de pourboire' },
-  lt: { title: 'Arbatpinigių Skaičiuotuvas — Apskaičiuoti arbatpinigius ir padalinti sąskaitą', description: 'Nemokamas arbatpinigių skaičiuotuvas. Apskaičiuokite arbatpinigių sumą bet kuriai sąskaitai ir padalinkite bendrą sumą tarp kelių žmonių.', h1: 'Arbatpinigių skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Tip Calculator — Calculate Tip and Split the Bill', description: 'Free tip calculator. Calculate the tip amount for any bill, choose a percentage, and split the total between any number of people instantly.', h1: 'Tip Calculator', subtitle: 'Calculate the tip amount for any bill and split the total among multiple people.' },
+  ru: { title: 'Калькулятор чаевых — рассчитать чаевые и разделить счёт', description: 'Бесплатный калькулятор чаевых. Рассчитайте сумму чаевых для любого счёта, выберите процент и разделите итог между нужным количеством людей.', h1: 'Калькулятор чаевых', subtitle: 'Рассчитайте сумму чаевых и разделите счёт на несколько человек.' },
+  uk: { title: 'Калькулятор чайових — розрахувати чайові та розділити рахунок', description: 'Безкоштовний калькулятор чайових. Розрахуйте суму чайових для будь-якого рахунку та розділіть підсумок між потрібною кількістю людей.', h1: 'Калькулятор чайових', subtitle: 'Розрахуйте суму чайових і розділіть рахунок між кількома людьми.' },
+  fr: { title: 'Calculatrice de pourboire — Calculer le pourboire et partager l\'addition', description: 'Calculatrice de pourboire gratuite. Calculez le montant du pourboire pour n\'importe quelle addition et répartissez le total entre plusieurs personnes.', h1: 'Calculatrice de pourboire', subtitle: 'Calculez le montant du pourboire et répartissez l\'addition entre plusieurs personnes.' },
+  lt: { title: 'Arbatpinigių Skaičiuotuvas — Apskaičiuoti arbatpinigius ir padalinti sąskaitą', description: 'Nemokamas arbatpinigių skaičiuotuvas. Apskaičiuokite arbatpinigių sumą bet kuriai sąskaitai ir padalinkite bendrą sumą tarp kelių žmonių.', h1: 'Arbatpinigių skaičiuotuvas', subtitle: 'Apskaičiuokite arbatpinigių sumą ir padalykite sąskaitą tarp kelių žmonių.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -150,6 +150,7 @@ export default async function TipPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <TipCalculator locale={locale} />
         <AdInline locale={locale} />

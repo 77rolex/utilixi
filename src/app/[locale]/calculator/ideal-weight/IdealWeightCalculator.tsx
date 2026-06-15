@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import styles from './IdealWeightCalculator.module.scss';
 
 type Props = { locale: string };
@@ -197,14 +197,23 @@ export default function IdealWeightCalculator({ locale }: Props) {
   const [results, setResults] = useState<Results | null>(null);
   const [error, setError] = useState('');
 
+  useEffect(() => {
+    const savedUnit = localStorage.getItem('utilixi_idealweight_unit') as Unit | null;
+    const savedGender = localStorage.getItem('utilixi_idealweight_gender') as Gender | null;
+    if (savedUnit === 'metric' || savedUnit === 'imperial') setUnit(savedUnit);
+    if (savedGender === 'male' || savedGender === 'female') setGender(savedGender);
+  }, []);
+
   const handleUnit = (u: Unit) => {
     setUnit(u);
     setResults(null);
     setError('');
+    localStorage.setItem('utilixi_idealweight_unit', u);
   };
 
   const handleGender = (g: Gender) => {
     setGender(g);
+    localStorage.setItem('utilixi_idealweight_gender', g);
     if (results) {
       const cm = unit === 'metric'
         ? parseFloat(heightCm)

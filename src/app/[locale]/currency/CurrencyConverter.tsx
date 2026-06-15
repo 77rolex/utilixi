@@ -416,6 +416,13 @@ export default function CurrencyConverter({ locale, rates, updatedAt }: Props) {
   const [to, setTo] = useState(DEFAULT_TO[locale] || 'EUR');
   const [ratesQuery, setRatesQuery] = useState('');
 
+  useEffect(() => {
+    const savedFrom = localStorage.getItem('utilixi_currency_from');
+    const savedTo = localStorage.getItem('utilixi_currency_to');
+    if (savedFrom && rates[savedFrom]) setFrom(savedFrom);
+    if (savedTo && rates[savedTo]) setTo(savedTo);
+  }, []);
+
   const parsed = parseFloat(amount.replace(',', '.'));
   const isValid = !isNaN(parsed) && parsed > 0 && Object.keys(rates).length > 0;
 
@@ -429,9 +436,21 @@ export default function CurrencyConverter({ locale, rates, updatedAt }: Props) {
     return convert(1, from, to, rates);
   }, [from, to, rates, isValid]);
 
+  function handleFromChange(val: string) {
+    setFrom(val);
+    localStorage.setItem('utilixi_currency_from', val);
+  }
+
+  function handleToChange(val: string) {
+    setTo(val);
+    localStorage.setItem('utilixi_currency_to', val);
+  }
+
   function handleSwap() {
     setFrom(to);
     setTo(from);
+    localStorage.setItem('utilixi_currency_from', to);
+    localStorage.setItem('utilixi_currency_to', from);
   }
 
   // All available rates: locale-top first, then alphabetical, excluding current `from`
@@ -487,7 +506,7 @@ export default function CurrencyConverter({ locale, rates, updatedAt }: Props) {
             id="cur-from"
             label={t.from}
             value={from}
-            onChange={setFrom}
+            onChange={handleFromChange}
             rates={rates}
             locale={locale}
             searchPlaceholder={t.search}
@@ -508,7 +527,7 @@ export default function CurrencyConverter({ locale, rates, updatedAt }: Props) {
             id="cur-to"
             label={t.to}
             value={to}
-            onChange={setTo}
+            onChange={handleToChange}
             rates={rates}
             locale={locale}
             searchPlaceholder={t.search}

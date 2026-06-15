@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './CryptoConverter.module.scss';
 import type { CoinData } from '../shared';
@@ -130,6 +130,23 @@ export default function CryptoConverter({ locale, coins, fiatRates }: Props) {
   const [selectedCoin, setSelectedCoin] = useState(coins[0]?.id || 'bitcoin');
   const [selectedFiat, setSelectedFiat] = useState(DEFAULT_FIAT[locale] || 'USD');
 
+  useEffect(() => {
+    const savedCoin = localStorage.getItem('utilixi_crypto_coin');
+    const savedFiat = localStorage.getItem('utilixi_crypto_fiat');
+    if (savedCoin && coins.find(c => c.id === savedCoin)) setSelectedCoin(savedCoin);
+    if (savedFiat && FIAT_CURRENCIES.includes(savedFiat)) setSelectedFiat(savedFiat);
+  }, []);
+
+  function handleCoinChange(id: string) {
+    setSelectedCoin(id);
+    localStorage.setItem('utilixi_crypto_coin', id);
+  }
+
+  function handleFiatChange(code: string) {
+    setSelectedFiat(code);
+    localStorage.setItem('utilixi_crypto_fiat', code);
+  }
+
   const rates = Object.keys(fiatRates).length > 0 ? fiatRates : FIAT_FALLBACK;
 
   const result = useMemo(() => {
@@ -182,7 +199,7 @@ export default function CryptoConverter({ locale, coins, fiatRates }: Props) {
               id="cc-coin"
               className={styles['crypto-converter__select']}
               value={selectedCoin}
-              onChange={e => setSelectedCoin(e.target.value)}
+              onChange={e => handleCoinChange(e.target.value)}
             >
               {coins.map(c => (
                 <option key={c.id} value={c.id}>
@@ -198,7 +215,7 @@ export default function CryptoConverter({ locale, coins, fiatRates }: Props) {
               id="cc-fiat"
               className={styles['crypto-converter__select']}
               value={selectedFiat}
-              onChange={e => setSelectedFiat(e.target.value)}
+              onChange={e => handleFiatChange(e.target.value)}
             >
               {FIAT_CURRENCIES.map(c => (
                 <option key={c} value={c}>{c} ({getFiatName(c, locale)})</option>

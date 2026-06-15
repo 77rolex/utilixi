@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/traffic-fine', label: 'Eismo baudų skaičiuotuvas' }, { href: '/calculator/limitation', label: 'Ieškinio senaties terminas' }, { href: '/calculator/alimony', label: 'Alimentų skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Flight Delay Compensation Calculator — EU261 & UK261',
     description: 'Check if you are entitled to flight delay compensation under EU Regulation 261/2004 or UK261. Find out how much you can claim — €250, €400 or €600 — based on flight distance and delay duration.',
     h1: 'Flight Delay Compensation Calculator',
+    subtitle: 'Find out how much EU261 compensation you are entitled to for a delayed or cancelled flight.',
   },
   ru: {
     title: 'EU261 — Компенсация за задержку рейса €250–€600 онлайн',
     description: 'Калькулятор EU261: проверьте право на компенсацию за задержку или отмену рейса. Сумма €250, €400 или €600 в зависимости от расстояния. Бесплатный расчёт онлайн по Регламенту ЕС 261/2004.',
     h1: 'Калькулятор компенсации за задержку рейса EU261',
+    subtitle: 'Узнайте размер компенсации по EU261 за задержку или отмену рейса.',
   },
   uk: {
     title: 'Компенсація за затримку рейсу — EU261/2004 онлайн',
     description: 'Перевірте право на компенсацію за затримку рейсу згідно з Регламентом ЄС 261/2004. Дізнайтеся суму — €250, €400 або €600 — залежно від дальності та затримки. Безкоштовний розрахунок онлайн.',
     h1: 'Калькулятор компенсації за затримку рейсу',
+    subtitle: 'Дізнайтеся розмір компенсації за правилами ЄС261 за затримку або скасування рейсу.',
   },
   fr: {
     title: 'Calculateur Indemnisation Retard de Vol — UE 261/2004 gratuit',
     description: 'Vérifiez si vous avez droit à une indemnisation pour retard de vol selon le règlement UE 261/2004. Découvrez le montant — €250, €400 ou €600 — selon la distance et le retard. Calcul gratuit en ligne.',
     h1: 'Calculateur d\'indemnisation retard de vol',
+    subtitle: 'Découvrez votre indemnisation EU261 pour un vol retardé ou annulé.',
   },
   lt: {
     title: 'Skrydžio Vėlavimo Kompensacijos Skaičiuotuvas — ES 261/2004',
     description: 'Patikrinkite, ar turite teisę gauti kompensaciją už skrydžio vėlavimą pagal ES reglamentą 261/2004. Sužinokite sumą — €250, €400 ar €600. Nemokamas skaičiavimas internetu.',
     h1: 'Skrydžio vėlavimo kompensacijos skaičiuotuvas',
+    subtitle: 'Sužinokite, kokia ES261 kompensacija jums priklauso už vėluojantį ar atšauktą skrydį.',
   },
 };
 
@@ -173,6 +178,7 @@ export default async function FlightDelayPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <FlightDelayCalculator locale={locale} />
         <AdInline locale={locale} />

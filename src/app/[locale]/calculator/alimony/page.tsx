@@ -20,31 +20,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/limitation', label: 'Ieškinio senaties terminas' }, { href: '/calculator/traffic-fine', label: 'Eismo baudų skaičiuotuvas' }, { href: '/calculator/flight-delay', label: 'Kompensacija už skrydžio vėlavimą' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Child Support Calculator — Calculate Alimony Online',
     description: 'Free child support calculator online. Estimate monthly alimony payments based on income, number of children, and your country\'s family law. Covers Russia, Kazakhstan, Ukraine, France, Lithuania and more.',
     h1: 'Child Support Calculator',
+    subtitle: 'Estimate monthly child support payments based on parental income and your country\'s rules.',
   },
   ru: {
     title: 'Калькулятор алиментов онлайн — расчёт по РФ, РК и Украине',
     description: 'Бесплатный калькулятор алиментов онлайн. Рассчитайте ориентировочную сумму алиментов по чистому доходу и законодательству вашей страны. Учитывает РФ, РК (Казахстан), Украину, Францию и другие страны.',
     h1: 'Калькулятор алиментов',
+    subtitle: 'Рассчитайте ежемесячные алименты по доходу и правилам вашей страны.',
   },
   uk: {
     title: 'Калькулятор аліментів онлайн — розрахунок по Україні та СНД',
     description: 'Безкоштовний калькулятор аліментів онлайн. Розрахуйте орієнтовну суму аліментів за чистим доходом та законодавством вашої країни. Враховує Україну, Росію, Казахстан та інші країни.',
     h1: 'Калькулятор аліментів',
+    subtitle: 'Розрахуйте щомісячні аліменти за доходом та правилами вашої країни.',
   },
   fr: {
     title: 'Calculateur Pension Alimentaire — Calcul gratuit en France',
     description: 'Calculateur de pension alimentaire gratuit. Estimez le montant mensuel selon vos revenus nets, le nombre d\'enfants et le barème du Ministère de la Justice. Couvre la France, la Belgique, la Suisse et d\'autres pays.',
     h1: 'Calculateur de pension alimentaire',
+    subtitle: 'Estimez la pension alimentaire mensuelle selon le revenu et les règles de votre pays.',
   },
   lt: {
     title: 'Alimentų Skaičiuotuvas — Apskaičiuokite internetu',
     description: 'Nemokamas alimentų skaičiuotuvas internetu. Apskaičiuokite apytikslę mėnesinę alimentų sumą pagal pajamas, vaikų skaičių ir jūsų šalies įstatymus.',
     h1: 'Alimentų skaičiuotuvas',
+    subtitle: 'Apskaičiuokite mėnesines alimentų išmokas pagal pajamas ir jūsų šalies taisykles.',
   },
 };
 
@@ -173,6 +178,7 @@ export default async function AlimonyPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <AlimonyCalculator locale={locale} />
         <AdInline locale={locale} />

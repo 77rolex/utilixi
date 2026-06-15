@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import styles from './WaterIntakeCalculator.module.scss';
 
 type Unit = 'metric' | 'imperial';
@@ -164,6 +164,18 @@ export default function WaterIntakeCalculator({ locale }: { locale: string }) {
   const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState('');
 
+  useEffect(() => {
+    const saved = localStorage.getItem('utilixi_water_unit') as Unit | null;
+    if (saved === 'metric' || saved === 'imperial') setUnit(saved);
+  }, []);
+
+  function handleUnit(u: Unit) {
+    setUnit(u);
+    setResult(null);
+    setError('');
+    localStorage.setItem('utilixi_water_unit', u);
+  }
+
   const activityOptions = [
     t.actSedentary,
     t.actLight,
@@ -201,7 +213,7 @@ export default function WaterIntakeCalculator({ locale }: { locale: string }) {
               key={u}
               type="button"
               className={`${styles['water-widget__toggle-btn']} ${unit === u ? styles['water-widget__toggle-btn--active'] : ''}`}
-              onClick={() => { setUnit(u); setResult(null); setError(''); }}
+              onClick={() => handleUnit(u)}
             >
               {u === 'metric' ? t.metric : t.imperial}
             </button>

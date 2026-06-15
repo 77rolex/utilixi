@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './PaceCalculator.module.scss';
 
 const T: Record<string, {
@@ -42,6 +42,17 @@ export default function PaceCalculator({ locale }: { locale: string }) {
   const [paceSec, setPaceSec] = useState('');
   const [result, setResult] = useState<Result | null>(null);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('utilixi_pace_unit');
+    if (saved === 'km' || saved === 'miles') setUnit(saved);
+  }, []);
+
+  function handleUnit(u: 'km' | 'miles') {
+    setUnit(u);
+    setResult(null);
+    localStorage.setItem('utilixi_pace_unit', u);
+  }
 
   const KM_PER_MILE = 1.60934;
 
@@ -88,8 +99,8 @@ export default function PaceCalculator({ locale }: { locale: string }) {
       </div>
 
       <div className={styles.widget__unit_toggle}>
-        <button type="button" className={`${styles['widget__unit-btn']}${unit === 'km' ? ` ${styles['widget__unit-btn--active']}` : ''}`} onClick={() => { setUnit('km'); setResult(null); }}>{t.km}</button>
-        <button type="button" className={`${styles['widget__unit-btn']}${unit === 'miles' ? ` ${styles['widget__unit-btn--active']}` : ''}`} onClick={() => { setUnit('miles'); setResult(null); }}>{t.miles}</button>
+        <button type="button" className={`${styles['widget__unit-btn']}${unit === 'km' ? ` ${styles['widget__unit-btn--active']}` : ''}`} onClick={() => handleUnit('km')}>{t.km}</button>
+        <button type="button" className={`${styles['widget__unit-btn']}${unit === 'miles' ? ` ${styles['widget__unit-btn--active']}` : ''}`} onClick={() => handleUnit('miles')}>{t.miles}</button>
       </div>
 
       <div className={styles.widget__field}>

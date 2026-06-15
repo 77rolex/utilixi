@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/tools/password-generator', label: 'Slaptažodžių generatorius' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/calculator/engineering', label: 'Inžinerinis skaičiuotuvas' }, { href: '/calculator/tip', label: 'Arbatpinigių skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Word Counter — Count Words, Characters & Reading Time', description: 'Free online word counter. Count words, characters (with and without spaces), sentences, paragraphs, and estimate reading time. Includes top keyword density analysis.', h1: 'Word Counter' },
-  ru: { title: 'Счётчик слов — считайте слова, символы и время чтения', description: 'Бесплатный онлайн-счётчик слов. Считайте слова, символы (с пробелами и без), предложения, абзацы и оценивайте время чтения. Анализ частоты ключевых слов.', h1: 'Счётчик слов и символов' },
-  uk: { title: 'Лічильник слів — рахуйте слова, символи та час читання', description: 'Безкоштовний онлайн-лічильник слів. Рахуйте слова, символи (з пробілами та без), речення, абзаци та оцінюйте час читання. Аналіз частоти ключових слів.', h1: 'Лічильник слів і символів' },
-  fr: { title: 'Compteur de mots — Comptez mots, caractères et temps de lecture', description: 'Compteur de mots gratuit en ligne. Comptez les mots, caractères (avec et sans espaces), phrases, paragraphes et estimez le temps de lecture. Analyse de densité des mots-clés.', h1: 'Compteur de mots' },
-  lt: { title: 'Žodžių skaičiuotuvas — skaičiuokite žodžius, simbolius ir skaitymo laiką', description: 'Nemokamas internetinis žodžių skaičiuotuvas. Skaičiuokite žodžius, simbolius (su tarpais ir be), sakinius, pastraipas ir įvertinkite skaitymo laiką.', h1: 'Žodžių ir simbolių skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Word Counter — Count Words, Characters & Reading Time', description: 'Free online word counter. Count words, characters (with and without spaces), sentences, paragraphs, and estimate reading time. Includes top keyword density analysis.', h1: 'Word Counter', subtitle: 'Count words, characters, sentences, and paragraphs in your text — with reading time estimate.' },
+  ru: { title: 'Счётчик слов — считайте слова, символы и время чтения', description: 'Бесплатный онлайн-счётчик слов. Считайте слова, символы (с пробелами и без), предложения, абзацы и оценивайте время чтения. Анализ частоты ключевых слов.', h1: 'Счётчик слов и символов', subtitle: 'Считайте слова, символы, предложения и абзацы в тексте — с оценкой времени чтения.' },
+  uk: { title: 'Лічильник слів — рахуйте слова, символи та час читання', description: 'Безкоштовний онлайн-лічильник слів. Рахуйте слова, символи (з пробілами та без), речення, абзаци та оцінюйте час читання. Аналіз частоти ключових слів.', h1: 'Лічильник слів і символів', subtitle: 'Рахуйте слова, символи, речення та абзаци в тексті — з оцінкою часу читання.' },
+  fr: { title: 'Compteur de mots — Comptez mots, caractères et temps de lecture', description: 'Compteur de mots gratuit en ligne. Comptez les mots, caractères (avec et sans espaces), phrases, paragraphes et estimez le temps de lecture. Analyse de densité des mots-clés.', h1: 'Compteur de mots', subtitle: 'Comptez les mots, caractères, phrases et paragraphes de votre texte — avec estimation du temps de lecture.' },
+  lt: { title: 'Žodžių skaičiuotuvas — skaičiuokite žodžius, simbolius ir skaitymo laiką', description: 'Nemokamas internetinis žodžių skaičiuotuvas. Skaičiuokite žodžius, simbolius (su tarpais ir be), sakinius, pastraipas ir įvertinkite skaitymo laiką.', h1: 'Žodžių ir simbolių skaičiuotuvas', subtitle: 'Skaičiuokite žodžius, simbolius, sakinius ir pastraipas tekste — su skaitymo laiko įvertinimu.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -153,6 +153,7 @@ export default async function WordCounterPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{m.h1}</h1>
+        {m.subtitle && <p className={styles.page__subtitle}>{m.subtitle}</p>}
         <ToolActions />
         <WordCounter locale={locale} />
         <AdInline locale={locale} />

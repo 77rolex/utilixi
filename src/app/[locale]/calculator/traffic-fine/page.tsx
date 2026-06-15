@@ -20,12 +20,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/alimony', label: 'Alimentų skaičiuotuvas' }, { href: '/calculator/limitation', label: 'Ieškinio senaties terminas' }, { href: '/calculator/flight-delay', label: 'Kompensacija už skrydžio vėlavimą' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Traffic Fine Calculator — Fines by Country', description: 'Check traffic fines for speeding, red light violations, phone use and drunk driving in Germany, France, USA, Ukraine, Russia and more. Penalty points and license suspension info included.', h1: 'Traffic Fine Calculator' },
-  ru: { title: 'Штрафы ПДД — размер штрафа по стране', description: 'Узнайте размер штрафов ПДД за превышение скорости, проезд на красный, телефон и пьяное вождение в Германии, Франции, США, Украине, России и других странах.', h1: 'Штрафы ПДД' },
-  uk: { title: 'Штрафи ПДР — розмір штрафу за країною', description: 'Дізнайтеся розміри штрафів за перевищення швидкості, проїзд на червоне світло, використання телефону та нетверезе водіння у різних країнах.', h1: 'Штрафи ПДР' },
-  fr: { title: 'Calculateur d\'amendes routières — par pays', description: 'Consultez les amendes routières pour excès de vitesse, feu rouge, téléphone au volant et alcool en Allemagne, France, Pologne, USA et autres pays.', h1: 'Calculateur d\'amendes routières' },
-  lt: { title: 'Eismo baudų skaičiuotuvas — baudos pagal šalį', description: 'Patikrinkite eismo baudas už greičio viršijimą, raudoną šviesą, telefoną ir neblaivų vairavimą Vokietijoje, Prancūzijoje, JAV, Ukrainoje ir kitose šalyse.', h1: 'Eismo baudų skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Traffic Fine Calculator — Fines by Country', description: 'Check traffic fines for speeding, red light violations, phone use and drunk driving in Germany, France, USA, Ukraine, Russia and more. Penalty points and license suspension info included.', h1: 'Traffic Fine Calculator', subtitle: 'Look up traffic fines for common violations by country — speeding, red lights, and more.' },
+  ru: { title: 'Штрафы ПДД — размер штрафа по стране', description: 'Узнайте размер штрафов ПДД за превышение скорости, проезд на красный, телефон и пьяное вождение в Германии, Франции, США, Украине, России и других странах.', h1: 'Штрафы ПДД', subtitle: 'Узнайте размер штрафов за нарушения ПДД по стране — превышение скорости, проезд на красный и другие.' },
+  uk: { title: 'Штрафи ПДР — розмір штрафу за країною', description: 'Дізнайтеся розміри штрафів за перевищення швидкості, проїзд на червоне світло, використання телефону та нетверезе водіння у різних країнах.', h1: 'Штрафи ПДР', subtitle: 'Дізнайтеся розміри штрафів за порушення ПДР за країною — перевищення швидкості, червоне світло та інше.' },
+  fr: { title: 'Calculateur d\'amendes routières — par pays', description: 'Consultez les amendes routières pour excès de vitesse, feu rouge, téléphone au volant et alcool en Allemagne, France, Pologne, USA et autres pays.', h1: 'Calculateur d\'amendes routières', subtitle: 'Consultez les amendes routières par pays — excès de vitesse, feu rouge, téléphone et plus.' },
+  lt: { title: 'Eismo baudų skaičiuotuvas — baudos pagal šalį', description: 'Patikrinkite eismo baudas už greičio viršijimą, raudoną šviesą, telefoną ir neblaivų vairavimą Vokietijoje, Prancūzijoje, JAV, Ukrainoje ir kitose šalyse.', h1: 'Eismo baudų skaičiuotuvas', subtitle: 'Peržiūrėkite eismo baudas pagal šalį — greičio viršijimas, raudonas šviesoforas ir daugiau.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -151,6 +151,7 @@ export default async function TrafficFinePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <TrafficFineCalculator locale={locale} />
         <AdInline locale={locale} />

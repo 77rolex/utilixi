@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/compound-interest', label: 'Sudėtinių palūkanų skaičiuotuvas' }, { href: '/converter/units', label: 'Vienetų keitiklis' }, { href: '/calculator/gpa', label: 'GPA skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Scientific Calculator Online — Engineering Calculator Free', description: 'Free online scientific calculator with sin, cos, tan, log, ln, sqrt, powers and more. Supports DEG/RAD mode. Works on all devices without installation.', h1: 'Scientific Calculator' },
-  ru: { title: 'Инженерный калькулятор онлайн — научный калькулятор бесплатно', description: 'Бесплатный онлайн инженерный калькулятор с sin, cos, tan, log, ln, sqrt, степенями и другими функциями. Поддержка градусов и радиан.', h1: 'Инженерный калькулятор' },
-  uk: { title: 'Інженерний калькулятор онлайн — науковий калькулятор безкоштовно', description: 'Безкоштовний онлайн інженерний калькулятор з sin, cos, tan, log, ln, sqrt, степенями та іншими функціями. Підтримка градусів і радіан.', h1: 'Інженерний калькулятор' },
-  fr: { title: 'Calculatrice scientifique en ligne — Calculatrice ingénieur gratuite', description: 'Calculatrice scientifique en ligne gratuite avec sin, cos, tan, log, ln, racine carrée, puissances et plus. Mode DEG/RAD. Fonctionne sur tous les appareils.', h1: 'Calculatrice scientifique' },
-  lt: { title: 'Mokslinis skaičiuotuvas online — inžinerinis skaičiuotuvas nemokamai', description: 'Mokslinis skaičiuotuvas online nemokamai. Sin, cos, tan, log, ln, sqrt, laipsniai, faktorialas, konstantos π ir e. Palaiko DEG/RAD režimą. Veikia visuose įrenginiuose.', h1: 'Mokslinis skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Scientific Calculator Online — Engineering Calculator Free', description: 'Free online scientific calculator with sin, cos, tan, log, ln, sqrt, powers and more. Supports DEG/RAD mode. Works on all devices without installation.', h1: 'Scientific Calculator', subtitle: 'A scientific calculator with trigonometric functions, logarithms, powers, and more.' },
+  ru: { title: 'Инженерный калькулятор онлайн — научный калькулятор бесплатно', description: 'Бесплатный онлайн инженерный калькулятор с sin, cos, tan, log, ln, sqrt, степенями и другими функциями. Поддержка градусов и радиан.', h1: 'Инженерный калькулятор', subtitle: 'Инженерный калькулятор с тригонометрическими функциями, логарифмами, степенями и другим.' },
+  uk: { title: 'Інженерний калькулятор онлайн — науковий калькулятор безкоштовно', description: 'Безкоштовний онлайн інженерний калькулятор з sin, cos, tan, log, ln, sqrt, степенями та іншими функціями. Підтримка градусів і радіан.', h1: 'Інженерний калькулятор', subtitle: 'Інженерний калькулятор з тригонометричними функціями, логарифмами, степенями та іншим.' },
+  fr: { title: 'Calculatrice scientifique en ligne — Calculatrice ingénieur gratuite', description: 'Calculatrice scientifique en ligne gratuite avec sin, cos, tan, log, ln, racine carrée, puissances et plus. Mode DEG/RAD. Fonctionne sur tous les appareils.', h1: 'Calculatrice scientifique', subtitle: 'Une calculatrice scientifique avec fonctions trigonométriques, logarithmes, puissances et plus.' },
+  lt: { title: 'Mokslinis skaičiuotuvas online — inžinerinis skaičiuotuvas nemokamai', description: 'Mokslinis skaičiuotuvas online nemokamai. Sin, cos, tan, log, ln, sqrt, laipsniai, faktorialas, konstantos π ir e. Palaiko DEG/RAD režimą. Veikia visuose įrenginiuose.', h1: 'Mokslinis skaičiuotuvas', subtitle: 'Mokslinis skaičiuotuvas su trigonometrinėmis funkcijomis, logaritmais ir laipsniais.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -153,6 +153,7 @@ export default async function EngineeringCalculatorPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{m.h1}</h1>
+        {m.subtitle && <p className={styles.page__subtitle}>{m.subtitle}</p>}
         <ToolActions />
         <EngineeringCalculator locale={locale} />
         <AdInline locale={locale} />

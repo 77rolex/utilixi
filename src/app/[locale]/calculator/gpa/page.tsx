@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/converter/grade-system', label: 'Pažymių sistemų konverteris' }, { href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/calculator/date-diff', label: 'Datų skirtumas' }, { href: '/calculator/salary', label: 'Atlyginimo skaičiuotuvas' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'GPA Calculator — Calculate My GPA Online Free (4.0 Scale)',
     description: 'Free GPA calculator online. Enter courses, letter grades and credit hours to instantly calculate your Grade Point Average on the 4.0 scale. Works for high school, middle school, college and university. Determine my GPA in seconds.',
     h1: 'GPA Calculator',
+    subtitle: 'Calculate your Grade Point Average from your course grades and credit hours.',
   },
   ru: {
     title: 'Калькулятор GPA — рассчитать средний балл онлайн бесплатно',
     description: 'Бесплатный калькулятор GPA онлайн. Добавьте курсы, выберите буквенные оценки и кредиты — мгновенно рассчитайте средний балл по шкале 4.0. Подходит для вузов США, Европы и международных программ.',
     h1: 'Калькулятор GPA',
+    subtitle: 'Рассчитайте средний балл GPA по оценкам курсов и кредитным часам.',
   },
   uk: {
     title: 'Калькулятор GPA — розрахувати середній бал онлайн безкоштовно',
     description: 'Безкоштовний калькулятор GPA онлайн. Додайте курси, оберіть буквені оцінки та кредити — миттєво розрахуйте середній бал за шкалою 4.0. Підходить для університетів США, Європи та міжнародних програм.',
     h1: 'Калькулятор GPA',
+    subtitle: 'Розрахуйте середній бал GPA за оцінками курсів і кредитними годинами.',
   },
   fr: {
     title: 'Calculatrice GPA Gratuite — Calculer ma GPA en ligne (échelle 4,0)',
     description: 'Calculatrice GPA gratuite en ligne. Entrez vos cours, notes littérales et crédits pour calculer instantanément votre GPA sur l\'échelle 4,0 américaine. Idéale pour les études aux États-Unis, au Canada ou en programmes internationaux.',
     h1: 'Calculatrice GPA',
+    subtitle: 'Calculez votre moyenne GPA à partir des notes et des crédits de vos cours.',
   },
   lt: {
     title: 'GPA Skaičiuotuvas — Apskaičiuoti GPA internetu nemokamai',
     description: 'Nemokamas GPA skaičiuotuvas internetu. Pridėkite kursus, pasirinkite raidinius pažymius ir kreditus — iš karto apskaičiuokite vidurkį pagal 4.0 skalę. Tinka JAV, Europos ir tarptautinių programų studentams.',
     h1: 'GPA skaičiuotuvas',
+    subtitle: 'Apskaičiuokite savo GPA pagal kursų pažymius ir kreditų valandas.',
   },
 };
 
@@ -164,6 +169,7 @@ export default async function GpaPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <GpaCalculator locale={locale} />
         <AdInline locale={locale} />

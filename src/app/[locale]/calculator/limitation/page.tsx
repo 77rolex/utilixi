@@ -20,12 +20,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/alimony', label: 'Alimentų skaičiuotuvas' }, { href: '/calculator/traffic-fine', label: 'Eismo baudų skaičiuotuvas' }, { href: '/calculator/flight-delay', label: 'Kompensacija už skrydžio vėlavimą' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/date-diff', label: 'Datų skirtumas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Statute of Limitations Calculator — By Country & Claim Type', description: 'Find out the statute of limitations for contracts, personal injury, debt, employment, and more in Germany, France, Poland, Lithuania, Ukraine, Russia, the USA, and the UK.', h1: 'Statute of Limitations Calculator' },
-  ru: { title: 'Срок исковой давности — по стране и типу иска', description: 'Узнайте срок исковой давности по договорным спорам, причинению вреда, взысканию долга, трудовым спорам и другим требованиям в Германии, Франции, Польше, Литве, Украине, России, США и Великобритании.', h1: 'Калькулятор срока исковой давности' },
-  uk: { title: 'Строк позовної давності — за країною та типом позову', description: 'Дізнайтеся строк позовної давності для договірних спорів, заподіяної шкоди, стягнення боргу, трудових спорів та інших вимог у різних країнах.', h1: 'Калькулятор строку позовної давності' },
-  fr: { title: 'Calculateur de délai de prescription — par pays et type de réclamation', description: 'Trouvez le délai de prescription pour les litiges contractuels, préjudices corporels, recouvrement de créances, litiges prud\'homaux et plus encore en Allemagne, France, Pologne, Lituanie, Ukraine, Russie, États-Unis et Royaume-Uni.', h1: 'Calculateur de délai de prescription' },
-  lt: { title: 'Ieškinio senaties termino skaičiuotuvas — pagal šalį ir tipą', description: 'Sužinokite ieškinio senaties terminą sutartiniams ginčams, asmeninei žalai, skolų išieškojimui, darbo ginčams ir kt. Vokietijoje, Prancūzijoje, Lenkijoje, Lietuvoje, Ukrainoje, Rusijoje, JAV ir JK.', h1: 'Ieškinio senaties termino skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Statute of Limitations Calculator — By Country & Claim Type', description: 'Find out the statute of limitations for contracts, personal injury, debt, employment, and more in Germany, France, Poland, Lithuania, Ukraine, Russia, the USA, and the UK.', h1: 'Statute of Limitations Calculator', subtitle: 'Check the legal deadline to file a claim by country and type of dispute.' },
+  ru: { title: 'Срок исковой давности — по стране и типу иска', description: 'Узнайте срок исковой давности по договорным спорам, причинению вреда, взысканию долга, трудовым спорам и другим требованиям в Германии, Франции, Польше, Литве, Украине, России, США и Великобритании.', h1: 'Калькулятор срока исковой давности', subtitle: 'Узнайте срок исковой давности по стране и типу спора.' },
+  uk: { title: 'Строк позовної давності — за країною та типом позову', description: 'Дізнайтеся строк позовної давності для договірних спорів, заподіяної шкоди, стягнення боргу, трудових спорів та інших вимог у різних країнах.', h1: 'Калькулятор строку позовної давності', subtitle: 'Дізнайтеся строк позовної давності за країною та типом спору.' },
+  fr: { title: 'Calculateur de délai de prescription — par pays et type de réclamation', description: 'Trouvez le délai de prescription pour les litiges contractuels, préjudices corporels, recouvrement de créances, litiges prud\'homaux et plus encore en Allemagne, France, Pologne, Lituanie, Ukraine, Russie, États-Unis et Royaume-Uni.', h1: 'Calculateur de délai de prescription', subtitle: 'Vérifiez le délai de prescription légal selon le pays et le type de litige.' },
+  lt: { title: 'Ieškinio senaties termino skaičiuotuvas — pagal šalį ir tipą', description: 'Sužinokite ieškinio senaties terminą sutartiniams ginčams, asmeninei žalai, skolų išieškojimui, darbo ginčams ir kt. Vokietijoje, Prancūzijoje, Lenkijoje, Lietuvoje, Ukrainoje, Rusijoje, JAV ir JK.', h1: 'Ieškinio senaties termino skaičiuotuvas', subtitle: 'Patikrinkite ieškinio senaties terminą pagal šalį ir ginčo tipą.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -151,6 +151,7 @@ export default async function LimitationPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <LimitationCalculator locale={locale} />
         <AdInline locale={locale} />

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './AlimonyCalculator.module.scss';
 
 type LangKey = 'en' | 'ru' | 'uk' | 'fr' | 'lt';
@@ -178,6 +178,17 @@ export default function AlimonyCalculator({ locale }: { locale: string }) {
   const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState('');
 
+  useEffect(() => {
+    const saved = localStorage.getItem('utilixi_alimony_country');
+    if (saved && countryList.includes(saved)) setCountry(saved);
+  }, []);
+
+  function handleCountry(code: string) {
+    setCountry(code);
+    setResult(null);
+    localStorage.setItem('utilixi_alimony_country', code);
+  }
+
   const cfg = COUNTRIES[country];
 
   const calculate = () => {
@@ -198,7 +209,7 @@ export default function AlimonyCalculator({ locale }: { locale: string }) {
           <select
             className={styles['alimony-calc__select']}
             value={country}
-            onChange={(e) => { setCountry(e.target.value); setResult(null); }}
+            onChange={(e) => handleCountry(e.target.value)}
           >
             {countryList.map((code) => (
               <option key={code} value={code}>{COUNTRY_NAMES[code][lang]}</option>

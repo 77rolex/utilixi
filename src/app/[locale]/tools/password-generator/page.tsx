@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/tools/word-counter', label: 'Žodžių skaitiklis' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }, { href: '/calculator/engineering', label: 'Inžinerinis skaičiuotuvas' }, { href: '/calculator/basic', label: 'Paprastas skaičiuotuvas' }, { href: '/converter/color', label: 'Spalvų keitiklis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Strong Password Generator — Free Random Password Creator Online',
     description: 'Free strong password generator online. Create secure random passwords up to 64 characters, or generate a memorable password from your own keyword. No data is sent to any server — 100% private, runs in your browser.',
     h1: 'Password Generator',
+    subtitle: 'Generate strong, random passwords with custom length and character set options.',
   },
   ru: {
     title: 'Генератор паролей онлайн — создать надёжный пароль бесплатно',
     description: 'Бесплатный генератор паролей онлайн. Создайте случайный надёжный пароль до 64 символов или сгенерируйте пароль из ключевого слова. Данные никуда не отправляются — всё работает в браузере.',
     h1: 'Генератор паролей',
+    subtitle: 'Создайте надёжный случайный пароль с нужной длиной и набором символов.',
   },
   uk: {
     title: 'Генератор паролів онлайн — безкоштовний надійний пароль',
     description: 'Безкоштовний генератор паролів онлайн. Створіть випадковий надійний пароль до 64 символів або згенеруйте пароль зі свого ключового слова. Дані нікуди не надсилаються — все працює у браузері.',
     h1: 'Генератор паролів',
+    subtitle: 'Створіть надійний випадковий пароль з потрібною довжиною та набором символів.',
   },
   fr: {
     title: 'Générateur de Mot de Passe Gratuit — Créer un Mot de Passe Sécurisé',
     description: 'Générateur de mot de passe gratuit en ligne. Créez un mot de passe aléatoire fort jusqu\'à 64 caractères ou générez un mot de passe mémorisable depuis votre propre mot-clé. Aucune donnée envoyée à un serveur.',
     h1: 'Générateur de mot de passe',
+    subtitle: 'Générez des mots de passe forts et aléatoires avec longueur et options de caractères.',
   },
   lt: {
     title: 'Slaptažodžių Generatorius Internetu — Stiprus Slaptažodis Nemokamai',
     description: 'Nemokamas slaptažodžių generatorius internetu. Sukurkite atsitiktinį stiprų slaptažodį iki 64 simbolių arba generuokite slaptažodį iš savo rakto žodžio. Jokie duomenys nesiunčiami į serverį.',
     h1: 'Slaptažodžių generatorius',
+    subtitle: 'Sugeneruokite stiprų atsitiktinį slaptažodį su pasirinktu ilgiu ir simbolių rinkiniu.',
   },
 };
 
@@ -173,6 +178,7 @@ export default async function PasswordGeneratorPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <PasswordGenerator locale={locale} />
         <AdInline locale={locale} />

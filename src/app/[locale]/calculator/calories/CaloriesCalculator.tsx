@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import styles from './CaloriesCalculator.module.scss';
 
 type Props = { locale: string };
@@ -220,7 +220,24 @@ export default function CaloriesCalculator({ locale }: Props) {
   const [result, setResult] = useState<{ bmr: number; tdee: number } | null>(null);
   const [error, setError] = useState('');
 
-  const handleUnit = (u: Unit) => { setUnit(u); setResult(null); setError(''); };
+  useEffect(() => {
+    const savedUnit = localStorage.getItem('utilixi_calories_unit') as Unit | null;
+    const savedGender = localStorage.getItem('utilixi_calories_gender') as Gender | null;
+    if (savedUnit === 'metric' || savedUnit === 'imperial') setUnit(savedUnit);
+    if (savedGender === 'male' || savedGender === 'female') setGender(savedGender);
+  }, []);
+
+  const handleUnit = (u: Unit) => {
+    setUnit(u);
+    setResult(null);
+    setError('');
+    localStorage.setItem('utilixi_calories_unit', u);
+  };
+
+  const handleGender = (g: Gender) => {
+    setGender(g);
+    localStorage.setItem('utilixi_calories_gender', g);
+  };
 
   const handleCalculate = useCallback(() => {
     const a = parseInt(age, 10);
@@ -279,7 +296,7 @@ export default function CaloriesCalculator({ locale }: Props) {
               id="cal-gender"
               className={styles['calories-widget__select']}
               value={gender}
-              onChange={(e) => setGender(e.target.value as Gender)}
+              onChange={(e) => handleGender(e.target.value as Gender)}
             >
               <option value="male">{t.male}</option>
               <option value="female">{t.female}</option>

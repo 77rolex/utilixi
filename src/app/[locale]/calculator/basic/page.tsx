@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/engineering', label: 'Inžinerinis skaičiuotuvas' }, { href: '/calculator/percentage', label: 'Procentų skaičiuotuvas' }, { href: '/calculator/discount', label: 'Nuolaidos skaičiuotuvas' }, { href: '/calculator/tip', label: 'Arbatpinigių skaičiuotuvas' }, { href: '/tools/word-counter', label: 'Žodžių skaitiklis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Online Calculator — Basic Calculator Free', description: 'Free online basic calculator. Perform addition, subtraction, multiplication and division instantly. Works on all devices, no install needed.', h1: 'Basic Calculator' },
-  ru: { title: 'Онлайн калькулятор — бесплатный простой калькулятор', description: 'Бесплатный простой онлайн-калькулятор. Выполняйте сложение, вычитание, умножение и деление мгновенно. Работает на всех устройствах.', h1: 'Простой калькулятор' },
-  uk: { title: 'Онлайн калькулятор — безкоштовний простий калькулятор', description: 'Безкоштовний простий онлайн-калькулятор. Виконуйте додавання, віднімання, множення та ділення миттєво. Працює на всіх пристроях.', h1: 'Простий калькулятор' },
-  fr: { title: 'Calculatrice en ligne — Calculatrice basique gratuite', description: 'Calculatrice basique en ligne gratuite. Effectuez additions, soustractions, multiplications et divisions instantanément. Fonctionne sur tous les appareils.', h1: 'Calculatrice basique' },
-  lt: { title: 'Internetinis skaičiuotuvas — nemokamas paprastas skaičiuotuvas', description: 'Nemokamas paprastas internetinis skaičiuotuvas. Atlikite sudėtį, atimtį, dauginimą ir dalinimą akimirksniu. Veikia visuose įrenginiuose.', h1: 'Paprastas skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Online Calculator — Basic Calculator Free', description: 'Free online basic calculator. Perform addition, subtraction, multiplication and division instantly. Works on all devices, no install needed.', h1: 'Basic Calculator', subtitle: 'A simple online calculator for everyday arithmetic — add, subtract, multiply, and divide.' },
+  ru: { title: 'Онлайн калькулятор — бесплатный простой калькулятор', description: 'Бесплатный простой онлайн-калькулятор. Выполняйте сложение, вычитание, умножение и деление мгновенно. Работает на всех устройствах.', h1: 'Простой калькулятор', subtitle: 'Простой онлайн-калькулятор для повседневных вычислений — сложение, вычитание, умножение, деление.' },
+  uk: { title: 'Онлайн калькулятор — безкоштовний простий калькулятор', description: 'Безкоштовний простий онлайн-калькулятор. Виконуйте додавання, віднімання, множення та ділення миттєво. Працює на всіх пристроях.', h1: 'Простий калькулятор', subtitle: 'Простий онлайн-калькулятор для щоденних обчислень — додавання, віднімання, множення, ділення.' },
+  fr: { title: 'Calculatrice en ligne — Calculatrice basique gratuite', description: 'Calculatrice basique en ligne gratuite. Effectuez additions, soustractions, multiplications et divisions instantanément. Fonctionne sur tous les appareils.', h1: 'Calculatrice basique', subtitle: 'Une calculatrice simple pour le quotidien — addition, soustraction, multiplication et division.' },
+  lt: { title: 'Internetinis skaičiuotuvas — nemokamas paprastas skaičiuotuvas', description: 'Nemokamas paprastas internetinis skaičiuotuvas. Atlikite sudėtį, atimtį, dauginimą ir dalinimą akimirksniu. Veikia visuose įrenginiuose.', h1: 'Paprastas skaičiuotuvas', subtitle: 'Paprastas internetinis skaičiuotuvas kasdienėms aritmetinėms operacijoms.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -153,6 +153,7 @@ export default async function BasicCalculatorPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{m.h1}</h1>
+        {m.subtitle && <p className={styles.page__subtitle}>{m.subtitle}</p>}
         <ToolActions />
         <BasicCalculator locale={locale} />
         <AdInline locale={locale} />

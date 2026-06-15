@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import styles from './FreelanceRateCalculator.module.scss';
 
@@ -94,6 +94,18 @@ export default function FreelanceRateCalculator({ locale, initialCurrency, initi
   const [hoursPerWeek, setHoursPerWeek] = useState(initialHours || '30');
   const [copied, setCopied] = useState(false);
 
+  useEffect(() => {
+    if (!initialCurrency) {
+      const saved = localStorage.getItem('utilixi_freelance_currency');
+      if (saved && CURRENCIES.find(c => c.code === saved)) setCurrency(saved);
+    }
+  }, []);
+
+  function handleCurrency(code: string) {
+    setCurrency(code);
+    localStorage.setItem('utilixi_freelance_currency', code);
+  }
+
   const [result, setResult] = useState<Result | null>(() => {
     if (initialCurrency || initialIncome || initialExpenses || initialTax || initialWeeks || initialHours) {
       return computeResult(
@@ -135,7 +147,7 @@ export default function FreelanceRateCalculator({ locale, initialCurrency, initi
         <div className={styles['freelance-widget__row']}>
           <div className={styles['freelance-widget__field']}>
             <label className={styles['freelance-widget__label']}>{t('currency', locale)}</label>
-            <select className={styles['freelance-widget__select']} value={currency} onChange={e => setCurrency(e.target.value)}>
+            <select className={styles['freelance-widget__select']} value={currency} onChange={e => handleCurrency(e.target.value)}>
               {CURRENCIES.map(c => <option key={c.code} value={c.code}>{c.label}</option>)}
             </select>
           </div>

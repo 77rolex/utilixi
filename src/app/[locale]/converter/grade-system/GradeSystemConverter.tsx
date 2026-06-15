@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './GradeSystemConverter.module.scss';
 
 type SystemKey = 'us' | 'uk_percent' | 'ects' | 'ru' | 'de';
@@ -105,6 +105,18 @@ export default function GradeSystemConverter({ locale }: { locale: string }) {
   const [results, setResults] = useState<{ key: SystemKey; formatted: string }[] | null>(null);
   const [error, setError] = useState('');
 
+  useEffect(() => {
+    const saved = localStorage.getItem('utilixi_grades_source') as SystemKey | null;
+    if (saved && SYSTEM_KEYS.includes(saved)) setSourceSystem(saved);
+  }, []);
+
+  function handleSourceChange(key: SystemKey) {
+    setSourceSystem(key);
+    setResults(null);
+    setError('');
+    localStorage.setItem('utilixi_grades_source', key);
+  }
+
   function convert() {
     setError('');
     const val = parseFloat(gradeValue);
@@ -137,7 +149,7 @@ export default function GradeSystemConverter({ locale }: { locale: string }) {
             <select
               className={styles['grade-converter__select']}
               value={sourceSystem}
-              onChange={e => { setSourceSystem(e.target.value as SystemKey); setResults(null); setError(''); }}
+              onChange={e => handleSourceChange(e.target.value as SystemKey)}
             >
               {SYSTEM_KEYS.map(k => (
                 <option key={k} value={k}>{getSystemLabel(k, locale)}</option>

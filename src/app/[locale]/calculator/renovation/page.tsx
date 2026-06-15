@@ -19,31 +19,36 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/property-tax', label: 'Nekilnojamojo turto mokesčio skaičiuotuvas' }, { href: '/calculator/mortgage', label: 'Hipotekos skaičiuotuvas' }, { href: '/calculator/loan', label: 'Paskolos skaičiuotuvas' }, { href: '/calculator/income-tax', label: 'Pajamų mokestis' }, { href: '/calculator/rent-vs-buy', label: 'Nuoma vs Pirkimas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
   en: {
     title: 'Home Renovation Cost Calculator UK — Cost per m² by Room & Quality',
     description: 'Free renovation cost calculator for the UK, Belgium, Germany, France, Poland, Ukraine and USA. Estimate home renovation costs per m² by room type and finish quality. Covers bathroom, kitchen, full apartment and house renovation.',
     h1: 'Renovation Cost Calculator',
+    subtitle: 'Estimate home renovation costs based on room dimensions and the level of finishing.',
   },
   ru: {
     title: 'Калькулятор стоимости ремонта квартиры — по стране и типу помещения',
     description: 'Бесплатный калькулятор стоимости ремонта квартиры или дома онлайн. Рассчитайте затраты за квадратный метр по Германии, Франции, Польше, Литве, Украине и США. Эконом, стандарт и премиум отделка.',
     h1: 'Калькулятор стоимости ремонта',
+    subtitle: 'Рассчитайте стоимость ремонта по площади помещений и классу отделки.',
   },
   uk: {
     title: 'Калькулятор вартості ремонту квартири — за країною та типом приміщення',
     description: 'Безкоштовний калькулятор вартості ремонту квартири або будинку онлайн. Розрахуйте витрати за квадратний метр по Великій Британії, Бельгії, Німеччині, Франції, Польщі, Литві, Україні та США.',
     h1: 'Калькулятор вартості ремонту',
+    subtitle: 'Розрахуйте вартість ремонту за площею приміщень і класом оздоблення.',
   },
   fr: {
     title: 'Calculateur Coût Rénovation Maison — Prix au m² France & Belgique',
     description: 'Calculateur de coût de rénovation gratuit pour la Belgique, la France, l\'Allemagne, la Pologne et d\'autres pays. Estimez le prix au m² selon le type de pièce et la qualité des finitions.',
     h1: 'Calculateur de coût de rénovation',
+    subtitle: 'Estimez le coût de rénovation selon la surface des pièces et le niveau de finition.',
   },
   lt: {
     title: 'Remonto kainos skaičiuotuvas — kaina už m² pagal šalį ir patalpą',
     description: 'Nemokamas remonto kainos skaičiuotuvas. Apskaičiuokite buto ar namo remonto kainą kvadratiniam metrui Jungtinėje Karalystėje, Belgijoje, Lietuvoje, Vokietijoje, Prancūzijoje ir kitose šalyse.',
     h1: 'Remonto kainos skaičiuotuvas',
+    subtitle: 'Įvertinkite renovacijos išlaidas pagal patalpų plotą ir apdailos lygį.',
   },
 };
 
@@ -174,6 +179,7 @@ export default async function RenovationPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <RenovationCalculator locale={locale} />
         <AdInline locale={locale} />

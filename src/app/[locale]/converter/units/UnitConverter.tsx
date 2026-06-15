@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './UnitConverter.module.scss';
 
 type LangKey = 'en' | 'ru' | 'uk' | 'fr' | 'lt';
@@ -215,12 +215,25 @@ export default function UnitConverter({ locale }: { locale: string }) {
   const [toKey, setToKey] = useState('ft');
   const [inputValue, setInputValue] = useState('1');
 
+  useEffect(() => {
+    const savedCat = localStorage.getItem('utilixi_units_cat');
+    if (savedCat) {
+      const newCat = CATEGORIES.find(c => c.key === savedCat);
+      if (newCat) {
+        setCatKey(savedCat);
+        setFromKey(newCat.units[0].key);
+        setToKey(newCat.units[1]?.key ?? newCat.units[0].key);
+      }
+    }
+  }, []);
+
   const handleCatChange = (key: string) => {
     const newCat = CATEGORIES.find(c => c.key === key)!;
     setCatKey(key);
     setFromKey(newCat.units[0].key);
     setToKey(newCat.units[1]?.key ?? newCat.units[0].key);
     setInputValue('1');
+    localStorage.setItem('utilixi_units_cat', key);
   };
 
   const handleSwap = () => {

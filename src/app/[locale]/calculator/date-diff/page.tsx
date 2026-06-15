@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/age', label: 'Amžiaus skaičiuotuvas' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }, { href: '/calculator/limitation', label: 'Ieškinio senaties terminas' }, { href: '/calculator/pregnancy', label: 'Nėštumo skaičiuotuvas' }, { href: '/calculator/ovulation', label: 'Ovuliacijos skaičiuotuvas' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Date Difference Calculator — Days Between Two Dates', description: 'Free date difference calculator. Find the exact number of days, weeks, months and years between any two dates. Also shows working days and weekends.', h1: 'Date Difference Calculator' },
-  ru: { title: 'Калькулятор разницы дат — дней между двумя датами', description: 'Бесплатный калькулятор разницы дат. Найдите точное количество дней, недель, месяцев и лет между любыми двумя датами. Также показывает рабочие и выходные дни.', h1: 'Калькулятор разницы дат' },
-  uk: { title: 'Калькулятор різниці дат — днів між двома датами', description: 'Безкоштовний калькулятор різниці дат. Знайдіть точну кількість днів, тижнів, місяців і років між будь-якими двома датами. Також показує робочі та вихідні дні.', h1: 'Калькулятор різниці дат' },
-  fr: { title: 'Calculatrice de différence de dates — Jours entre deux dates', description: 'Calculatrice gratuite de différence de dates. Trouvez le nombre exact de jours, semaines, mois et années entre deux dates. Affiche aussi les jours ouvrés et les week-ends.', h1: 'Calculatrice de différence de dates' },
-  lt: { title: 'Datų Skirtumo Skaičiuotuvas — Dienos tarp dviejų datų', description: 'Nemokamas datų skirtumo skaičiuotuvas. Raskite tikslų dienų, savaičių, mėnesių ir metų skaičių tarp bet kurių dviejų datų. Rodo ir darbo dienas, ir savaitgalius.', h1: 'Datų skirtumo skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Date Difference Calculator — Days Between Two Dates', description: 'Free date difference calculator. Find the exact number of days, weeks, months and years between any two dates. Also shows working days and weekends.', h1: 'Date Difference Calculator', subtitle: 'Find the exact number of days, weeks, months, or years between any two dates.' },
+  ru: { title: 'Калькулятор разницы дат — дней между двумя датами', description: 'Бесплатный калькулятор разницы дат. Найдите точное количество дней, недель, месяцев и лет между любыми двумя датами. Также показывает рабочие и выходные дни.', h1: 'Калькулятор разницы дат', subtitle: 'Найдите точное количество дней, недель, месяцев или лет между любыми двумя датами.' },
+  uk: { title: 'Калькулятор різниці дат — днів між двома датами', description: 'Безкоштовний калькулятор різниці дат. Знайдіть точну кількість днів, тижнів, місяців і років між будь-якими двома датами. Також показує робочі та вихідні дні.', h1: 'Калькулятор різниці дат', subtitle: 'Знайдіть точну кількість днів, тижнів, місяців або років між будь-якими двома датами.' },
+  fr: { title: 'Calculatrice de différence de dates — Jours entre deux dates', description: 'Calculatrice gratuite de différence de dates. Trouvez le nombre exact de jours, semaines, mois et années entre deux dates. Affiche aussi les jours ouvrés et les week-ends.', h1: 'Calculatrice de différence de dates', subtitle: 'Trouvez le nombre exact de jours, semaines, mois ou années entre deux dates.' },
+  lt: { title: 'Datų Skirtumo Skaičiuotuvas — Dienos tarp dviejų datų', description: 'Nemokamas datų skirtumo skaičiuotuvas. Raskite tikslų dienų, savaičių, mėnesių ir metų skaičių tarp bet kurių dviejų datų. Rodo ir darbo dienas, ir savaitgalius.', h1: 'Datų skirtumo skaičiuotuvas', subtitle: 'Raskite tikslų dienų, savaičių, mėnesių ar metų skaičių tarp bet kurių dviejų datų.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -150,6 +150,7 @@ export default async function DateDiffPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <DateDiffCalculator locale={locale} />
         <AdInline locale={locale} />

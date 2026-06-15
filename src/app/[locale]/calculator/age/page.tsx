@@ -19,12 +19,12 @@ const RELATED: Record<string, { href: string; label: string }[]> = {
   lt: [{ href: '/calculator/date-diff', label: 'Datų skirtumas' }, { href: '/calculator/pregnancy', label: 'Nėštumo skaičiuotuvas' }, { href: '/calculator/biological-age', label: 'Biologinis amžius' }, { href: '/calculator/ovulation', label: 'Ovuliacijos skaičiuotuvas' }, { href: '/tools/countdown', label: 'Atgalinio skaičiavimo laikmatis' }],
 };
 
-const META: Record<string, { title: string; description: string; h1: string }> = {
-  en: { title: 'Age Calculator — Calculate Exact Age in Years, Months & Days', description: 'Free age calculator. Find your exact age in years, months and days from your date of birth. Shows total days, weeks, and days until your next birthday.', h1: 'Age Calculator' },
-  ru: { title: 'Калькулятор возраста — точный возраст в годах, месяцах и днях', description: 'Бесплатный калькулятор возраста. Узнайте точный возраст в годах, месяцах и днях по дате рождения. Показывает общее количество дней и дней до следующего дня рождения.', h1: 'Калькулятор возраста' },
-  uk: { title: 'Калькулятор віку — точний вік у роках, місяцях і днях', description: 'Безкоштовний калькулятор віку. Дізнайтесь точний вік у роках, місяцях і днях за датою народження. Показує загальну кількість днів і днів до наступного дня народження.', h1: 'Калькулятор віку' },
-  fr: { title: 'Quel âge ai-je ? Calculatrice d\'âge exact en ligne', description: 'Calculez votre âge exact en années, mois et jours à partir de votre date de naissance. Résultat instantané : âge précis, total de jours vécus et décompte jusqu\'à votre prochain anniversaire.', h1: 'Calculatrice d\'âge' },
-  lt: { title: 'Amžiaus Skaičiuotuvas — Tikslus amžius metais, mėnesiais ir dienomis', description: 'Nemokamas amžiaus skaičiuotuvas. Sužinokite tikslų amžių metais, mėnesiais ir dienomis pagal gimimo datą. Rodo bendrą dienų skaičių ir dienas iki kito gimtadienio.', h1: 'Amžiaus skaičiuotuvas' },
+const META: Record<string, { title: string; description: string; h1: string; subtitle: string }> = {
+  en: { title: 'Age Calculator — Calculate Exact Age in Years, Months & Days', description: 'Free age calculator. Find your exact age in years, months and days from your date of birth. Shows total days, weeks, and days until your next birthday.', h1: 'Age Calculator', subtitle: 'Enter your date of birth to find your exact age in years, months, and days.' },
+  ru: { title: 'Калькулятор возраста — точный возраст в годах, месяцах и днях', description: 'Бесплатный калькулятор возраста. Узнайте точный возраст в годах, месяцах и днях по дате рождения. Показывает общее количество дней и дней до следующего дня рождения.', h1: 'Калькулятор возраста', subtitle: 'Введите дату рождения, чтобы узнать точный возраст в годах, месяцах и днях.' },
+  uk: { title: 'Калькулятор віку — точний вік у роках, місяцях і днях', description: 'Безкоштовний калькулятор віку. Дізнайтесь точний вік у роках, місяцях і днях за датою народження. Показує загальну кількість днів і днів до наступного дня народження.', h1: 'Калькулятор віку', subtitle: 'Введіть дату народження, щоб дізнатися точний вік у роках, місяцях і днях.' },
+  fr: { title: 'Quel âge ai-je ? Calculatrice d\'âge exact en ligne', description: 'Calculez votre âge exact en années, mois et jours à partir de votre date de naissance. Résultat instantané : âge précis, total de jours vécus et décompte jusqu\'à votre prochain anniversaire.', h1: 'Calculatrice d\'âge', subtitle: 'Entrez votre date de naissance pour connaître votre âge exact en années, mois et jours.' },
+  lt: { title: 'Amžiaus Skaičiuotuvas — Tikslus amžius metais, mėnesiais ir dienomis', description: 'Nemokamas amžiaus skaičiuotuvas. Sužinokite tikslų amžių metais, mėnesiais ir dienomis pagal gimimo datą. Rodo bendrą dienų skaičių ir dienas iki kito gimtadienio.', h1: 'Amžiaus skaičiuotuvas', subtitle: 'Įveskite gimimo datą ir sužinokite tikslų amžių metais, mėnesiais ir dienomis.' },
 };
 
 const CONTENT: Record<string, { description: string; faqTitle: string; faqs: { q: string; a: string }[] }> = {
@@ -150,6 +150,7 @@ export default async function AgePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageLayout sidebar={<AdSidebar locale={locale} />}>
         <h1 className={styles.page__title}>{meta.h1}</h1>
+        {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
         <AgeCalculator locale={locale} />
         <AdInline locale={locale} />
