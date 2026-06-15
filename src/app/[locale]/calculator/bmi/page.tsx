@@ -6,6 +6,7 @@ import BmiCalculator from './BmiCalculator';
 import PageLayout from '@/components/layout/PageLayout';
 import AdSidebar from '@/components/ui/AdSidebar';
 import AdInline from '@/components/ui/AdInline';
+import AdPlaceholder from '@/components/ui/AdPlaceholder';
 import RelatedTools from '@/components/ui/RelatedTools';
 import styles from './page.module.scss';
 
@@ -339,6 +340,7 @@ export default async function BmiPage({ params, searchParams }: Props) {
         <h1 className={styles.page__title}>{meta.h1}</h1>
         {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
+        <RelatedTools locale={locale} tools={related} />
         <BmiCalculator locale={locale} initialUnit={sp.unit} initialHeightCm={sp.heightCm} initialHeightFt={sp.heightFt} initialHeightIn={sp.heightIn} initialWeight={sp.weight} />
 
         <AdInline locale={locale} />
@@ -347,7 +349,7 @@ export default async function BmiPage({ params, searchParams }: Props) {
             <p key={i} className={styles.page__description}>{para}</p>
           ))}
 
-          <RelatedTools locale={locale} tools={related} />
+          <AdPlaceholder locale={locale} size="banner" />
           <section className={styles.faq}>
             <h2 className={styles.faq__title}>{content.faqTitle}</h2>
             <div className={styles.faq__list}>

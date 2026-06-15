@@ -7,6 +7,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import AdSidebar from '@/components/ui/AdSidebar';
 import AdInline from '@/components/ui/AdInline';
 import DisclaimerNote from '@/components/ui/DisclaimerNote';
+import AdPlaceholder from '@/components/ui/AdPlaceholder';
 import RelatedTools from '@/components/ui/RelatedTools';
 import styles from './page.module.scss';
 
@@ -153,6 +154,7 @@ export default async function RoiPage({ params }: Props) {
         <h1 className={styles.page__title}>{meta.h1}</h1>
         {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
+        <RelatedTools locale={locale} tools={related} />
         <RoiCalculator locale={locale} />
         <AdInline locale={locale} />
         <DisclaimerNote locale={locale} />
@@ -160,7 +162,7 @@ export default async function RoiPage({ params }: Props) {
           {content.description.split('\n\n').map((para, i) => (
             <p key={i} className={styles.page__description}>{para}</p>
           ))}
-          <RelatedTools locale={locale} tools={related} />
+          <AdPlaceholder locale={locale} size="banner" />
           <section className={styles.faq}>
             <h2 className={styles.faq__title}>{content.faqTitle}</h2>
             <div className={styles.faq__list}>
