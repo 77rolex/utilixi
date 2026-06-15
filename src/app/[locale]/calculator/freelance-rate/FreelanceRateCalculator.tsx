@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import styles from './FreelanceRateCalculator.module.scss';
 
 const CURRENCIES = [
@@ -29,6 +30,8 @@ const L: Record<string, Record<string, string>> = {
   summaryLabel: { en: 'Summary', ru: 'Итог', uk: 'Підсумок', fr: 'Résumé', lt: 'Santrauka' },
   hintExpenses: { en: 'Software, hardware, office, etc.', ru: 'ПО, оборудование, офис и т.д.', uk: 'ПЗ, обладнання, офіс тощо', fr: 'Logiciels, matériel, bureau, etc.', lt: 'Programinė įranga, įranga, biuras ir kt.' },
   hintTax:      { en: 'Income tax + social contributions', ru: 'НДФЛ + страховые взносы', uk: 'ПДФО + соціальні внески', fr: 'Impôt + cotisations sociales', lt: 'Pajamų mokestis + socialinis draudimas' },
+  copy:         { en: 'Copy result', ru: 'Скопировать', uk: 'Копіювати', fr: 'Copier', lt: 'Kopijuoti' },
+  copied:       { en: 'Copied!', ru: 'Скопировано!', uk: 'Скопійовано!', fr: 'Copié !', lt: 'Nukopijuota!' },
 };
 
 function t(key: string, locale: string): string {
@@ -48,36 +51,79 @@ type Result = {
   annualRevenue: number; billableHours: number; symbol: string;
 };
 
-export default function FreelanceRateCalculator({ locale }: { locale: string }) {
-  const [currency, setCurrency] = useState('USD');
-  const [targetIncome, setTargetIncome] = useState('60000');
-  const [expenses, setExpenses] = useState('5000');
-  const [taxRate, setTaxRate] = useState('25');
-  const [weeksOff, setWeeksOff] = useState('4');
-  const [hoursPerWeek, setHoursPerWeek] = useState('30');
-  const [result, setResult] = useState<Result | null>(null);
+type Props = {
+  locale: string;
+  initialCurrency?: string;
+  initialIncome?: string;
+  initialExpenses?: string;
+  initialTax?: string;
+  initialWeeks?: string;
+  initialHours?: string;
+};
+
+function computeResult(income: string, expenses: string, taxRate: string, weeksOff: string, hoursPerWeek: string, currency: string): Result | null {
+  const inc = parseFloat(income) || 0;
+  const exp = parseFloat(expenses) || 0;
+  const tax = parseFloat(taxRate) / 100 || 0;
+  const weeks = parseFloat(weeksOff) || 0;
+  const hours = parseFloat(hoursPerWeek) || 0;
+
+  const workingWeeks = 52 - weeks;
+  const billableHours = workingWeeks * hours;
+  if (billableHours <= 0) return null;
+
+  const annualRevenue = (inc + exp) / (1 - tax);
+  const hourly = annualRevenue / billableHours;
+  const daily = hourly * 8;
+  const weekly = hourly * hours;
+  const monthly = annualRevenue / 12;
+  const sym = CURRENCIES.find(c => c.code === currency)?.symbol ?? '$';
+
+  return { hourly, daily, weekly, monthly, annualRevenue, billableHours, symbol: sym };
+}
+
+export default function FreelanceRateCalculator({ locale, initialCurrency, initialIncome, initialExpenses, initialTax, initialWeeks, initialHours }: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [currency, setCurrency] = useState(initialCurrency || 'USD');
+  const [targetIncome, setTargetIncome] = useState(initialIncome || '60000');
+  const [expenses, setExpenses] = useState(initialExpenses || '5000');
+  const [taxRate, setTaxRate] = useState(initialTax || '25');
+  const [weeksOff, setWeeksOff] = useState(initialWeeks || '4');
+  const [hoursPerWeek, setHoursPerWeek] = useState(initialHours || '30');
+  const [copied, setCopied] = useState(false);
+
+  const [result, setResult] = useState<Result | null>(() => {
+    if (initialCurrency || initialIncome || initialExpenses || initialTax || initialWeeks || initialHours) {
+      return computeResult(
+        initialIncome || '60000', initialExpenses || '5000', initialTax || '25',
+        initialWeeks || '4', initialHours || '30', initialCurrency || 'USD'
+      );
+    }
+    return null;
+  });
 
   function calculate() {
-    const income = parseFloat(targetIncome) || 0;
-    const exp = parseFloat(expenses) || 0;
-    const tax = parseFloat(taxRate) / 100 || 0;
-    const weeks = parseFloat(weeksOff) || 0;
-    const hours = parseFloat(hoursPerWeek) || 0;
+    const res = computeResult(targetIncome, expenses, taxRate, weeksOff, hoursPerWeek, currency);
+    if (!res) return;
+    setResult(res);
+    router.replace(`${pathname}?${new URLSearchParams({ currency, income: targetIncome, expenses, tax: taxRate, weeks: weeksOff, hours: hoursPerWeek })}`, { scroll: false });
+  }
 
-    const workingWeeks = 52 - weeks;
-    const billableHours = workingWeeks * hours;
-    if (billableHours <= 0) return;
-
-    // Gross needed = (net target + expenses) / (1 - tax rate)
-    const annualRevenue = (income + exp) / (1 - tax);
-    const hourly = annualRevenue / billableHours;
-    const daily = hourly * 8;
-    const weekly = hourly * hours;
-    const monthly = annualRevenue / 12;
-
-    const sym = CURRENCIES.find(c => c.code === currency)?.symbol ?? '$';
-
-    setResult({ hourly, daily, weekly, monthly, annualRevenue, billableHours, symbol: sym });
+  function handleCopy() {
+    if (!result) return;
+    const text = [
+      `${t('hourlyRate', locale)}: ${result.symbol}${result.hourly.toFixed(2)}`,
+      `${t('daily', locale)}: ${result.symbol}${fmt(result.daily)}`,
+      `${t('weekly', locale)}: ${result.symbol}${fmt(result.weekly)}`,
+      `${t('monthly', locale)}: ${result.symbol}${fmt(result.monthly)}`,
+      `${t('annual', locale)}: ${result.symbol}${fmt(result.annualRevenue)}`,
+    ].join('\n');
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
   }
 
   const fmt = (n: number, dec = 0) => n.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
@@ -160,6 +206,17 @@ export default function FreelanceRateCalculator({ locale }: { locale: string }) 
 
       {result && (
         <div className={styles['freelance-widget__results']}>
+          <div className={styles['freelance-widget__copy']}>
+            <button
+              type="button"
+              className={`${styles['freelance-widget__copy-btn']}${copied ? ` ${styles['freelance-widget__copy-btn--copied']}` : ''}`}
+              onClick={handleCopy}
+              aria-label={t('copy', locale)}
+            >
+              {copied ? '✓' : '⎘'} {copied ? t('copied', locale) : t('copy', locale)}
+            </button>
+          </div>
+
           <div className={styles['freelance-widget__result-main']}>
             <span className={styles['freelance-widget__result-main-label']}>{t('hourlyRate', locale)}</span>
             <span className={styles['freelance-widget__result-main-value']}>{result.symbol}{fmt(result.hourly, 2)}</span>
@@ -168,23 +225,23 @@ export default function FreelanceRateCalculator({ locale }: { locale: string }) 
           <div className={styles['freelance-widget__result-grid']}>
             <div className={styles['freelance-widget__result-item']}>
               <span className={styles['freelance-widget__result-label']}>{t('daily', locale)}</span>
-              <span className={styles['freelance-widget__result-value']}>{result.symbol}{fmt(result.daily, 0)}</span>
+              <span className={styles['freelance-widget__result-value']}>{result.symbol}{fmt(result.daily)}</span>
             </div>
             <div className={styles['freelance-widget__result-item']}>
               <span className={styles['freelance-widget__result-label']}>{t('weekly', locale)}</span>
-              <span className={styles['freelance-widget__result-value']}>{result.symbol}{fmt(result.weekly, 0)}</span>
+              <span className={styles['freelance-widget__result-value']}>{result.symbol}{fmt(result.weekly)}</span>
             </div>
             <div className={styles['freelance-widget__result-item']}>
               <span className={styles['freelance-widget__result-label']}>{t('monthly', locale)}</span>
-              <span className={styles['freelance-widget__result-value']}>{result.symbol}{fmt(result.monthly, 0)}</span>
+              <span className={styles['freelance-widget__result-value']}>{result.symbol}{fmt(result.monthly)}</span>
             </div>
             <div className={styles['freelance-widget__result-item']}>
               <span className={styles['freelance-widget__result-label']}>{t('annual', locale)}</span>
-              <span className={styles['freelance-widget__result-value']}>{result.symbol}{fmt(result.annualRevenue, 0)}</span>
+              <span className={styles['freelance-widget__result-value']}>{result.symbol}{fmt(result.annualRevenue)}</span>
             </div>
             <div className={styles['freelance-widget__result-item']}>
               <span className={styles['freelance-widget__result-label']}>{t('billableHours', locale)}</span>
-              <span className={styles['freelance-widget__result-value']}>{fmt(result.billableHours, 0)}</span>
+              <span className={styles['freelance-widget__result-value']}>{fmt(result.billableHours)}</span>
             </div>
           </div>
 

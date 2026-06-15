@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import styles from './IncomeTaxCalculator.module.scss';
 
 type Bracket = { from: number; to: number; rate: number };
@@ -9,7 +10,6 @@ type CountryConfig = {
   symbol: string;
   brackets: Bracket[];
   deduction?: number;
-  note?: Record<string, string>;
 };
 
 const COUNTRIES: Record<string, CountryConfig> = {
@@ -98,12 +98,10 @@ function calcTax(income: number, config: CountryConfig): { tax: number; brackets
   const taxableIncome = Math.max(0, income - (config.deduction ?? 0));
   let totalTax = 0;
   const bracketResults = config.brackets.map(b => {
-    const from = b.from;
-    const to = Math.min(b.to, Infinity);
-    const taxable = Math.max(0, Math.min(taxableIncome, to) - from);
+    const taxable = Math.max(0, Math.min(taxableIncome, b.to) - b.from);
     const taxInBracket = taxable * b.rate;
     totalTax += taxInBracket;
-    return { from, to: b.to, rate: b.rate, taxInBracket, active: taxable > 0 };
+    return { from: b.from, to: b.to, rate: b.rate, taxInBracket, active: taxable > 0 };
   });
   return { tax: totalTax, brackets: bracketResults };
 }
@@ -124,6 +122,8 @@ const L: Record<string, Record<string, string>> = {
     fr: 'Calcul simplifié. N\'inclut pas les cotisations sociales, les taxes locales ni les déductions spécifiques.',
     lt: 'Supaprastintas skaičiavimas. Neapima socialinio draudimo, vietinių mokesčių ar individualių atskaitymų.',
   },
+  copy:    { en: 'Copy result', ru: 'Скопировать', uk: 'Копіювати', fr: 'Copier', lt: 'Kopijuoti' },
+  copied:  { en: 'Copied!', ru: 'Скопировано!', uk: 'Скопійовано!', fr: 'Copié !', lt: 'Nukopijuota!' },
 };
 
 function t(key: string, locale: string): string {
@@ -135,24 +135,56 @@ type Result = {
   brackets: { from: number; to: number; rate: number; taxInBracket: number; active: boolean }[];
 };
 
-export default function IncomeTaxCalculator({ locale }: { locale: string }) {
-  const [country, setCountry] = useState('US');
-  const [income, setIncome] = useState('60000');
-  const [result, setResult] = useState<Result | null>(null);
+type Props = { locale: string; initialCountry?: string; initialIncome?: string };
+
+function computeResult(country: string, incomeStr: string): Result | null {
+  const incomeNum = parseFloat(incomeStr);
+  if (!incomeNum || incomeNum <= 0) return null;
+  const config = COUNTRIES[country];
+  if (!config) return null;
+  const { tax, brackets } = calcTax(incomeNum, config);
+  const net = incomeNum - tax;
+  return {
+    tax: Math.round(tax),
+    effectiveRate: (tax / incomeNum) * 100,
+    net: Math.round(net),
+    monthlyNet: Math.round(net / 12),
+    symbol: config.symbol,
+    brackets,
+  };
+}
+
+export default function IncomeTaxCalculator({ locale, initialCountry, initialIncome }: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [country, setCountry] = useState(initialCountry && COUNTRIES[initialCountry] ? initialCountry : 'US');
+  const [income, setIncome] = useState(initialIncome || '60000');
+  const [copied, setCopied] = useState(false);
+
+  const [result, setResult] = useState<Result | null>(() =>
+    initialCountry && initialIncome ? computeResult(initialCountry, initialIncome) : null
+  );
 
   function calculate() {
-    const incomeNum = parseFloat(income);
-    if (!incomeNum || incomeNum <= 0) return;
-    const config = COUNTRIES[country];
-    const { tax, brackets } = calcTax(incomeNum, config);
-    const net = incomeNum - tax;
-    setResult({
-      tax: Math.round(tax),
-      effectiveRate: incomeNum > 0 ? (tax / incomeNum) * 100 : 0,
-      net: Math.round(net),
-      monthlyNet: Math.round(net / 12),
-      symbol: config.symbol,
-      brackets,
+    const res = computeResult(country, income);
+    if (!res) return;
+    setResult(res);
+    router.replace(`${pathname}?${new URLSearchParams({ country, income })}`, { scroll: false });
+  }
+
+  function handleCopy() {
+    if (!result) return;
+    const fmt = (n: number) => n.toLocaleString('en-US');
+    const text = [
+      `${t('taxAmount', locale)}: ${result.symbol}${fmt(result.tax)}`,
+      `${t('effectiveRate', locale)}: ${result.effectiveRate.toFixed(1)}%`,
+      `${t('netIncome', locale)}: ${result.symbol}${fmt(result.net)}`,
+      `${t('monthlyNet', locale)}: ${result.symbol}${fmt(result.monthlyNet)}`,
+    ].join('\n');
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     });
   }
 
@@ -189,6 +221,17 @@ export default function IncomeTaxCalculator({ locale }: { locale: string }) {
 
       {result && (
         <div className={styles['income-tax-widget__results']}>
+          <div className={styles['income-tax-widget__copy']}>
+            <button
+              type="button"
+              className={`${styles['income-tax-widget__copy-btn']}${copied ? ` ${styles['income-tax-widget__copy-btn--copied']}` : ''}`}
+              onClick={handleCopy}
+              aria-label={t('copy', locale)}
+            >
+              {copied ? '✓' : '⎘'} {copied ? t('copied', locale) : t('copy', locale)}
+            </button>
+          </div>
+
           <div className={styles['income-tax-widget__result-grid']}>
             <div className={styles['income-tax-widget__result-item']}>
               <span className={styles['income-tax-widget__result-label']}>{t('taxAmount', locale)}</span>

@@ -1,15 +1,18 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import styles from './MortgageCalculator.module.scss';
 
 type Props = {
   locale: string;
+  initialAmount?: string;
+  initialRate?: string;
+  initialTerm?: string;
 };
 
 const T: Record<string, Record<string, string>> = {
   en: {
-    title: 'Mortgage Calculator',
     loanAmount: 'Loan Amount',
     interestRate: 'Annual Interest Rate (%)',
     loanTerm: 'Loan Term (years)',
@@ -24,9 +27,10 @@ const T: Record<string, Record<string, string>> = {
     errorInvalid: 'Please fill all fields with valid positive numbers.',
     errorRate: 'Interest rate must be less than 100%.',
     errorTerm: 'Loan term must be 50 years or less.',
+    copy: 'Copy result',
+    copied: 'Copied!',
   },
   ru: {
-    title: 'Ипотечный калькулятор',
     loanAmount: 'Сумма кредита',
     interestRate: 'Годовая ставка (%)',
     loanTerm: 'Срок кредита (лет)',
@@ -41,9 +45,10 @@ const T: Record<string, Record<string, string>> = {
     errorInvalid: 'Заполните все поля корректными положительными числами.',
     errorRate: 'Процентная ставка должна быть менее 100%.',
     errorTerm: 'Срок кредита не может превышать 50 лет.',
+    copy: 'Скопировать',
+    copied: 'Скопировано!',
   },
   uk: {
-    title: 'Іпотечний калькулятор',
     loanAmount: 'Сума кредиту',
     interestRate: 'Річна ставка (%)',
     loanTerm: 'Термін кредиту (років)',
@@ -58,9 +63,10 @@ const T: Record<string, Record<string, string>> = {
     errorInvalid: 'Заповніть усі поля коректними додатними числами.',
     errorRate: 'Відсоткова ставка має бути менше 100%.',
     errorTerm: 'Термін кредиту не може перевищувати 50 років.',
+    copy: 'Копіювати',
+    copied: 'Скопійовано!',
   },
   fr: {
-    title: 'Calculatrice de Prêt Immobilier',
     loanAmount: 'Montant du prêt',
     interestRate: 'Taux annuel (%)',
     loanTerm: 'Durée du prêt (ans)',
@@ -75,9 +81,10 @@ const T: Record<string, Record<string, string>> = {
     errorInvalid: 'Veuillez remplir tous les champs avec des nombres positifs valides.',
     errorRate: 'Le taux d\'intérêt doit être inférieur à 100%.',
     errorTerm: 'La durée du prêt ne peut pas dépasser 50 ans.',
+    copy: 'Copier',
+    copied: 'Copié !',
   },
   lt: {
-    title: 'Hipotekos Skaičiuotuvas',
     loanAmount: 'Paskolos suma',
     interestRate: 'Metinė palūkanų norma (%)',
     loanTerm: 'Paskolos terminas (metai)',
@@ -92,6 +99,8 @@ const T: Record<string, Record<string, string>> = {
     errorInvalid: 'Užpildykite visus laukus teigiamais skaičiais.',
     errorRate: 'Palūkanų norma turi būti mažesnė nei 100%.',
     errorTerm: 'Paskolos terminas negali viršyti 50 metų.',
+    copy: 'Kopijuoti',
+    copied: 'Nukopijuota!',
   },
 };
 
@@ -116,14 +125,26 @@ function formatNumber(value: number, locale: string): string {
   }).format(value);
 }
 
-export default function MortgageCalculator({ locale }: Props) {
+export default function MortgageCalculator({ locale, initialAmount = '', initialRate = '', initialTerm = '' }: Props) {
   const t = T[locale] || T.en;
+  const router = useRouter();
+  const pathname = usePathname();
 
-  const [amount, setAmount] = useState('');
-  const [rate, setRate] = useState('');
-  const [term, setTerm] = useState('');
-  const [result, setResult] = useState<{ monthly: number; total: number; interest: number } | null>(null);
+  const [amount, setAmount] = useState(initialAmount);
+  const [rate, setRate] = useState(initialRate);
+  const [term, setTerm] = useState(initialTerm);
   const [error, setError] = useState('');
+  const [copied, setCopied] = useState(false);
+
+  const [result, setResult] = useState<{ monthly: number; total: number; interest: number } | null>(() => {
+    const a = parseFloat(initialAmount);
+    const r = parseFloat(initialRate);
+    const y = parseFloat(initialTerm);
+    if (a > 0 && r > 0 && r <= 100 && y > 0 && y <= 50 && !isNaN(a) && !isNaN(r) && !isNaN(y)) {
+      return calculateMortgage(a, r, y);
+    }
+    return null;
+  });
 
   const handleCalculate = useCallback(() => {
     const a = parseFloat(amount.replace(/\s/g, '').replace(',', '.'));
@@ -147,8 +168,23 @@ export default function MortgageCalculator({ locale }: Props) {
     }
 
     setError('');
-    setResult(calculateMortgage(a, r, y));
-  }, [amount, rate, term]);
+    const res = calculateMortgage(a, r, y);
+    setResult(res);
+    router.replace(`${pathname}?${new URLSearchParams({ amount, rate, term })}`, { scroll: false });
+  }, [amount, rate, term, t, router, pathname]);
+
+  const handleCopy = useCallback(() => {
+    if (!result) return;
+    const text = [
+      `${t.monthlyPayment}: ${t.currency}${formatNumber(result.monthly, locale)}`,
+      `${t.totalPayment}: ${t.currency}${formatNumber(result.total, locale)}`,
+      `${t.totalInterest}: ${t.currency}${formatNumber(result.interest, locale)}`,
+    ].join('\n');
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }, [result, locale, t]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') handleCalculate();
@@ -232,6 +268,16 @@ export default function MortgageCalculator({ locale }: Props) {
 
       {result && (
         <div className={styles['mortgage-widget__results']}>
+          <div className={styles['mortgage-widget__copy']}>
+            <button
+              type="button"
+              className={`${styles['mortgage-widget__copy-btn']}${copied ? ` ${styles['mortgage-widget__copy-btn--copied']}` : ''}`}
+              onClick={handleCopy}
+              aria-label={t.copy}
+            >
+              {copied ? '✓' : '⎘'} {copied ? t.copied : t.copy}
+            </button>
+          </div>
           <div className={styles['mortgage-widget__result-item']}>
             <span className={styles['mortgage-widget__result-label']}>{t.monthlyPayment}</span>
             <span className={styles['mortgage-widget__result-value']}>

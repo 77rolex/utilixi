@@ -6,6 +6,7 @@ import DiabetesRiskCalculator from './DiabetesRiskCalculator';
 import PageLayout from '@/components/layout/PageLayout';
 import AdSidebar from '@/components/ui/AdSidebar';
 import AdInline from '@/components/ui/AdInline';
+import DisclaimerNote from '@/components/ui/DisclaimerNote';
 import RelatedTools from '@/components/ui/RelatedTools';
 import styles from './page.module.scss';
 
@@ -147,6 +148,7 @@ export default async function DiabetesRiskPage({ params }: Props) {
         <ToolActions />
         <DiabetesRiskCalculator locale={locale} />
         <AdInline locale={locale} />
+        <DisclaimerNote locale={locale} />
         <div className={styles.page__content}>
           {content.description.split('\n\n').map((para, i) => (
             <p key={i} className={styles.page__description}>{para}</p>

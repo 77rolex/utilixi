@@ -1,136 +1,75 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import styles from './BmiCalculator.module.scss';
 
-type Props = { locale: string };
+type Props = {
+  locale: string;
+  initialUnit?: string;
+  initialHeightCm?: string;
+  initialHeightFt?: string;
+  initialHeightIn?: string;
+  initialWeight?: string;
+};
 type Unit = 'metric' | 'imperial';
 
 const T: Record<string, {
-  metric: string;
-  imperial: string;
-  height: string;
-  heightCm: string;
-  heightFt: string;
-  heightIn: string;
-  weight: string;
-  weightKg: string;
-  weightLbs: string;
-  calculate: string;
-  yourBmi: string;
-  errorInvalid: string;
-  errorHeight: string;
-  errorWeight: string;
-  catUnderweight: string;
-  catNormal: string;
-  catOverweight: string;
-  catObese: string;
-  tipTitle: string;
+  metric: string; imperial: string; height: string; heightCm: string; heightFt: string; heightIn: string;
+  weight: string; weightKg: string; weightLbs: string; calculate: string; yourBmi: string;
+  errorInvalid: string; errorHeight: string; errorWeight: string;
+  catUnderweight: string; catNormal: string; catOverweight: string; catObese: string;
+  tipTitle: string; copy: string; copied: string;
 }> = {
   en: {
-    metric: 'Metric',
-    imperial: 'Imperial',
-    height: 'Height',
-    heightCm: 'cm',
-    heightFt: 'ft',
-    heightIn: 'in',
-    weight: 'Weight',
-    weightKg: 'kg',
-    weightLbs: 'lbs',
-    calculate: 'Calculate BMI',
-    yourBmi: 'Your BMI',
+    metric: 'Metric', imperial: 'Imperial', height: 'Height', heightCm: 'cm', heightFt: 'ft', heightIn: 'in',
+    weight: 'Weight', weightKg: 'kg', weightLbs: 'lbs', calculate: 'Calculate BMI', yourBmi: 'Your BMI',
     errorInvalid: 'Please fill all fields with valid positive numbers.',
     errorHeight: 'Height must be between 50 and 250 cm.',
     errorWeight: 'Weight must be between 10 and 300 kg.',
-    catUnderweight: 'Underweight',
-    catNormal: 'Normal weight',
-    catOverweight: 'Overweight',
-    catObese: 'Obese',
+    catUnderweight: 'Underweight', catNormal: 'Normal weight', catOverweight: 'Overweight', catObese: 'Obese',
     tipTitle: 'Recommended weight for normal BMI (18.5–24.9):',
+    copy: 'Copy result', copied: 'Copied!',
   },
   ru: {
-    metric: 'Метрическая',
-    imperial: 'Имперская',
-    height: 'Рост',
-    heightCm: 'см',
-    heightFt: 'фут',
-    heightIn: 'дюйм',
-    weight: 'Вес',
-    weightKg: 'кг',
-    weightLbs: 'фунт',
-    calculate: 'Рассчитать ИМТ',
-    yourBmi: 'Ваш ИМТ',
+    metric: 'Метрическая', imperial: 'Имперская', height: 'Рост', heightCm: 'см', heightFt: 'фут', heightIn: 'дюйм',
+    weight: 'Вес', weightKg: 'кг', weightLbs: 'фунт', calculate: 'Рассчитать ИМТ', yourBmi: 'Ваш ИМТ',
     errorInvalid: 'Заполните все поля корректными положительными числами.',
     errorHeight: 'Рост должен быть от 50 до 250 см.',
     errorWeight: 'Вес должен быть от 10 до 300 кг.',
-    catUnderweight: 'Недостаточный вес',
-    catNormal: 'Нормальный вес',
-    catOverweight: 'Избыточный вес',
-    catObese: 'Ожирение',
+    catUnderweight: 'Недостаточный вес', catNormal: 'Нормальный вес', catOverweight: 'Избыточный вес', catObese: 'Ожирение',
     tipTitle: 'Рекомендуемый вес для нормального ИМТ (18.5–24.9):',
+    copy: 'Скопировать', copied: 'Скопировано!',
   },
   uk: {
-    metric: 'Метрична',
-    imperial: 'Імперська',
-    height: 'Зріст',
-    heightCm: 'см',
-    heightFt: 'фут',
-    heightIn: 'дюйм',
-    weight: 'Вага',
-    weightKg: 'кг',
-    weightLbs: 'фунт',
-    calculate: 'Розрахувати ІМТ',
-    yourBmi: 'Ваш ІМТ',
+    metric: 'Метрична', imperial: 'Імперська', height: 'Зріст', heightCm: 'см', heightFt: 'фут', heightIn: 'дюйм',
+    weight: 'Вага', weightKg: 'кг', weightLbs: 'фунт', calculate: 'Розрахувати ІМТ', yourBmi: 'Ваш ІМТ',
     errorInvalid: 'Заповніть усі поля коректними додатними числами.',
     errorHeight: 'Зріст має бути від 50 до 250 см.',
     errorWeight: 'Вага має бути від 10 до 300 кг.',
-    catUnderweight: 'Недостатня вага',
-    catNormal: 'Нормальна вага',
-    catOverweight: 'Надмірна вага',
-    catObese: 'Ожиріння',
+    catUnderweight: 'Недостатня вага', catNormal: 'Нормальна вага', catOverweight: 'Надмірна вага', catObese: 'Ожиріння',
     tipTitle: 'Рекомендована вага для нормального ІМТ (18.5–24.9):',
+    copy: 'Копіювати', copied: 'Скопійовано!',
   },
   fr: {
-    metric: 'Métrique',
-    imperial: 'Impérial',
-    height: 'Taille',
-    heightCm: 'cm',
-    heightFt: 'pi',
-    heightIn: 'po',
-    weight: 'Poids',
-    weightKg: 'kg',
-    weightLbs: 'lbs',
-    calculate: 'Calculer l\'IMC',
-    yourBmi: 'Votre IMC',
+    metric: 'Métrique', imperial: 'Impérial', height: 'Taille', heightCm: 'cm', heightFt: 'pi', heightIn: 'po',
+    weight: 'Poids', weightKg: 'kg', weightLbs: 'lbs', calculate: 'Calculer l\'IMC', yourBmi: 'Votre IMC',
     errorInvalid: 'Veuillez remplir tous les champs avec des nombres positifs valides.',
     errorHeight: 'La taille doit être comprise entre 50 et 250 cm.',
     errorWeight: 'Le poids doit être compris entre 10 et 300 kg.',
-    catUnderweight: 'Insuffisance pondérale',
-    catNormal: 'Poids normal',
-    catOverweight: 'Surpoids',
-    catObese: 'Obésité',
+    catUnderweight: 'Insuffisance pondérale', catNormal: 'Poids normal', catOverweight: 'Surpoids', catObese: 'Obésité',
     tipTitle: 'Poids recommandé pour un IMC normal (18,5–24,9) :',
+    copy: 'Copier', copied: 'Copié !',
   },
   lt: {
-    metric: 'Metrinė',
-    imperial: 'Imperinė',
-    height: 'Ūgis',
-    heightCm: 'cm',
-    heightFt: 'pėd.',
-    heightIn: 'col.',
-    weight: 'Svoris',
-    weightKg: 'kg',
-    weightLbs: 'svar.',
-    calculate: 'Skaičiuoti KMI',
-    yourBmi: 'Jūsų KMI',
+    metric: 'Metrinė', imperial: 'Imperinė', height: 'Ūgis', heightCm: 'cm', heightFt: 'pėd.', heightIn: 'col.',
+    weight: 'Svoris', weightKg: 'kg', weightLbs: 'svar.', calculate: 'Skaičiuoti KMI', yourBmi: 'Jūsų KMI',
     errorInvalid: 'Užpildykite visus laukus teigiamais skaičiais.',
     errorHeight: 'Ūgis turi būti nuo 50 iki 250 cm.',
     errorWeight: 'Svoris turi būti nuo 10 iki 300 kg.',
-    catUnderweight: 'Nepakankamas svoris',
-    catNormal: 'Normalus svoris',
-    catOverweight: 'Antsvoris',
-    catObese: 'Nutukimas',
+    catUnderweight: 'Nepakankamas svoris', catNormal: 'Normalus svoris', catOverweight: 'Antsvoris', catObese: 'Nutukimas',
     tipTitle: 'Rekomenduojamas svoris normaliam KMI (18,5–24,9):',
+    copy: 'Kopijuoti', copied: 'Nukopijuota!',
   },
 };
 
@@ -143,22 +82,48 @@ function getCategory(bmi: number): Category {
   return 'obese';
 }
 
-// Scale range: 10–40 (30 units). Returns 0–100%.
 function scalePercent(bmi: number): number {
   return Math.min(100, Math.max(0, ((bmi - 10) / 30) * 100));
 }
 
-export default function BmiCalculator({ locale }: Props) {
-  const t = T[locale] || T.en;
+function tryCalcBmi(unit: Unit, hCm: string, hFt: string, hIn: string, w: string): { bmi: number; heightM: number } | null {
+  if (unit === 'metric') {
+    const h = parseFloat(hCm);
+    const wkg = parseFloat(w);
+    if (isNaN(h) || h < 50 || h > 250 || isNaN(wkg) || wkg < 10 || wkg > 300) return null;
+    const hM = h / 100;
+    return { bmi: Math.round((wkg / (hM * hM)) * 10) / 10, heightM: hM };
+  } else {
+    const ft = parseFloat(hFt);
+    const inches = parseFloat(hIn || '0');
+    const wlbs = parseFloat(w);
+    if (isNaN(ft) || ft <= 0 || isNaN(wlbs) || wlbs <= 0) return null;
+    const totalInches = ft * 12 + (isNaN(inches) ? 0 : inches);
+    const hM = totalInches * 0.0254;
+    const wkg = wlbs * 0.453592;
+    if (hM < 0.5 || hM > 2.5 || wkg < 10 || wkg > 300) return null;
+    return { bmi: Math.round((wkg / (hM * hM)) * 10) / 10, heightM: hM };
+  }
+}
 
-  const [unit, setUnit] = useState<Unit>('metric');
-  const [heightCm, setHeightCm] = useState('');
-  const [heightFt, setHeightFt] = useState('');
-  const [heightIn, setHeightIn] = useState('');
-  const [weight, setWeight] = useState('');
-  const [bmi, setBmi] = useState<number | null>(null);
-  const [heightM, setHeightM] = useState<number | null>(null);
+export default function BmiCalculator({ locale, initialUnit, initialHeightCm = '', initialHeightFt = '', initialHeightIn = '', initialWeight = '' }: Props) {
+  const t = T[locale] || T.en;
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [unit, setUnit] = useState<Unit>((initialUnit === 'imperial' ? 'imperial' : 'metric') as Unit);
+  const [heightCm, setHeightCm] = useState(initialHeightCm);
+  const [heightFt, setHeightFt] = useState(initialHeightFt);
+  const [heightIn, setHeightIn] = useState(initialHeightIn);
+  const [weight, setWeight] = useState(initialWeight);
   const [error, setError] = useState('');
+  const [copied, setCopied] = useState(false);
+
+  const initUnit: Unit = initialUnit === 'imperial' ? 'imperial' : 'metric';
+  const initCalc = tryCalcBmi(initUnit, initialHeightCm, initialHeightFt, initialHeightIn, initialWeight);
+
+  const [bmi, setBmi] = useState<number | null>(initCalc?.bmi ?? null);
+  const [heightM, setHeightM] = useState<number | null>(initCalc?.heightM ?? null);
 
   const handleUnit = (u: Unit) => {
     setUnit(u);
@@ -168,66 +133,51 @@ export default function BmiCalculator({ locale }: Props) {
   };
 
   const handleCalculate = useCallback(() => {
-    let heightM: number;
-    let weightKg: number;
+    const res = tryCalcBmi(unit, heightCm, heightFt, heightIn, weight);
 
-    if (unit === 'metric') {
-      const h = parseFloat(heightCm.replace(',', '.'));
-      const w = parseFloat(weight.replace(',', '.'));
-      if (isNaN(h) || h <= 0 || isNaN(w) || w <= 0) {
-        setError(t.errorInvalid);
-        setBmi(null);
-        return;
+    if (res === null) {
+      if (unit === 'metric') {
+        const h = parseFloat(heightCm);
+        const w = parseFloat(weight);
+        if (isNaN(h) || isNaN(w)) { setError(t.errorInvalid); setBmi(null); return; }
+        if (h < 50 || h > 250) { setError(t.errorHeight); setBmi(null); return; }
+        if (w < 10 || w > 300) { setError(t.errorWeight); setBmi(null); return; }
       }
-      if (h < 50 || h > 250) {
-        setError(t.errorHeight);
-        setBmi(null);
-        return;
-      }
-      if (w < 10 || w > 300) {
-        setError(t.errorWeight);
-        setBmi(null);
-        return;
-      }
-      heightM = h / 100;
-      weightKg = w;
-    } else {
-      const ft = parseFloat(heightFt.replace(',', '.'));
-      const inches = parseFloat(heightIn.replace(',', '.') || '0');
-      const w = parseFloat(weight.replace(',', '.'));
-      if (isNaN(ft) || ft <= 0 || isNaN(w) || w <= 0) {
-        setError(t.errorInvalid);
-        setBmi(null);
-        return;
-      }
-      const totalInches = ft * 12 + (isNaN(inches) ? 0 : inches);
-      heightM = totalInches * 0.0254;
-      weightKg = w * 0.453592;
-      if (heightM < 0.5 || heightM > 2.5) {
-        setError(t.errorHeight);
-        setBmi(null);
-        return;
-      }
-      if (weightKg < 10 || weightKg > 300) {
-        setError(t.errorWeight);
-        setBmi(null);
-        return;
-      }
+      setError(t.errorInvalid);
+      setBmi(null);
+      return;
     }
 
     setError('');
-    setHeightM(heightM);
-    setBmi(Math.round((weightKg / (heightM * heightM)) * 10) / 10);
-  }, [unit, heightCm, heightFt, heightIn, weight, t]);
+    setBmi(res.bmi);
+    setHeightM(res.heightM);
+
+    const params: Record<string, string> = { unit };
+    if (unit === 'metric') {
+      params.heightCm = heightCm;
+    } else {
+      params.heightFt = heightFt;
+      if (heightIn) params.heightIn = heightIn;
+    }
+    params.weight = weight;
+    router.replace(`${pathname}?${new URLSearchParams(params)}`, { scroll: false });
+  }, [unit, heightCm, heightFt, heightIn, weight, t, router, pathname]);
 
   const category = bmi !== null ? getCategory(bmi) : null;
   const categoryLabel = category ? t[`cat${category.charAt(0).toUpperCase() + category.slice(1)}` as keyof typeof t] : '';
+
+  const handleCopy = useCallback(() => {
+    if (bmi === null || !category) return;
+    navigator.clipboard.writeText(`${t.yourBmi}: ${bmi.toFixed(1)} — ${categoryLabel}`).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }, [bmi, category, categoryLabel, t]);
 
   return (
     <div className={styles['bmi-widget']}>
       <div className={styles['bmi-widget__form']}>
 
-        {/* Unit toggle */}
         <div className={styles['bmi-widget__toggle']} role="group">
           <button
             type="button"
@@ -245,7 +195,6 @@ export default function BmiCalculator({ locale }: Props) {
           </button>
         </div>
 
-        {/* Height */}
         <div className={styles['bmi-widget__field']}>
           <label className={styles['bmi-widget__label']}>{t.height}</label>
           {unit === 'metric' ? (
@@ -303,7 +252,6 @@ export default function BmiCalculator({ locale }: Props) {
           )}
         </div>
 
-        {/* Weight */}
         <div className={styles['bmi-widget__field']}>
           <label className={styles['bmi-widget__label']} htmlFor="bmi-weight">
             {t.weight}
@@ -337,6 +285,17 @@ export default function BmiCalculator({ locale }: Props) {
 
       {bmi !== null && category && (
         <div className={styles['bmi-widget__results']}>
+          <div className={styles['bmi-widget__copy']}>
+            <button
+              type="button"
+              className={`${styles['bmi-widget__copy-btn']}${copied ? ` ${styles['bmi-widget__copy-btn--copied']}` : ''}`}
+              onClick={handleCopy}
+              aria-label={t.copy}
+            >
+              {copied ? '✓' : '⎘'} {copied ? t.copied : t.copy}
+            </button>
+          </div>
+
           <div className={styles['bmi-widget__result-main']}>
             <div className={styles['bmi-widget__result-bmi']}>
               <span className={styles['bmi-widget__result-label']}>{t.yourBmi}</span>
@@ -347,7 +306,6 @@ export default function BmiCalculator({ locale }: Props) {
             </span>
           </div>
 
-          {/* Scale bar */}
           <div className={styles['bmi-widget__scale']}>
             <div className={styles['bmi-widget__scale-bar-wrap']}>
               <div className={styles['bmi-widget__scale-bar']}>
@@ -369,7 +327,6 @@ export default function BmiCalculator({ locale }: Props) {
             </div>
           </div>
 
-          {/* Weight recommendation — shown only when outside normal range */}
           {category !== 'normal' && heightM !== null && (
             <div className={styles['bmi-widget__tip']}>
               <p className={styles['bmi-widget__tip-title']}>{t.tipTitle}</p>

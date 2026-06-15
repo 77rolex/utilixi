@@ -9,7 +9,7 @@ import AdInline from '@/components/ui/AdInline';
 import RelatedTools from '@/components/ui/RelatedTools';
 import styles from './page.module.scss';
 
-type Props = { params: Promise<{ locale: string }> };
+type Props = { params: Promise<{ locale: string }>; searchParams: Promise<Record<string, string>> };
 
 const RELATED: Record<string, { href: string; label: string }[]> = {
   en: [{ href: '/calculator/ideal-weight', label: 'Ideal Weight Calculator' }, { href: '/calculator/calories', label: 'Calorie Calculator (TDEE)' }, { href: '/calculator/body-fat', label: 'Body Fat Calculator' }, { href: '/calculator/water-intake', label: 'Water Intake Calculator' }, { href: '/calculator/heart-rate', label: 'Heart Rate Zones' }],
@@ -300,8 +300,9 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function BmiPage({ params }: Props) {
+export default async function BmiPage({ params, searchParams }: Props) {
   const { locale } = await params;
+  const sp = await searchParams;
   const meta = META[locale] || META.en;
   const content = CONTENT[locale] || CONTENT.en;
   const related = RELATED[locale] || RELATED.en;
@@ -338,7 +339,7 @@ export default async function BmiPage({ params }: Props) {
         <h1 className={styles.page__title}>{meta.h1}</h1>
         {meta.subtitle && <p className={styles.page__subtitle}>{meta.subtitle}</p>}
         <ToolActions />
-        <BmiCalculator locale={locale} />
+        <BmiCalculator locale={locale} initialUnit={sp.unit} initialHeightCm={sp.heightCm} initialHeightFt={sp.heightFt} initialHeightIn={sp.heightIn} initialWeight={sp.weight} />
 
         <AdInline locale={locale} />
         <div className={styles.page__content}>

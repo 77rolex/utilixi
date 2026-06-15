@@ -6,6 +6,7 @@ import CurrencyConverter from './CurrencyConverter';
 import PageLayout from '@/components/layout/PageLayout';
 import AdSidebar from '@/components/ui/AdSidebar';
 import AdInline from '@/components/ui/AdInline';
+import DisclaimerNote from '@/components/ui/DisclaimerNote';
 import RelatedTools from '@/components/ui/RelatedTools';
 import styles from './page.module.scss';
 
@@ -360,6 +361,7 @@ export default async function CurrencyPage({ params }: Props) {
         <CurrencyConverter locale={locale} rates={rates} updatedAt={updatedAt} />
 
         <AdInline locale={locale} />
+        <DisclaimerNote locale={locale} />
         <div className={styles.page__content}>
           <p className={styles.page__description}>{content.description}</p>
           <RelatedTools locale={locale} tools={related} />
