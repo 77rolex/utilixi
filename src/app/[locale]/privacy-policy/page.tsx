@@ -12,18 +12,15 @@ type LocaleContent = {
   title: string;
   description: string;
   h1: string;
-  lastUpdated: string;
   sections: Section[];
 };
 
-const EFFECTIVE_DATE = 'May 17, 2025';
 
 const CONTENT: Record<string, LocaleContent> = {
   en: {
     title: 'Privacy Policy',
     description: 'Utilixi privacy policy — how we handle your data.',
     h1: 'Privacy Policy',
-    lastUpdated: `Last updated: ${EFFECTIVE_DATE}`,
     sections: [
       {
         heading: '1. Introduction',
@@ -71,7 +68,6 @@ const CONTENT: Record<string, LocaleContent> = {
     title: 'Политика конфиденциальности',
     description: 'Политика конфиденциальности Utilixi — как мы работаем с вашими данными.',
     h1: 'Политика конфиденциальности',
-    lastUpdated: `Последнее обновление: ${EFFECTIVE_DATE}`,
     sections: [
       {
         heading: '1. Введение',
@@ -119,7 +115,6 @@ const CONTENT: Record<string, LocaleContent> = {
     title: 'Політика конфіденційності',
     description: 'Політика конфіденційності Utilixi — як ми обробляємо ваші дані.',
     h1: 'Політика конфіденційності',
-    lastUpdated: `Останнє оновлення: ${EFFECTIVE_DATE}`,
     sections: [
       {
         heading: '1. Вступ',
@@ -167,7 +162,6 @@ const CONTENT: Record<string, LocaleContent> = {
     title: 'Politique de confidentialité',
     description: 'Politique de confidentialité d\'Utilixi — comment nous traitons vos données.',
     h1: 'Politique de confidentialité',
-    lastUpdated: `Dernière mise à jour : ${EFFECTIVE_DATE}`,
     sections: [
       {
         heading: '1. Introduction',
@@ -215,7 +209,6 @@ const CONTENT: Record<string, LocaleContent> = {
     title: 'Privatumo politika',
     description: 'Utilixi privatumo politika — kaip mes tvarkome jūsų duomenis.',
     h1: 'Privatumo politika',
-    lastUpdated: `Paskutinis atnaujinimas: ${EFFECTIVE_DATE}`,
     sections: [
       {
         heading: '1. Įvadas',
@@ -279,7 +272,6 @@ export default async function PrivacyPolicyPage({ params }: Props) {
     <PageLayout centered>
       <div className={styles.page__content}>
         <h1 className={styles.page__title}>{c.h1}</h1>
-        <p className={styles.page__date}>{c.lastUpdated}</p>
         {c.sections.map((s) => (
           <section key={s.heading} className={styles.page__section}>
             <h2 className={styles.page__section_title}>{s.heading}</h2>
