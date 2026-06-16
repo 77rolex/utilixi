@@ -46,9 +46,10 @@
     transition: border-color var(--transition-base), color var(--transition-base), background-color var(--transition-base);
     &:hover { border-color: var(--color-primary); color: var(--color-primary); }
     &--active { background: var(--color-primary); border-color: var(--color-primary); color: #fff; font-weight: 600; }
+    &--active:hover { color: #fff; }
   }
 
-  &__error { font-size: var(--font-size-sm); color: #dc2626; }
+  &__error { font-size: var(--font-size-sm); color: var(--color-error); }
 
   &__actions { display: flex; gap: var(--spacing-sm); align-items: center; }
 
@@ -144,9 +145,9 @@
   }
 
   &__bar-dep { background: var(--color-primary); border-radius: var(--radius-sm) 0 0 var(--radius-sm); min-width: 4px; }
-  &__bar-int { background: #86efac; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; min-width: 4px; }
+  &__bar-int { background: var(--color-success-border); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; min-width: 4px; }
 
-  &__green { color: #15803d !important; }
+  &__green { color: var(--color-success) !important; }
 
   // ── Table ─────────────────────────────────────────────────────────────
 

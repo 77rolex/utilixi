@@ -66,7 +66,7 @@
     &--selected {
       border-color: var(--color-primary);
       background: var(--color-primary-light);
-      color: var(--color-primary);
+      color: var(--color-primary-light-text);
       font-weight: 500;
     }
   }
@@ -116,8 +116,8 @@
     padding: var(--spacing-sm) var(--spacing-xl);
     border-radius: 100px;
 
-    &--low      { background: #C6F6D5; color: #276749; }
-    &--moderate { background: #FEFCBF; color: #744210; }
+    &--low      { background: #C6F6D5; color: var(--color-success); }
+    &--moderate { background: #FEFCBF; color: var(--color-warning); }
     &--high     { background: #FED7D7; color: #9B2C2C; }
   }
 
@@ -160,7 +160,7 @@
 
     &--low      { background: #48BB78; }
     &--moderate { background: #ECC94B; }
-    &--high     { background: #FC8181; }
+    &--high     { background: var(--color-error-border); }
   }
 
   &__result-bar-labels {

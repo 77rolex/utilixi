@@ -83,6 +83,7 @@
         color: #fff;
       }
     }
+    &--active:hover { color: #fff; }
 
     &--fav {
       display: inline-flex;
@@ -91,19 +92,19 @@
       padding: 6px 10px;
 
       &#{&}--active {
-        background-color: #F59E0B;
-        border-color: #F59E0B;
+        background-color: var(--color-fav);
+        border-color: var(--color-fav);
         color: #fff;
 
         &:hover {
-          background-color: #D97706;
-          border-color: #D97706;
+          background-color: var(--color-fav-hover);
+          border-color: var(--color-fav-hover);
         }
       }
 
       &:not(#{&}--active):hover {
-        border-color: #F59E0B;
-        color: #F59E0B;
+        border-color: var(--color-fav);
+        color: var(--color-fav);
       }
     }
   }
@@ -232,13 +233,13 @@
     }
 
     &:hover {
-      color: #F59E0B;
-      border-color: #F59E0B;
+      color: var(--color-fav);
+      border-color: var(--color-fav);
     }
 
     &--active {
-      color: #F59E0B;
-      border-color: #F59E0B;
+      color: var(--color-fav);
+      border-color: var(--color-fav);
     }
   }
 }

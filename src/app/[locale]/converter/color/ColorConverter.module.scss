@@ -38,6 +38,7 @@
         color: #fff;
       }
     }
+    &--active:hover { color: #fff; }
   }
 
   &__body { display: flex; flex-direction: column; gap: var(--spacing-lg); }
@@ -90,7 +91,7 @@
     }
   }
 
-  &__error { font-size: var(--font-size-sm); color: #dc2626; }
+  &__error { font-size: var(--font-size-sm); color: var(--color-error); }
 
   &__preview {
     max-width: 480px;

@@ -81,7 +81,7 @@
     transition: color var(--transition-base), background-color var(--transition-base);
     flex-shrink: 0;
 
-    &:hover { color: #e53e3e; background-color: #fff5f5; }
+    &:hover { color: var(--color-error); background-color: var(--color-error-bg); }
   }
 
   &__add-btn {

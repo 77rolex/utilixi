@@ -32,8 +32,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const ymId = process.env.NEXT_PUBLIC_YANDEX_METRICA_ID;
 
   return (
-    <html lang={locale} className={inter.variable}>
-      <body>
+    <html lang={locale} className={inter.variable} suppressHydrationWarning>
+      <head>
+        {/* Anti-flash: установить тему до первого рендера */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{if(localStorage.getItem('utilixi_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');document.documentElement.classList.add('preload');window.addEventListener('load',function(){document.documentElement.classList.remove('preload');});}catch(e){}})();` }} />
+      </head>
+      <body suppressHydrationWarning>
         {children}
         {ymId && (
           <>

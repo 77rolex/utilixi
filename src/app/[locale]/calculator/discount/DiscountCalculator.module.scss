@@ -30,7 +30,7 @@
     &--active {
       border-color: var(--color-primary);
       background: var(--color-primary-light);
-      color: var(--color-primary);
+      color: var(--color-primary-light-text);
       font-weight: 600;
     }
   }
@@ -119,7 +119,7 @@
     font-weight: 700;
     color: var(--color-text-primary);
 
-    .discount-calc__result-card--savings & { color: #276749; }
+    .discount-calc__result-card--savings & { color: var(--color-success); }
   }
 
   &__result-label {

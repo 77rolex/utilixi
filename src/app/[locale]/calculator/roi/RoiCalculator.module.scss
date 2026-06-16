@@ -29,7 +29,7 @@
     &:focus { outline: none; border-color: var(--color-primary); }
   }
 
-  &__error { font-size: var(--font-size-sm); color: #dc2626; }
+  &__error { font-size: var(--font-size-sm); color: var(--color-error); }
 
   &__actions { display: flex; gap: var(--spacing-sm); align-items: center; }
 
@@ -100,8 +100,8 @@
 
     @media (min-width: 640px) { font-size: 72px; }
 
-    .roi-calc__roi-badge--positive & { color: #15803d; }
-    .roi-calc__roi-badge--negative & { color: #dc2626; }
+    .roi-calc__roi-badge--positive & { color: var(--color-success); }
+    .roi-calc__roi-badge--negative & { color: var(--color-error); }
   }
 
   &__roi-tag {
@@ -131,7 +131,7 @@
     font-size: var(--font-size-base);
     font-weight: 700;
     color: var(--color-text-primary);
-    &--pos { color: #15803d; }
-    &--neg { color: #dc2626; }
+    &--pos { color: var(--color-success); }
+    &--neg { color: var(--color-error); }
   }
 }

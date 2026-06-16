@@ -110,7 +110,7 @@
 
   &__error {
     padding: var(--spacing-md);
-    color: #e53e3e;
+    color: var(--color-error);
     font-size: var(--font-size-sm);
   }
 }

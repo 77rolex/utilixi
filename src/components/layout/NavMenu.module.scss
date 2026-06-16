@@ -28,7 +28,7 @@
 
     &:hover,
     &--open {
-      color: var(--color-primary);
+      color: var(--color-primary-light-text);
       background-color: var(--color-primary-light);
     }
 
@@ -96,7 +96,7 @@
     transition: color var(--transition-base), background-color var(--transition-base);
 
     &:hover:not(:disabled) {
-      color: var(--color-primary);
+      color: var(--color-primary-light-text);
       background-color: var(--color-primary-light);
     }
 
@@ -115,7 +115,7 @@
     margin-bottom: -1px;
 
     &--active {
-      color: var(--color-primary);
+      color: var(--color-primary-light-text);
       border-bottom-color: var(--color-primary);
       background-color: var(--color-primary-light);
     }
@@ -200,7 +200,7 @@
 
     &:hover,
     &--open {
-      color: var(--color-primary);
+      color: var(--color-primary-light-text);
       background-color: var(--color-primary-light);
     }
 
@@ -241,7 +241,7 @@
     transition: color var(--transition-base), background-color var(--transition-base);
 
     &:hover {
-      color: var(--color-primary);
+      color: var(--color-primary-light-text);
       background-color: var(--color-primary-light);
       text-decoration: none;
     }
@@ -391,8 +391,8 @@
       color: var(--color-text-primary);
 
       &:hover {
-        color: #D97706;
-        background-color: #FFFBEB;
+        color: var(--color-fav);
+        background-color: var(--color-fav-light);
       }
     }
   }
@@ -422,9 +422,19 @@
     transition: color var(--transition-base), background-color var(--transition-base);
 
     &:hover {
-      color: var(--color-primary);
+      color: var(--color-primary-light-text);
       background-color: var(--color-primary-light);
       text-decoration: none;
     }
+  }
+}
+
+[data-theme='dark'] {
+  .nav__dropdown {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .overlay {
+    background: rgba(0, 0, 0, 0.65);
   }
 }

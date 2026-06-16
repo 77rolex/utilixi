@@ -1,4 +1,6 @@
 :root {
+  color-scheme: light;
+
   // Цвета — акцент (корпоративный синий)
   --color-primary: #1565C0;
   --color-primary-hover: #0D47A1;
@@ -18,6 +20,18 @@
   --color-border: #E5E7EB;
   --shadow-widget: 0 4px 24px rgba(0, 0, 0, 0.08);
   --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+
+  // Семантические цвета статусов
+  --color-error: #DC2626;        --color-error-bg: #FEF2F2;     --color-error-border: #FCA5A5;
+  --color-success: #16A34A;      --color-success-bg: #F0FDF4;   --color-success-border: #86EFAC;
+  --color-warning: #D97706;      --color-warning-bg: #FFFBEB;   --color-warning-border: #FDE68A;
+  --color-info: #1D4ED8;         --color-info-bg: #EFF6FF;      --color-info-border: #BFDBFE;
+
+  // Text color to use ON primary-light backgrounds (differs in dark mode)
+  --color-primary-light-text: var(--color-primary);
+
+  // Favorites (amber)
+  --color-fav: #F59E0B;          --color-fav-hover: #D97706;    --color-fav-light: #FFFBEB;
 
   // Типографика
   --font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
@@ -53,15 +67,29 @@
   }
 }
 
-// Тёмная тема — заготовка на будущее
 [data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-primary-light: #1E3A5F;
+  --color-text-muted: #64748B;
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.25);
+
   --color-bg: #0F172A;
-  --color-bg-secondary: #1E293B;
+  --color-bg-secondary: #162032;
   --color-bg-widget: #1E293B;
   --color-text-primary: #F1F5F9;
   --color-text-secondary: #94A3B8;
   --color-border: #334155;
   --shadow-widget: 0 4px 24px rgba(0, 0, 0, 0.3);
+
+  --color-error: #F87171;        --color-error-bg: #2D1515;     --color-error-border: #7F1D1D;
+  --color-success: #4ADE80;      --color-success-bg: #052E16;   --color-success-border: #166534;
+  --color-warning: #FCD34D;      --color-warning-bg: #2D1F06;   --color-warning-border: #78350F;
+  --color-info: #60A5FA;         --color-info-bg: #1E3A5F;      --color-info-border: #1E40AF;
+
+  --color-fav-light: #2D1F06;
+
+  --color-primary-light-text: #93C5FD;
 }
 
 // Reset
@@ -76,6 +104,7 @@
 html {
   font-size: var(--font-size-base);
   -webkit-text-size-adjust: 100%;
+  transition: background-color 0.25s ease;
 }
 
 body {
@@ -86,7 +115,27 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
+
+// Отключить transitions при первой загрузке страницы
+.preload,
+.preload * {
+  transition: none !important;
+}
+
+// Скроллбар
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
+* { scrollbar-color: var(--color-border) var(--color-bg-secondary); scrollbar-width: thin; }
+
+// Выделение текста
+::selection { background-color: var(--color-primary); color: #fff; }
+
+// Focus — accessibility
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 
 a {
   color: var(--color-primary);

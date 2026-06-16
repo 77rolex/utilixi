@@ -60,7 +60,7 @@
   &__error {
     margin-top: var(--spacing-md);
     font-size: var(--font-size-sm);
-    color: #dc2626;
+    color: var(--color-error);
   }
 
   &__btn {
@@ -120,7 +120,7 @@
   &__winner-diff {
     font-size: var(--font-size-base);
     font-weight: 600;
-    color: #15803d;
+    color: var(--color-success);
   }
 
   &__breakdown {
@@ -149,6 +149,6 @@
     font-weight: 600;
     color: var(--color-text-primary);
 
-    &--good { color: #15803d; }
+    &--good { color: var(--color-success); }
   }
 }

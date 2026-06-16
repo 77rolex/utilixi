@@ -34,7 +34,7 @@
     &--active {
       border-color: var(--color-primary);
       background-color: var(--color-primary-light);
-      color: var(--color-primary);
+      color: var(--color-primary-light-text);
     }
   }
 
@@ -97,7 +97,7 @@
 
   &__error {
     font-size: var(--font-size-sm);
-    color: #dc2626;
+    color: var(--color-error);
     margin-top: var(--spacing-sm);
   }
 

@@ -205,13 +205,13 @@
   &__net-label {
     font-size: var(--font-size-sm);
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--color-primary-light-text);
   }
 
   &__net-value {
     font-size: var(--font-size-lg);
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-primary-light-text);
     line-height: 1.2;
     word-break: break-all;
 
@@ -266,7 +266,7 @@
 
     &--deduction {
       span:last-child {
-        color: #dc2626;
+        color: var(--color-error);
       }
     }
 
@@ -281,7 +281,7 @@
       border-top: 2px solid #fca5a5;
 
       span {
-        color: #dc2626 !important;
+        color: var(--color-error) !important;
         font-weight: 700 !important;
       }
     }
@@ -291,7 +291,7 @@
       border-top: 2px solid var(--color-primary);
 
       span {
-        color: var(--color-primary) !important;
+        color: var(--color-primary-light-text) !important;
         font-weight: 700 !important;
       }
     }

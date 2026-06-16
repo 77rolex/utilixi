@@ -58,11 +58,11 @@
 
   &__error {
     font-size: var(--font-size-sm);
-    color: #DC2626;
+    color: var(--color-error);
     padding: var(--spacing-xs) var(--spacing-sm);
-    background: #FEF2F2;
+    background: var(--color-error-bg);
     border-radius: var(--radius-sm);
-    border: 1px solid #FCA5A5;
+    border: 1px solid var(--color-error-border);
     margin-top: var(--spacing-sm);
   }
 
@@ -170,13 +170,13 @@
       content: '✓';
       position: absolute;
       left: 0;
-      color: #16A34A;
+      color: var(--color-success);
       font-weight: 700;
     }
 
     &--challenge::before {
       content: '△';
-      color: #D97706;
+      color: var(--color-warning);
     }
   }
 
@@ -202,5 +202,11 @@
     line-height: 1.7;
     font-style: italic;
     margin: 0;
+  }
+}
+
+[data-theme='dark'] {
+  .calc__archetype-result {
+    background: linear-gradient(135deg, #1E3A5F, #2D1432);
   }
 }

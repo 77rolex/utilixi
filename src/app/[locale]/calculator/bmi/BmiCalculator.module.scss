@@ -100,11 +100,11 @@
 
   &__error {
     font-size: var(--font-size-sm);
-    color: #DC2626;
+    color: var(--color-error);
     padding: var(--spacing-xs) var(--spacing-sm);
-    background-color: #FEF2F2;
+    background-color: var(--color-error-bg);
     border-radius: var(--radius-sm);
-    border: 1px solid #FCA5A5;
+    border: 1px solid var(--color-error-border);
   }
 
   &__btn {
@@ -226,8 +226,8 @@
     }
 
     &--obese {
-      background-color: #FEF2F2;
-      color: #B91C1C;
+      background-color: var(--color-error-bg);
+      color: var(--color-error);
     }
   }
 
@@ -257,7 +257,7 @@
     &--underweight { width: 28.33%; background-color: #93C5FD; }
     &--normal      { width: 21.67%; background-color: #86EFAC; }
     &--overweight  { width: 16.67%; background-color: #FCD34D; }
-    &--obese       { width: 33.33%; background-color: #FCA5A5; }
+    &--obese       { width: 33.33%; background-color: var(--color-error-border); }
   }
 
   &__scale-marker {
@@ -304,4 +304,15 @@
     font-weight: 700;
     color: var(--color-primary);
   }
+}
+
+[data-theme='dark'] {
+  .calc__result-category--underweight { background-color: #1E3A5F; color: #93C5FD; }
+  .calc__result-category--normal      { background-color: #052E16; color: #4ADE80; }
+  .calc__result-category--overweight  { background-color: #2D1F06; color: #FCD34D; }
+  .calc__result-category--obese       { background-color: #2D1515; color: #F87171; }
+  .calc__scale-segment--underweight   { background-color: #1E3A5F; }
+  .calc__scale-segment--normal        { background-color: #166534; }
+  .calc__scale-segment--overweight    { background-color: #78350F; }
+  .calc__scale-segment--obese         { background-color: #7F1D1D; }
 }

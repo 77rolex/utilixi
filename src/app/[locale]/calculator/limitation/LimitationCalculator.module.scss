@@ -47,7 +47,7 @@
 
   &__error {
     font-size: var(--font-size-sm);
-    color: #dc2626;
+    color: var(--color-error);
     margin: 0;
   }
 
@@ -113,7 +113,7 @@
   &__period-value {
     font-size: 28px;
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-primary-light-text);
   }
 
   &__basis {

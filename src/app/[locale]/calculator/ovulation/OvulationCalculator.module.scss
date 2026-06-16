@@ -77,11 +77,11 @@
 
   &__error {
     font-size: var(--font-size-sm);
-    color: #DC2626;
+    color: var(--color-error);
     padding: var(--spacing-xs) var(--spacing-sm);
-    background-color: #FEF2F2;
+    background-color: var(--color-error-bg);
     border-radius: var(--radius-sm);
-    border: 1px solid #FCA5A5;
+    border: 1px solid var(--color-error-border);
   }
 
   &__btn {
@@ -137,13 +137,13 @@
     gap: var(--spacing-xs);
 
     &--fertile {
-      border-color: #86EFAC;
-      background-color: #F0FDF4;
+      border-color: var(--color-success-border);
+      background-color: var(--color-success-bg);
     }
 
     &--ovulation {
       border-color: #93C5FD;
-      background-color: #EFF6FF;
+      background-color: var(--color-info-bg);
     }
   }
 

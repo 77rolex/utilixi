@@ -121,8 +121,8 @@
     }
 
     &--copied {
-      color: #16A34A;
-      border-color: #16A34A;
+      color: var(--color-success);
+      border-color: var(--color-success);
     }
   }
 
@@ -197,7 +197,7 @@
   }
 
   &__bracket-tax {
-    color: var(--color-primary);
+    color: var(--color-primary-light-text);
     font-weight: 600;
   }
 

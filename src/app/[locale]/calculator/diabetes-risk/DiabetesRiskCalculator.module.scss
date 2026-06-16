@@ -105,8 +105,8 @@
     &--low      { background-color: #f0fff4; color: #276749; border: 1px solid #9ae6b4; }
     &--slightly { background-color: #fffff0; color: #744210; border: 1px solid #faf089; }
     &--moderate { background-color: #fffaf0; color: #c05621; border: 1px solid #fbd38d; }
-    &--high     { background-color: #fff5f5; color: #c53030; border: 1px solid #feb2b2; }
-    &--very-high{ background-color: #fff5f5; color: #822727; border: 2px solid #fc8181; }
+    &--high     { background-color: var(--color-error-bg); color: var(--color-error); border: 1px solid var(--color-error-border); }
+    &--very-high{ background-color: var(--color-error-bg); color: var(--color-error); border: 2px solid var(--color-error-border); }
   }
 
   &__bar-wrap {
@@ -124,8 +124,8 @@
     &--low      { background-color: #48bb78; }
     &--slightly { background-color: #ecc94b; }
     &--moderate { background-color: #ed8936; }
-    &--high     { background-color: #e53e3e; }
-    &--very-high{ background-color: #822727; }
+    &--high     { background-color: var(--color-error); }
+    &--very-high{ background-color: var(--color-error); }
   }
 
   &__probability {
@@ -149,4 +149,13 @@
     color: var(--color-text-muted);
     font-style: italic;
   }
+}
+
+[data-theme='dark'] {
+  .calc__risk-badge--low      { background-color: #052E16; color: #4ADE80; border-color: #166534; }
+  .calc__risk-badge--slightly { background-color: #1E2A06; color: #BEF264; border-color: #365314; }
+  .calc__risk-badge--moderate { background-color: #2D1F06; color: #FCD34D; border-color: #78350F; }
+  .calc__bar--low             { background-color: #166534; }
+  .calc__bar--slightly        { background-color: #3F6212; }
+  .calc__bar--moderate        { background-color: #78350F; }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './BiorhythmCalculator.module.scss';
 
 type Props = { locale: string };
@@ -79,6 +79,15 @@ export default function BiorhythmCalculator({ locale }: Props) {
   const [targetDate, setTargetDate] = useState(today);
   const [result, setResult] = useState<{ phys: number; emo: number; intel: number; daysSince: number; target: Date } | null>(null);
   const [error, setError] = useState('');
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const update = () => setIsDark(document.documentElement.getAttribute('data-theme') === 'dark');
+    update();
+    const obs = new MutationObserver(update);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => obs.disconnect();
+  }, []);
 
   const calculate = () => {
     if (!birth || !targetDate) { setError(t.errEmpty); setResult(null); return; }
@@ -192,8 +201,8 @@ export default function BiorhythmCalculator({ locale }: Props) {
               className={styles.calc__svg}
               aria-hidden="true"
             >
-              <line x1={PAD_L} y1={mid} x2={SVG_W - PAD_R} y2={mid} stroke="#E5E7EB" strokeWidth="1" />
-              <line x1={todayX} y1={PAD_V / 2} x2={todayX} y2={SVG_H - PAD_V / 2} stroke="#9CA3AF" strokeWidth="1.5" strokeDasharray="4 3" />
+              <line x1={PAD_L} y1={mid} x2={SVG_W - PAD_R} y2={mid} stroke={isDark ? '#334155' : '#E5E7EB'} strokeWidth="1" />
+              <line x1={todayX} y1={PAD_V / 2} x2={todayX} y2={SVG_H - PAD_V / 2} stroke={isDark ? '#94A3B8' : '#9CA3AF'} strokeWidth="1.5" strokeDasharray="4 3" />
               <path d={makePath(result.daysSince, 23)} fill="none" stroke="#EF4444" strokeWidth="2" strokeLinecap="round" />
               <path d={makePath(result.daysSince, 28)} fill="none" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" />
               <path d={makePath(result.daysSince, 33)} fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" />

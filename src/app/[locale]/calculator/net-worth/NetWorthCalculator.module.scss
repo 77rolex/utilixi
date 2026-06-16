@@ -30,7 +30,7 @@
     align-items: center;
     gap: var(--spacing-sm);
 
-    &--assets { color: #15803D; }
+    &--assets { color: var(--color-success); }
     &--liabilities { color: #B91C1C; }
   }
 
@@ -123,9 +123,9 @@
   &__result-val {
     font-weight: 600;
 
-    &--assets { color: #15803D; }
+    &--assets { color: var(--color-success); }
     &--liabilities { color: #B91C1C; }
-    &--positive { color: #15803D; font-size: var(--font-size-lg); }
+    &--positive { color: var(--color-success); font-size: var(--font-size-lg); }
     &--negative { color: #B91C1C; font-size: var(--font-size-lg); }
     &--zero { color: var(--color-text-secondary); font-size: var(--font-size-lg); }
   }

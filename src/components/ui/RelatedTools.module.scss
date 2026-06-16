@@ -27,7 +27,7 @@
     align-items: center;
     padding: 4px 8px;
     background-color: var(--color-primary-light);
-    color: var(--color-primary);
+    color: var(--color-primary-light-text);
     border-radius: var(--radius-sm);
     font-size: 13px;
     font-weight: 500;
@@ -40,4 +40,8 @@
       text-decoration: none;
     }
   }
+}
+
+[data-theme='dark'] .related-tools__item:hover {
+  color: #fff;
 }

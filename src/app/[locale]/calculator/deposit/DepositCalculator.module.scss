@@ -174,7 +174,7 @@
 
   &__error {
     font-size: var(--font-size-sm);
-    color: #dc2626;
+    color: var(--color-error);
   }
 
   &__btn {
@@ -252,7 +252,7 @@
     color: var(--color-text-primary);
 
     .deposit-widget__split-item--interest & {
-      color: #15803d;
+      color: var(--color-success);
     }
   }
 
@@ -271,7 +271,7 @@
   }
 
   &__bar-interest {
-    background: #86efac;
+    background: var(--color-success-border);
     transition: width 0.4s ease;
     min-width: 4px;
   }
@@ -329,6 +329,6 @@
   }
 
   &__table-interest {
-    color: #15803d !important;
+    color: var(--color-success) !important;
   }
 }

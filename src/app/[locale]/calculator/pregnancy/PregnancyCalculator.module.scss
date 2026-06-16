@@ -78,7 +78,7 @@
 
   &__error {
     font-size: var(--font-size-sm);
-    color: #dc2626;
+    color: var(--color-error);
   }
 
   &__btn {
@@ -171,12 +171,12 @@
 
     &--2 {
       background: #dcfce7;
-      color: #15803d;
+      color: var(--color-success);
     }
 
     &--3 {
       background: #fef3c7;
-      color: #b45309;
+      color: var(--color-warning);
     }
   }
 

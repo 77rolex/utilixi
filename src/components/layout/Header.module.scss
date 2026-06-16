@@ -30,4 +30,10 @@
       text-decoration: none;
     }
   }
+
+  &__logo_wrap {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-primary);
+  }
 }

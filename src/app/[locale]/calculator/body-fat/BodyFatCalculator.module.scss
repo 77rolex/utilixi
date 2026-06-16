@@ -99,11 +99,11 @@
 
   &__error {
     font-size: var(--font-size-sm);
-    color: #DC2626;
+    color: var(--color-error);
     padding: var(--spacing-xs) var(--spacing-sm);
-    background-color: #FEF2F2;
+    background-color: var(--color-error-bg);
     border-radius: var(--radius-sm);
-    border: 1px solid #FCA5A5;
+    border: 1px solid var(--color-error-border);
   }
 
   &__btn {
@@ -179,7 +179,7 @@
     &--athletes   { background-color: #F0FDF4; color: #15803D; }
     &--fitness    { background-color: #ECFDF5; color: #059669; }
     &--acceptable { background-color: #FFFBEB; color: #B45309; }
-    &--obese      { background-color: #FEF2F2; color: #B91C1C; }
+    &--obese      { background-color: var(--color-error-bg); color: var(--color-error); }
   }
 
   &__scale {
@@ -202,7 +202,7 @@
     &--athletes   { background-color: #86EFAC; }
     &--fitness    { background-color: #6EE7B7; }
     &--acceptable { background-color: #FCD34D; }
-    &--obese      { background-color: #FCA5A5; }
+    &--obese      { background-color: var(--color-error-border); }
   }
 
   &__scale-wrap {
@@ -230,4 +230,15 @@
     color: var(--color-text-secondary);
     line-height: 1.6;
   }
+}
+
+[data-theme='dark'] {
+  .calc__result-category--essential  { background-color: #1E3A5F; color: #60A5FA; }
+  .calc__result-category--athletes   { background-color: #052E16; color: #4ADE80; }
+  .calc__result-category--fitness    { background-color: #052E16; color: #4ADE80; }
+  .calc__result-category--acceptable { background-color: #2D1F06; color: #FCD34D; }
+  .calc__scale-segment--essential    { background-color: #1E3A5F; }
+  .calc__scale-segment--athletes     { background-color: #166534; }
+  .calc__scale-segment--fitness      { background-color: #166534; }
+  .calc__scale-segment--acceptable   { background-color: #78350F; }
 }

@@ -64,11 +64,11 @@
 
   &__error {
     font-size: var(--font-size-sm);
-    color: #DC2626;
+    color: var(--color-error);
     padding: var(--spacing-xs) var(--spacing-sm);
-    background: #FEF2F2;
+    background: var(--color-error-bg);
     border-radius: var(--radius-sm);
-    border: 1px solid #FCA5A5;
+    border: 1px solid var(--color-error-border);
     margin-top: var(--spacing-sm);
   }
 
@@ -118,7 +118,7 @@
     color: var(--color-text-secondary);
 
     &--critical {
-      color: #D97706;
+      color: var(--color-warning);
       font-weight: 600;
     }
   }

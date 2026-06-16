@@ -40,6 +40,7 @@
         color: #fff;
       }
     }
+    &--active:hover { color: #fff; }
   }
 
   &__cats {
@@ -64,7 +65,7 @@
     &--active {
       background: var(--color-primary-light);
       border-color: var(--color-primary);
-      color: var(--color-primary);
+      color: var(--color-primary-light-text);
       font-weight: 600;
 
       &:hover {
@@ -122,6 +123,7 @@
         color: #fff;
       }
     }
+    &--active:hover { color: #fff; }
   }
 
   &__select-row {
@@ -169,6 +171,7 @@
         color: #fff;
       }
     }
+    &--active:hover { color: #fff; }
   }
 
   &__result {
@@ -215,8 +218,8 @@
     color: var(--color-text-primary);
   }
 
-  &__result-item--source &__result-std { color: var(--color-primary); }
-  &__result-item--source &__result-val { color: var(--color-primary); }
+  &__result-item--source &__result-std { color: var(--color-primary-light-text); }
+  &__result-item--source &__result-val { color: var(--color-primary-light-text); }
 
   &__no-result {
     font-size: var(--font-size-sm);

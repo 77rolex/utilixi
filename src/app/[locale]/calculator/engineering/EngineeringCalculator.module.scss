@@ -44,7 +44,7 @@
     line-height: 1.1;
     word-break: break-all;
 
-    &--error { color: #dc2626; font-size: var(--font-size-xl); }
+    &--error { color: var(--color-error); font-size: var(--font-size-xl); }
 
     @media (max-width: 400px) { font-size: 28px; }
   }

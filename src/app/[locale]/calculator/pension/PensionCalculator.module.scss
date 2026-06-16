@@ -76,7 +76,7 @@
     &:focus { outline: none; border-color: var(--color-primary); }
   }
 
-  &__error { font-size: var(--font-size-sm); color: #dc2626; }
+  &__error { font-size: var(--font-size-sm); color: var(--color-error); }
 
   &__actions { display: flex; gap: var(--spacing-sm); align-items: center; }
 
@@ -173,7 +173,7 @@
     strong { font-weight: 700; color: var(--color-text-primary); }
   }
 
-  &__metric--green { color: #15803d !important; }
+  &__metric--green { color: var(--color-success) !important; }
 
   // ── Stacked bar ───────────────────────────────────────────────────────
 
