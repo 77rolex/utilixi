@@ -66,7 +66,12 @@
       "Bash(python3-c *)",
       "Bash(grep -v \"^\\\\-\\\\-$\")",
       "Bash(npm uninstall *)",
-      "Bash(git -C \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi\" status --short)"
+      "Bash(git -C \"/mnt/d/WEB/WEB/РАБОЧИЕ ПРОЕКТЫ/utilixi\" status --short)",
+      "Read(//usr/bin/**)",
+      "Read(//usr/local/bin/**)",
+      "Bash(nvm which *)",
+      "Bash(npx --version)",
+      "Bash(/mnt/c/Program Files/nodejs/node.exe *)"
     ]
   }
 }

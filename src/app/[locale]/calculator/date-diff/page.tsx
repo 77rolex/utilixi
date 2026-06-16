@@ -8,6 +8,7 @@ import AdSidebar from '@/components/ui/AdSidebar';
 import AdInline from '@/components/ui/AdInline';
 import AdPlaceholder from '@/components/ui/AdPlaceholder';
 import RelatedTools from '@/components/ui/RelatedTools';
+import FaqSection from '@/components/ui/FaqSection';
 import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -161,17 +162,7 @@ export default async function DateDiffPage({ params }: Props) {
             <p key={i} className={styles.page__description}>{para}</p>
           ))}
           <AdPlaceholder locale={locale} size="banner" />
-          <section className={styles.faq}>
-            <h2 className={styles.faq__title}>{content.faqTitle}</h2>
-            <div className={styles.faq__list}>
-              {content.faqs.map((item, i) => (
-                <div key={i} className={styles.faq__item}>
-                  <h3 className={styles.faq__question}>{item.q}</h3>
-                  <p className={styles.faq__answer}>{item.a}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <FaqSection title={content.faqTitle} faqs={content.faqs} />
         </div>
       </PageLayout>
     </>

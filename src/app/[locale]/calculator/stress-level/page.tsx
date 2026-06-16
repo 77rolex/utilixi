@@ -8,6 +8,7 @@ import AdSidebar from '@/components/ui/AdSidebar';
 import AdInline from '@/components/ui/AdInline';
 import AdPlaceholder from '@/components/ui/AdPlaceholder';
 import RelatedTools from '@/components/ui/RelatedTools';
+import FaqSection from '@/components/ui/FaqSection';
 import styles from './page.module.scss';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -169,17 +170,7 @@ export default async function StressLevelPage({ params }: Props) {
             <p key={i} className={styles.page__description}>{para}</p>
           ))}
           <AdPlaceholder locale={locale} size="banner" />
-          <section className={styles.faq}>
-            <h2 className={styles.faq__title}>{c.faqTitle}</h2>
-            <div className={styles.faq__list}>
-              {c.faqs.map((f, i) => (
-                <div key={i} className={styles.faq__item}>
-                  <h3 className={styles.faq__question}>{f.q}</h3>
-                  <p className={styles.faq__answer}>{f.a}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <FaqSection title={c.faqTitle} faqs={c.faqs} />
         </div>
       </PageLayout>
     </>
